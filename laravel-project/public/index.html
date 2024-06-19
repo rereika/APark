@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radar Chart Example</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <canvas id="radarChart" width="200" height="200"></canvas>
+
+  <script>
+    // Canvas要素の取得
+    let RadarCtx = document.getElementById('radarChart');
+
+    //レーダーチャート
+    let radarConfig = {
+      type: 'radar',
+      data: {
+        labels: ['類いない', '使用技術の正確性', '目新しさ', 'ストーリー性', 'わくわく'],
+        datasets: [{
+          label: 'FB',
+          data: [2, 5, 3, 5, 4],
+          backgroundColor: 'rgba(255, 136, 136, 0.3)',  // 赤色の透明な背景色
+          borderColor: 'rgb(255, 136, 136)',  // 赤色の境界線
+          borderWidth: 5
+        }, {
+          label: 'self-assessment',
+          data: [5, 3, 3, 5, 5],
+          backgroundColor: 'rgba(72, 136, 255, 0.3)',  // 青色の透明な背景色
+          borderColor: 'rgb(72, 136, 255)',  // 青色の境界線
+          borderWidth: 5
+        }],
+      },
+      options: {
+        scales: {
+          r: {
+            suggestedMin: 0,
+            suggestedMax: 5
+          }
+        }
+      }
+    };
+    let radarChart = new Chart(RadarCtx, radarConfig);
+  </script>
+</body>
+
+</html>
