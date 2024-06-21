@@ -1,12 +1,12 @@
 # 設計
 ## 業務フロー
-![WF](image/フローチャート.png)
+![WF](image/フローチャート2024.06.21.png)
 
 ## 画面遷移図/ワイヤーフレーム
-![WF](image/WF.jpg)
+![WF](image/WF2024.06.21.jpg)
 
 ## ER図
-![WF](image/ER.png)
+![WF](image/ER2024.06.21.png)
 
 ## テーブル定義書
 ### Usersテーブル
@@ -15,13 +15,13 @@
 | id              | ユーザーID            | INT   | ◯   |      |    ◯    | ◯ |         |
 | name            | ユーザー名            | VARCHAR(25)   |      |      | ◯  |       |         |
 | email           | メールアドレス        | VARCHAR(100)   |      |      | ◯ |    |   UNIQUE      |
-| password | パスワード  | VARCHAR(25)   |      |      | ◯       |       |         |
+| password | パスワード  | CHAR(60)   |      |      | ◯       |       |         |
 
 ### Ideasテーブル
 | カラム名        | 意味                  | データ型 | PK   | FK   | NOT NULL | AUTO_INCREMENT | 制約 |
 | :-------------- | :-------------------- | :------- | :--- | :--- | :------- | :---- | :------ |
 | id              | アイデアID            | INT   | ◯   |      |    ◯    | ◯ |         |
-| user_id            | ユーザーID            | INT   |      |   ◯   | ◯  |       |         |
+| user_id            | ユーザーID            | INT   |      |      | ◯  |       |         |
 | theme           | テーマ        | INT   |      |      | ◯ |    |     |
 | chart1 | 競合と被らないか  | INT   |      |      | ◯       |       |         |
 | chart2 | 使用技術の正しさ  | INT   |      |      | ◯       |       |         |
@@ -30,31 +30,28 @@
 | chart5 | わくわくするか  | INT   |      |      | ◯       |       |         |
 | elevator1 | エレベーターピッチ１  | TEXT   |      |      | ◯       |       |         |
 | elevator2 | エレベーターピッチ2  | TEXT   |      |      | ◯       |       |         |
+| how| どのように解決するか  | TEXT   |      |      | ◯       |       |         |
 | created_at | 作成日  | TIMESTAMP   |      |      | ◯       |       |         |
-
-
-### chartテーブル
-### テーマテーブル
 
 ### Likesテーブル
 | カラム名        | 意味                  | データ型 | PK   | FK   | NOT NULL | AUTO_INCREMENT | 制約 |
 | :-------------- | :-------------------- | :------- | :--- | :--- | :------- | :---- | :------ |
 | id           | ライクID            | INT   | ◯   |      |    ◯    | ◯ |         |
-| user_id      | ユーザーID            | INT  |      |   ◯   | ◯  |       |         |
-| idea_id      | アイデアID       | INT |      |  ◯    | ◯ |    |     |
+| user_id      | ユーザーID            | INT  |      |      | ◯  |       |         |
+| idea_id      | アイデアID       | INT |      |   | ◯ |    |     |
 
 ### Favoritesテーブル
 | カラム名        | 意味                  | データ型 | PK   | FK   | NOT NULL | AUTO_INCREMENT | 制約 |
 | :-------------- | :-------------------- | :------- | :--- | :--- | :------- | :---- | :------ |
 | id           | ライクID            | INT   | ◯   |      |    ◯    | ◯ |         |
-| user_id      | ユーザーID            | INT  |      |   ◯   | ◯  |       |         |
-| idea_id      | アイデアID       | INT |      |  ◯    | ◯ |    |     |
+| user_id      | ユーザーID            | INT  |      |      | ◯  |       |         |
+| idea_id      | アイデアID       | INT |      |      | ◯ |    |     |
 
 ### Feedbackテーブル
 | カラム名        | 意味                  | データ型 | PK   | FK   | NOT NULL | AUTO_INCREMENT | 制約 |
 | :-------------- | :-------------------- | :------- | :--- | :--- | :------- | :---- | :------ |
 | id           | フィードバックID            | INT   | ◯   |      |    ◯    | ◯ |         |
-| idea_id      | アイデアID            | INT  |      |   ◯   | ◯  |       |         |
+| idea_id      | アイデアID            | INT  |      |      | ◯  |       |         |
 | criterion     | 評価項目    | INT |      |      | ◯ |    |     |
 | score     | 評価点数  | INT |      |      | ◯ |    |     |
 | comment     | FBコメント   | TEXT |      |      | ◯ |    |     |
