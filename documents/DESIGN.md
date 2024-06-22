@@ -3,7 +3,7 @@
 ![WF](image/フローチャート2024.06.21.png)
 
 ## 画面遷移図/ワイヤーフレーム
-![WF](image/WF2024.06.21.jpg)
+![WF](image/WF2024.06.22.jpg)
 
 ## ER図
 ![WF](image/ER2024.06.21.png)
