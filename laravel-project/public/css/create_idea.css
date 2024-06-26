@@ -2,11 +2,97 @@ body {
   font-family: Arial, sans-serif;
 }
 
+.inner {
+  width: 100%;
+  max-width: 1100px;
+  background-color: #FAEBD7;
+  margin: 100px auto;
+  padding: 50px 50px;
+  box-sizing: border-box;
+  align-items: center;
+  border: 2px solid #D2B48C;
+}
+
 .back_home_btn {
   text-decoration: none;
+  font-size: 20px;
+  color: black;
+  background-color: #F5F5DC;
+  border: 2px solid #D2B48C;
+  padding: 13px;
+  margin: 20px 50px;
+}
+
+h1 {
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+
+#themeForm {
+  text-align: center;
+}
+
+.choice {
+  display: inline-block;
+  margin: 20px 20px;
+  padding: 8px;
+  background-color: #FF385C;
+  color: #ffffff;
+  font-size: 20px;
+  border: 0.5px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.choice:hover {
+  background-color: #ffffff;
+  color: #FF385C
 }
 
 
-.proceed_createchart_page {
+.status {
+  display: flex;
+  justify-content: center;
+}
+
+.status_img {
+  padding: 20px 20px;
+}
+
+.proceed_create_chart_page {
   text-decoration: none;
+  font-size: 20px;
+  border: 2px solid #D2B48C;
+  border-radius: 0;
+  background: #F5F5DC;
+  color: black;
+  padding: 13px;
+  margin: 20px 50px;
+  position: relative;
+}
+
+.proceed_create_chart_page:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 100%;
+  content: '';
+  transition: all .3s;
+  transform: translateX(0) translateY(0);
+  border-radius: 0 50% 50% 0;
+  background: #D2B48C;
+}
+
+.proceed_create_chart_page:hover:before {
+  width: 14px;
+  height: 30px;
+  content: '\f061';
+  transform: translateX(460%) translateY(.5rem);
+  color: #fff;
+  border-radius: 50%;
+}
+
+.proceed_create_chart_page:hover {
+  color: #FF385C;
 }
