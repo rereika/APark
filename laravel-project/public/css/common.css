@@ -1,0 +1,42 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.inner {
+  width: 100%;
+  max-width: 1100px;
+  background-color: #FAEBD7;
+  margin: 100px auto;
+  padding: 50px 50px;
+  box-sizing: border-box;
+  align-items: center;
+  border: 2px solid #D2B48C;
+}
+
+h1 {
+  font-size: 35px;
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+
+.highlight {
+  color: #FF385C;
+}
+
+.status {
+  display: flex;
+  justify-content: center;
+}
+
+.status_img {
+  padding: 20px 20px;
+}
+
+
+@media screen and (max-width: 640px) {
+
+  h1 {
+    font-size: 20px;
+  }
+
+}
