@@ -1,27 +1,56 @@
-@include('APark.select_theme')
+<!DOCTYPE html>
+<html lang="ja">
 
-<a href="#" class="return_pitch_page">一つ戻る</a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APark</title>
+    <link rel="stylesheet" href="../../../public/css/common.css">
+    <link rel="stylesheet" href="../../../public/css/enter_pitch.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
 
-<canvas id="radarChart" width="200" height="200"></canvas>
+<body>
+    <div class="inner">
+        <a href="#" class="return_pitch_page">一つ戻る</a>
 
-<h1>エレベーターピッチをお聞かせください。</h1>
+        <div class="chart-pitch-wrapper">
+            <div class="chart">
+                <canvas id="radarChart" width="200" height="200"></canvas>
+            </div>
 
-<form>
-    <input type="text area" name="input_pitch1">
-    <input type="text area" name="input_pitch2">
-</form>
+            <div class="pitch">
+                <h2><span class="highlight">エレベーターピッチ</span>をお聞かせください。</h2>
+                <form>
+                    <ul>
+                        <li>
+                            <textarea id="input_pitch1" name="input_pitch1"></textarea>
+                        </li>
+                        <li>
+                            <textarea id="input_pitch2" name="input_pitch2"></textarea>
+                        </li>
+                    </ul>
+                </form>
+                <h2><span class="highlight">どのように</span>解決しますか？</h2>
 
-<h1>どのように解決しますか？</h1>
+                <form>
+                    <textarea id="input_solution" name="input_solution"></textarea>
+                </form>
 
-<form>
-    <input type="text area" name="input_solution">
-</form>
+            </div>
+        </div>
 
-<div class="status">
-    <img src="#" alt="赤ちゃん"/>
-    <img src="#" alt="親子自転車"/>
-    <img src="#" alt="低学年補助輪あり"/>
-    <img src="#" alt="低学年補助輪なし"/>
-</div>
+        <div class="status">
+            <img src="#" class="status_img">
+            <img src="#" class="status_img">
+            <img src="#" class="status_img">
+            <img src="#" class="status_img">
+        </div>
 
-<a href="#" class="proceed_feedback_page">次へ</a>
+        <a href="#" class="proceed_feedback_page">次へ</a>
+
+    </div>
+    <script src="../../../public/js/enter_pitch.js"></script>
+</body>
+
+</html>

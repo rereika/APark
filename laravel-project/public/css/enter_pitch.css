@@ -1,0 +1,48 @@
+.chart-pitch-wrapper {
+  display: flex;
+  justify-content: space-between;
+  /* 要素を均等に配置 */
+}
+
+h2 {
+  border-bottom: 1px solid black;
+}
+
+.chart,
+.pitch {
+  width: calc(50% - 25px);
+}
+
+.pitch_form {
+  display: flex;
+  flex-direction: column;
+}
+
+ul {
+  padding: 0%;
+}
+
+ul li {
+  list-style: none;
+}
+
+#input_pitch1,
+#input_pitch2,
+#input_solution {
+  width: 80%;
+  margin: 8px 20px;
+}
+
+@media screen and (max-width: 640px) {
+
+  h2 {
+    font-size: 15px;
+  }
+
+  .chart-pitch-wrapper {
+    display: flex;
+    justify-content: space-between;
+    /* 要素を均等に配置 */
+  }
+
+}
