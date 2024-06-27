@@ -2,7 +2,7 @@
 
 let RadarCtx = document.getElementById('radarChart');
 
-//レーダーチャート
+//レーダーチャートの作成
 let radarConfig = {
   type: 'radar',
   data: {
@@ -39,3 +39,20 @@ let radarConfig = {
 };
 
 let radarChart = new Chart(RadarCtx, radarConfig);
+
+//チャートの更新
+function updateChart() {
+  let form = document.getElementById('chartForm');
+  let formData = new FormData(form);
+  let values = [];
+
+  for (let value of formData.values()) {
+    values.push(Number(value));
+  }
+
+  radarChart.data.datasets[0].data = values;
+  radarChart.update();
+
+}
+
+document.getElementById('chartForm').addEventListener('change', updateChart);

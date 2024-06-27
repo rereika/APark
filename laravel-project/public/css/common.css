@@ -6,11 +6,17 @@ body {
   width: 100%;
   max-width: 1100px;
   background-color: #FAEBD7;
-  margin: 50px auto;
+  margin: 10px auto;
   padding: 50px 50px;
   box-sizing: border-box;
   align-items: center;
   border: 2px solid #D2B48C;
+}
+
+.back_page {
+  display: flex;
+  justify-content: left;
+  margin: 50px 20px 1px 20px;
 }
 
 h1 {
@@ -30,6 +36,12 @@ h1 {
 
 .status_img {
   padding: 20px 20px;
+}
+
+.next_page {
+  display: flex;
+  justify-content: right;
+  margin: 20px 40px 1px 50px;
 }
 
 
