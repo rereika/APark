@@ -41,8 +41,12 @@ ul li {
 
   .chart-pitch-wrapper {
     display: flex;
-    justify-content: space-between;
-    /* 要素を均等に配置 */
+    flex-direction: column;
+  }
+
+  .chart,
+  .pitch {
+    width: 100%;
   }
 
 }
