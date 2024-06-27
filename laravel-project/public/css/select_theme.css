@@ -1,10 +1,10 @@
 .back_home_btn {
   text-decoration: none;
-  font-size: 20px;
+  font-size: 15px;
   color: black;
-  background-color: #F5F5DC;
-  border: 1px solid #D2B48C;
-  padding: 13px;
+  background-color: #EEEEEE;
+  border-radius: 3px;
+  padding: 10px 20px;
   margin: 20px 50px;
 }
 
@@ -19,6 +19,7 @@
   background-color: #ffffff;
   color: #FF385C;
   font-size: 20px;
+  width: 400px;
   border: 0.5px solid black;
   border-radius: 10px;
   cursor: pointer;
@@ -32,39 +33,14 @@
 .proceed_create_chart_page {
   text-decoration: none;
   font-size: 20px;
-  border: 1px solid #D2B48C;
   border-radius: 0;
-  background: #F5F5DC;
-  color: black;
-  padding: 13px;
+  background: #FF385C;
+  color: #ffffff;
+  border: 0.5px solid black;
+  border-radius: 3px;
+  padding: 10px 20px;
   margin: 20px 50px;
   position: relative;
-}
-
-.proceed_create_chart_page:before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 15px;
-  height: 100%;
-  content: '';
-  transition: all .3s;
-  transform: translateX(0) translateY(0);
-  border-radius: 0 50% 50% 0;
-  background: #D2B48C;
-}
-
-.proceed_create_chart_page:hover:before {
-  width: 14px;
-  height: 30px;
-  content: '\f061';
-  transform: translateX(460%) translateY(.5rem);
-  color: #fff;
-  border-radius: 50%;
-}
-
-.proceed_create_chart_page:hover {
-  color: #FF385C;
 }
 
 @media screen and (max-width: 640px) {
@@ -72,6 +48,7 @@
   .back_home_btn {
     font-size: 10px;
     padding: 8px;
+    margin: 10px 2px;
   }
 
   .choice {
@@ -81,7 +58,7 @@
 
   .proceed_create_chart_page {
     font-size: 10px;
-    padding: 8px;
+    padding: 8px 20px;
+    margin: 2px 1px;
   }
-
 }
