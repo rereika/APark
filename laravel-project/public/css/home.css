@@ -1,0 +1,27 @@
+header {
+  height: 80px;
+  background-color: #FFFFFF;
+}
+
+.icon {
+  width: 190px;
+  align-items: center;
+}
+
+.icon img {
+  width: 100%;
+  height: auto;
+}
+
+header a {
+  display: flex;
+  justify-content: right;
+}
+
+@media screen and (max-width: 640px) {
+
+  header {
+    height: 40px;
+  }
+
+}
