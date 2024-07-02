@@ -9,8 +9,7 @@
   <link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
 <link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-6/css/6-1-6.css">
-<link rel="stylesheet" href="{{ asset('css/common.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+<link rel="stylesheet" href="{{ asset('css/home.css') }}">
 </head>
 
 <body>
@@ -24,7 +23,7 @@
     <div class="home-menu">
       <ul>
         <li><a href="#" class="home_menu">マイページ</a></li>
-        <li><a href="#" class="home_menu">作成する</a></li>
+        <li><a href="{{ route('select.theme') }}" class="home_menu">作成する</a></li>
       </ul>
     </div>
 
@@ -34,6 +33,7 @@
     <p>アイデアの補助輪に乗り、アプレンティスシップの旅に出よう</p>
   </div>
 
+  <div class="main-contents">
     <div class="new-ideas-box-animate">
       <ul class="slider">
         <li><img src="{{ asset('image/sample_chart.png') }}" alt="サンプルチャート画像">
@@ -52,10 +52,15 @@
     </div>
 
 
-    <div class="sort_bytheme">
-        <button type="button" class="">チーム開発 DEV1</button>
-        <button type="button" class="">オリジナルプロダクト</button>
-        <button type="button" class="">チーム開発 DEV2</button>
+    <div class="sort-by-theme">
+        <button type="button" class="theme-button">チーム開発 DEV1</button>
+        <button type="button" class="theme-button">オリジナルプロダクト</button>
+        <button type="button" class="theme-button">チーム開発 DEV2</button>
+    </div>
+
+    <div class="idea-preview">
+    </div>
+
     </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

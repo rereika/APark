@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APark</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{{ asset('css/common.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/select_theme.css') }}">
+</head>
+
+<body>
+
+    <div class="back_page">
+        <a href="{{ route('home')}}" class="back_home_btn">一覧へ</a>
+    </div>
+
+    <div class="inner">
+        <h1>今回の<span class="highlight">テーマ</span>は何ですか？</h1>
+
+        <form id="themeForm">
+            <button type="button" class="choice">「自分たちの役に立つものを開発せよ」</button>
+            <button type="button" class="choice">「ワクワクするものを開発せよ」</button>
+            <button type="button" class="choice">オリジナルプロダクト</button>
+        </form>
+
+        <div class="status">
+            <img src="#" class="status_img">
+            <img src="#" class="status_img">
+            <img src="#" class="status_img">
+            <img src="#" class="status_img">
+        </div>
+    </div>
+    <div class="next_page">
+        <a href="#" class="proceed_create_chart_page">次へ</a>
+    </div>
+
+
+    <script src="{{ asset('js/select_theme.js') }}"></script>
+</body>
+
+</html>

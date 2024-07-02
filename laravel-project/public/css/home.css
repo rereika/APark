@@ -1,3 +1,9 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #FFFFFF;
+  margin-top: 0;
+}
+
 header {
   height: 80px;
   background-color: #FFFFFF;
@@ -18,10 +24,20 @@ header {
   height: auto;
 }
 
-.home-menu ul {
+.home-menu {
   display: flex;
-  list-style: none;
+  align-items: center;
+  margin-right: 20px;
 }
+
+.home-menu ul {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
 
 .home-menu li {
   text-align: right;
@@ -37,9 +53,29 @@ a:hover {
   background-image: linear-gradient(black);
 }
 
+.catch_copy {
+  height: 230px;
+  background-color: #ccc;
+}
+
+.catch_copy p {
+  text-align: center;
+  font-size: 30px;
+}
+
+.main-contents {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 50px;
+  box-sizing: border-box;
+  align-items: center;
+  background-color: #FFFFFF;
+}
+
 .slider {
   /*横幅94%で左右に余白を持たせて中央寄せ*/
-  width: 94%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -117,12 +153,25 @@ a:hover {
   /*ドットボタンの現在地表示の色*/
 }
 
-
-
-.catch_copy p {
-  text-align: center;
-  font-size: 30px;
+.sort-by-theme {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
 }
+
+.theme-button {
+  display: inline-block;
+  margin: 20px 20px;
+  padding: 25px;
+  background-color: #F6F8F8;
+  color: black;
+  font-size: 15px;
+  width: 400px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+
 
 @media screen and (max-width: 640px) {
 
