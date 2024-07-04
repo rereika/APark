@@ -61,3 +61,11 @@ function updateChart() {
 }
 
 document.getElementById('chartForm').addEventListener('change', updateChart);
+
+
+document.getElementById('proceedPitchPage').addEventListener('click', function (event) {
+  event.preventDefault(); // リンクのデフォルトの動作を防止します
+
+  let form = document.getElementById('chartForm');
+  form.submit(); // フォームを送信します
+});

@@ -18,9 +18,10 @@
         <h1><span class="highlight">どんなアプリ</span>を作りたいですか？</h1>
 
         <div class="chart_form">
-            <form id="chartForm" action="" method="">
+            <form id="chartForm" method="POST" action="{{ route('store.self.chart') }}">
+            @csrf
                 <p>類ない
-                    <select name="chart_form">
+                    <select name="chart_form1">
                         <option value="5">5</option>
                         <option value="4">4</option>
                         <option value="3">3</option>
@@ -29,7 +30,7 @@
                     </select>
                 </p>
                 <p>使用技術の正確性
-                    <select name="chart_form">
+                    <select name="chart_form2">
                         <option value="5">5</option>
                         <option value="4">4</option>
                         <option value="3">3</option>
@@ -38,7 +39,7 @@
                     </select>
                 </p>
                 <p>目新しさ
-                    <select name="chart_form">
+                    <select name="chart_form3">
                         <option value="5">5</option>
                         <option value="4">4</option>
                         <option value="3">3</option>
@@ -47,7 +48,7 @@
                     </select>
                 </p>
                 <p>ストーリー性
-                    <select name="chart_form">
+                    <select name="chart_form4">
                         <option value="5">5</option>
                         <option value="4">4</option>
                         <option value="3">3</option>
@@ -56,7 +57,7 @@
                     </select>
                 </p>
                 <p>わくわく
-                    <select name="chart_form">
+                    <select name="chart_form5">
                         <option value="5">5</option>
                         <option value="4">4</option>
                         <option value="3">3</option>
@@ -64,6 +65,7 @@
                         <option value="1">1</option>
                     </select>
                 </p>
+                <input type="hidden" name="self-made-chart" id="chartInput">
             </form>
         </div>
 
@@ -83,7 +85,7 @@
     </div>
 
     <div class="next_page">
-    <a href="{{ route('create.radar.chart')}}" class="proceed_pitch_page">次へ</a>
+    <a href="{{ route('enter.pitch')}}" class="proceed_pitch_page" id="proceedPitchPage">次へ</a>
     </div>
 
     <script src="{{ asset('js/create_radar_chart.js') }}"></script>
