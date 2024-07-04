@@ -5,17 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APark</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     <link rel="stylesheet" href="{{ asset('css/create_radar_chart.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
+
     <div class="back_page">
     <a href="{{ route('select.theme')}}" class="return_theme_page">一つ戻る</a>
     </div>
+
     <div class="inner">
+
+    <a href="#" class="draft">下書き</a>
+
         <h1><span class="highlight">どんなアプリ</span>を作りたいですか？</h1>
+
+        <!-- ここでアイデアのテーマを表示 -->
+        @if(isset($ideas) && count($ideas) > 0)
+            @foreach($ideas as $idea)
+                <p>{{ $idea->theme }}</p>
+            @endforeach
+        @else
+            <p>No ideas found</p>
+        @endif
 
         <div class="chart_form">
             <form id="chartForm" method="POST" action="{{ route('store.self.chart') }}">
@@ -75,10 +90,12 @@
         </div>
 
         <div class="status">
-            <img src="#" class="status_img">
-            <img src="#" class="status_img">
-            <img src="#" class="status_img">
-            <img src="#" class="status_img">
+            <ul>
+            <li><img src="{{ asset('image/status1-2.png') }}" alt="ロゴ画像"></li>
+            <li><img src="{{ asset('image/status2-1.png') }}" alt="ロゴ画像"></li>
+            <li><img src="{{ asset('image/status1-2.png') }}" alt="ロゴ画像"></li>
+            <li><img src="{{ asset('image/status1-2.png') }}" alt="ロゴ画像"></li>
+            </ul>
         </div>
 
 

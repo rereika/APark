@@ -8,36 +8,44 @@ use Illuminate\Support\Facades\Auth;
 
 class IdeaController extends Controller
 {
-    public function store(Request $request)
-    {
-        $request->validate([
-            'theme' => 'required|integer',
-            'self_chart1' => 'required|integer',
-            'self_chart2' => 'required|integer',
-            'self_chart3' => 'required|integer',
-            'self_chart4' => 'required|integer',
-            'self_chart5' => 'required|integer',
-        ]);
+
+    // 新しいアイデアを作成するメソッド
+    public function create(Request $request){
 
         // 新しいIdeaモデルのインスタンスを作成
         $idea = new Idea();
 
-        // 現在ログインしているユーザーのIDを取得し、user_id属性に設定する
-        $idea->user_id = Auth::id();
 
-        //: リクエストから取得したデータをIdeaモデルのそれぞれの属性に設定する
-        $idea->theme = $request->theme;
-        $idea->self_chart1 = $request->self_chart1;
-        $idea->self_chart2 = $request->self_chart2;
-        $idea->self_chart3 = $request->self_chart3;
-        $idea->self_chart4 = $request->self_chart4;
-        $idea->self_chart5 = $request->self_chart5;
+         // 初期値として空文字と０を設定
+        $idea->theme = '';
+        $idea->user_id = 0;
+        $idea->self_chart1 = 0;
+        $idea->self_chart2 = 0;
+        $idea->self_chart3 = 0;
+        $idea->self_chart4 = 0;
+        $idea->self_chart5 = 0;
+        $idea->elevator1 = '';
+        $idea->elevator2 = '';
+        $idea->how = '';
+
 
         // モデルのインスタンスをデータベースに保存
         $idea->save();
 
+        return redirect()->route('select.theme', ['id' => $idea->id]);
+    }
 
-        //保存が成功したことをJSON形式で返す
-        return response()->json(['success' => true]);
+    // テーマを更新するメソッド
+    public function updateTheme(Request $request, $id)
+    {
+        $request->validate([
+            'theme' => 'required|string',
+        ]);
+
+        $idea = Idea::findOrFail($id);
+        $idea->theme = $request->theme;
+        $idea->save();
+
+        return redirect()->route('some.next.page'); // 適切なページにリダイレクト
     }
 }
