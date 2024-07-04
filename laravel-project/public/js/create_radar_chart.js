@@ -63,9 +63,28 @@ function updateChart() {
 document.getElementById('chartForm').addEventListener('change', updateChart);
 
 
+// 次へのリンククリック時の処理
 document.getElementById('proceedPitchPage').addEventListener('click', function (event) {
-  event.preventDefault(); // リンクのデフォルトの動作を防止します
+  event.preventDefault(); // リンクのデフォルトの動作を防止
 
+  // フォームデータを取得して送信
   let form = document.getElementById('chartForm');
-  form.submit(); // フォームを送信します
+  fetch(form.action, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    },
+    body: new URLSearchParams(new FormData(form))
+  })
+    .then(response => response.json())
+    .then(data => {
+      // データベース保存が成功した場合、次のページに遷移
+      if (data.success) {
+        window.location.href = document.getElementById('proceedPitchPage').getAttribute('href');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
 });
