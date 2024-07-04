@@ -49,11 +49,13 @@ let radarChart = new Chart(RadarCtx, radarConfig);
 function updateChart() {
   let form = document.getElementById('chartForm');
   let formData = new FormData(form);
-  let values = [];
-
-  for (let value of formData.values()) {
-    values.push(Number(value));
-  }
+  let values = [
+    formData.get('chart_form1'),
+    formData.get('chart_form2'),
+    formData.get('chart_form3'),
+    formData.get('chart_form4'),
+    formData.get('chart_form5')
+  ].map(Number);
 
   radarChart.data.datasets[0].data = values;
   radarChart.update();
@@ -64,27 +66,32 @@ document.getElementById('chartForm').addEventListener('change', updateChart);
 
 
 // 次へのリンククリック時の処理
-document.getElementById('proceedPitchPage').addEventListener('click', function (event) {
+document.getElementById('proceedPitchPage').addEventListener('click', async function (event) {
   event.preventDefault(); // リンクのデフォルトの動作を防止
 
-  // フォームデータを取得して送信
-  let form = document.getElementById('chartForm');
-  fetch(form.action, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-    },
-    body: new URLSearchParams(new FormData(form))
-  })
-    .then(response => response.json())
-    .then(data => {
-      // データベース保存が成功した場合、次のページに遷移
-      if (data.success) {
-        window.location.href = document.getElementById('proceedPitchPage').getAttribute('href');
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
+  try {
+    // フォームデータを取得して送信
+    let form = document.getElementById('chartForm');
+    let formData = new FormData(form);
+
+    let response = await fetch(form.action, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+      },
+      body: new URLSearchParams(formData)
     });
+
+    let data = await response.json();
+
+    // データベース保存が成功した場合、次のページに遷移
+    if (data.success) {
+      window.location.href = document.getElementById('proceedPitchPage').getAttribute('href');
+    } else {
+      console.error('Database save failed:', data.error); // エラー処理（任意）
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
 });

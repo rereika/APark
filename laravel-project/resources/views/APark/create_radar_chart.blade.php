@@ -12,10 +12,13 @@
 </head>
 
 <body>
+
     <div class="back_page">
     <a href="{{ route('select.theme')}}" class="return_theme_page">一つ戻る</a>
     </div>
+
     <div class="inner">
+
         <h1><span class="highlight">どんなアプリ</span>を作りたいですか？</h1>
 
         <div class="chart_form">
