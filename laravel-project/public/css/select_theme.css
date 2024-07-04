@@ -2,10 +2,14 @@
   text-decoration: none;
   font-size: 15px;
   color: black;
-  background-color: #EEEEEE;
+  background-color: #ffffff;
   border-radius: 3px;
   padding: 10px 20px;
   margin: 20px 50px;
+}
+
+.back_home_btn:hover {
+  background-color: #EEEEEE;
 }
 
 #themeForm {
@@ -34,12 +38,17 @@
   text-decoration: none;
   font-size: 20px;
   border-radius: 0;
-  background: #FF385C;
-  color: #ffffff;
+  background: #ffffff;
+  color: #FF385C;
   border-radius: 3px;
   padding: 10px 20px;
   margin: 20px 50px;
   position: relative;
+}
+
+.proceed_create_chart_page:hover {
+  background-color: #FF385C;
+  color: #ffffff;
 }
 
 @media screen and (max-width: 640px) {
