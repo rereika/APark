@@ -16,7 +16,7 @@ header {
   width: 190px;
   display: flex;
   align-items: center;
-  margin: 10px 15px;
+  margin: 15px 15px;
 }
 
 .logo img {
@@ -36,12 +36,26 @@ header {
   gap: 20px;
   margin: 0;
   padding: 0;
+  border: black;
 }
 
 
 .home-menu li {
   text-align: right;
-  margin: 3px 20px;
+  margin: 3px 10px;
+}
+
+.home_menu_1 {
+  background-color: #F1F2F6;
+  padding: 8px 18px;
+  border-radius: 8px;
+}
+
+.home_menu_2 {
+  background-color: #FF385C;
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 8px;
 }
 
 a {
@@ -182,6 +196,24 @@ a:hover {
   .logo img {
     height: 40px;
     width: auto;
+  }
+
+  .home-menu li {
+    text-align: right;
+    margin: 3px 10px;
+    font-size: 10px;
+  }
+
+  .theme-button {
+    display: inline-block;
+    margin: 20px 7px;
+    padding: 10px;
+    background-color: #F6F8F8;
+    color: black;
+    font-size: 10px;
+    width: 400px;
+    border-radius: 10px;
+    cursor: pointer;
   }
 
 }
