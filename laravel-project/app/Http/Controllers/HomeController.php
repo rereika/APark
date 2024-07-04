@@ -21,4 +21,12 @@ class HomeController extends Controller
         return view('APark.create_radar_chart');
     }
 
+    public function enterPitch(){
+        return view('APark.enter_pitch');
+    }
+
+    public function createFeedback(){
+        return view('APark.create_feedback');
+    }
+
 }

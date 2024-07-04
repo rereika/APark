@@ -19,7 +19,18 @@
 
     <div class="inner">
 
+    <a href="#" class="draft">下書き</a>
+
         <h1><span class="highlight">どんなアプリ</span>を作りたいですか？</h1>
+
+        <!-- ここでアイデアのテーマを表示 -->
+        @if(isset($ideas) && count($ideas) > 0)
+            @foreach($ideas as $idea)
+                <p>{{ $idea->theme }}</p>
+            @endforeach
+        @else
+            <p>No ideas found</p>
+        @endif
 
         <div class="chart_form">
             <form id="chartForm" method="POST" action="{{ route('store.self.chart') }}">
@@ -79,10 +90,12 @@
         </div>
 
         <div class="status">
-            <img src="#" class="status_img">
-            <img src="#" class="status_img">
-            <img src="#" class="status_img">
-            <img src="#" class="status_img">
+            <ul>
+            <li><img src="{{ asset('image/status1-2.png') }}" alt="ロゴ画像"></li>
+            <li><img src="{{ asset('image/status2-1.png') }}" alt="ロゴ画像"></li>
+            <li><img src="{{ asset('image/status1-2.png') }}" alt="ロゴ画像"></li>
+            <li><img src="{{ asset('image/status1-2.png') }}" alt="ロゴ画像"></li>
+            </ul>
         </div>
 
 

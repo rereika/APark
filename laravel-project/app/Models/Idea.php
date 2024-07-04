@@ -7,13 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Idea extends Model{
 
     protected $fillable = [
+        'id',
         'user_id',
         'theme',
-        'chart1',
-        'chart2',
-        'chart3',
-        'chart4',
-        'chart5',
+        'self_chart1',
+        'self_chart2',
+        'self_chart3',
+        'self_chart4',
+        'self_chart5',
         'elevator1',
         'elevator2',
         'how',

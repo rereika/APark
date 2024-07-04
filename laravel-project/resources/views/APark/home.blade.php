@@ -17,13 +17,19 @@
   <header>
 
     <div class="logo">
-      <img src="{{ asset('image/logo.png') }}" alt="ロゴ画像">
+      <img src="{{ asset('image/logo3.png') }}" alt="ロゴ画像">
     </div>
 
     <div class="home-menu">
       <ul>
-        <li><a href="#" class="home_menu">マイページ</a></li>
-        <li><a href="{{ route('select.theme') }}" class="home_menu">作成する</a></li>
+        <li><a href="#" class="home_menu_1">マイページ</a></li>
+        <li>
+    <form id="createIdeaForm" method="POST" action="{{ route('ideas.create') }}" style="display: none;">
+        @csrf
+    </form>
+    <a href="#" class="home_menu_2" onclick="document.getElementById('createIdeaForm').submit(); return false;">作成する</a>
+</li>
+
       </ul>
     </div>
 

@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APark</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     <link rel="stylesheet" href="{{ asset('css/select_theme.css') }}">
@@ -18,21 +17,26 @@
     </div>
 
     <div class="inner">
+
+    <a href="#" class="draft">下書き</a>
+
         <h1>今回の<span class="highlight">テーマ</span>は何ですか？</h1>
 
-        <form id="themeForm" method="POST" action="{{ route('store.theme') }}">
-        @csrf
-            <button type="button" class="choice" data-theme="1">「自分たちの役に立つものを開発せよ」</button>
-            <button type="button" class="choice" data-theme="2">「ワクワクするものを開発せよ」</button>
-            <button type="button" class="choice" data-theme="3">オリジナルプロダクト</button>
-            <input type="hidden" name="theme" id="themeInput">
+        <form id="themeForm" method="POST" action="{{ route('ideas.update.theme', ['id' => $idea_id]) }}">
+    @csrf
+    <button type="button" class="choice" data-theme="自分たちの役に立つものを開発せよ">「自分たちの役に立つものを開発せよ」</button>
+    <button type="button" class="choice" data-theme="ワクワクするものを開発せよ">「ワクワクするものを開発せよ」</button>
+    <button type="button" class="choice" data-theme="オリジナルプロダクト">オリジナルプロダクト</button>
+    <input type="hidden" name="theme" id="themeInput">
         </form>
 
         <div class="status">
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-            <p>4</p>
+            <ul>
+            <li><img src="{{ asset('image/status1-1.png') }}" alt="ロゴ画像"></li>
+            <li><img src="{{ asset('image/status2-2.png') }}" alt="ロゴ画像"></li>
+            <li><img src="{{ asset('image/status1-2.png') }}" alt="ロゴ画像"></li>
+            <li><img src="{{ asset('image/status4-2.png') }}" alt="ロゴ画像"></li>
+            </ul>
         </div>
     </div>
     <div class="next_page">
