@@ -21,6 +21,14 @@ body {
   margin: 50px 20px 1px 20px;
 }
 
+.draft {
+  display: flex;
+  justify-content: right;
+  text-decoration: none;
+  color: #FF385C;
+  margin-right: 25px;
+}
+
 h1 {
   font-size: 35px;
   text-align: center;
@@ -44,6 +52,28 @@ h1 {
   display: flex;
   justify-content: right;
   margin: 20px 40px 1px 50px;
+}
+
+.status {
+  text-align: center;
+}
+
+.status ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.status ul li {
+  margin: 0 20px;
+  /* 各画像の間隔 */
+}
+
+.status ul li img {
+  width: 80px;
+  height: auto;
+  margin: 40px 25px 0;
 }
 
 

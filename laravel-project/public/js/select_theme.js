@@ -16,9 +16,35 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-document.getElementById('proceedCreateChartPage').addEventListener('click', function (event) {
-  event.preventDefault(); // リンクのデフォルトの動作を防止します
+document.addEventListener('DOMContentLoaded', function () {
+  const buttons = document.querySelectorAll('.choice');
+  const themeForm = document.getElementById('themeForm');
+  const themeInput = document.getElementById('themeInput');
+  const proceedButton = document.getElementById('proceedCreateChartPage');
 
-  let form = document.getElementById('themeForm');
-  form.submit(); // フォームを送信します
+  buttons.forEach(button => {
+    button.addEventListener('click', function () {
+      themeInput.value = this.getAttribute('data-theme');
+
+      fetch(themeForm.action, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({
+          theme: themeInput.value
+        })
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            proceedButton.click(); // 成功時に次のページへのリンクをクリック
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error); // エラーが発生してもアラートは表示しない
+        });
+    });
+  });
 });
