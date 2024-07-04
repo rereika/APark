@@ -11,6 +11,11 @@ return new class extends Migration
         Schema::create('ideas', function (Blueprint $table) {
             $table->id();
             $table->integer('theme');
+            $table->integer('self_chart1');
+            $table->integer('self_chart2');
+            $table->integer('self_chart3');
+            $table->integer('self_chart4');
+            $table->integer('self_chart5');
             $table->text('elevator1');
             $table->text('elevator2');
             $table->text('how');

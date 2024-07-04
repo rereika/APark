@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APark</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     <link rel="stylesheet" href="{{ asset('css/select_theme.css') }}">
 </head>
@@ -19,21 +20,23 @@
     <div class="inner">
         <h1>今回の<span class="highlight">テーマ</span>は何ですか？</h1>
 
-        <form id="themeForm">
-            <button type="button" class="choice">「自分たちの役に立つものを開発せよ」</button>
-            <button type="button" class="choice">「ワクワクするものを開発せよ」</button>
-            <button type="button" class="choice">オリジナルプロダクト</button>
+        <form id="themeForm" method="POST" action="{{ route('store.theme') }}">
+        @csrf
+            <button type="button" class="choice" data-theme="1">「自分たちの役に立つものを開発せよ」</button>
+            <button type="button" class="choice" data-theme="2">「ワクワクするものを開発せよ」</button>
+            <button type="button" class="choice" data-theme="3">オリジナルプロダクト</button>
+            <input type="hidden" name="theme" id="themeInput">
         </form>
 
         <div class="status">
-            <img src="#" class="status_img">
-            <img src="#" class="status_img">
-            <img src="#" class="status_img">
-            <img src="#" class="status_img">
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+            <p>4</p>
         </div>
     </div>
     <div class="next_page">
-        <a href="#" class="proceed_create_chart_page">次へ</a>
+    <a href="{{ route('create.radar.chart')}}" class="proceed_create_chart_page" id="proceedCreateChartPage">次へ</a>
     </div>
 
 

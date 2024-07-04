@@ -14,3 +14,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+
+document.getElementById('proceedCreateChartPage').addEventListener('click', function (event) {
+  event.preventDefault(); // リンクのデフォルトの動作を防止します
+
+  let form = document.getElementById('themeForm');
+  form.submit(); // フォームを送信します
+});
