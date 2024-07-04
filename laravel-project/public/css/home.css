@@ -1,0 +1,187 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #FFFFFF;
+  margin-top: 0;
+}
+
+header {
+  height: 80px;
+  background-color: #FFFFFF;
+  margin: 0 calc(50% - 50vw);
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 190px;
+  display: flex;
+  align-items: center;
+  margin: 10px 15px;
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
+}
+
+.home-menu {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.home-menu ul {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+
+.home-menu li {
+  text-align: right;
+  margin: 3px 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  background-image: linear-gradient(black);
+}
+
+.catch_copy {
+  height: 230px;
+  background-color: #ccc;
+}
+
+.catch_copy p {
+  text-align: center;
+  font-size: 30px;
+}
+
+.main-contents {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 50px;
+  box-sizing: border-box;
+  align-items: center;
+  background-color: #FFFFFF;
+}
+
+.slider {
+  /*横幅94%で左右に余白を持たせて中央寄せ*/
+  width: 100%;
+  margin: 0 auto;
+}
+
+.slider img {
+  width: 100%;
+  /*スライダー内の画像を横幅100%に*/
+  height: auto;
+}
+
+/*slickのJSで書かれるタグ内、スライド左右の余白調整*/
+
+.slider .slick-slide {
+  margin: 0 10px;
+}
+
+/*矢印の設定*/
+
+/*戻る、次へ矢印の位置*/
+.slick-prev,
+.slick-next {
+  position: absolute;
+  /*絶対配置にする*/
+  top: 42%;
+  cursor: pointer;
+  /*マウスカーソルを指マークに*/
+  outline: none;
+  /*クリックをしたら出てくる枠線を消す*/
+  border-top: 2px solid #666;
+  /*矢印の色*/
+  border-right: 2px solid #666;
+  /*矢印の色*/
+  height: 15px;
+  width: 15px;
+}
+
+.slick-prev {
+  /*戻る矢印の位置と形状*/
+  left: -1.5%;
+  transform: rotate(-135deg);
+}
+
+.slick-next {
+  /*次へ矢印の位置と形状*/
+  right: -1.5%;
+  transform: rotate(45deg);
+}
+
+/*ドットナビゲーションの設定*/
+
+.slick-dots {
+  text-align: center;
+  margin: 20px 0 0 0;
+}
+
+.slick-dots li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.slick-dots button {
+  color: transparent;
+  outline: none;
+  width: 8px;
+  /*ドットボタンのサイズ*/
+  height: 8px;
+  /*ドットボタンのサイズ*/
+  display: block;
+  border-radius: 50%;
+  background: #ccc;
+  /*ドットボタンの色*/
+}
+
+.slick-dots .slick-active button {
+  background: #333;
+  /*ドットボタンの現在地表示の色*/
+}
+
+.sort-by-theme {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+}
+
+.theme-button {
+  display: inline-block;
+  margin: 20px 20px;
+  padding: 25px;
+  background-color: #F6F8F8;
+  color: black;
+  font-size: 15px;
+  width: 400px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 640px) {
+
+  header {
+    height: 40px;
+  }
+
+  .logo img {
+    height: 40px;
+    width: auto;
+  }
+
+}
