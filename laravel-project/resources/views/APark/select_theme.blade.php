@@ -40,7 +40,7 @@
         </div>
     </div>
     <div class="next_page">
-    <a href="{{ route('create.radar.chart')}}" class="proceed_create_chart_page" id="proceedCreateChartPage">次へ</a>
+    <a href="{{ route('get.create.radar.chart', ['id' => $idea_id])}}" class="proceed_create_chart_page" id="proceedCreateChartPage">次へ</a>
     </div>
 
 

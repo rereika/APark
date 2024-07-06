@@ -14,7 +14,7 @@
 <body>
 
     <div class="back_page">
-    <a href="{{ route('select.theme')}}" class="return_theme_page">一つ戻る</a>
+    <a href="{{ route('get.select.theme', ['id' => $idea_id])}}" class="return_theme_page">一つ戻る</a>
     </div>
 
     <div class="inner">
@@ -23,17 +23,8 @@
 
         <h1><span class="highlight">どんなアプリ</span>を作りたいですか？</h1>
 
-        <!-- ここでアイデアのテーマを表示 -->
-        @if(isset($ideas) && count($ideas) > 0)
-            @foreach($ideas as $idea)
-                <p>{{ $idea->theme }}</p>
-            @endforeach
-        @else
-            <p>No ideas found</p>
-        @endif
-
         <div class="chart_form">
-            <form id="chartForm" method="POST" action="{{ route('store.self.chart') }}">
+            <form id="chartForm" method="POST" action="{{ route('ideas.update.chart', ['id' => $idea_id]) }}">
             @csrf
                 <p>類ない
                     <select name="chart_form1">
@@ -80,7 +71,7 @@
                         <option value="1">1</option>
                     </select>
                 </p>
-                <input type="hidden" name="self-made-chart" id="chartInput">
+                <input type="hidden" name="idea_id" value="{{ $idea->id }}">
             </form>
         </div>
 
@@ -102,7 +93,7 @@
     </div>
 
     <div class="next_page">
-    <a href="{{ route('enter.pitch')}}" class="proceed_pitch_page" id="proceedPitchPage">次へ</a>
+    <a href="{{ route('get.enter.pitch', ['id' => $idea_id])}}" class="proceed_pitch_page" id="proceedPitchPage">次へ</a>
     </div>
 
     <script src="{{ asset('js/create_radar_chart.js') }}"></script>

@@ -38,7 +38,7 @@
     <div class="next_page">
       <div class="share_or_back">
         <a href="#">投稿する</a>
-        <a href="{{ route('enter.pitch')}}">修正する</a>
+        <a href="{{ route('enter.pitch', ['id' => $idea_id])}}">修正する</a>
       </div>
     </div>
 

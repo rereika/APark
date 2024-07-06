@@ -32,7 +32,7 @@ class IdeaController extends Controller
         // モデルのインスタンスをデータベースに保存
         $idea->save();
 
-        return redirect()->route('select.theme', ['id' => $idea->id]);
+        return redirect()->route('get.select.theme', ['id' => $idea->id]);
     }
 
     // テーマを更新するメソッド
@@ -44,6 +44,42 @@ class IdeaController extends Controller
 
         $idea = Idea::findOrFail($id);
         $idea->theme = $request->theme;
+        $idea->save();
+
+        return redirect()->route('some.next.page'); // 適切なページにリダイレクト
+    }
+
+    public function updateChart(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'self_chart1' => 'required|numeric|min:0|max:5',
+            'self_chart2' => 'required|numeric|min:0|max:5',
+            'self_chart3' => 'required|numeric|min:0|max:5',
+            'self_chart4' => 'required|numeric|min:0|max:5',
+            'self_chart5' => 'required|numeric|min:0|max:5',
+        ]);
+
+        $idea = Idea::findOrFail($id);
+        $idea->self_chart1 = $validated['self_chart1'];
+        $idea->self_chart2 = $validated['self_chart2'];
+        $idea->self_chart3 = $validated['self_chart3'];
+        $idea->self_chart4 = $validated['self_chart4'];
+        $idea->self_chart5 = $validated['self_chart5'];
+        $idea->save();
+
+        return redirect()->route('some.next.page'); // 適切なページにリダイレクト
+    }
+
+    public function updateElevator(Request $request, $id)
+    {
+        $request->validate([
+            'elevator1' => 'required|text',
+            'elevator2' => 'required|text',
+        ]);
+
+        $idea = Idea::findOrFail($id);
+        $idea->elevator1 = $request->elevator1;
+        $idea->elevator2 = $request->elevator2;
         $idea->save();
 
         return redirect()->route('some.next.page'); // 適切なページにリダイレクト
