@@ -66,32 +66,32 @@ document.getElementById('chartForm').addEventListener('change', updateChart);
 
 
 // 次へのリンククリック時の処理
-document.getElementById('proceedPitchPage').addEventListener('click', async function (event) {
-  event.preventDefault(); // リンクのデフォルトの動作を防止
+document.getElementById('proceedPitchPage').addEventListener('click', function (event) {
+  event.preventDefault();
 
-  try {
-    // フォームデータを取得して送信
-    let form = document.getElementById('chartForm');
-    let formData = new FormData(form);
+  let form = document.getElementById('chartForm');
+  let formData = new FormData(form);
+  let ideaId = formData.get('idea_id'); // idea_idを取得
 
-    let response = await fetch(form.action, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-      },
-      body: new URLSearchParams(formData)
+  fetch(`/ideas/update-chart/${ideaId}`, {
+    method: 'POST',
+    headers: {
+      'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+    },
+    body: formData
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log(data.message); // サーバーからのレスポンスを確認
+      // 更新が成功したら次のページに遷移
+      window.location.href = document.getElementById('proceedPitchPage').href;
+    })
+    .catch(error => {
+      console.error('Error:', error);
     });
-
-    let data = await response.json();
-
-    // データベース保存が成功した場合、次のページに遷移
-    if (data.success) {
-      window.location.href = document.getElementById('proceedPitchPage').getAttribute('href');
-    } else {
-      console.error('Database save failed:', data.error); // エラー処理（任意）
-    }
-  } catch (error) {
-    console.error('Error:', error);
-  }
 });
