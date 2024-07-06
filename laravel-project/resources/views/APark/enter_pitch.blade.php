@@ -63,7 +63,7 @@
         </div>
     </div>
     <div class="next_page">
-    <a href="{{ route('create.feed.back')}}" class="proceed_feedback_page">結果を見る</a>
+    <a href="{{ route('create.feed.back', ['id' => $idea_id])}}" class="proceed_feedback_page">結果を見る</a>
     </div>
     <script src="{{ asset('js/create_radar_chart.js') }}"></script>
 </body>

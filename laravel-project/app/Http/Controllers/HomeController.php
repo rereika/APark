@@ -9,24 +9,26 @@ class HomeController extends Controller
 {
     public function index()
     {
-
-    return view('APark.home');
+        return view('APark.home');
     }
 
-    public function selectTheme(){
-        return view('APark.select_theme');
+    public function selectTheme($id)
+    {
+        return view('APark.select_theme', ['idea_id' => $id]);
     }
 
-    public function createRadarChart(){
-        return view('APark.create_radar_chart');
+    public function createRadarChart($id)
+    {
+        return view('APark.create_radar_chart', ['idea_id' => $id]);
     }
 
-    public function enterPitch(){
-        return view('APark.enter_pitch');
+    public function enterPitch($id)
+    {
+        return view('APark.enter_pitch', ['idea_id' => $id]);
     }
 
-    public function createFeedback(){
-        return view('APark.create_feedback');
+    public function createFeedback($id)
+    {
+        return view('APark.create_feedback', ['idea_id' => $id]);
     }
-
 }
