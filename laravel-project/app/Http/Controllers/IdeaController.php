@@ -67,7 +67,7 @@ class IdeaController extends Controller
         $idea->self_chart5 = $validated['self_chart5'];
         $idea->save();
 
-        return redirect()->route('some.next.page'); // 適切なページにリダイレクト
+        return response()->json(['success' => true]);
     }
 
     public function updateElevator(Request $request, $id)

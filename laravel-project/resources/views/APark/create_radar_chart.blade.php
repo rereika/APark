@@ -71,7 +71,7 @@
                         <option value="1">1</option>
                     </select>
                 </p>
-                <input type="hidden" name="idea_id" value="{{ $idea->id }}">
+                <input type="hidden" name="idea_id" value="{{ $idea_id }}"></input>
             </form>
         </div>
 
