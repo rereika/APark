@@ -15,7 +15,6 @@ class IdeaController extends Controller
         // 新しいIdeaモデルのインスタンスを作成
         $idea = new Idea();
 
-
          // 初期値として空文字と０を設定
         $idea->theme = '';
         $idea->user_id = 0;
@@ -49,26 +48,34 @@ class IdeaController extends Controller
         return redirect()->route('some.next.page'); // 適切なページにリダイレクト
     }
 
-    public function updateChart(Request $request, $id)
+    public function updateChart(Request $request)
     {
-        $validated = $request->validate([
-            'self_chart1' => 'required|numeric|min:0|max:5',
-            'self_chart2' => 'required|numeric|min:0|max:5',
-            'self_chart3' => 'required|numeric|min:0|max:5',
-            'self_chart4' => 'required|numeric|min:0|max:5',
-            'self_chart5' => 'required|numeric|min:0|max:5',
-        ]);
+         // hidden で埋め込んでいるパラメータを受け取る
+        $id = $request->input('idea_id');
 
         $idea = Idea::findOrFail($id);
-        $idea->self_chart1 = $validated['self_chart1'];
-        $idea->self_chart2 = $validated['self_chart2'];
-        $idea->self_chart3 = $validated['self_chart3'];
-        $idea->self_chart4 = $validated['self_chart4'];
-        $idea->self_chart5 = $validated['self_chart5'];
-        $idea->save();
+        $idea->update($request->all());
 
-        return response()->json(['success' => true]);
+        return redirect()->route('get.enter.pitch', ['id' => $id]);
     }
+
+
+    public function updatePitch(Request $request)
+    {
+         // hidden で埋め込んでいるパラメータを受け取る
+        $id = $request->input('idea_id');
+
+        $idea = Idea::findOrFail($id);
+        $idea->update($request->all());
+
+        return redirect()->route('get.create.feed.back', ['id' => $id]);
+    }
+
+
+
+
+
+
 
     public function updateElevator(Request $request, $id)
     {

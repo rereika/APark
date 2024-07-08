@@ -37,7 +37,7 @@
   </header>
 
   <div class="catch_copy">
-  <img src="{{ asset('image/catch_copy.jpeg') }}" alt="キャッチコピー画像">
+  <img src="{{ asset('image/catch_copy2.jpeg') }}" alt="キャッチコピー画像">
     <p>アイデアの補助輪に乗り、<br>アプレンティスシップの旅に出よう！！</p>
   </div>
 
