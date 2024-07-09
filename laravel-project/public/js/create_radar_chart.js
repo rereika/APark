@@ -48,11 +48,11 @@ function updateChart() {
   let form = document.getElementById('chartForm');
   let formData = new FormData(form);
   let values = [
-    formData.get('chart_form1'),
-    formData.get('chart_form2'),
-    formData.get('chart_form3'),
-    formData.get('chart_form4'),
-    formData.get('chart_form5')
+    formData.get('self_chart1'),
+    formData.get('self_chart2'),
+    formData.get('self_chart3'),
+    formData.get('self_chart4'),
+    formData.get('self_chart5')
   ].map(Number);
 
   radarChart.data.datasets[0].data = values;

@@ -27,7 +27,7 @@
         <div class="chart_form">
 
             <p>類ない
-                <select name="chart_form1">
+                <select name="self_chart1">
                     <option value="5">5</option>
                     <option value="4">4</option>
                     <option value="3">3</option>
@@ -36,7 +36,7 @@
                 </select>
             </p>
             <p>使用技術の正確性
-                <select name="chart_form2">
+                <select name="self_chart2">
                     <option value="5">5</option>
                     <option value="4">4</option>
                     <option value="3">3</option>
@@ -45,7 +45,7 @@
                 </select>
             </p>
             <p>目新しさ
-                <select name="chart_form3">
+                <select name="self_chart3">
                     <option value="5">5</option>
                     <option value="4">4</option>
                     <option value="3">3</option>
@@ -54,7 +54,7 @@
                 </select>
             </p>
             <p>ストーリー性
-                <select name="chart_form4">
+                <select name="self_chart4">
                     <option value="5">5</option>
                     <option value="4">4</option>
                     <option value="3">3</option>
@@ -63,7 +63,7 @@
                 </select>
             </p>
             <p>わくわく
-                <select name="chart_form5">
+                <select name="self_chart5">
                     <option value="5">5</option>
                     <option value="4">4</option>
                     <option value="3">3</option>

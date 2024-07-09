@@ -34,7 +34,7 @@ class IdeaController extends Controller
         return redirect()->route('get.select.theme', ['id' => $idea->id]);
     }
 
-    // テーマを更新するメソッド
+    // テーマを更新する
     public function updateTheme(Request $request, $id)
     {
         $request->validate([
@@ -48,6 +48,7 @@ class IdeaController extends Controller
         return redirect()->route('some.next.page'); // 適切なページにリダイレクト
     }
 
+    //チャートを更新する
     public function updateChart(Request $request)
     {
          // hidden で埋め込んでいるパラメータを受け取る
@@ -60,6 +61,7 @@ class IdeaController extends Controller
     }
 
 
+    //エレベーターピッチを更新する
     public function updatePitch(Request $request)
     {
          // hidden で埋め込んでいるパラメータを受け取る
@@ -71,24 +73,31 @@ class IdeaController extends Controller
         return redirect()->route('get.create.feed.back', ['id' => $id]);
     }
 
-
-
-
-
-
-
     public function updateElevator(Request $request, $id)
     {
-        $request->validate([
-            'elevator1' => 'required|text',
-            'elevator2' => 'required|text',
-        ]);
+        // $request->validate([
+        //     'elevator1' => 'required|text',
+        //     'elevator2' => 'required|text',
+        // ]);
+
+        $id = $request->input('idea_id');
 
         $idea = Idea::findOrFail($id);
         $idea->elevator1 = $request->elevator1;
         $idea->elevator2 = $request->elevator2;
+        $idea->how = $request->how;
         $idea->save();
 
-        return redirect()->route('some.next.page'); // 適切なページにリダイレクト
+        return redirect()->route('get.create.feed.back', ['id' => $idea->id])->with(compact('idea'));
     }
+
+    public function index()
+    {
+        // 全ユーザーのアイデアを投稿された順（降順）で取得
+        $ideas = Idea::orderBy('created_at', 'desc')->get();
+
+        // ビューにデータを渡す
+        return view('APark.home', ['ideas' => $ideas]);
+    }
+
 }

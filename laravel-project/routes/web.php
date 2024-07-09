@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IdeaController;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [IdeaController::class, 'index'])->name('home');
 
 // 画面遷移用のルート
 Route::get('/select_theme/{id}', [HomeController::class, 'selectTheme'])->name('get.select.theme');
@@ -17,3 +17,7 @@ Route::post('/ideas/create', [IdeaController::class, 'create'])->name('ideas.cre
 Route::post('/ideas/update-theme/{id}', [IdeaController::class, 'updateTheme'])->name('ideas.update.theme');
 Route::post('/ideas/update-chart/{id}', [IdeaController::class, 'updateChart'])->name('ideas.update.chart');
 Route::post('/ideas/update-elevator/{id}', [IdeaController::class, 'updateElevator'])->name('ideas.update.elevator');
+
+
+//
+Route::get('/ideas/show/{id}', [IdeaController::class, 'show'])->name('ideas.show');

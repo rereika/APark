@@ -37,28 +37,24 @@
   </header>
 
   <div class="catch_copy">
-  <img src="{{ asset('image/catch_copy2.jpeg') }}" alt="キャッチコピー画像">
+  <img src="{{ asset('image/catch_copy.jpeg') }}" alt="キャッチコピー画像">
     <p>アイデアの補助輪に乗り、<br>アプレンティスシップの旅に出よう！！</p>
   </div>
+
 
   <div class="main-contents">
     <div class="new-ideas-box-animate">
       <ul class="slider">
-        <li><img src="{{ asset('image/sample_chart.png') }}" alt="サンプルチャート画像">
-        </li>
-        <li><img src="{{ asset('image/sample_chart.png') }}" alt="サンプルチャート画像">
-        </li>
-        <li><img src="{{ asset('image/sample_chart.png') }}" alt="サンプルチャート画像">
-        </li>
-        <li><img src="{{ asset('image/sample_chart.png') }}" alt="サンプルチャート画像">
-        </li>
-        <li><img src="{{ asset('image/sample_chart.png') }}" alt="サンプルチャート画像">
-        </li>
-        <li><img src="{{ asset('image/sample_chart.png') }}" alt="サンプルチャート画像">
-        </li>
+        @foreach($ideas as $idea)
+          <li>
+          <a href="{{ route('home', ['id' => $idea->id]) }}" class="preview-link">
+            <h1>{{ $idea->elevator1 }}</h1>
+            </a>
+            <img src="{{ asset('image/sample_chart.png') }}" alt="サンプルチャート画像">
+          </li>
+        @endforeach
       </ul>
     </div>
-
 
     <div class="sort-by-theme">
         <button type="button" class="theme-button">チーム開発 DEV1</button>

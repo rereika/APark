@@ -15,6 +15,11 @@
 
     <h1>クリックするとFBが表示されます。</h1>
 
+    //ChatGPTAPIのチャートを作成
+    <div class="chart">
+      <canvas id="radarChart" width="200" height="200"></canvas>
+    </div>
+
     <div class="status">
       <img src="#" class="status_img">
       <img src="#" class="status_img">
@@ -37,8 +42,12 @@
 
     <div class="next_page">
       <div class="share_or_back">
-        <a href="#">投稿する</a>
-        <a href="{{ route('enter.pitch', ['id' => $idea_id])}}">修正する</a>
+
+      <a href="{{ route('home')}}" class="proceed_home_page">投稿する</a>
+
+        <a href="{{ route('get.enter.pitch', ['id' => $idea_id])}}" class="return_pitch_page">修正する</a>
+
+        </div>
       </div>
     </div>
 
