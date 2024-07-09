@@ -12,35 +12,39 @@
 
 <body>
     <div class="back_page">
-    <a href="{{ route('create.radar.chart')}}" class="return_pitch_page">一つ戻る</a>
+    <a href="{{ route('get.create.radar.chart', ['id' => $idea_id])}}" class="return_pitch_page">一つ戻る</a>
     </div>
+
+    {{-- <form id="pitchForm" method="POST" action="{{ route('ideas.update.elevator', ['id' => $idea_id]) }}"> --}}
+
+    <form id="chartForm" method="POST" action="{{ route('ideas.update.elevator', ['id' => $idea_id]) }}">
+
+    @csrf
     <div class="inner">
 
     <a href="#" class="draft">下書き</a>
 
         <div class="chart-pitch-wrapper">
+
+        <input type="hidden" name="self_chart1" value="{{ $idea->self_chart1 }}">
             <div class="chart">
                 <canvas id="radarChart" width="200" height="200"></canvas>
             </div>
 
             <div class="pitch">
                 <h2><span class="highlight">エレベーターピッチ</span>をお聞かせください。</h2>
-                <form>
                     <ul>
                         <li>
-                            <textarea id="input_pitch1" name="input_pitch1" rows="4" cols="50" placeholder="「アイデア思案の手助け」が欲しい「APPRENTICE生」向けの、
+                            <textarea id="input_pitch1" name="elevator1" rows="4" cols="50" placeholder="「アイデア思案の手助け」が欲しい「APPRENTICE生」向けの、
 「APark」という「CGMアプリ」です。"></textarea>
                         </li>
                         <li>
-                            <textarea id="input_pitch2" name="input_pitch2" rows="4" cols="50"
+                            <textarea id="input_pitch2" name="elevator2" rows="4" cols="50"
                                 placeholder="これは「APPRENTICEのカリキュラムに沿った形式でアイデアをレーダーチャートにまとめ、先輩や後輩とアイデアを共有する」ことができます"></textarea>
                         </li>
                     </ul>
-                </form>
                 <h2><span class="highlight">どのように</span>解決しますか？</h2>
-
-                <form>
-                    <textarea id="input_solution" name="input_solution" rows="8" cols="50" placeholder="・レーダーチャートでアイデアを評価
+                    <textarea id="input_solution" name="how" rows="8" cols="50" placeholder="・レーダーチャートでアイデアを評価
 各アイデアに対して1つのレーダーチャートを作成し、アイデアの強みと弱点を客観的に評価する（ChatGPT API）
 
 ・ユーザー間フォードバック機能
@@ -48,10 +52,11 @@
 
 ・アイデアの検索
 カリキュラムごとのテーマ（「自分たちの役に立つものを開発せよ」「ワクワクするものを開発せよ」「オリジナルプロダクト」）でアイデアを検索できる。"></textarea>
-                </form>
 
             </div>
+
         </div>
+        <input type="hidden" name="idea_id" value="{{ $idea_id }}">
 
         <div class="status">
             <ul>
@@ -62,10 +67,13 @@
             </ul>
         </div>
     </div>
+
     <div class="next_page">
-    <a href="{{ route('create.feed.back', ['id' => $idea_id])}}" class="proceed_feedback_page">結果を見る</a>
+    <input type="submit" class="proceed_pitch_page" id="proceedPitchPage" value="結果を見る">
     </div>
-    <script src="{{ asset('js/create_radar_chart.js') }}"></script>
+
+    </form>
+    <script src="{{ asset('js/enter_pitch.js') }}"></script>
 </body>
 
 </html>

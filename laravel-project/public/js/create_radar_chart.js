@@ -1,5 +1,3 @@
-
-
 let RadarCtx = document.getElementById('radarChart');
 
 //レーダーチャートの作成
@@ -9,7 +7,7 @@ let radarConfig = {
     labels: ['類いない', '使用技術の正確性', '目新しさ', 'ストーリー性', 'わくわく'],
     datasets: [{
       label: 'FB',
-      data: [2, 5, 3, 5, 4],
+      data: [0, 0, 0, 0, 0],
       backgroundColor: 'rgba(255, 136, 136, 0.3)',  // 赤色の透明な背景色
       borderColor: 'rgb(255, 136, 136)',  // 赤色の境界線
       borderWidth: 5
@@ -50,11 +48,11 @@ function updateChart() {
   let form = document.getElementById('chartForm');
   let formData = new FormData(form);
   let values = [
-    formData.get('chart_form1'),
-    formData.get('chart_form2'),
-    formData.get('chart_form3'),
-    formData.get('chart_form4'),
-    formData.get('chart_form5')
+    formData.get('self_chart1'),
+    formData.get('self_chart2'),
+    formData.get('self_chart3'),
+    formData.get('self_chart4'),
+    formData.get('self_chart5')
   ].map(Number);
 
   radarChart.data.datasets[0].data = values;
@@ -63,35 +61,3 @@ function updateChart() {
 }
 
 document.getElementById('chartForm').addEventListener('change', updateChart);
-
-
-// 次へのリンククリック時の処理
-document.getElementById('proceedPitchPage').addEventListener('click', function (event) {
-  event.preventDefault();
-
-  let form = document.getElementById('chartForm');
-  let formData = new FormData(form);
-  let ideaId = formData.get('idea_id'); // idea_idを取得
-
-  fetch(`/ideas/update-chart/${ideaId}`, {
-    method: 'POST',
-    headers: {
-      'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-    },
-    body: formData
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log(data.message); // サーバーからのレスポンスを確認
-      // 更新が成功したら次のページに遷移
-      window.location.href = document.getElementById('proceedPitchPage').href;
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-});

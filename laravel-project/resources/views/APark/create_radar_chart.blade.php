@@ -12,69 +12,69 @@
 </head>
 
 <body>
-
     <div class="back_page">
-    <a href="{{ route('get.select.theme', ['id' => $idea_id])}}" class="return_theme_page">一つ戻る</a>
+        <a href="{{ route('get.select.theme', ['id' => $idea_id])}}" class="return_theme_page">一つ戻る</a>
     </div>
 
+<form id="chartForm" method="POST" action="{{ route('ideas.update.chart', ['id' => $idea_id]) }}">
+    @csrf
     <div class="inner">
 
-    <a href="#" class="draft">下書き</a>
+        <a href="#" class="draft">下書き</a>
 
         <h1><span class="highlight">どんなアプリ</span>を作りたいですか？</h1>
 
         <div class="chart_form">
-            <form id="chartForm" method="POST" action="{{ route('ideas.update.chart', ['id' => $idea_id]) }}">
-            @csrf
-                <p>類ない
-                    <select name="chart_form1">
-                        <option value="5">5</option>
-                        <option value="4">4</option>
-                        <option value="3">3</option>
-                        <option value="2">2</option>
-                        <option value="1">1</option>
-                    </select>
-                </p>
-                <p>使用技術の正確性
-                    <select name="chart_form2">
-                        <option value="5">5</option>
-                        <option value="4">4</option>
-                        <option value="3">3</option>
-                        <option value="2">2</option>
-                        <option value="1">1</option>
-                    </select>
-                </p>
-                <p>目新しさ
-                    <select name="chart_form3">
-                        <option value="5">5</option>
-                        <option value="4">4</option>
-                        <option value="3">3</option>
-                        <option value="2">2</option>
-                        <option value="1">1</option>
-                    </select>
-                </p>
-                <p>ストーリー性
-                    <select name="chart_form4">
-                        <option value="5">5</option>
-                        <option value="4">4</option>
-                        <option value="3">3</option>
-                        <option value="2">2</option>
-                        <option value="1">1</option>
-                    </select>
-                </p>
-                <p>わくわく
-                    <select name="chart_form5">
-                        <option value="5">5</option>
-                        <option value="4">4</option>
-                        <option value="3">3</option>
-                        <option value="2">2</option>
-                        <option value="1">1</option>
-                    </select>
-                </p>
-                <input type="hidden" name="idea_id" value="{{ $idea_id }}"></input>
-            </form>
-        </div>
 
+            <p>類ない
+                <select name="self_chart1">
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                </select>
+            </p>
+            <p>使用技術の正確性
+                <select name="self_chart2">
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                </select>
+            </p>
+            <p>目新しさ
+                <select name="self_chart3">
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                </select>
+            </p>
+            <p>ストーリー性
+                <select name="self_chart4">
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                </select>
+            </p>
+            <p>わくわく
+                <select name="self_chart5">
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                </select>
+            </p>
+
+            <input type="hidden" name="idea_id" value="{{ $idea_id }}">
+
+        </div>
 
         <div class="create_chart">
             <canvas id="radarChart"></canvas>
@@ -89,14 +89,15 @@
             </ul>
         </div>
 
-
     </div>
 
     <div class="next_page">
-    <a href="{{ route('get.enter.pitch', ['id' => $idea_id])}}" class="proceed_pitch_page" id="proceedPitchPage">次へ</a>
+        <input type="submit" class="proceed_pitch_page" value="次へ">
     </div>
 
-    <script src="{{ asset('js/create_radar_chart.js') }}"></script>
+</form>
+
+<script src="{{ asset('js/create_radar_chart.js') }}"></script>
 </body>
 
 </html>
