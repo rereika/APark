@@ -19,5 +19,5 @@ Route::post('/ideas/update-chart/{id}', [IdeaController::class, 'updateChart'])-
 Route::post('/ideas/update-elevator/{id}', [IdeaController::class, 'updateElevator'])->name('ideas.update.elevator');
 
 
-//
-Route::get('/ideas/show/{id}', [IdeaController::class, 'show'])->name('ideas.show');
+//下書き保存のルート
+Route::get('/ideas/draft-elevator/{id}', [IdeaController::class, 'draftElevator'])->name('ideas.draft.elevator');

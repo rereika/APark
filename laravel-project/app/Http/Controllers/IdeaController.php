@@ -61,17 +61,17 @@ class IdeaController extends Controller
     }
 
 
-    //エレベーターピッチを更新する
-    public function updatePitch(Request $request)
-    {
-         // hidden で埋め込んでいるパラメータを受け取る
-        $id = $request->input('idea_id');
+    // //エレベーターピッチを更新する
+    // public function updatePitch(Request $request)
+    // {
+    //      // hidden で埋め込んでいるパラメータを受け取る
+    //     $id = $request->input('idea_id');
 
-        $idea = Idea::findOrFail($id);
-        $idea->update($request->all());
+    //     $idea = Idea::findOrFail($id);
+    //     $idea->update($request->all());
 
-        return redirect()->route('get.create.feed.back', ['id' => $id]);
-    }
+    //     return redirect()->route('get.create.feed.back', ['id' => $id]);
+    // }
 
     public function updateElevator(Request $request, $id)
     {
@@ -88,8 +88,16 @@ class IdeaController extends Controller
         $idea->how = $request->how;
         $idea->save();
 
-        return redirect()->route('get.create.feed.back', ['id' => $idea->id])->with(compact('idea'));
+        return redirect()->route('get.create.feed.back', ['idea' => $idea, 'id' => $idea->id]);
     }
+
+    public function draftElevator(Request $request, $id)
+{
+    $idea = Idea::select('id', 'elevator1', 'elevator2', 'how')->find($id);
+
+    return view('APark.enter_pitch', ['idea' => $idea, 'idea_id' => $id]);
+}
+
 
     public function index()
     {
