@@ -13,12 +13,12 @@
 <body>
 
     <div class="back_page">
-        <a href="{{ route('home')}}" class="back_home_btn">一覧へ</a>
+        <a href="{{ route('home')}}" class="back_home_btn">ホームへ戻る</a>
     </div>
 
     <div class="inner">
 
-    <a href="#" class="draft">下書き</a>
+    <a href="{{ route('ideas.draft', ['id' => $idea_id]) }}" class="draft">下書き</a>
 
         <h1>今回の<span class="highlight">テーマ</span>は何ですか？</h1>
 

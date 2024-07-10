@@ -11,6 +11,9 @@ Route::get('/select_theme/{id}', [HomeController::class, 'selectTheme'])->name('
 Route::get('/create_radar_chart/{id}', [HomeController::class, 'createRadarChart'])->name('get.create.radar.chart');
 Route::get('/enter_pitch/{id}', [HomeController::class, 'enterPitch'])->name('get.enter.pitch');
 Route::get('/create_feedback/{id}', [HomeController::class, 'createFeedback'])->name('get.create.feed.back');
+Route::get('/my_page', [HomeController::class, 'myPage'])->name('get.my.page');
+Route::get('/draft/{id}', [HomeController::class, 'draft'])->name('get.draft');
+
 
 // データ作成用のルート
 Route::post('/ideas/create', [IdeaController::class, 'create'])->name('ideas.create');
@@ -21,3 +24,7 @@ Route::post('/ideas/update-elevator/{id}', [IdeaController::class, 'updateElevat
 
 //下書き保存のルート
 Route::get('/ideas/draft-elevator/{id}', [IdeaController::class, 'draftElevator'])->name('ideas.draft.elevator');
+Route::get('/ideas/draft/{id}', [IdeaController::class, 'draftIdea'])->name('ideas.draft');
+
+//投稿
+Route::get('/ideas/post/{id}', [IdeaController::class, 'postIdea'])->name('ideas.post');

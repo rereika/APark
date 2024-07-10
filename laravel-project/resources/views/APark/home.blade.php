@@ -23,7 +23,8 @@
 
     <div class="home-menu">
       <ul>
-        <li><a href="#" class="home_menu_1">マイページ</a></li>
+        <li>
+          <a href="{{ route('get.my.page')}}" class="my_page">マイページ</a></li>
         <li>
     <form id="createIdeaForm" method="POST" action="{{ route('ideas.create') }}" style="display: none;">
         @csrf

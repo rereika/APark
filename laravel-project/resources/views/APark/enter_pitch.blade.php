@@ -37,11 +37,11 @@
                     <ul>
                         <li>
                             <textarea id="input_pitch1" name="elevator1" rows="4" cols="50" placeholder="「アイデア思案の手助け」が欲しい「APPRENTICE生」向けの、
-「APark」という「CGMアプリ」です。">{{ $idea->elevator1 }}</textarea>
+「APark」という「CGMアプリ」です。">{{ $idea->elevator1 ?? '' }}</textarea>
                         </li>
                         <li>
                             <textarea id="input_pitch2" name="elevator2" rows="4" cols="50"
-                                placeholder="これは「APPRENTICEのカリキュラムに沿った形式でアイデアをレーダーチャートにまとめ、先輩や後輩とアイデアを共有する」ことができます">{{ $idea->elevator2 }}</textarea>
+                                placeholder="これは「APPRENTICEのカリキュラムに沿った形式でアイデアをレーダーチャートにまとめ、先輩や後輩とアイデアを共有する」ことができます">{{ $idea->elevator2 ?? '' }}</textarea>
                         </li>
                     </ul>
                     <h2><span class="highlight">どのように</span>解決しますか？</h2>
@@ -52,7 +52,7 @@
 先輩のアイデアを参照し、過去の経験を蓄積・共有することで、新しいアイデア出しの参考にする。
 
 ・アイデアの検索
-カリキュラムごとのテーマ（「自分たちの役に立つものを開発せよ」「ワクワクするものを開発せよ」「オリジナルプロダクト」）でアイデアを検索できる。">{{ $idea->how }}</textarea>
+カリキュラムごとのテーマ（「自分たちの役に立つものを開発せよ」「ワクワクするものを開発せよ」「オリジナルプロダクト」）でアイデアを検索できる。">{{ $idea->how ?? '' }}</textarea>
                 </div>
             </div>
             <input type="hidden" name="idea_id" value="{{ $idea_id }}">
