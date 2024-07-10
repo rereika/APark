@@ -43,9 +43,10 @@
     <div class="next_page">
       <div class="share_or_back">
 
-      <a href="{{ route('home')}}" class="proceed_home_page">投稿する</a>
+      <a href="{{ route('ideas.post', ['id' => $idea_id]) }}" class="proceed_home_page">投稿する</a>
 
-        <a href="{{ route('get.enter.pitch', ['id' => $idea_id])}}" class="return_pitch_page">修正する</a>
+
+      <a href="{{ route('ideas.draft.elevator', ['id' => $idea_id]) }}" class="draft">修正する</a>
 
         </div>
       </div>

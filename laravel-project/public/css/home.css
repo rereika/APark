@@ -46,7 +46,7 @@ header {
 }
 
 .home_menu_1 {
-  background-color: #F1F2F6;
+  background-color: #f8f7f6;
   padding: 8px 18px;
   border-radius: 8px;
 }
@@ -68,13 +68,23 @@ a:hover {
 }
 
 .catch_copy {
-  height: 230px;
-  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  height: 280px;
+  background-color: #f8f7f6;
 }
 
 .catch_copy p {
   text-align: center;
-  font-size: 30px;
+  font-size: 20px;
+  color: #B42E31;
+  margin: auto 5px;
+}
+
+.catch_copy img {
+  width: 250px;
+  height: auto;
+  margin: 15px 25px;
 }
 
 .main-contents {
@@ -177,7 +187,7 @@ a:hover {
   display: inline-block;
   margin: 20px 20px;
   padding: 25px;
-  background-color: #F6F8F8;
+  background-color: #f8f7f6;
   color: black;
   font-size: 15px;
   width: 400px;

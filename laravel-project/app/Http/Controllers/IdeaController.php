@@ -60,25 +60,8 @@ class IdeaController extends Controller
         return redirect()->route('get.enter.pitch', ['id' => $id]);
     }
 
-
-    //エレベーターピッチを更新する
-    public function updatePitch(Request $request)
-    {
-         // hidden で埋め込んでいるパラメータを受け取る
-        $id = $request->input('idea_id');
-
-        $idea = Idea::findOrFail($id);
-        $idea->update($request->all());
-
-        return redirect()->route('get.create.feed.back', ['id' => $id]);
-    }
-
     public function updateElevator(Request $request, $id)
     {
-        // $request->validate([
-        //     'elevator1' => 'required|text',
-        //     'elevator2' => 'required|text',
-        // ]);
 
         $id = $request->input('idea_id');
 
@@ -88,16 +71,56 @@ class IdeaController extends Controller
         $idea->how = $request->how;
         $idea->save();
 
-        return redirect()->route('get.create.feed.back', ['id' => $idea->id])->with(compact('idea'));
+        return redirect()->route('get.create.feed.back', ['idea' => $idea, 'id' => $idea->id]);
     }
 
-    public function index()
+    public function draftElevator(Request $request, $id)
+{
+    $idea = Idea::select('id', 'elevator1', 'elevator2', 'how')->find($id);
+
+    return view('APark.enter_pitch', ['idea' => $idea, 'idea_id' => $id]);
+}
+
+public function index()
     {
-        // 全ユーザーのアイデアを投稿された順（降順）で取得
-        $ideas = Idea::orderBy('created_at', 'desc')->get();
+        // 投稿されたアイデアのみを取得
+        $ideas = Idea::where('is_posted', true)
+->orderBy('created_at', 'desc')->get();
 
         // ビューにデータを渡す
         return view('APark.home', ['ideas' => $ideas]);
     }
+
+    public function postIdea($id)
+{
+    // 指定されたアイデアを取得
+    $idea = Idea::find($id);
+
+    if ($idea) {
+        // アイデアを投稿済みにする
+        $idea->is_posted = true;
+        $idea->save();
+    }
+
+    // 投稿済みのアイデアのみを取得
+    $ideas = Idea::where('is_posted', true)->orderBy('created_at', 'desc')->get();
+
+    // APark.home ビューにデータを渡して表示
+    return view('APark.home', ['ideas' => $ideas]);
+}
+
+public function draftIdea($id) {
+    $draft_ideas = Idea::where('is_posted', false)->orderBy('created_at', 'desc')->get();
+
+    // データが取得できなかった場合の処理
+    if ($draft_ideas->isEmpty()) {
+        $draft_ideas = null;
+    }
+
+    return view('APark.draft', ['draft_ideas' => $draft_ideas, 'idea_id' => $id]);
+}
+
+
+
 
 }
