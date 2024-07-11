@@ -36,9 +36,4 @@ class HomeController extends Controller
     {
         return view('APark.my_page');
     }
-
-    public function draft($id)
-    {
-        return view('APark.draft', ['idea_id' => $id]);
-    }
 }

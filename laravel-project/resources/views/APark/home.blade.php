@@ -21,7 +21,6 @@
       <img src="{{ asset('image/logo3.png') }}" alt="ロゴ画像">
     </div>
 
-    //アコーディオンメニューの作成
     <div class="home-menu">
   <ul>
     <li>
@@ -30,6 +29,7 @@
     <li>
       <a href="#" class="home_menu_2" onclick="toggleAccordion(event)">作成する</a>
       <div id="accordionMenu" class="accordion-content" style="display: none;">
+        <div class="create_menu">
         <ul>
           <li>
             <form id="createIdeaForm" method="POST" action="{{ route('ideas.create') }}">
@@ -38,29 +38,14 @@
             </form>
           </li>
           <li>
-            <a href="{{ route('get.draft.page')}}">下書き一覧</a>
+            <a href="#">下書き一覧</a>
           </li>
         </ul>
+        </div>
       </div>
     </li>
   </ul>
 </div>
-
-
-{{--
-    <div class="home-menu">
-      <ul>
-        <li>
-          <a href="{{ route('get.my.page')}}" class="my_page">マイページ</a></li>
-        <li>
-          <form id="createIdeaForm" method="POST" action="{{ route('ideas.create') }}" style="display: none;">
-          @csrf
-          </form>
-          <a href="#" class="home_menu_2" onclick="document.getElementById('createIdeaForm').submit(); return false;">作成する</a>
-        </li>
-      </ul>
-    </div> --}}
-
 
   </header>
 

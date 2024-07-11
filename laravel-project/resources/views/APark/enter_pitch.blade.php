@@ -53,7 +53,7 @@
 カリキュラムごとのテーマ（「自分たちの役に立つものを開発せよ」「ワクワクするものを開発せよ」「オリジナルプロダクト」）でアイデアを検索できる。">{{ $idea->how ?? '' }}</textarea>
                 </div>
             </div>
-            <input type="hidden" name="idea_id" value="{{ $idea_id }}">
+            <input type="hidden" name="idea_id" value="{{ $idea->id }}">
 
             <div class="status">
                 <ul>

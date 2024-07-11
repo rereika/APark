@@ -57,22 +57,8 @@ class IdeaController extends Controller
         $idea = Idea::findOrFail($id);
         $idea->update($request->all());
 
-        return redirect()->route('get.enter.pitch',['idea' => $idea, 'idea_id' => $id]);
+        return view('APark.enter_pitch', ['idea' => $idea]);
     }
-
-    // public function updateElevator(Request $request, $id)
-    // {
-
-    //     $id = $request->input('idea_id');
-
-    //     $idea = Idea::findOrFail($id);
-    //     $idea->elevator1 = $request->elevator1;
-    //     $idea->elevator2 = $request->elevator2;
-    //     $idea->how = $request->how;
-    //     $idea->save();
-
-    //     return redirect()->route('get.create.feed.back', ['idea' => $idea, 'id' => $idea->id]);
-    // }
 
     public function updateElevator(Request $request, $id)
 {
@@ -94,6 +80,7 @@ class IdeaController extends Controller
     if ($request->input('action') === 'draft') {
         $idea->is_posted = false;
         $idea->save();
+
         return redirect()->route('get.draft', ['id' => $id]);
     }
 }
@@ -102,20 +89,6 @@ class IdeaController extends Controller
 {
     $ideas = Idea::where('is_posted', false)->orderBy('created_at', 'desc')->get();
     return view('APark.draft', ['ideas' => $ideas, 'idea_id' => $id]);
-}
-
-    public function draftElevator(Request $request, $id)
-{
-    $idea = Idea::find($id);
-
-    if ($idea) {
-        // アイデアを投稿済みにする
-        $idea->is_posted = false;
-        $idea->save();
-    }
-
-    $ideas = Idea::where('is_posted', false)->orderBy('created_at', 'desc')->get();
-    return view('APark.draft', ['ideas' => $ideas]);
 }
 
 public function index()
@@ -145,22 +118,6 @@ public function index()
     // APark.home ビューにデータを渡して表示
     return view('APark.home', ['ideas' => $ideas]);
 }
-
-public function draftIdea($id) {
-
-    $idea = Idea::find($id);
-
-    if ($idea) {
-        // アイデアを投稿済みにする
-        $idea->is_posted = false;
-        $idea->save();
-    }
-
-    $ideas = Idea::where('is_posted', false)->orderBy('created_at', 'desc')->get();
-
-    return view('APark.draft', ['ideas' => $ideas, 'idea_id' => $id]);
-}
-
 
 
 }

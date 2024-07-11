@@ -12,12 +12,37 @@ header {
   justify-content: space-between;
 }
 
-
 .accordion-content {
-  display: none;
   padding: 10px;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
+  margin-top: 10px;
+  position: absolute;
+}
+
+.accordion-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.home-menu {
+  position: relative;
+}
+
+.home-menu .accordion-content {
+  display: none;
+  width: 100%;
+  left: 0;
+}
+
+.create_menu {
+  width: 100%;
+}
+
+.create_menu ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .logo {

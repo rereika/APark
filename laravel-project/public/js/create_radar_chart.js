@@ -60,4 +60,5 @@ function updateChart() {
 
 }
 
+window.addEventListener('load', updateChart);
 document.getElementById('chartForm').addEventListener('change', updateChart);
