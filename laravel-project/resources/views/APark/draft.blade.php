@@ -27,7 +27,7 @@
         <ul>
         @foreach($ideas as $idea)
             <li>
-                <a href="#">{{ $idea->elevator1 }}</a>
+            <a href={{ route('get.draft.to.pitch', ['id' => $idea->id])}}>{{ $idea->elevator1 }}</a>
             </li>
             @endforeach
         </ul>
