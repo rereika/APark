@@ -22,18 +22,30 @@
     </div>
 
     <div class="home-menu">
-      <ul>
-        <li>
-          <a href="{{ route('get.my.page')}}" class="my_page">マイページ</a></li>
-        <li>
-    <form id="createIdeaForm" method="POST" action="{{ route('ideas.create') }}" style="display: none;">
-        @csrf
-    </form>
-    <a href="#" class="home_menu_2" onclick="document.getElementById('createIdeaForm').submit(); return false;">作成する</a>
-</li>
-
-      </ul>
-    </div>
+  <ul>
+    <li>
+      <a href="{{ route('get.my.page')}}" class="my_page">マイページ</a>
+    </li>
+    <li>
+      <a href="#" class="home_menu_2" onclick="toggleAccordion(event)">作成する</a>
+      <div id="accordionMenu" class="accordion-content" style="display: none;">
+        <div class="create_menu">
+        <ul>
+          <li>
+            <form id="createIdeaForm" method="POST" action="{{ route('ideas.create') }}">
+              @csrf
+              <input type="submit" class="home_menu_2" value="新規作成">
+            </form>
+          </li>
+          <li>
+            <a href="#">下書き一覧</a>
+          </li>
+        </ul>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
 
   </header>
 
@@ -70,8 +82,9 @@
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-6/js/6-1-6.js"></script>
-
+<script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-6/js/6-1-6.js">
+</script>
+<script src="{{ asset('js/home.js') }}"></script>
 </body>
 
 </html>

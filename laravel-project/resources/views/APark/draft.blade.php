@@ -13,20 +13,21 @@
 <body>
 <div class="back_page">
 
-<a href="{{ route('get.select.theme', ['id' => $idea_id])}}" class="return_theme_page">戻る</a>
+<a href="{{ route('home')}}" class="return_home">戻る</a>
     </div>
 
     <div class="inner">
 
         <h1>下書き</h1>
         <div class="draft-ideas">
-        @if (!$draft_ideas)
+        @if ($ideas->isEmpty())
+        {{-- @if (!$ideas) --}}
         <p>下書きがありません。</p>
         @else
         <ul>
-            @foreach($draft_ideas as $draft_idea)
+        @foreach($ideas as $idea)
             <li>
-                <a href="#">{{ $draft_idea->elevator1 ?? '' }}</a>
+                <a href="#">{{ $idea->elevator1 }}</a>
             </li>
             @endforeach
         </ul>

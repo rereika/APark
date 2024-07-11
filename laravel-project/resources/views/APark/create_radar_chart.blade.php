@@ -16,11 +16,9 @@
         <a href="{{ route('get.select.theme', ['id' => $idea_id])}}" class="return_theme_page">一つ戻る</a>
     </div>
 
-<form id="chartForm" method="POST" action="{{ route('ideas.update.chart', ['id' => $idea_id]) }}">
+    <form id="chartForm" method="POST" action="{{ route('ideas.update.chart', ['id' => $idea_id]) }}">
     @csrf
     <div class="inner">
-
-        <a href="#" class="draft">下書き</a>
 
         <h1><span class="highlight">どんなアプリ</span>を作りたいですか？</h1>
 

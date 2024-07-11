@@ -15,7 +15,16 @@
 
     <h1>クリックするとFBが表示されます。</h1>
 
-    //ChatGPTAPIのチャートを作成
+    <form id="chartForm">
+        <input type="hidden" name="self_chart1" value="{{ $idea->self_chart1 }}">
+        <input type="hidden" name="self_chart2" value="{{ $idea->self_chart2 }}">
+        <input type="hidden" name="self_chart3" value="{{ $idea->self_chart3 }}">
+        <input type="hidden" name="self_chart4" value="{{ $idea->self_chart4 }}">
+        <input type="hidden" name="self_chart5" value="{{ $idea->self_chart5 }}">
+    </form>
+
+    {{-- ChatGPTAPIのチャートを作成 --}}
+
     <div class="chart">
       <canvas id="radarChart" width="200" height="200"></canvas>
     </div>
@@ -52,7 +61,7 @@
       </div>
     </div>
 
-    <script src="{{ asset('js/create_radar_chart.js') }}"></script>
+    <script src="{{ asset('js/enter_pitch.js') }}"></script>
 </body>
 
 </html>

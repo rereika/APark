@@ -12,14 +12,12 @@
 
 <body>
     <div class="back_page">
-        <a href="{{ route('get.create.radar.chart', ['id' => $idea_id]) }}" class="return_pitch_page">一つ戻る</a>
+    <a href="{{ route('get.create.radar.chart', ['id' => $idea->id]) }}" class="return_pitch_page">一つ戻る</a>
     </div>
 
-    <form id="chartForm" method="POST" action="{{ route('ideas.update.elevator', ['id' => $idea_id]) }}">
+    <form id="chartForm" method="POST" action="{{ route('ideas.update.elevator', ['id' => $idea->id]) }}">
         @csrf
         <div class="inner">
-
-            <a href="{{ route('ideas.draft.elevator', ['id' => $idea_id]) }}" class="draft">下書き</a>
 
             <div class="chart-pitch-wrapper">
                 <input type="hidden" name="self_chart1" value="5">
@@ -55,7 +53,7 @@
 カリキュラムごとのテーマ（「自分たちの役に立つものを開発せよ」「ワクワクするものを開発せよ」「オリジナルプロダクト」）でアイデアを検索できる。">{{ $idea->how ?? '' }}</textarea>
                 </div>
             </div>
-            <input type="hidden" name="idea_id" value="{{ $idea_id }}">
+            <input type="hidden" name="idea_id" value="{{ $idea->id }}">
 
             <div class="status">
                 <ul>
@@ -68,7 +66,8 @@
         </div>
 
         <div class="next_page">
-            <input type="submit" class="proceed_fb_page" id="proceedFbPage" value="結果を見る">
+        <button type="submit" class="proceed_fb_page" id="proceedFbPage" name="action" value="proceed">結果を見る</button>
+        <button type="submit" class="draft" name="action" value="draft">下書きを保存する</button>
         </div>
 
     </form>
