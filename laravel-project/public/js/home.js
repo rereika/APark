@@ -23,3 +23,14 @@ $('.slider').slick({
     }
   ]
 });
+
+
+function toggleAccordion(event) {
+  event.preventDefault();
+  let accordion = document.getElementById('accordionMenu');
+  if (accordion.style.display === 'block') {
+    accordion.style.display = 'none';
+  } else {
+    accordion.style.display = 'block';
+  }
+}
