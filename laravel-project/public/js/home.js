@@ -25,6 +25,7 @@ $('.slider').slick({
 });
 
 
+//アコーディオンメニューの作成
 function toggleAccordion(event) {
   event.preventDefault();
   let accordion = document.getElementById('accordionMenu');

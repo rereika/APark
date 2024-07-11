@@ -12,6 +12,7 @@ header {
   justify-content: space-between;
 }
 
+
 .accordion-content {
   display: none;
   padding: 10px;
