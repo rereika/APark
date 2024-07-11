@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class IdeaController extends Controller
 {
 
-    // 新しいアイデアを作成するメソッド
+    // 新しいアイデアを作成する
     public function create(Request $request){
 
         // 新しいIdeaモデルのインスタンスを作成
@@ -81,7 +81,8 @@ class IdeaController extends Controller
         $idea->is_posted = false;
         $idea->save();
 
-        return redirect()->route('get.draft', ['id' => $id]);
+        // return redirect()->route('get.draft', ['id' => $id]);
+        return self::showDraft(id:$id);
     }
 }
 
@@ -99,6 +100,12 @@ public function index()
 
         // ビューにデータを渡す
         return view('APark.home', ['ideas' => $ideas]);
+    }
+
+    public function draftToPitch($id){
+
+        $idea = Idea::findOrFail($id);
+        return view('APark.enter_pitch', ['idea' => $idea]);
     }
 
     public function postIdea($id)

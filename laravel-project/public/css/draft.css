@@ -1,4 +1,4 @@
-.return_theme_page {
+.return_home {
   text-decoration: none;
   font-size: 15px;
   color: black;
@@ -8,7 +8,7 @@
   margin: 20px 50px;
 }
 
-.return_theme_page:hover {
+.return_home:hover {
   background-color: #EEEEEE;
 }
 
@@ -27,6 +27,7 @@ h1 {
 .draft-ideas ul {
   list-style-type: none;
   display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
 }
