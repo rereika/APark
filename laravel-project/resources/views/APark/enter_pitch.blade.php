@@ -20,11 +20,11 @@
         <div class="inner">
 
             <div class="chart-pitch-wrapper">
-                <input type="hidden" name="self_chart1" value="5">
-                <input type="hidden" name="self_chart2" value="4">
-                <input type="hidden" name="self_chart3" value="4">
-                <input type="hidden" name="self_chart4" value="4">
-                <input type="hidden" name="self_chart5" value="4">
+                <input type="hidden" name="self_chart1" value="{{ $idea->self_chart1 }}">
+                <input type="hidden" name="self_chart2" value="{{ $idea->self_chart2 }}">
+                <input type="hidden" name="self_chart3" value="{{ $idea->self_chart3 }}">
+                <input type="hidden" name="self_chart4" value="{{ $idea->self_chart4 }}">
+                <input type="hidden" name="self_chart5" value="{{ $idea->self_chart5 }}">
 
                 <div class="chart">
                     <canvas id="radarChart" width="200" height="200"></canvas>
