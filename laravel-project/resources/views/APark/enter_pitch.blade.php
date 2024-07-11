@@ -12,14 +12,12 @@
 
 <body>
     <div class="back_page">
-        <a href="{{ route('get.create.radar.chart', ['id' => $idea_id]) }}" class="return_pitch_page">一つ戻る</a>
+    <a href="{{ route('get.create.radar.chart', ['id' => $idea->id]) }}" class="return_pitch_page">一つ戻る</a>
     </div>
 
-    <form id="chartForm" method="POST" action="{{ route('ideas.update.elevator', ['id' => $idea_id]) }}">
+    <form id="chartForm" method="POST" action="{{ route('ideas.update.elevator', ['id' => $idea->id]) }}">
         @csrf
         <div class="inner">
-
-            <a href="{{ route('ideas.draft', ['id' => $idea_id]) }}" class="draft">下書き保存する</a>
 
             <div class="chart-pitch-wrapper">
                 <input type="hidden" name="self_chart1" value="5">
@@ -70,9 +68,6 @@
         <div class="next_page">
         <button type="submit" class="proceed_fb_page" id="proceedFbPage" name="action" value="proceed">結果を見る</button>
         <button type="submit" class="draft" name="action" value="draft">下書きを保存する</button>
-
-            {{-- <input type="submit" class="proceed_fb_page" id="proceedFbPage" value="結果を見る">
-            <input type="submit" class="draft" value="下書きを保存する"> --}}
         </div>
 
     </form>
