@@ -12,7 +12,7 @@ Route::get('/create_radar_chart/{id}', [HomeController::class, 'createRadarChart
 Route::get('/enter_pitch/{id}', [HomeController::class, 'enterPitch'])->name('get.enter.pitch');
 Route::get('/create_feedback/{id}', [HomeController::class, 'createFeedback'])->name('get.create.feed.back');
 Route::get('/my_page', [HomeController::class, 'myPage'])->name('get.my.page');
-Route::get('/draft/{id}', [HomeController::class, 'draft'])->name('get.draft');
+Route::get('/ideas/draft/{id}', [IdeaController::class, 'showDraft'])->name('get.draft');
 
 
 // データ作成用のルート

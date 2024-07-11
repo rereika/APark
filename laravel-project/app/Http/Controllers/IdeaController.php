@@ -57,28 +57,65 @@ class IdeaController extends Controller
         $idea = Idea::findOrFail($id);
         $idea->update($request->all());
 
-        return redirect()->route('get.enter.pitch', ['id' => $id]);
+        return redirect()->route('get.enter.pitch',['idea' => $idea, 'idea_id' => $id]);
     }
+
+    // public function updateElevator(Request $request, $id)
+    // {
+
+    //     $id = $request->input('idea_id');
+
+    //     $idea = Idea::findOrFail($id);
+    //     $idea->elevator1 = $request->elevator1;
+    //     $idea->elevator2 = $request->elevator2;
+    //     $idea->how = $request->how;
+    //     $idea->save();
+
+    //     return redirect()->route('get.create.feed.back', ['idea' => $idea, 'id' => $idea->id]);
+    // }
 
     public function updateElevator(Request $request, $id)
-    {
+{
+    // $id = $request->input('idea_id');
 
-        $id = $request->input('idea_id');
+    $idea = Idea::findOrFail($id);
+    $idea->elevator1 = $request->elevator1;
+    $idea->elevator2 = $request->elevator2;
+    $idea->how = $request->how;
 
-        $idea = Idea::findOrFail($id);
-        $idea->elevator1 = $request->elevator1;
-        $idea->elevator2 = $request->elevator2;
-        $idea->how = $request->how;
+    // "結果を見る"ボタンが押された場合
+    if ($request->input('action') === 'proceed') {
+        $idea->is_posted = true;
         $idea->save();
-
-        return redirect()->route('get.create.feed.back', ['idea' => $idea, 'id' => $idea->id]);
+        return redirect()->route('get.create.feed.back', ['id' => $idea->id]);
     }
+
+    // "下書きを保存する"ボタンが押された場合
+    if ($request->input('action') === 'draft') {
+        $idea->is_posted = false;
+        $idea->save();
+        return redirect()->route('get.draft', ['id' => $id]);
+    }
+}
+
+    public function showDraft($id)
+{
+    $ideas = Idea::where('is_posted', false)->orderBy('created_at', 'desc')->get();
+    return view('APark.draft', ['ideas' => $ideas, 'idea_id' => $id]);
+}
 
     public function draftElevator(Request $request, $id)
 {
-    $idea = Idea::select('id', 'elevator1', 'elevator2', 'how')->find($id);
+    $idea = Idea::find($id);
 
-    return view('APark.enter_pitch', ['idea' => $idea, 'idea_id' => $id]);
+    if ($idea) {
+        // アイデアを投稿済みにする
+        $idea->is_posted = false;
+        $idea->save();
+    }
+
+    $ideas = Idea::where('is_posted', false)->orderBy('created_at', 'desc')->get();
+    return view('APark.draft', ['ideas' => $ideas]);
 }
 
 public function index()
@@ -110,16 +147,19 @@ public function index()
 }
 
 public function draftIdea($id) {
-    $draft_ideas = Idea::where('is_posted', false)->orderBy('created_at', 'desc')->get();
 
-    // データが取得できなかった場合の処理
-    if ($draft_ideas->isEmpty()) {
-        $draft_ideas = null;
+    $idea = Idea::find($id);
+
+    if ($idea) {
+        // アイデアを投稿済みにする
+        $idea->is_posted = false;
+        $idea->save();
     }
 
-    return view('APark.draft', ['draft_ideas' => $draft_ideas, 'idea_id' => $id]);
-}
+    $ideas = Idea::where('is_posted', false)->orderBy('created_at', 'desc')->get();
 
+    return view('APark.draft', ['ideas' => $ideas, 'idea_id' => $id]);
+}
 
 
 

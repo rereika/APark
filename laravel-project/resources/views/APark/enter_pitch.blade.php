@@ -19,7 +19,7 @@
         @csrf
         <div class="inner">
 
-            <a href="{{ route('ideas.draft.elevator', ['id' => $idea_id]) }}" class="draft">下書き</a>
+            <a href="{{ route('ideas.draft', ['id' => $idea_id]) }}" class="draft">下書き保存する</a>
 
             <div class="chart-pitch-wrapper">
                 <input type="hidden" name="self_chart1" value="5">
@@ -68,7 +68,11 @@
         </div>
 
         <div class="next_page">
-            <input type="submit" class="proceed_fb_page" id="proceedFbPage" value="結果を見る">
+        <button type="submit" class="proceed_fb_page" id="proceedFbPage" name="action" value="proceed">結果を見る</button>
+        <button type="submit" class="draft" name="action" value="draft">下書きを保存する</button>
+
+            {{-- <input type="submit" class="proceed_fb_page" id="proceedFbPage" value="結果を見る">
+            <input type="submit" class="draft" value="下書きを保存する"> --}}
         </div>
 
     </form>
