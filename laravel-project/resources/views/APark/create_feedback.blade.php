@@ -69,6 +69,7 @@
     </div>
 
     <script src="{{ asset('js/enter_pitch.js') }}"></script>
+    <script src="{{ asset('js/create_feedback.js') }}"></script>
 </body>
 
 </html>
