@@ -92,6 +92,11 @@ class IdeaController extends Controller
     return view('APark.draft', ['ideas' => $ideas, 'idea_id' => $id]);
 }
 
+public function showSelfRadarChart($id)
+{
+}
+
+
 public function index()
     {
         // 投稿されたアイデアのみを取得
