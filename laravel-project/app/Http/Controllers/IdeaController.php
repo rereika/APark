@@ -94,6 +94,8 @@ class IdeaController extends Controller
 
 public function showSelfRadarChart($id)
 {
+    $idea = Idea::find($id);
+    return view('APark.create_feedback', ['idea' => $idea]);
 }
 
 

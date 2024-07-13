@@ -52,23 +52,26 @@ let radarChart = new Chart(RadarCtx, radarConfig);
 
 //チャートの更新
 function feedBackUpdateChart() {
-  let form = document.getElementById('feedBackChartForm');
-  let formData = new FormData(form);
+  let selfForm = document.getElementById('chartForm');
+  let selfFormData = new FormData(selfForm);
+
+  let fbForm = document.getElementById('feedBackChartForm');
+  let fbFormData = new FormData(fbForm);
 
   let selfValues = [
-    formData.get('self_chart1'),
-    formData.get('self_chart2'),
-    formData.get('self_chart3'),
-    formData.get('self_chart4'),
-    formData.get('self_chart5')
+    selfFormData.get('self_chart1'),
+    selfFormData.get('self_chart2'),
+    selfFormData.get('self_chart3'),
+    selfFormData.get('self_chart4'),
+    selfFormData.get('self_chart5')
   ].map(Number);
 
   let fbValues = [
-    formData.get('fb_chart1'),
-    formData.get('fb_chart2'),
-    formData.get('fb_chart3'),
-    formData.get('fb_chart4'),
-    formData.get('fb_chart5')
+    fbFormData.get('fb_chart1'),
+    fbFormData.get('fb_chart2'),
+    fbFormData.get('fb_chart3'),
+    fbFormData.get('fb_chart4'),
+    fbFormData.get('fb_chart5')
   ].map(Number);
 
   radarChart.data.datasets[0].data = selfValues;

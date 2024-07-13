@@ -15,16 +15,17 @@
 
     <h1>クリックするとFBが表示されます。</h1>
 
-    <form id="chartForm" method="POST" action="#">
-
+    <form id="chartForm" method="POST" action="{{ route('ideas.show.self.radar.chart', ['id' => $idea]) }}">
+    @csrf
     <input type="hidden" name="self_chart1" value="{{ $idea->self_chart1 }}">
     <input type="hidden" name="self_chart2" value="{{ $idea->self_chart2 }}">
     <input type="hidden" name="self_chart3" value="{{ $idea->self_chart3 }}">
     <input type="hidden" name="self_chart4" value="{{ $idea->self_chart4 }}">
     <input type="hidden" name="self_chart5" value="{{ $idea->self_chart5 }}">
+    </form>
 
-    <form id="feedBackChartForm" method="POST" action="#"></form>
-
+    <form id="feedBackChartForm" method="POST" action="#">
+      @csrf
       <input type="hidden" name="fb_chart1" value="1">
       <input type="hidden" name="fb_chart2" value="2">
       <input type="hidden" name="fb_chart3" value="3">
