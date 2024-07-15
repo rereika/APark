@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     <link rel="stylesheet" href="{{ asset('css/select_theme.css') }}">
+    <link href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" rel="stylesheet">
 </head>
 
 <body>
@@ -31,17 +32,30 @@
         </form>
 
         <div class="status">
-            <ul>
-            <li><img src="{{ asset('image/status1-1.png') }}" alt="ロゴ画像"></li>
-            <li><img src="{{ asset('image/status2-2.png') }}" alt="ロゴ画像"></li>
-            <li><img src="{{ asset('image/status1-2.png') }}" alt="ロゴ画像"></li>
-            <li><img src="{{ asset('image/status4-2.png') }}" alt="ロゴ画像"></li>
+            <ul class="pagination">
+                <li class="disabled">
+                    <a href="#"><i class="fas fa-angle-left"></i></a>
+                </li>
+                <li class="active">
+                    <a href="#">1</a>
+                </li>
+                <li>
+                    <a href="#">2</a>
+                </li>
+                <li>
+                    <a href="#">3</a>
+                <li>
+                    <a href="#">4</a></li>
+                    <li class="disabled">
+                    <a href="{{ route('get.create.radar.chart', ['id' => $idea_id])}}" class="proceed_create_chart_page" id="proceedCreateChartPage"><i class="fas fa-angle-right"></i></a>
+                </li>
             </ul>
         </div>
+
     </div>
-    <div class="next_page">
+    {{-- <div class="next_page">
     <a href="{{ route('get.create.radar.chart', ['id' => $idea_id])}}" class="proceed_create_chart_page" id="proceedCreateChartPage">次へ</a>
-    </div>
+    </div> --}}
 
 
     <script src="{{ asset('js/select_theme.js') }}"></script>
