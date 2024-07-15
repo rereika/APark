@@ -73,7 +73,7 @@ class IdeaController extends Controller
     if ($request->input('action') === 'proceed') {
         $idea->is_posted = true;
         $idea->save();
-        return redirect()->route('get.create.feed.back', ['id' => $idea->id]);
+        return view('APark.create_feedback', ['idea' => $idea]);
     }
 
     // "下書きを保存する"ボタンが押された場合
@@ -92,8 +92,16 @@ class IdeaController extends Controller
     return view('APark.draft', ['ideas' => $ideas, 'idea_id' => $id]);
 }
 
+public function listDraft()
+{
+    $ideas = Idea::where('is_posted', false)->orderBy('created_at', 'desc')->get();
+    return view('APark.draft', ['ideas' => $ideas]);
+}
+
 public function showSelfRadarChart($id)
 {
+    $idea = Idea::find($id);
+    return view('APark.create_feedback', ['idea' => $idea]);
 }
 
 

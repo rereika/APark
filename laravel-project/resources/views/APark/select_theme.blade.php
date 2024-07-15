@@ -18,7 +18,7 @@
 
     <div class="inner">
 
-    <a href="{{ route('ideas.show.draft', ['id' => $idea_id]) }}" class="draft">下書き</a>
+    {{-- <a href="{{ route('ideas.show.draft', ['id' => $idea_id]) }}" class="draft">下書き</a> --}}
 
         <h1>今回の<span class="highlight">テーマ</span>は何ですか？</h1>
 

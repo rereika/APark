@@ -21,6 +21,8 @@ Route::post('/ideas/create', [IdeaController::class, 'create'])->name('ideas.cre
 Route::post('/ideas/update-theme/{id}', [IdeaController::class, 'updateTheme'])->name('ideas.update.theme');
 Route::post('/ideas/update-chart/{id}', [IdeaController::class, 'updateChart'])->name('ideas.update.chart');
 Route::post('/ideas/update-elevator/{id}', [IdeaController::class, 'updateElevator'])->name('ideas.update.elevator');
+Route::get('/radar-chart/{id}', [App\Http\Controllers\IdeaController::class, 'showSelfRadarChart'])->name('ideas.show.self.radar.chart');
+
 
 
 //下書き保存のルート
