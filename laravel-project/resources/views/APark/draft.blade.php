@@ -13,7 +13,7 @@
 <body>
 <div class="back_page">
 
-<a href="{{ route('home')}}" class="return_home">戻る</a>
+<a href="{{ route('home')}}" class="return_home">ホームへ</a>
     </div>
 
     <div class="inner">
