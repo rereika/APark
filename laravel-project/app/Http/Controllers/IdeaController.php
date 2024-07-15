@@ -71,14 +71,14 @@ class IdeaController extends Controller
 
     // "結果を見る"ボタンが押された場合
     if ($request->input('action') === 'proceed') {
-        $idea->is_posted = true;
+        $idea->is_posted = '1';
         $idea->save();
         return view('APark.create_feedback', ['idea' => $idea]);
     }
 
     // "下書きを保存する"ボタンが押された場合
     if ($request->input('action') === 'draft') {
-        $idea->is_posted = false;
+        $idea->is_posted = '1';
         $idea->save();
 
         // return redirect()->route('get.draft', ['id' => $id]);
@@ -88,13 +88,13 @@ class IdeaController extends Controller
 
     public function showDraft($id)
 {
-    $ideas = Idea::where('is_posted', false)->orderBy('created_at', 'desc')->get();
+    $ideas = Idea::where('is_posted', '1')->orderBy('created_at', 'desc')->get();
     return view('APark.draft', ['ideas' => $ideas, 'idea_id' => $id]);
 }
 
 public function listDraft()
 {
-    $ideas = Idea::where('is_posted', false)->orderBy('created_at', 'desc')->get();
+    $ideas = Idea::where('is_posted', '1')->orderBy('created_at', 'desc')->get();
     return view('APark.draft', ['ideas' => $ideas]);
 }
 
@@ -108,11 +108,15 @@ public function showSelfRadarChart($id)
 public function index()
     {
         // 投稿されたアイデアのみを取得
-        $ideas = Idea::where('is_posted', true)
+        $ideas = Idea::where('is_posted', '2')
 ->orderBy('created_at', 'desc')->get();
 
         // ビューにデータを渡す
         return view('APark.home', ['ideas' => $ideas]);
+    }
+
+    public function saveDraft(){
+
     }
 
     public function draftToPitch($id){
@@ -128,12 +132,12 @@ public function index()
 
     if ($idea) {
         // アイデアを投稿済みにする
-        $idea->is_posted = true;
+        $idea->is_posted = '2';
         $idea->save();
     }
 
     // 投稿済みのアイデアのみを取得
-    $ideas = Idea::where('is_posted', true)->orderBy('created_at', 'desc')->get();
+    $ideas = Idea::where('is_posted', '2')->orderBy('created_at', 'desc')->get();
 
     // APark.home ビューにデータを渡して表示
     return view('APark.home', ['ideas' => $ideas]);

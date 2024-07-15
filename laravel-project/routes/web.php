@@ -14,6 +14,8 @@ Route::get('/create_feedback/{id}', [HomeController::class, 'createFeedback'])->
 Route::get('/my_page', [HomeController::class, 'myPage'])->name('get.my.page');
 Route::get('/ideas/draft/{id}', [IdeaController::class, 'showDraft'])->name('get.draft');
 Route::get('draft/enter_pitch/{id}', [IdeaController::class, 'draftToPitch'])->name('get.draft.to.pitch');
+Route::get('/draft', [IdeaController::class, 'listDraft'])->name('get.list.draft');
+
 
 
 // データ作成用のルート

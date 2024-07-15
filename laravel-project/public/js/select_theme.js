@@ -1,4 +1,7 @@
 
+function notdeleteMessage(event) {
+  confirm("下書きに保存しますか？");
+}
 
 document.addEventListener('DOMContentLoaded', function () {
   let buttons = document.querySelectorAll('.choice'); // 全ての.choice要素を取得

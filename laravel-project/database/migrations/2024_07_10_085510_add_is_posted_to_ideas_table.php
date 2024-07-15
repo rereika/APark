@@ -12,7 +12,8 @@ return new class extends Migration
     public function up()
 {
     Schema::table('ideas', function (Blueprint $table) {
-        $table->boolean('is_posted')->default(false);
+        //保存も下書き保存もしない
+        $table->tinyInteger('is_posted')->default(0)->change();
     });
 }
 
