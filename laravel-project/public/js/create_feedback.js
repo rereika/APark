@@ -52,18 +52,15 @@ let radarChart = new Chart(RadarCtx, radarConfig);
 
 //チャートの更新
 function feedBackUpdateChart() {
-  let selfForm = document.getElementById('chartForm');
-  let selfFormData = new FormData(selfForm);
-
   let fbForm = document.getElementById('feedBackChartForm');
   let fbFormData = new FormData(fbForm);
 
   let selfValues = [
-    selfFormData.get('self_chart1'),
-    selfFormData.get('self_chart2'),
-    selfFormData.get('self_chart3'),
-    selfFormData.get('self_chart4'),
-    selfFormData.get('self_chart5')
+    fbFormData.get('self_chart1'),
+    fbFormData.get('self_chart2'),
+    fbFormData.get('self_chart3'),
+    fbFormData.get('self_chart4'),
+    fbFormData.get('self_chart5')
   ].map(Number);
 
   let fbValues = [

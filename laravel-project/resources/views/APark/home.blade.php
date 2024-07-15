@@ -38,7 +38,7 @@
             </form>
           </li>
           <li>
-            <a href="#">下書き一覧</a>
+            <a href="{{ route('get.list.draft') }}" class="draft">下書き一覧</a>
           </li>
         </ul>
         </div>

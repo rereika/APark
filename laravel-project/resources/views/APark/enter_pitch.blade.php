@@ -66,8 +66,9 @@
         </div>
 
         <div class="next_page">
-        <button type="submit" class="proceed_fb_page" id="proceedFbPage" name="action" value="proceed">結果を見る</button>
         <button type="submit" class="draft" name="action" value="draft">下書きを保存する</button>
+        <button type="submit" class="proceed_fb_page" id="proceedFbPage" name="action" value="proceed">結果を見る</button>
+
         </div>
 
     </form>
