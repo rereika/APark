@@ -12,7 +12,7 @@ return new class extends Migration
     public function up()
 {
     Schema::table('ideas', function (Blueprint $table) {
-        //保存も下書き保存もしない
+        //0は保存も下書き保存もしない、1は下書き、2は投稿
         $table->tinyInteger('is_posted')->default(0)->change();
     });
 }

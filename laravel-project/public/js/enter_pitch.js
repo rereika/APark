@@ -64,3 +64,15 @@ function updateChart() {
 
 // document.getElementById('chartForm').addEventListener('load', updateChart);
 window.addEventListener('load', updateChart);
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const deleteButton = document.querySelector('button[name="action"][value="delete"]');
+  deleteButton.addEventListener('click', function (event) {
+    event.preventDefault();
+    if (confirm('削除してよろしいですか？')) {
+      document.getElementById('chartForm').submit();
+    }
+  });
+});

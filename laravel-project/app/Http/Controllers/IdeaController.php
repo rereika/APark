@@ -37,15 +37,15 @@ class IdeaController extends Controller
     // テーマを更新する
     public function updateTheme(Request $request, $id)
     {
-        $request->validate([
-            'theme' => 'required|string',
-        ]);
+        // $request->validate([
+        //     'theme' => 'required|string',
+        // ]);
 
         $idea = Idea::findOrFail($id);
         $idea->theme = $request->theme;
         $idea->save();
 
-        return redirect()->route('some.next.page'); // 適切なページにリダイレクト
+        return redirect()->route('get.create.radar.chart', ['id' => $id]);
     }
 
     //チャートを更新する
@@ -76,7 +76,7 @@ class IdeaController extends Controller
         return view('APark.create_feedback', ['idea' => $idea]);
     }
 
-    // "下書きを保存する"ボタンが押された場合
+    // "保存する"ボタンが押された場合
     if ($request->input('action') === 'draft') {
         $idea->is_posted = '1';
         $idea->save();
@@ -84,6 +84,12 @@ class IdeaController extends Controller
         // return redirect()->route('get.draft', ['id' => $id]);
         return self::showDraft(id:$id);
     }
+
+        // "削除する"ボタンが押された場合
+        if ($request->input('action') === 'delete') {
+            $idea->delete();
+            return view('APark.draft', ['ideas' => $idea])->with('success', 'アイデアが削除されました');
+        }
 }
 
     public function showDraft($id)

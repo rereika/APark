@@ -8,9 +8,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     <link rel="stylesheet" href="{{ asset('css/select_theme.css') }}">
+    <link href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" rel="stylesheet">
 </head>
 
 <body>
+
+    @if(session('alert'))
+        <script>alert("{{ session('alert') }}");</script>
+    @endif
 
     <div class="back_page">
         <a href="{{ route('home')}}" class="back_home_btn" onclick="return notDraftMessage(event)">ホームへ戻る</a>
@@ -23,28 +28,72 @@
         <h1>今回の<span class="highlight">テーマ</span>は何ですか？</h1>
 
         <form id="themeForm" method="POST" action="{{ route('ideas.update.theme', ['id' => $idea_id]) }}">
-    @csrf
-    <button type="button" class="choice" data-theme="自分たちの役に立つものを開発せよ">「自分たちの役に立つものを開発せよ」</button>
-    <button type="button" class="choice" data-theme="ワクワクするものを開発せよ">「ワクワクするものを開発せよ」</button>
-    <button type="button" class="choice" data-theme="オリジナルプロダクト">オリジナルプロダクト</button>
-    <input type="hidden" name="theme" id="themeInput">
+            @csrf
+            <button type="button" class="choice" data-theme="1">「自分たちの役に立つものを開発せよ」</button>
+            <button type="button" class="choice" data-theme="2">「ワクワクするものを開発せよ」</button>
+            <button type="button" class="choice" data-theme="3">オリジナルプロダクト</button>
+            <input type="hidden" name="theme" id="themeInput">
         </form>
 
         <div class="status">
-            <ul>
-            <li><img src="{{ asset('image/status1-1.png') }}" alt="ロゴ画像"></li>
-            <li><img src="{{ asset('image/status2-2.png') }}" alt="ロゴ画像"></li>
-            <li><img src="{{ asset('image/status1-2.png') }}" alt="ロゴ画像"></li>
-            <li><img src="{{ asset('image/status4-2.png') }}" alt="ロゴ画像"></li>
+            <ul class="pagination">
+                <li class="disabled">
+                    <a href="#"><i class="fas fa-angle-left"></i></a>
+                </li>
+                <li class="active">
+                    <a href="#">1</a>
+                </li>
+                <li>
+                    <a href="#">2</a>
+                </li>
+                <li>
+                    <a href="#">3</a>
+                <li>
+                    <a href="#">4</a></li>
+                <li class="disabled">
+                    <a href="{{ route('get.create.radar.chart', ['id' => $idea_id])}}" class="proceed_create_chart_page" id="proceedCreateChartPage"><i class="fas fa-angle-right"></i></a>
+                </li>
             </ul>
         </div>
+
     </div>
-    <div class="next_page">
+    {{-- <div class="next_page">
     <a href="{{ route('get.create.radar.chart', ['id' => $idea_id])}}" class="proceed_create_chart_page" id="proceedCreateChartPage">次へ</a>
-    </div>
+    </div> --}}
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const buttons = document.querySelectorAll('.choice');
+            const themeForm = document.getElementById('themeForm');
+            const themeInput = document.getElementById('themeInput');
+            const proceedButton = document.getElementById('proceedCreateChartPage');
 
-    <script src="{{ asset('js/select_theme.js') }}"></script>
+            buttons.forEach(button => {
+                button.addEventListener('click', function () {
+                    themeInput.value = parseInt(this.getAttribute('data-theme'), 10); // テーマを整数として設定
+
+                    buttons.forEach(btn => {
+                        btn.style.background = ''; // 全てのボタンの背景色をリセット
+                        btn.style.color = ''; // 全てのボタンの文字色をリセット
+                    });
+
+                    button.style.background = '#FF385C'; // クリックされたボタンの背景色を変更
+                    button.style.color = 'white'; // クリックされたボタンの文字色を変更
+                });
+            });
+
+            proceedButton.addEventListener('click', function (event) {
+                event.preventDefault(); // デフォルトの動作を防止
+
+                if (!themeInput.value) {
+                    alert("テーマを選択してください");
+                    return;
+                }
+
+                themeForm.submit(); // フォームを送信
+            });
+        });
+    </script>
 </body>
 
 </html>

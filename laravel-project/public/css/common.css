@@ -77,6 +77,65 @@ h1 {
   margin: 40px 25px 0;
 }
 
+.pic-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: #fefefe;
+  gap: 1rem;
+}
+
+.pagination {
+  display: flex;
+  gap: 0.5rem;
+}
+
+
+.pagination a {
+  display: inline-block;
+  color: black;
+  border-radius: 50%;
+  border: 1px solid #dedede;
+  text-decoration: none;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+
+
+.pagination i {
+  line-height: 40px;
+}
+
+.pagination .active a {
+  background-color: #FF385C;
+  color: white;
+}
+
+.pagination li:not(.disabled) a {
+  pointer-events: none;
+}
+
+
+.status .pagination li.disabled a:hover i,
+.status .pagination li.active a:hover i {
+  color: #FF385C;
+}
+
+
+.pagination .disabled a {
+  color: #ccc;
+}
+
+.pagination .disabled a:hover {
+  background-color: initial;
+  color: #FF385C;
+}
+
 
 @media screen and (max-width: 640px) {
 

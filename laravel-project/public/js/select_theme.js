@@ -27,27 +27,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
   buttons.forEach(button => {
     button.addEventListener('click', function () {
-      themeInput.value = this.getAttribute('data-theme');
+      themeInput.value = parseInt(this.getAttribute('data-theme'), 10); // テーマを整数として設定
 
-      fetch(themeForm.action, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        },
-        body: JSON.stringify({
-          theme: themeInput.value
-        })
-      })
-        .then(response => response.json())
-        .then(data => {
-          if (data.success) {
-            proceedButton.click(); // 成功時に次のページへのリンクをクリック
-          }
-        })
-        .catch(error => {
-          console.error('Error:', error); // エラーが発生してもアラートは表示しない
-        });
+      buttons.forEach(btn => {
+        btn.style.background = ''; // 全てのボタンの背景色をリセット
+        btn.style.color = ''; // 全てのボタンの文字色をリセット
+      });
+
+      button.style.background = '#FF385C'; // クリックされたボタンの背景色を変更
+      button.style.color = 'white'; // クリックされたボタンの文字色を変更
     });
+  });
+
+  proceedButton.addEventListener('click', function (event) {
+    event.preventDefault(); // デフォルトの動作を防止
+
+    if (!themeInput.value) {
+      alert("テーマを選択してください");
+      return;
+    }
+
+    themeForm.submit(); // フォームを送信
   });
 });
