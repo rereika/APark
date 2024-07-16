@@ -18,18 +18,38 @@ class HomeController extends Controller
         return view('APark.select_theme', ['idea_id' => $id]);
     }
 
+
     public function createRadarChart(Request $request, $id)
     {
         $theme = $request->input('theme');
 
         if (empty($theme)) {
-            echo '<script>alert("テーマを入力してください");</script>';
-            return view('APark.select_theme', ['idea_id' => $id]);
-        } else {
-            return view('APark.create_radar_chart', ['idea_id' => $id]);
-}
-        // return view('APark.create_radar_chart', ['idea_id' => $id]);
+            return redirect()->back()->with('alert', 'テーマを選択してください');
+        }
+
+        // アイデアのテーマをデータベースで更新
+        $idea = Idea::find($id);
+        $idea->theme = (int)$theme; // テーマを整数として保存
+        $idea->save();
+
+        return redirect()->route('get.create.radar.chart', ['id' => $id]);
     }
+
+
+
+
+//     public function createRadarChart(Request $request, $id)
+//     {
+//         $theme = $request->input('theme');
+
+//         if (empty($theme)) {
+//             echo '<script>alert("テーマを入力してください");</script>';
+//             return view('APark.select_theme', ['idea_id' => $id]);
+//         } else {
+//             return view('APark.create_radar_chart', ['idea_id' => $id]);
+// }
+//         // return view('APark.create_radar_chart', ['idea_id' => $id]);
+//     }
 
     public function enterPitch($id)
     {
