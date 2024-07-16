@@ -24,7 +24,7 @@ class HomeController extends Controller
         $theme = $request->input('theme');
 
         if (empty($theme)) {
-            return redirect()->back()->with('alert', 'テーマを選択してください');
+            return redirect()->back()->with('alert', '選択してください');
         }
 
         // アイデアのテーマをデータベースで更新

@@ -31,6 +31,7 @@ class IdeaController extends Controller
         // モデルのインスタンスをデータベースに保存
         $idea->save();
 
+
         return redirect()->route('get.select.theme', ['id' => $idea->id]);
     }
 
@@ -45,7 +46,9 @@ class IdeaController extends Controller
         $idea->theme = $request->theme;
         $idea->save();
 
-        return redirect()->route('get.create.radar.chart', ['id' => $id]);
+        return view('APark.create_radar_chart', ['idea_id' => $idea->id]);
+
+        // return redirect()->route('get.create.radar.chart', ['id' => $id]);
     }
 
     //チャートを更新する
@@ -87,9 +90,17 @@ class IdeaController extends Controller
 
         // "削除する"ボタンが押された場合
         if ($request->input('action') === 'delete') {
-            $idea->delete();
-            return view('APark.draft', ['ideas' => $idea])->with('success', 'アイデアが削除されました');
+            try {
+                $idea->delete();
+                return redirect()->route('home')->with('success', 'アイデアが削除されました');
+            } catch (\Exception $e) {
+                // エラーメッセージを表示するためのデバッグ
+                return redirect()->route('home')->with('error', $e->getMessage());
+            }
         }
+
+        // 他のアクションが処理されない場合のためのデフォルト戻り値
+        return redirect()->route('home')->with('error', '無効なアクションが指定されました');
 }
 
     public function showDraft($id)

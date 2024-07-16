@@ -32,7 +32,7 @@
             <button type="button" class="choice" data-theme="1">「自分たちの役に立つものを開発せよ」</button>
             <button type="button" class="choice" data-theme="2">「ワクワクするものを開発せよ」</button>
             <button type="button" class="choice" data-theme="3">オリジナルプロダクト</button>
-            <input type="hidden" name="theme" id="themeInput">
+            <input type="hidden" name="theme" id="themeInput" value="">
         </form>
 
         <div class="status">
@@ -60,40 +60,7 @@
     {{-- <div class="next_page">
     <a href="{{ route('get.create.radar.chart', ['id' => $idea_id])}}" class="proceed_create_chart_page" id="proceedCreateChartPage">次へ</a>
     </div> --}}
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const buttons = document.querySelectorAll('.choice');
-            const themeForm = document.getElementById('themeForm');
-            const themeInput = document.getElementById('themeInput');
-            const proceedButton = document.getElementById('proceedCreateChartPage');
-
-            buttons.forEach(button => {
-                button.addEventListener('click', function () {
-                    themeInput.value = parseInt(this.getAttribute('data-theme'), 10); // テーマを整数として設定
-
-                    buttons.forEach(btn => {
-                        btn.style.background = ''; // 全てのボタンの背景色をリセット
-                        btn.style.color = ''; // 全てのボタンの文字色をリセット
-                    });
-
-                    button.style.background = '#FF385C'; // クリックされたボタンの背景色を変更
-                    button.style.color = 'white'; // クリックされたボタンの文字色を変更
-                });
-            });
-
-            proceedButton.addEventListener('click', function (event) {
-                event.preventDefault(); // デフォルトの動作を防止
-
-                if (!themeInput.value) {
-                    alert("テーマを選択してください");
-                    return;
-                }
-
-                themeForm.submit(); // フォームを送信
-            });
-        });
-    </script>
+<script src="{{ asset('js/select_theme.js') }}"></script>
 </body>
 
 </html>
