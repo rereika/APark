@@ -12,10 +12,6 @@
 </head>
 
 <body>
-    {{-- <div class="back_page">
-    <a href="{{ route('get.create.radar.chart', ['id' => $idea->id]) }}" class="return_pitch_page">一つ戻る</a>
-    </div> --}}
-
     <form id="chartForm" method="POST" action="{{ route('ideas.update.elevator', ['id' => $idea->id]) }}">
         @csrf
         <div class="inner">
@@ -59,9 +55,8 @@
             <div class="status">
                 <ul class="pagination">
                     <li class="disabled">
-                        <a href="{{ route('get.create.radar.chart', ['id' => $idea->id]) }}" class="return_pitch_page">
-                            <i class="fas fa-angle-left"></i>
-                        </a>
+                        <button type="submit" class="return_page" name="action" value="return_page">
+                        <i class="fas fa-angle-left"></i></button>
                     </li>
                     <li>
                         <a href="#">1</a>
@@ -76,19 +71,24 @@
                         <a href="#">4</a>
                     </li>
                     <li class="disabled">
-                        <i class="fas fa-angle-right"></i>
+                        <button type="submit" class="proceed" name="action" value="proceed">
+                        <i class="fas fa-angle-right"></i></button>
                     </li>
                 </ul>
             </div>
+
+            <div class="next_page">
+                <button type="submit" class="draft" name="action" value="draft">下書き保存</button>
+            <button type="submit" class="delete" name="action" value="delete">削除する</button>
+            </div>
+
+
         </div>
 
-        <div class="next_page">
-        <button type="submit" class="
-delete" name="action" value="delete">削除する</button>
-        <button type="submit" class="draft" name="action" value="draft">保存する</button>
-        <button type="submit" class="proceed_fb_page" id="proceedFbPage" name="action" value="proceed">結果を見る</button>
-
-        </div>
+        {{-- <div class="next_page">
+            <button type="submit" class="draft" name="action" value="draft">下書き</button>
+            <button type="submit" class="delete" name="action" value="delete">削除する</button>
+        </div> --}}
 
     </form>
     <script src="{{ asset('js/enter_pitch.js') }}"></script>
