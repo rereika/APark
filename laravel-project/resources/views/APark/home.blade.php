@@ -78,6 +78,17 @@
     <div class="idea-preview">
     </div>
 
+    <form action="{{ route('generate') }}" method="POST">
+    @csrf
+      <label for="prompt">Enter prompt:</label>
+      <input type="text" id="prompt" name="prompt">
+      <button type="submit">Generate Text</button>
+    </form>
+
+    @if(isset($generatedText))
+      <p>{{ $generatedText }}</p>
+    @endif
+
     </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IdeaController;
+use App\Http\Controllers\OpenAIController;
 
 Route::get('/', [IdeaController::class, 'index'])->name('home');
 
@@ -32,3 +33,6 @@ Route::get('/ideas/draft/{id}', [IdeaController::class, 'showDraft'])->name('ide
 
 //投稿
 Route::get('/ideas/post/{id}', [IdeaController::class, 'postIdea'])->name('ideas.post');
+
+//APIテスト
+Route::post('/generate', [OpenAIController::class, 'generate'])->name('generate');
