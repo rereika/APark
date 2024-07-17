@@ -7,13 +7,14 @@
     <title>APark</title>
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     <link rel="stylesheet" href="{{ asset('css/enter_pitch.css') }}">
+    <link href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
-    <div class="back_page">
+    {{-- <div class="back_page">
     <a href="{{ route('get.create.radar.chart', ['id' => $idea->id]) }}" class="return_pitch_page">一つ戻る</a>
-    </div>
+    </div> --}}
 
     <form id="chartForm" method="POST" action="{{ route('ideas.update.elevator', ['id' => $idea->id]) }}">
         @csrf
@@ -56,11 +57,27 @@
             <input type="hidden" name="idea_id" value="{{ $idea->id }}">
 
             <div class="status">
-                <ul>
-                    <li><img src="{{ asset('image/status1-2.png') }}" alt="ロゴ画像"></li>
-                    <li><img src="{{ asset('image/status2-2.png') }}" alt="ロゴ画像"></li>
-                    <li><img src="{{ asset('image/status1-2.png') }}" alt="ロゴ画像"></li>
-                    <li><img src="{{ asset('image/status1-2.png') }}" alt="ロゴ画像"></li>
+                <ul class="pagination">
+                    <li class="disabled">
+                        <a href="{{ route('get.create.radar.chart', ['id' => $idea->id]) }}" class="return_pitch_page">
+                            <i class="fas fa-angle-left"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">3</a>
+                    </li>
+                    <li>
+                        <a href="#">4</a>
+                    </li>
+                    <li class="disabled">
+                        <i class="fas fa-angle-right"></i>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -1,4 +1,8 @@
-.return_pitch_page {
+.inner {
+  margin-top: 36px;
+}
+
+/* .return_pitch_page {
   text-decoration: none;
   font-size: 15px;
   color: black;
@@ -10,7 +14,7 @@
 
 .return_pitch_page:hover {
   background-color: #EEEEEE;
-}
+} */
 
 .chart-pitch-wrapper {
   display: flex;
@@ -84,6 +88,21 @@ ul li {
 .proceed_fb_page:hover {
   background-color: #FF385C;
   color: #ffffff;
+}
+
+.status .pagination li.disabled button:hover i,
+.status .pagination li.active button:hover i {
+  color: #FF385C;
+}
+
+
+.pagination .disabled button {
+  color: #ccc;
+}
+
+.pagination .disabled button:hover {
+  background-color: initial;
+  color: #FF385C;
 }
 
 
