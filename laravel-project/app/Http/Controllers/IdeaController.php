@@ -72,6 +72,11 @@ class IdeaController extends Controller
     $idea->elevator2 = $request->elevator2;
     $idea->how = $request->how;
 
+    //戻るボタンが押された場合
+    if($request->input('action') === 'return_page'){
+        return view('APark.create_radar_chart', ['idea_id' => $idea]);
+    }
+
     // "結果を見る"ボタンが押された場合
     if ($request->input('action') === 'proceed') {
         $idea->is_posted = '1';

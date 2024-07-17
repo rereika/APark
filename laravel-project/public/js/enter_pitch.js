@@ -66,13 +66,16 @@ function updateChart() {
 window.addEventListener('load', updateChart);
 
 
-
 document.addEventListener('DOMContentLoaded', function () {
   const deleteButton = document.querySelector('button[name="action"][value="delete"]');
   deleteButton.addEventListener('click', function (event) {
-    event.preventDefault();
+    // event.preventDefault();
     if (confirm('削除してよろしいですか？')) {
-      document.getElementById('chartForm').submit();
+      //   document.getElementById('chartForm').submit();
+      // OKの場合、そのまま clickイベント → submitイベントを発生させる
+    } else {
+      event.stopPropagation();    // 親要素への伝播をキャンセル → form タグの action をキャンセル
+      event.preventDefault();     // 削除ボタンの click イベント自体をキャンセル
     }
   });
 });

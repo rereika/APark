@@ -59,7 +59,9 @@
             <div class="status">
                 <ul class="pagination">
                     <li class="disabled">
-                        <a href="{{ route('get.create.radar.chart', ['id' => $idea->id]) }}" class="return_pitch_page">
+                    <button type="submit" class="return_page" name="action" value="return_page">
+                        {{-- <a href="{{ route('get.create.radar.chart', ['id' => $idea->id]) }}" class="return_pitch_page"> --}}
+
                             <i class="fas fa-angle-left"></i>
                         </a>
                     </li>
