@@ -20,22 +20,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  const buttons = document.querySelectorAll('.choice');
+  let buttons = document.querySelectorAll('.choice'); // 全ての.choice要素を取得
   const themeForm = document.getElementById('themeForm');
   const themeInput = document.getElementById('themeInput');
   const proceedButton = document.getElementById('proceedCreateChartPage');
 
-  buttons.forEach(button => {
-    button.addEventListener('click', function () {
-      themeInput.value = parseInt(this.getAttribute('data-theme'), 10); // テーマを整数として設定
+  console.log('ああああ' + themeInput.value);
 
-      buttons.forEach(btn => {
-        btn.style.background = ''; // 全てのボタンの背景色をリセット
+  buttons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      buttons.forEach(function (btn) {
         btn.style.color = ''; // 全てのボタンの文字色をリセット
+        btn.style.background = ''; // 全てのボタンの背景色をリセット
       });
 
       button.style.background = '#FF385C'; // クリックされたボタンの背景色を変更
       button.style.color = 'white'; // クリックされたボタンの文字色を変更
+
+      themeInput.value = parseInt(this.getAttribute('data-theme'), 10); // テーマを整数として設定
+      console.log('いいい' + themeInput.value);
     });
   });
 
