@@ -1,20 +1,6 @@
 .inner {
-  margin-top: 36px;
+  margin: 36px auto;
 }
-
-/* .return_pitch_page {
-  text-decoration: none;
-  font-size: 15px;
-  color: black;
-  background-color: #ffffff;
-  border-radius: 3px;
-  padding: 10px 20px;
-  margin: 20px 50px;
-}
-
-.return_pitch_page:hover {
-  background-color: #EEEEEE;
-} */
 
 .chart-pitch-wrapper {
   display: flex;
@@ -58,37 +44,23 @@ ul li {
   position: relative;
 }
 
-.draft {
+.next_page .draft {
   text-decoration: none;
-  font-size: 20px;
+  font-size: 13px;
   color: black;
   background-color: #ffffff;
   border: none;
   border-radius: 3px;
   padding: 10px 20px;
   margin: 20px 30px;
+  cursor: pointer;
+  /* カーソルをポインターに設定 */
 }
 
-.draft:hover {
-  background-color: #EEEEEE;
-}
-
-.proceed_fb_page {
-  text-decoration: none;
-  font-size: 20px;
-  border-radius: 0;
-  background: #ffffff;
+.next_page .draft:hover {
   color: #FF385C;
-  border: none;
-  border-radius: 3px;
-  padding: 10px 20px;
-  margin: 20px 50px;
 }
 
-.proceed_fb_page:hover {
-  background-color: #FF385C;
-  color: #ffffff;
-}
 
 .status .pagination li.disabled button:hover i,
 .status .pagination li.active button:hover i {
@@ -98,6 +70,11 @@ ul li {
 
 .pagination .disabled button {
   color: #ccc;
+}
+
+.pagination .disabled button {
+  color: #ccc;
+  background-color: #ffffff;
 }
 
 .pagination .disabled button:hover {
