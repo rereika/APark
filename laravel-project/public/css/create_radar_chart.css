@@ -1,15 +1,5 @@
-.return_theme_page {
-  text-decoration: none;
-  font-size: 15px;
-  color: black;
-  background-color: #ffffff;
-  border-radius: 3px;
-  padding: 10px 20px;
-  margin: 20px 50px;
-}
-
-.return_theme_page:hover {
-  background-color: #EEEEEE;
+.inner {
+  margin-top: 145px;
 }
 
 .chart_form {
@@ -24,28 +14,25 @@
 }
 
 #radarChart {
-  width: 500px;
+  width: 550px;
   text-align: center;
   margin: 0 auto;
 }
 
-.proceed_pitch_page {
-  text-decoration: none;
-  font-size: 20px;
-  border-radius: 0;
-  background: #ffffff;
+.status .pagination li.disabled button:hover i,
+.status .pagination li.active button:hover i {
   color: #FF385C;
-  border: none;
-  border-radius: 3px;
-  padding: 10px 20px;
-  margin: 20px 50px;
 }
 
-.proceed_pitch_page:hover {
-  background-color: #FF385C;
-  color: #ffffff;
+
+.pagination .disabled button {
+  color: #ccc;
 }
 
+.pagination .disabled button:hover {
+  background-color: initial;
+  color: #FF385C;
+}
 
 @media screen and (max-width: 640px) {
 
@@ -74,9 +61,9 @@
   }
 
 
-  .proceed_pitch_page {
+  /* .proceed_pitch_page {
     font-size: 10px;
     padding: 8px 20px;
     margin: 2px 1px;
-  }
+  } */
 }

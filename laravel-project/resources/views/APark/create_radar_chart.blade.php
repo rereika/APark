@@ -8,13 +8,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     <link rel="stylesheet" href="{{ asset('css/create_radar_chart.css') }}">
+    <link href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
-    <div class="back_page">
-        <a href="{{ route('get.select.theme', ['id' => $idea_id])}}" class="return_theme_page">一つ戻る</a>
-    </div>
 
     <form id="chartForm" method="POST" action="{{ route('ideas.update.chart', ['id' => $idea_id]) }}">
     @csrf
@@ -79,18 +77,30 @@
         </div>
 
         <div class="status">
-            <ul>
-            <li><img src="{{ asset('image/status1-2.png') }}" alt="ロゴ画像"></li>
-            <li><img src="{{ asset('image/status2-1.png') }}" alt="ロゴ画像"></li>
-            <li><img src="{{ asset('image/status1-2.png') }}" alt="ロゴ画像"></li>
-            <li><img src="{{ asset('image/status1-2.png') }}" alt="ロゴ画像"></li>
+            <ul class="pagination">
+                <li class="disabled">
+                    <a href="{{ route('get.select.theme', ['id' => $idea_id])}}" class="proceed_create_chart_page" id="proceedCreateChartPage">
+                        <i class="fas fa-angle-left"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">1</a>
+                </li>
+                <li class="active">
+                    <a href="#">2</a>
+                </li>
+                <li>
+                    <a href="#">3</a>
+                </li>
+                <li>
+                    <a href="#">4</a>
+                </li>
+                <li class="disabled">
+                    <button type="submit" class="proceed_pitch_page" style="background: none; padding: 0; cursor: pointer;"><i class="fas fa-angle-right"></i>
+                </li>
             </ul>
         </div>
 
-    </div>
-
-    <div class="next_page">
-        <input type="submit" class="proceed_pitch_page" value="次へ">
     </div>
 
 </form>

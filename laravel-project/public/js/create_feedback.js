@@ -34,7 +34,7 @@ let radarConfig = {
         },
         pointLabels: {
           font: {
-            size: 25
+            size: 10
           }
         }
       }
