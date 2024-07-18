@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <form id="chartForm" method="POST" action="{{ route('ideas.update.elevator', ['id' => $idea->id]) }}">
+    <form id="chartForm" method="POST" action="{{ route('generateAndRedirect', ['id' => $idea->id]) }}">
         @csrf
         <div class="inner">
 
@@ -84,11 +84,6 @@
 
 
         </div>
-
-        {{-- <div class="next_page">
-            <button type="submit" class="draft" name="action" value="draft">下書き</button>
-            <button type="submit" class="delete" name="action" value="delete">削除する</button>
-        </div> --}}
 
     </form>
     <script src="{{ asset('js/enter_pitch.js') }}"></script>

@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateFeedbackTable extends Migration
 {
-
-    public function up(): void
+    public function up()
     {
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
@@ -22,12 +21,13 @@ class CreateFeedbackTable extends Migration
             $table->text('comment3');
             $table->text('comment4');
             $table->text('comment5');
+            $table->timestamps(); // created_atとupdated_atカラムを追加
 
             $table->foreign('idea_id')->references('id')->on('ideas')->onDelete('cascade');
         });
     }
 
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('feedback');
     }
