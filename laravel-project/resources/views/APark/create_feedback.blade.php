@@ -29,10 +29,6 @@
       <input type="hidden" name="self_chart4" value="{{ $idea->self_chart4 }}">
       <input type="hidden" name="self_chart5" value="{{ $idea->self_chart5 }}">
 
-  {{-- </form>
-
-    <form id="feedBackChartForm" method="POST" action="#">
-      @csrf --}}
       <input type="hidden" name="fb_chart1" value="1">
       <input type="hidden" name="fb_chart2" value="2">
       <input type="hidden" name="fb_chart3" value="3">

@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\OpenAIService;
+use App\Models\Idea; // Ideaモデルをインポート
 
 class OpenAIController extends Controller
 {
-    private $openAIService;
+    protected $openAIService;
 
     public function __construct(OpenAIService $openAIService)
     {
@@ -16,15 +17,14 @@ class OpenAIController extends Controller
 
     public function generate(Request $request)
     {
-        $prompt = $request->input('prompt', 'default prompt'); // 'prompt' をリクエストから取得
-        $generatedText = $this->openAIService->generateText($prompt); // OpenAIService を使ってテキスト生成
+        $prompt = $request->input('prompt');
+        $generatedText = $this->openAIService->generateText($prompt);
 
-        // 文字数制限を設定する（例：100文字に制限）
-        $maxLength = 3;
-        $generatedText = substr($generatedText, 0, $maxLength);
+        // 投稿されたアイデアのみを取得
+        $ideas = Idea::where('is_posted', '2')
+            ->orderBy('created_at', 'desc')
+            ->get();
 
-        // 結果をビューに渡して表示
-        return view('APark.home', ['generatedText' => $generatedText]);
+        return view('APark.home', compact('generatedText', 'ideas'));
     }
-
 }
