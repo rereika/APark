@@ -1,13 +1,12 @@
 let RadarCtx = document.getElementById('feedBackRadarChart');
 
-//レーダーチャートの作成
+// レーダーチャートの作成
 let radarConfig = {
   type: 'radar',
   data: {
     labels: ['類いない', '使用技術の正確性', '目新しさ', 'ストーリー性', 'わくわく'],
     datasets: [{
       label: 'Self',
-      //データベースから引っ張ってきたい
       data: [0, 0, 0, 0, 0],
       backgroundColor: 'rgba(255, 136, 136, 0.3)',  // 赤色の透明な背景色
       borderColor: 'rgb(255, 136, 136)',  // 赤色の境界線
@@ -24,14 +23,27 @@ let radarConfig = {
     plugins: {
       legend: {
         display: false // レジェンド（ラベル）を非表示にする
+      },
+      tooltip: {
+        callbacks: {
+          label: function (tooltipItem) {
+            let datasetLabel = tooltipItem.dataset.label;
+            if (datasetLabel === 'FB') {
+              let commentId = 'comment' + (tooltipItem.dataIndex + 1);
+              let comment = document.getElementById(commentId).innerText;
+              return comment;
+            } else {
+              return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
+            }
+          }
+        }
       }
     },
     scales: {
       r: {
         suggestedMin: 0,
         suggestedMax: 5,
-        ticks: {
-        },
+        ticks: {},
         pointLabels: {
           font: {
             size: 10
@@ -50,7 +62,7 @@ let radarConfig = {
 
 let radarChart = new Chart(RadarCtx, radarConfig);
 
-//チャートの更新
+// チャートの更新
 function feedBackUpdateChart() {
   let fbForm = document.getElementById('feedBackChartForm');
   let fbFormData = new FormData(fbForm);

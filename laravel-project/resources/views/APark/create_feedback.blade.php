@@ -17,9 +17,7 @@
 
   <div class="inner">
 
-    <h1>クリックするとFBが表示されます。</h1>
-
-    {{-- <form id="chartForm" method="POST" action="{{ route('ideas.show.self.radar.chart', ['id' => $idea->id]) }}"> --}}
+    <h1>カーソルを合わせるとFBが表示されます。</h1>
 
     <form id="feedBackChartForm">
 
@@ -29,23 +27,21 @@
       <input type="hidden" name="self_chart4" value="{{ $idea->self_chart4 }}">
       <input type="hidden" name="self_chart5" value="{{ $idea->self_chart5 }}">
 
-      <input type="hidden" name="fb_chart1" value="1">
-      <input type="hidden" name="fb_chart2" value="2">
-      <input type="hidden" name="fb_chart3" value="3">
-      <input type="hidden" name="fb_chart4" value="4">
-      <input type="hidden" name="fb_chart5" value="5">
+      <input type="hidden" name="fb_chart1" value="{{ $feedback->fb_chart1 }}">
+      <input type="hidden" name="fb_chart2" value="{{ $feedback->fb_chart2 }}">
+      <input type="hidden" name="fb_chart3" value="{{ $feedback->fb_chart3 }}">
+      <input type="hidden" name="fb_chart4" value="{{ $feedback->fb_chart4 }}">
+      <input type="hidden" name="fb_chart5" value="{{ $feedback->fb_chart5 }}">
 
     </form>
 
-
     @if(isset($feedback))
-    <p>{{ $feedback->comment1 }}</p>
-    <p>{{ $feedback->comment2 }}</p>
-    <p>{{ $feedback->comment3 }}</p>
-    <p>{{ $feedback->comment4 }}</p>
-    <p>{{ $feedback->comment5 }}</p>
-@endif
-
+    <p id="comment1">{{ $feedback->comment1 }}</p>
+    <p id="comment2">{{ $feedback->comment2 }}</p>
+    <p id="comment3">{{ $feedback->comment3 }}</p>
+    <p id="comment4">{{ $feedback->comment4 }}</p>
+    <p id="comment5">{{ $feedback->comment5 }}</p>
+    @endif
 
 
     <div class="chart">

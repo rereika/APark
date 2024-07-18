@@ -85,11 +85,6 @@
 
         </div>
 
-        {{-- <div class="next_page">
-            <button type="submit" class="draft" name="action" value="draft">下書き</button>
-            <button type="submit" class="delete" name="action" value="delete">削除する</button>
-        </div> --}}
-
     </form>
     <script src="{{ asset('js/enter_pitch.js') }}"></script>
 </body>

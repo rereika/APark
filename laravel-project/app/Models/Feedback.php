@@ -19,5 +19,7 @@ class Feedback extends Model{
         'comment3',
         'comment4',
         'comment5',
+        'created_at',
+        'updated_at'
     ];
 }
