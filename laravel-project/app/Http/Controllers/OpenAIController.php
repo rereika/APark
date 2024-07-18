@@ -16,19 +16,6 @@ class OpenAIController extends Controller
     {
         $this->openAIService = $openAIService;
     }
-
-    public function generate(Request $request)
-    {
-        $prompt = $request->input('prompt');
-        $generatedText = $this->openAIService->generateText($prompt);
-
-        $ideas = Idea::where('is_posted', '2')
-            ->orderBy('created_at', 'desc')
-            ->get();
-
-        return view('APark.home', compact('generatedText', 'ideas'));
-    }
-
     public function generateAndRedirect(Request $request, $id)
     {
         $idea = Idea::findOrFail($id);
