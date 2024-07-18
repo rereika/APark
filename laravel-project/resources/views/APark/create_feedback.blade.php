@@ -37,13 +37,16 @@
 
     </form>
 
-        {{-- <input type="hidden" name="fb_chart1" value="{{ $idea->fb_chart1 }}">
-        <input type="hidden" name="fb_chart2" value="{{ $idea->fb_chart2 }}">
-        <input type="hidden" name="fb_chart3" value="{{ $idea->fb_chart3 }}">
-        <input type="hidden" name="fb_chart4" value="{{ $idea->fb_chart4 }}">
-        <input type="hidden" name="fb_chart5" value="{{ $idea->fb_chart5 }}"> --}}
 
-    {{-- ChatGPTAPIのチャートを作成 --}}
+    @if(isset($feedback))
+    <p>{{ $feedback->comment1 }}</p>
+    <p>{{ $feedback->comment2 }}</p>
+    <p>{{ $feedback->comment3 }}</p>
+    <p>{{ $feedback->comment4 }}</p>
+    <p>{{ $feedback->comment5 }}</p>
+@endif
+
+
 
     <div class="chart">
       <canvas id="feedBackRadarChart"></canvas>

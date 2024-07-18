@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <form id="chartForm" method="POST" action="{{ route('ideas.update.elevator', ['id' => $idea->id]) }}">
+    <form id="chartForm" method="POST" action="{{ route('generateAndRedirect', ['id' => $idea->id]) }}">
         @csrf
         <div class="inner">
 
