@@ -4,8 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Idea extends Model{
+class Idea extends Model
+{
+    // モデルに関連するテーブル名
+    protected $table = 'ideas';
 
+    // 可変項目
     protected $fillable = [
         'id',
         'user_id',
@@ -19,4 +23,12 @@ class Idea extends Model{
         'elevator2',
         'how',
     ];
+
+    // 他のモデル設定や関数
+
+    // アイデアに関連するフィードバックを取得するリレーションシップ
+    public function feedbacks()
+    {
+        return $this->hasMany(Feedback::class, 'idea_id');
+    }
 }

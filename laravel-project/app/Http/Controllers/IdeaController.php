@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Idea;
+use App\Models\Feedback;
 use Illuminate\Support\Facades\Auth;
 
 class IdeaController extends Controller
@@ -131,16 +132,15 @@ public function index()
     {
         // 投稿されたアイデアのみを取得
         $ideas = Idea::where('is_posted', '2')
-->orderBy('created_at', 'desc')->get();
+                    ->with(['feedbacks' => function ($query) {
+                    $query->latest()->first();
+                    }])
+                    ->orderBy('created_at', 'desc')
+                    ->get();
 
         // ビューにデータを渡す
         return view('APark.home', ['ideas' => $ideas]);
     }
-
-    public function saveDraft(){
-
-    }
-
     public function draftToPitch($id){
 
         $idea = Idea::findOrFail($id);

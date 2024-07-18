@@ -35,5 +35,4 @@ Route::get('/ideas/draft/{id}', [IdeaController::class, 'showDraft'])->name('ide
 Route::get('/ideas/post/{id}', [IdeaController::class, 'postIdea'])->name('ideas.post');
 
 //APIテスト
-Route::post('/generate', [OpenAIController::class, 'generate'])->name('generate');
 Route::post('/generate/{id}', [OpenAIController::class, 'generateAndRedirect'])->name('generateAndRedirect');

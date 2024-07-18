@@ -54,7 +54,32 @@
                     <a href="{{ route('home', ['id' => $idea->id]) }}" class="preview-link">
                         <h1>{{ $idea->elevator1 }}</h1>
                     </a>
-                    <img src="{{ asset('image/sample_chart.png') }}" alt="サンプルチャート画像">
+                    <div class="chart">
+                        <canvas id="feedBackRadarChart"></canvas>
+                    </div>
+
+                    @if($idea->feedbacks->isNotEmpty())
+                    @foreach($idea->feedbacks as $feedback)
+
+                    <form id="feedBackChartForm">
+
+                        <input type="hidden" name="self_chart1" value="{{ $idea->self_chart1 }}">
+                        <input type="hidden" name="self_chart2" value="{{ $idea->self_chart2 }}">
+                        <input type="hidden" name="self_chart3" value="{{ $idea->self_chart3 }}">
+                        <input type="hidden" name="self_chart4" value="{{ $idea->self_chart4 }}">
+                        <input type="hidden" name="self_chart5" value="{{ $idea->self_chart5 }}">
+
+                        <input type="hidden" name="fb_chart1" value="{{ $feedback->fb_chart1 }}">
+                        <input type="hidden" name="fb_chart2" value="{{ $feedback->fb_chart2 }}">
+                        <input type="hidden" name="fb_chart3" value="{{ $feedback->fb_chart3 }}">
+                        <input type="hidden" name="fb_chart4" value="{{ $feedback->fb_chart4 }}">
+                        <input type="hidden" name="fb_chart5" value="{{ $feedback->fb_chart5 }}">
+
+                    </form>
+                    @endforeach
+                    @endif
+
+                    {{-- <img src="{{ asset('image/sample_chart.png') }}" alt="サンプルチャート画像"> --}}
                 </li>
             @endforeach
         </ul>
@@ -68,21 +93,12 @@
 
     <div class="idea-preview"></div>
 
-    <form action="{{ route('generate') }}" method="POST">
-        @csrf
-        <label for="prompt">Enter prompt:</label>
-        <input type="text" id="prompt" name="prompt">
-        <button type="submit">Generate Text</button>
-    </form>
-
-    @if(isset($generatedText))
-        <p>{{ $generatedText }}</p>
-    @endif
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-6/js/6-1-6.js"></script>
 <script src="{{ asset('js/home.js') }}"></script>
+<script src="{{ asset('js/create_feedback.js') }}"></script>
 </body>
 </html>
