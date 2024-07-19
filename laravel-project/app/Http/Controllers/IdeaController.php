@@ -64,49 +64,22 @@ class IdeaController extends Controller
         return view('APark.enter_pitch', ['idea' => $idea]);
     }
 
-    public function updateElevator(Request $request, $id)
+    public function draftDelete(Request $request)
 {
-    // $id = $request->input('idea_id');
 
-    $idea = Idea::findOrFail($id);
-    $idea->elevator1 = $request->elevator1;
-    $idea->elevator2 = $request->elevator2;
-    $idea->how = $request->how;
+    // 'delete'という名前のチェックボックスから送信された値を取得(配列)
+    $ids = $request->input('delete');
 
-    //戻るボタンが押された場合
-    if($request->input('action') === 'return_page'){
-        return view('APark.create_radar_chart', ['idea_id' => $idea]);
+    // 下書きが選択されていない場合は何もせずにリダイレクト
+    if (empty($ids)) {
+        return redirect()->route('get.list.draft')->with('message', '下書きが選択されていません。');
     }
 
-    // "結果を見る"ボタンが押された場合
-    if ($request->input('action') === 'proceed') {
-        $idea->is_posted = '1';
-        $idea->save();
-        return view('APark.create_feedback', ['idea' => $idea]);
-    }
+    // 選択された下書きを削除
+    Idea::whereIn('id', $ids)->delete();
 
-    // "保存する"ボタンが押された場合
-    if ($request->input('action') === 'draft') {
-        $idea->is_posted = '1';
-        $idea->save();
-
-        // return redirect()->route('get.draft', ['id' => $id]);
-        return self::showDraft(id:$id);
-    }
-
-        // "削除する"ボタンが押された場合
-        if ($request->input('action') === 'delete') {
-            try {
-                $idea->delete();
-                return redirect()->route('home')->with('success', 'アイデアが削除されました');
-            } catch (\Exception $e) {
-                // エラーメッセージを表示するためのデバッグ
-                return redirect()->route('home')->with('error', $e->getMessage());
-            }
-        }
-
-        // 他のアクションが処理されない場合のためのデフォルト戻り値
-        return redirect()->route('home')->with('error', '無効なアクションが指定されました');
+    // 削除完了後にリダイレクト
+    return redirect()->route('get.list.draft')->with('message', '選択された下書きが削除されました。');
 }
 
     public function showDraft($id)
@@ -141,6 +114,19 @@ public function index()
         // ビューにデータを渡す
         return view('APark.home', ['ideas' => $ideas]);
     }
+
+    public function destroy($id)
+    {
+        // 削除対象のレコードを取得
+        $idea = Idea::findOrFail($id);
+
+        // レコードを削除
+        $idea->delete();
+
+        // リダイレクトまたは応答を返す
+        return redirect()->route('home')->with('success', 'アイデアが削除されました。');
+    }
+
     public function draftToPitch($id){
 
         $idea = Idea::findOrFail($id);

@@ -16,6 +16,7 @@ Route::get('/my_page', [HomeController::class, 'myPage'])->name('get.my.page');
 Route::get('/ideas/draft/{id}', [IdeaController::class, 'showDraft'])->name('get.draft');
 Route::get('draft/enter_pitch/{id}', [IdeaController::class, 'draftToPitch'])->name('get.draft.to.pitch');
 Route::get('/draft', [IdeaController::class, 'listDraft'])->name('get.list.draft');
+Route::delete('/ideas/{id}', [IdeaController::class, 'destroy'])->name('ideas.destroy');
 
 
 
@@ -30,6 +31,7 @@ Route::get('/radar-chart/{id}', [App\Http\Controllers\IdeaController::class, 'sh
 
 //下書き保存のルート
 Route::get('/ideas/draft/{id}', [IdeaController::class, 'showDraft'])->name('ideas.show.draft');
+Route::post('/draft/delete', [IdeaController::class, 'draftDelete'])->name('ideas.draft.delete');
 
 //投稿
 Route::get('/ideas/post/{id}', [IdeaController::class, 'postIdea'])->name('ideas.post');

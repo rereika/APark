@@ -18,7 +18,11 @@
     @endif
 
     <div class="back_page">
-        <a href="{{ route('home')}}" class="back_home_btn" onclick="return notDraftMessage(event)">ホームへ戻る</a>
+        <form id="deleteIdeaForm" action="{{ route('ideas.destroy', $idea_id) }}" method="POST" style="display: none;">
+            @csrf
+            @method('DELETE')
+        </form>
+        <a href="{{ route('home')}}" class="back_home_btn" onclick="return confirmDelete()">ホームへ戻る</a>
     </div>
 
     <div class="inner">
