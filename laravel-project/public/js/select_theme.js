@@ -1,6 +1,10 @@
 
-function notdeleteMessage(event) {
-  confirm("下書きに保存しますか？");
+function confirmDelete() {
+  if (confirm('アイデアを削除します。よろしいですか？')) {
+    document.getElementById('deleteIdeaForm').submit();
+    return false; // フォーム送信後にリンクのデフォルトの動作を防ぐ
+  }
+  return false;
 }
 
 document.addEventListener('DOMContentLoaded', function () {
