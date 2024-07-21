@@ -1,3 +1,53 @@
+function TextTypingAnime() {
+  $('.TextTyping').each(function () {
+    let elemPos = $(this).offset().top - 50;
+    let scroll = $(window).scrollTop();
+    let windowHeight = $(window).height();
+    let thisChild = "";
+    if (scroll >= elemPos - windowHeight) {
+      thisChild = $(this).children(); //spanタグを取得
+      //spanタグの要素の１つ１つ処理を追加
+      thisChild.each(function (i) {
+        let time = 100;
+        //時差で表示する為にdelayを指定しその時間後にfadeInで表示させる
+        $(this).delay(time * i).fadeIn(time);
+      });
+    } else {
+      thisChild = $(this).children();
+      thisChild.each(function () {
+        $(this).stop(); //delay処理を止める
+        $(this).css("display", "none"); //spanタグ非表示
+      });
+    }
+  });
+}
+// 画面をスクロールをしたら動かしたい場合の記述
+$(window).scroll(function () {
+  TextTypingAnime();/* アニメーション用の関数を呼ぶ*/
+});// ここまで画面をスクロールをしたら動かしたい場合の記述
+
+// 画面が読み込まれたらすぐに動かしたい場合の記述
+$(window).on('load', function () {
+  //spanタグを追加する
+  let element = $(".TextTyping");
+  element.each(function () {
+    let text = $(this).html();
+    let textbox = "";
+    text.split('').forEach(function (t) {
+      if (t !== " ") {
+        textbox += '<span>' + t + '</span>';
+      } else {
+        textbox += t;
+      }
+    });
+    $(this).html(textbox);
+
+  });
+
+  TextTypingAnime();/* アニメーション用の関数を呼ぶ*/
+});// ここまで画面が読み込まれたらすぐに動かしたい場合の記述
+
+
 $('.slider').slick({
   autoplay: true,//自動的に動き出すか。初期値はfalse。
   infinite: true,//スライドをループさせるかどうか。初期値はtrue。
