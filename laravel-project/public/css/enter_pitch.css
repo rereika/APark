@@ -44,9 +44,10 @@ ul li {
   position: relative;
 }
 
-.next_page .draft {
+.next_page .draft,
+.next_page .delete {
   text-decoration: none;
-  font-size: 13px;
+  font-size: 15px;
   color: black;
   background-color: #ffffff;
   border: none;
@@ -57,7 +58,8 @@ ul li {
   /* カーソルをポインターに設定 */
 }
 
-.next_page .draft:hover {
+.next_page .draft:hover,
+.next_page .delete:hover {
   color: #FF385C;
 }
 

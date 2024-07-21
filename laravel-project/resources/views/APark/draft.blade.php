@@ -18,19 +18,19 @@
 
 <div class="inner">
 
-    <div class="header-container">
-        <div class="title-container">
-            <h1>下書き</h1>
-            @if (session('message'))
-            <p>{{ session('message') }}</p>
-            @endif
-        </div>
-        <div class="buttons-container">
-            <button id="editBtn">編集</button>
-            <button id="deleteBtn" class="delete-btn">削除</button>
-        </div>
+    {{-- <div class="header-container"> --}}
+    {{-- <div class="title-container"> --}}
+    <div class="buttons-container">
+        <button id="editBtn">編集</button>
+        <button id="deleteBtn" class="delete-btn">削除</button>
     </div>
+    <h1>下書き</h1>
+        @if (session('message'))
+            <p>{{ session('message') }}</p>
+        @endif
+    {{-- </div> --}}
 
+    {{-- </div> --}}
         <div class="draft-ideas">
         @if ($ideas->isEmpty())
         {{-- @if (!$ideas) --}}
