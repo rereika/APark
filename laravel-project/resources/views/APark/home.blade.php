@@ -43,7 +43,7 @@
 
 <div class="catch_copy">
     <img src="{{ asset('image/catch_copy.jpeg') }}" alt="キャッチコピー画像">
-    <p>アイデアの補助輪に乗り、<br>アプレンティスシップの旅に出よう！！</p>
+    <p class="TextTyping">アイデアの補助輪に乗り、<br>アプレンティスシップの旅に出よう！！</p>
 </div>
 
 <div class="main-contents">
