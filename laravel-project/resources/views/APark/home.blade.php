@@ -57,13 +57,13 @@
                         <h1>{{ $idea->elevator1 }}</h1>
                     </a>
                     <div class="chart">
-                        <canvas id="feedBackRadarChart"></canvas>
+                        <canvas name="feedBackRadarChart"></canvas>
                     </div>
 
                     @if($idea->feedbacks->isNotEmpty())
                     @foreach($idea->feedbacks as $feedback)
 
-                    <form id="feedBackChartForm">
+                    <form name="feedBackChartForm">
 
                         <input type="hidden" name="self_chart1" value="{{ $idea->self_chart1 }}">
                         <input type="hidden" name="self_chart2" value="{{ $idea->self_chart2 }}">
@@ -98,6 +98,6 @@
 </div>
 
 <script src="{{ asset('js/home.js') }}"></script>
-<script src="{{ asset('js/create_feedback.js') }}"></script>
+{{-- <script src="{{ asset('js/create_feedback.js') }}"></script> --}}
 </body>
 </html>
