@@ -60,8 +60,10 @@
                         <canvas name="feedBackRadarChart"></canvas>
                     </div>
 
-                    @if($idea->feedbacks->isNotEmpty())
+                    {{-- @if($idea->feedbacks->isNotEmpty()) --}}
+                    {{var_dump(count($idea->feedbacks));}}
                     @foreach($idea->feedbacks as $feedback)
+
 
                     <form name="feedBackChartForm">
 
@@ -79,7 +81,7 @@
 
                     </form>
                     @endforeach
-                    @endif
+                    {{-- @endif --}}
 
                     {{-- <img src="{{ asset('image/sample_chart.png') }}" alt="サンプルチャート画像"> --}}
                 </li>

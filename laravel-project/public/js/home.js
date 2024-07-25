@@ -95,13 +95,13 @@ let radarConfig = {
     labels: ['類いない', '使用技術の正確性', '目新しさ', 'ストーリー性', 'わくわく'],
     datasets: [{
       label: 'Self',
-      data: selfValues,
+      data: [0, 0, 0, 0, 0],
       backgroundColor: 'rgba(255, 136, 136, 0.3)',  // 赤色の透明な背景色
       borderColor: 'rgb(255, 136, 136)',  // 赤色の境界線
       borderWidth: 5
     }, {
       label: 'FB',
-      data: fbValues,
+      data: [0, 0, 0, 0, 0],
       backgroundColor: 'rgba(54, 162, 235, 0.2)',  // 青色の透明な背景色
       borderColor: 'rgba(54, 162, 235, 1)',  // 青色の境界線
       borderWidth: 5
@@ -148,41 +148,44 @@ let radarConfig = {
   }
 };
 
+let RadarCtx = document.getElementsByName('feedBackRadarChart');
+
+RadarCtx.forEach((r) => radarChart = new Chart(r, radarConfig));
 
 // let radarChart = new Chart(RadarCtx, radarConfig);
 
 // チャートの更新
-function feedBackUpdateChart(radarChart, index) {
-  let fbForm = document.getElementByName('feedBackChartForm')[index];
-  let fbFormData = new FormData(fbForm);
+function feedBackUpdateChart() {
+  let fbForms = document.getElementsByName('feedBackChartForm');
 
-  let selfValues = [
-    fbFormData.get('self_chart1'),
-    fbFormData.get('self_chart2'),
-    fbFormData.get('self_chart3'),
-    fbFormData.get('self_chart4'),
-    fbFormData.get('self_chart5')
-  ].map(Number);
+  fbForms.forEach((f) => {
+    let fbFormData = new FormData(f);
 
-  let fbValues = [
-    fbFormData.get('fb_chart1'),
-    fbFormData.get('fb_chart2'),
-    fbFormData.get('fb_chart3'),
-    fbFormData.get('fb_chart4'),
-    fbFormData.get('fb_chart5')
-  ].map(Number);
+    let selfValues = [
+      fbFormData.get('self_chart1'),
+      fbFormData.get('self_chart2'),
+      fbFormData.get('self_chart3'),
+      fbFormData.get('self_chart4'),
+      fbFormData.get('self_chart5')
+    ].map(Number);
 
-  radarChart.data.datasets[0].data = selfValues;
-  radarChart.data.datasets[1].data = fbValues;
-  radarChart.update();
+    let fbValues = [
+      fbFormData.get('fb_chart1'),
+      fbFormData.get('fb_chart2'),
+      fbFormData.get('fb_chart3'),
+      fbFormData.get('fb_chart4'),
+      fbFormData.get('fb_chart5')
+    ].map(Number);
+
+    radarChart.data.datasets[0].data = selfValues;
+    radarChart.data.datasets[1].data = fbValues;
+    radarChart.update();
+  });
 }
 
-let radarCharts = [];
-document.getElementsByName('feedBackRadarChart').forEach((ctx) => radarCharts.push(new Chart(ctx, radarConfig)));
+window.addEventListener('load', feedBackUpdateChart);
 
-// window.addEventListener('load', feedBackUpdateChart);
-window.addEventListener('load', () => radarCharts.forEach((chart, index) => feedBackUpdateChart(chart, index)));
-document.getElementById('feedBackChartForm').addEventListener('change', feedBackUpdateChart);
-
-// window.addEventListener('load', feedBackUpdateChart);
-// document.getElementById('feedBackChartForm').addEventListener('change', feedBackUpdateChart);
+// すべてのフォームに対して変更イベントを設定する
+document.getElementsByName('feedBackChartForm').forEach((form) => {
+  form.addEventListener('change', feedBackUpdateChart);
+});
