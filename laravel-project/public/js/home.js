@@ -148,18 +148,22 @@ let radarConfig = {
   }
 };
 
+// チャートの初期化
 let RadarCtx = document.getElementsByName('feedBackRadarChart');
+let radarCharts = [];
 
-RadarCtx.forEach((r) => radarChart = new Chart(r, radarConfig));
+RadarCtx.forEach((r) => {
+  radarCharts.push(new Chart(r, radarConfig));
+});
 
-// let radarChart = new Chart(RadarCtx, radarConfig);
 
 // チャートの更新
-function feedBackUpdateChart() {
-  let fbForms = document.getElementsByName('feedBackChartForm');
+function feedBackUpdateChart(event) {
+  let forms = document.getElementsByName('feedBackChartForm');
 
-  fbForms.forEach((f) => {
-    let fbFormData = new FormData(f);
+  // 各チャートに対して対応するフォームデータを設定
+  forms.forEach((form, index) => {
+    let fbFormData = new FormData(form);
 
     let selfValues = [
       fbFormData.get('self_chart1'),
@@ -177,15 +181,9 @@ function feedBackUpdateChart() {
       fbFormData.get('fb_chart5')
     ].map(Number);
 
-    radarChart.data.datasets[0].data = selfValues;
-    radarChart.data.datasets[1].data = fbValues;
-    radarChart.update();
+    // チャートのデータを更新
+    radarCharts[index].data.datasets[0].data = selfValues;
+    radarCharts[index].data.datasets[1].data = fbValues;
+    radarCharts[index].update();
   });
 }
-
-window.addEventListener('load', feedBackUpdateChart);
-
-// すべてのフォームに対して変更イベントを設定する
-document.getElementsByName('feedBackChartForm').forEach((form) => {
-  form.addEventListener('change', feedBackUpdateChart);
-});

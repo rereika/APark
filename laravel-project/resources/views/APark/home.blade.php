@@ -61,7 +61,7 @@
                     </div>
 
                     {{-- @if($idea->feedbacks->isNotEmpty()) --}}
-                    {{var_dump(count($idea->feedbacks));}}
+
                     @foreach($idea->feedbacks as $feedback)
 
 

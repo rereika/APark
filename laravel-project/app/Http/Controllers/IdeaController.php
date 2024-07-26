@@ -105,9 +105,10 @@ public function index()
     {
         // 投稿されたアイデアのみを取得
         $ideas = Idea::where('is_posted', '2')
-                    ->with(['feedbacks' => function ($query) {
-                    $query->latest()->first();
-                    }])
+                    // ->with(['feedbacks' => function ($query) {
+                    // $query->latest()->first();
+                    // }])
+                    ->with('feedbacks')
                     ->orderBy('created_at', 'desc')
                     ->get();
 
