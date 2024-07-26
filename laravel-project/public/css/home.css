@@ -105,34 +105,44 @@ a:hover {
 .catch_copy {
   position: relative;
   width: 100%;
+  height: 300px;
   background-color: #f8f7f6;
   display: flex;
   align-items: center;
-  justify-content: center;
   padding: 20px;
-  margin-top: 100px;
 }
 
-.catch_copy img {
-  width: 250px;
-  height: auto;
-  margin-right: 15px;
+.background-container {
+  flex-shrink: 0;
+  width: auto;
+  height: 100%;
 }
 
-.catch_copy p {
-  text-align: center;
-  font-size: 35px;
-  font-weight: bold;
+.background-image {
+  height: 100%;
+  width: auto;
+  display: block;
+}
+
+.TextTyping {
+  margin-left: 20px;
+  z-index: 2;
   color: #B42E31;
-  margin-left: 15px;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+#cursor {
   display: inline-block;
+  animation: blink 0.7s steps(1) infinite;
 }
 
 .TextTyping span {
   display: none;
 }
 
-/*文字列後ろの線の設定*/
 .TextTyping::after {
   content: "|";
   animation: typinganime .8s ease infinite;

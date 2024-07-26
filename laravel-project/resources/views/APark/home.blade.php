@@ -44,9 +44,15 @@
 </header>
 
 <div class="catch_copy">
-    <img src="{{ asset('image/catch_copy.jpeg') }}" alt="キャッチコピー画像">
-    <p class="TextTyping">アイデアの補助輪に乗り、<br>アプレンティスシップの旅に出よう！！</p>
+    <div class="background-container">
+        <img src="{{ asset('image/catch_copy.jpeg') }}" alt="キャッチコピー画像" class="background-image">
+    </div>
+    <p class="TextTyping">
+        アイデアの補助輪に乗り、<br>アプレンティスシップの旅に出よう！！
+    </p>
 </div>
+
+
 
 <div class="main-contents">
     <div class="new-ideas-box-animate">
