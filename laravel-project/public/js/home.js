@@ -187,3 +187,11 @@ function feedBackUpdateChart(event) {
     radarCharts[index].update();
   });
 }
+// Add START *2024/07/27*
+window.addEventListener('load', feedBackUpdateChart);
+
+// すべてのフォームに対して変更イベントを設定する
+document.getElementsByName('feedBackChartForm').forEach((form) => {
+  form.addEventListener('change', feedBackUpdateChart);
+});
+// Add END *2024/07/27*
