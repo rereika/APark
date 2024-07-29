@@ -20,14 +20,17 @@ header {
   border-radius: 8px;
   margin-top: 15px;
   position: absolute;
-  display: none;
   right: 0;
+  top: 100%;
+  z-index: 1000;
+  display: none;
 }
 
+/* アコーディオンメニュー内のリストスタイル */
 .accordion-content ul {
   list-style-type: none;
   padding: 0;
-  align-items: center;
+  margin: 0;
 }
 
 .home-menu {
@@ -131,7 +134,8 @@ a:hover {
   font-weight: bold;
   font-size: 30px;
   text-align: left;
-  white-space: nowrap;
+  /* white-space: nowrap; */
+  white-space: pre-wrap;
 }
 
 #cursor {

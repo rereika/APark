@@ -156,8 +156,6 @@ RadarCtx.forEach((r) => {
   radarCharts.push(new Chart(r, radarConfig));
 });
 
-
-// チャートの更新
 function feedBackUpdateChart(event) {
   let forms = document.getElementsByName('feedBackChartForm');
 
@@ -165,6 +163,7 @@ function feedBackUpdateChart(event) {
   forms.forEach((form, index) => {
     let fbFormData = new FormData(form);
 
+    // 各フォームからの値を取得
     let selfValues = [
       fbFormData.get('self_chart1'),
       fbFormData.get('self_chart2'),
@@ -187,11 +186,10 @@ function feedBackUpdateChart(event) {
     radarCharts[index].update();
   });
 }
-// Add START *2024/07/27*
+
 window.addEventListener('load', feedBackUpdateChart);
 
 // すべてのフォームに対して変更イベントを設定する
 document.getElementsByName('feedBackChartForm').forEach((form) => {
   form.addEventListener('change', feedBackUpdateChart);
 });
-// Add END *2024/07/27*
