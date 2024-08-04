@@ -88,104 +88,92 @@ function toggleAccordion(event) {
 }
 
 
+// 変更後 home.js
 // レーダーチャートの作成
-let radarConfig = {
-  type: 'radar',
-  data: {
-    labels: ['類いない', '使用技術の正確性', '目新しさ', 'ストーリー性', 'わくわく'],
-    datasets: [{
-      label: 'Self',
-      data: [0, 0, 0, 0, 0],
-      backgroundColor: 'rgba(255, 136, 136, 0.3)',  // 赤色の透明な背景色
-      borderColor: 'rgb(255, 136, 136)',  // 赤色の境界線
-      borderWidth: 5
-    }, {
-      label: 'FB',
-      data: [0, 0, 0, 0, 0],
-      backgroundColor: 'rgba(54, 162, 235, 0.2)',  // 青色の透明な背景色
-      borderColor: 'rgba(54, 162, 235, 1)',  // 青色の境界線
-      borderWidth: 5
-    }],
-  },
-  options: {
-    plugins: {
-      legend: {
-        display: false // レジェンド（ラベル）を非表示にする
-      },
-      tooltip: {
-        callbacks: {
-          label: function (tooltipItem) {
-            let datasetLabel = tooltipItem.dataset.label;
-            if (datasetLabel === 'FB') {
-              let commentId = 'comment' + (tooltipItem.dataIndex + 1);
-              let comment = document.getElementById(commentId).innerText;
-              return comment;
-            } else {
-              return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
+function createRadarChart(ctx, selfValues, fbValues) {
+  return new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: ['類いない', '使用技術の正確性', '目新しさ', 'ストーリー性', 'わくわく'],
+      datasets: [{
+        label: 'Self',
+        data: selfValues,
+        backgroundColor: 'rgba(255, 136, 136, 0.3)',  // 赤色の透明な背景色
+        borderColor: 'rgb(255, 136, 136)',  // 赤色の境界線
+        borderWidth: 5
+      }, {
+        label: 'FB',
+        data: fbValues,
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',  // 青色の透明な背景色
+        borderColor: 'rgba(54, 162, 235, 1)',  // 青色の境界線
+        borderWidth: 5
+      }],
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false // レジェンド（ラベル）を非表示にする
+        },
+        tooltip: {
+          callbacks: {
+            label: function (tooltipItem) {
+              let datasetLabel = tooltipItem.dataset.label;
+              if (datasetLabel === 'FB') {
+                let commentId = 'comment' + (tooltipItem.dataIndex + 1);
+                let comment = document.getElementById(commentId).innerText;
+                return comment;
+              } else {
+                return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
+              }
             }
           }
         }
-      }
-    },
-    scales: {
-      r: {
-        suggestedMin: 0,
-        suggestedMax: 5,
-        ticks: {},
-        pointLabels: {
-          font: {
-            size: 10
+      },
+      scales: {
+        r: {
+          suggestedMin: 0,
+          suggestedMax: 5,
+          ticks: {},
+          pointLabels: {
+            font: {
+              size: 10
+            }
           }
         }
-      }
-    },
-    layout: {
-      padding: {
-        top: 1,
-        bottom: 1,
+      },
+      layout: {
+        padding: {
+          top: 1,
+          bottom: 1,
+        }
       }
     }
-  }
-};
-
-// チャートの初期化
-let RadarCtx = document.getElementsByName('feedBackRadarChart');
-let radarCharts = [];
-
-RadarCtx.forEach((r) => {
-  radarCharts.push(new Chart(r, radarConfig));
-});
-
-function feedBackUpdateChart(event) {
-  let forms = document.getElementsByName('feedBackChartForm');
-
-  // 各チャートに対して対応するフォームデータを設定
-  forms.forEach((form, index) => {
-    let fbFormData = new FormData(form);
-
-    // 各フォームからの値を取得
-    let selfValues = [
-      fbFormData.get('self_chart1'),
-      fbFormData.get('self_chart2'),
-      fbFormData.get('self_chart3'),
-      fbFormData.get('self_chart4'),
-      fbFormData.get('self_chart5')
-    ].map(Number);
-
-    let fbValues = [
-      fbFormData.get('fb_chart1'),
-      fbFormData.get('fb_chart2'),
-      fbFormData.get('fb_chart3'),
-      fbFormData.get('fb_chart4'),
-      fbFormData.get('fb_chart5')
-    ].map(Number);
-
-    // チャートのデータを更新
-    radarCharts[index].data.datasets[0].data = selfValues;
-    radarCharts[index].data.datasets[1].data = fbValues;
-    radarCharts[index].update();
   });
 }
+
+// チャートの初期化
+window.addEventListener('load', () => {
+  const RadarCtx = document.getElementsByClassName('feedBackRadarChart');
+  Array.from(RadarCtx).forEach((ctx) => {
+    const selfValues = [
+      ctx.dataset.selfChart1,
+      ctx.dataset.selfChart2,
+      ctx.dataset.selfChart3,
+      ctx.dataset.selfChart4,
+      ctx.dataset.selfChart5
+    ].map(Number);
+
+    const fbValues = [
+      ctx.dataset.fbChart1,
+      ctx.dataset.fbChart2,
+      ctx.dataset.fbChart3,
+      ctx.dataset.fbChart4,
+      ctx.dataset.fbChart5
+    ].map(Number);
+
+    createRadarChart(ctx, selfValues, fbValues);
+  });
+});
 
 window.addEventListener('load', feedBackUpdateChart);
 
