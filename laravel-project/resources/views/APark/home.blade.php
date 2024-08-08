@@ -44,8 +44,11 @@
 </header>
 
 <div class="catch_copy">
-    <img src="{{ asset('image/catch_copy.jpeg') }}" alt="キャッチコピー画像">
-    <p class="TextTyping">アイデアの補助輪に乗り、<br>アプレンティスシップの旅に出よう！！</p>
+    <div class="background-container">
+        <img src="{{ asset('image/catch_copy.jpeg') }}" alt="キャッチコピー画像" class="background-image">
+    </div>
+    <p class="TextTyping">アイデアの補助輪に乗り、
+アプレンティスシップの旅に出よう！！</p>
 </div>
 
 <div class="main-contents">
@@ -57,13 +60,44 @@
                         <h1>{{ $idea->elevator1 }}</h1>
                     </a>
                     <div class="chart">
-                        <canvas id="feedBackRadarChart"></canvas>
+                        {{-- <canvas name="feedBackRadarChart"></canvas> --}}
+                        @if ($idea->feedbacks->isNotEmpty())
+                            @foreach($idea->feedbacks as $feedback)
+                                <canvas class="feedBackRadarChart"
+                                    data-self-chart1="{{ $idea->self_chart1 }}"
+                                    data-self-chart2="{{ $idea->self_chart2 }}"
+                                    data-self-chart3="{{ $idea->self_chart3 }}"
+                                    data-self-chart4="{{ $idea->self_chart4 }}"
+                                    data-self-chart5="{{ $idea->self_chart5 }}"
+                                    data-fb-chart1="{{ $feedback->fb_chart1 }}"
+                                    data-fb-chart2="{{ $feedback->fb_chart2 }}"
+                                    data-fb-chart3="{{ $feedback->fb_chart3 }}"
+                                    data-fb-chart4="{{ $feedback->fb_chart4 }}"
+                                    data-fb-chart5="{{ $feedback->fb_chart5 }}">
+                                </canvas>
+                            @endforeach
+                        @else
+                            <canvas class="feedBackRadarChart"
+                                data-self-chart1="{{ $idea->self_chart1 }}"
+                                data-self-chart2="{{ $idea->self_chart2 }}"
+                                data-self-chart3="{{ $idea->self_chart3 }}"
+                                data-self-chart4="{{ $idea->self_chart4 }}"
+                                data-self-chart5="{{ $idea->self_chart5 }}"
+                                data-fb-chart1="0"
+                                data-fb-chart2="0"
+                                data-fb-chart3="0"
+                                data-fb-chart4="0"
+                                data-fb-chart5="0">
+                            </canvas>
+                        @endif
                     </div>
 
-                    @if($idea->feedbacks->isNotEmpty())
-                    @foreach($idea->feedbacks as $feedback)
+                    {{-- @if($idea->feedbacks->isNotEmpty()) --}}
 
-                    <form id="feedBackChartForm">
+                    {{-- @foreach($idea->feedbacks as $feedback)
+
+
+                    <form name="feedBackChartForm">
 
                         <input type="hidden" name="self_chart1" value="{{ $idea->self_chart1 }}">
                         <input type="hidden" name="self_chart2" value="{{ $idea->self_chart2 }}">
@@ -78,8 +112,8 @@
                         <input type="hidden" name="fb_chart5" value="{{ $feedback->fb_chart5 }}">
 
                     </form>
-                    @endforeach
-                    @endif
+                    @endforeach --}}
+                    {{-- @endif --}}
 
                     {{-- <img src="{{ asset('image/sample_chart.png') }}" alt="サンプルチャート画像"> --}}
                 </li>
@@ -97,7 +131,8 @@
 
 </div>
 
+
 <script src="{{ asset('js/home.js') }}"></script>
-<script src="{{ asset('js/create_feedback.js') }}"></script>
+{{-- <script src="{{ asset('js/create_feedback.js') }}"></script> --}}
 </body>
 </html>

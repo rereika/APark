@@ -59,7 +59,7 @@ class OpenAIController extends Controller
 
             $feedback = new Feedback();
             $feedback->idea_id = $idea->id;
-
+/* デバッグ用にコメントアウト
             foreach ($prompts as $index => $prompt) {
                 $response = $this->openAIService->generateText($prompt);
                 Log::info(['prompt_response' => $response]); // レスポンスをログに出力
@@ -70,6 +70,22 @@ class OpenAIController extends Controller
                 $feedback->{'fb_chart' . ($index + 1)} = $scoreValue;
                 $feedback->{'comment' . ($index + 1)} = $response;
             }
+*/
+
+// Mock START
+            // APIモック。APIトークンを消費させないための簡易的なモックコード。
+            $feedback->{'fb_chart1'} = '1';
+            $feedback->{'fb_chart2'} = '2';
+            $feedback->{'fb_chart3'} = '3';
+            $feedback->{'fb_chart4'} = '4';
+            $feedback->{'fb_chart5'} = '5';
+
+            $feedback->{'comment1'} = json_decode($this->mockResponse('コメント１')->getContent(), true)['choices'][0]['message']['content'];
+            $feedback->{'comment2'} = json_decode($this->mockResponse('コメント２')->getContent(), true)['choices'][0]['message']['content'];
+            $feedback->{'comment3'} = json_decode($this->mockResponse('コメント３')->getContent(), true)['choices'][0]['message']['content'];
+            $feedback->{'comment4'} = json_decode($this->mockResponse('コメント４')->getContent(), true)['choices'][0]['message']['content'];
+            $feedback->{'comment5'} = json_decode($this->mockResponse('コメント５')->getContent(), true)['choices'][0]['message']['content'];
+// Mock END
 
             // デバッグ用のフィードバックデータをログに出力
             Log::info(['feedback' => $feedback]);
@@ -80,5 +96,26 @@ class OpenAIController extends Controller
         } else {
             return redirect()->route('home')->with('error', '無効なアクションが指定されました');
         }
+    }
+
+    // APIテスト用モック
+    private static function mockResponse($mockResponse){
+        return response()->json([
+            'id' => 'mock_chat_id',
+            'object' => 'chat.completion',
+            'created' => time(),
+            'model' => 'gpt-3.5-turbo',
+            'usage' => ['prompt_tokens' => 10, 'completion_tokens' => 10, 'total_tokens' => 20],
+            'choices' => [
+                [
+                    'message' => [
+                        'role' => 'assistant',
+                        'content' => $mockResponse,
+                    ],
+                    'finish_reason' => 'stop',
+                    'index' => 0,
+                ],
+            ],
+        ]);
     }
 }

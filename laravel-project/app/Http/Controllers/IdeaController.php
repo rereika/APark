@@ -102,18 +102,20 @@ public function showSelfRadarChart($id)
 
 
 public function index()
-    {
-        // 投稿されたアイデアのみを取得
-        $ideas = Idea::where('is_posted', '2')
-                    ->with(['feedbacks' => function ($query) {
-                    $query->latest()->first();
-                    }])
-                    ->orderBy('created_at', 'desc')
-                    ->get();
+{
+    $ideas = Idea::where('is_posted', '2')
+                ->with('feedbacks')
+                ->orderBy('created_at', 'desc')
+                ->get();
 
-        // ビューにデータを渡す
-        return view('APark.home', ['ideas' => $ideas]);
-    }
+    // dd($ideas); // ここでデータの内容を確認
+    // foreach($ideas as $idea){
+    //     var_dump($idea->id);
+    // }
+    // die;
+    return view('APark.home', ['ideas' => $ideas]);
+}
+
 
     public function destroy($id)
     {
