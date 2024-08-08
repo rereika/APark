@@ -175,9 +175,9 @@ window.addEventListener('load', () => {
   });
 });
 
-window.addEventListener('load', feedBackUpdateChart);
+// window.addEventListener('load', feedBackUpdateChart);
 
-// すべてのフォームに対して変更イベントを設定する
-document.getElementsByName('feedBackChartForm').forEach((form) => {
-  form.addEventListener('change', feedBackUpdateChart);
-});
+// // すべてのフォームに対して変更イベントを設定する
+// document.getElementsByName('feedBackChartForm').forEach((form) => {
+//   form.addEventListener('change', feedBackUpdateChart);
+// });
