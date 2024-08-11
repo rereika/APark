@@ -10,13 +10,17 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up()
-{
-    Schema::table('ideas', function (Blueprint $table) {
-        //0は保存も下書き保存もしない、1は下書き、2は投稿
-        $table->tinyInteger('is_posted')->default(0)->change();
-    });
-}
-
+    {
+        Schema::table('ideas', function (Blueprint $table) {
+            // カラムが存在しない場合は追加する
+            if (!Schema::hasColumn('ideas', 'is_posted')) {
+                $table->tinyInteger('is_posted')->default(0);
+            } else {
+                // 既存のカラムがあれば変更する
+                $table->tinyInteger('is_posted')->default(0)->change();
+            }
+        });
+    }
 
     /**
      * Reverse the migrations.
@@ -24,8 +28,9 @@ return new class extends Migration
     public function down()
     {
         Schema::table('ideas', function (Blueprint $table) {
-            $table->dropColumn('is_posted');
+            if (Schema::hasColumn('ideas', 'is_posted')) {
+                $table->dropColumn('is_posted');
+            }
         });
     }
-
 };
