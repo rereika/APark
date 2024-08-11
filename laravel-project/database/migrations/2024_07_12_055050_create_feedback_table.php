@@ -10,7 +10,7 @@ class CreateFeedbackTable extends Migration
     {
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('idea_id');
+            $table->unsignedInteger('idea_id');
             $table->integer('fb_chart1');
             $table->integer('fb_chart2');
             $table->integer('fb_chart3');
