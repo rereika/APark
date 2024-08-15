@@ -52,74 +52,55 @@
 </div>
 
 <div class="main-contents">
-    <div class="new-ideas-box-animate">
-        <ul class="slider">
-            @foreach($ideas as $idea)
-                <li>
-                    <a href="{{ route('home', ['id' => $idea->id]) }}" class="preview-link">
-                        <h1>{{ $idea->elevator1 }}</h1>
-                    </a>
-                    <div class="chart">
-                        {{-- <canvas name="feedBackRadarChart"></canvas> --}}
-                        @if ($idea->feedbacks->isNotEmpty())
-                            @foreach($idea->feedbacks as $feedback)
+    @if(session('ideas'))
+        @php
+            $ideas = session('ideas');
+        @endphp
+        <div class="new-ideas-box-animate">
+            <ul class="slider">
+                @foreach($ideas as $idea)
+                    <li>
+                        <a href="{{ route('home', ['id' => $idea->id]) }}" class="preview-link">
+                            <h1>{{ $idea->elevator1 }}</h1>
+                        </a>
+                        <div class="chart">
+                            @if ($idea->feedbacks->isNotEmpty())
+                                @foreach($idea->feedbacks as $feedback)
+                                    <canvas class="feedBackRadarChart"
+                                        data-self-chart1="{{ $idea->self_chart1 }}"
+                                        data-self-chart2="{{ $idea->self_chart2 }}"
+                                        data-self-chart3="{{ $idea->self_chart3 }}"
+                                        data-self-chart4="{{ $idea->self_chart4 }}"
+                                        data-self-chart5="{{ $idea->self_chart5 }}"
+                                        data-fb-chart1="{{ $feedback->fb_chart1 }}"
+                                        data-fb-chart2="{{ $feedback->fb_chart2 }}"
+                                        data-fb-chart3="{{ $feedback->fb_chart3 }}"
+                                        data-fb-chart4="{{ $feedback->fb_chart4 }}"
+                                        data-fb-chart5="{{ $feedback->fb_chart5 }}">
+                                    </canvas>
+                                @endforeach
+                            @else
                                 <canvas class="feedBackRadarChart"
                                     data-self-chart1="{{ $idea->self_chart1 }}"
                                     data-self-chart2="{{ $idea->self_chart2 }}"
                                     data-self-chart3="{{ $idea->self_chart3 }}"
                                     data-self-chart4="{{ $idea->self_chart4 }}"
                                     data-self-chart5="{{ $idea->self_chart5 }}"
-                                    data-fb-chart1="{{ $feedback->fb_chart1 }}"
-                                    data-fb-chart2="{{ $feedback->fb_chart2 }}"
-                                    data-fb-chart3="{{ $feedback->fb_chart3 }}"
-                                    data-fb-chart4="{{ $feedback->fb_chart4 }}"
-                                    data-fb-chart5="{{ $feedback->fb_chart5 }}">
+                                    data-fb-chart1="0"
+                                    data-fb-chart2="0"
+                                    data-fb-chart3="0"
+                                    data-fb-chart4="0"
+                                    data-fb-chart5="0">
                                 </canvas>
-                            @endforeach
-                        @else
-                            <canvas class="feedBackRadarChart"
-                                data-self-chart1="{{ $idea->self_chart1 }}"
-                                data-self-chart2="{{ $idea->self_chart2 }}"
-                                data-self-chart3="{{ $idea->self_chart3 }}"
-                                data-self-chart4="{{ $idea->self_chart4 }}"
-                                data-self-chart5="{{ $idea->self_chart5 }}"
-                                data-fb-chart1="0"
-                                data-fb-chart2="0"
-                                data-fb-chart3="0"
-                                data-fb-chart4="0"
-                                data-fb-chart5="0">
-                            </canvas>
-                        @endif
-                    </div>
-
-                    {{-- @if($idea->feedbacks->isNotEmpty()) --}}
-
-                    {{-- @foreach($idea->feedbacks as $feedback)
-
-
-                    <form name="feedBackChartForm">
-
-                        <input type="hidden" name="self_chart1" value="{{ $idea->self_chart1 }}">
-                        <input type="hidden" name="self_chart2" value="{{ $idea->self_chart2 }}">
-                        <input type="hidden" name="self_chart3" value="{{ $idea->self_chart3 }}">
-                        <input type="hidden" name="self_chart4" value="{{ $idea->self_chart4 }}">
-                        <input type="hidden" name="self_chart5" value="{{ $idea->self_chart5 }}">
-
-                        <input type="hidden" name="fb_chart1" value="{{ $feedback->fb_chart1 }}">
-                        <input type="hidden" name="fb_chart2" value="{{ $feedback->fb_chart2 }}">
-                        <input type="hidden" name="fb_chart3" value="{{ $feedback->fb_chart3 }}">
-                        <input type="hidden" name="fb_chart4" value="{{ $feedback->fb_chart4 }}">
-                        <input type="hidden" name="fb_chart5" value="{{ $feedback->fb_chart5 }}">
-
-                    </form>
-                    @endforeach --}}
-                    {{-- @endif --}}
-
-                    {{-- <img src="{{ asset('image/sample_chart.png') }}" alt="サンプルチャート画像"> --}}
-                </li>
-            @endforeach
-        </ul>
-    </div>
+                            @endif
+                        </div>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    @else
+        <p>アイデアはありません。</p>
+    @endif
 
     <div class="sort-by-theme">
         <button type="button" class="theme-button">チーム開発 DEV1</button>
@@ -130,7 +111,6 @@
     <div class="idea-preview"></div>
 
 </div>
-
 
 <script src="{{ asset('js/home.js') }}"></script>
 {{-- <script src="{{ asset('js/create_feedback.js') }}"></script> --}}

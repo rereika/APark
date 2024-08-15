@@ -1,0 +1,79 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F1F2F6;
+  margin: 0;
+}
+
+.inner {
+  width: 100%;
+  max-width: 1100px;
+  background-color: #FFFFFF;
+  margin: 70px auto;
+  padding: 50px;
+  box-sizing: border-box;
+  border: 0.5px solid #CCCC99;
+}
+
+h1 {
+  font-size: 35px;
+  text-align: center;
+}
+
+.highlight {
+  color: #FF385C;
+}
+
+
+.login,
+.form-group {
+  margin: 0 auto;
+  width: 30%;
+  max-width: 600px;
+}
+
+.title {
+  display: block;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+a {
+  display: block;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.submit {
+  text-align: center;
+  /* ボタンを中央に寄せる */
+  margin: 20px 0;
+  /* 上下のマージンを調整 */
+}
+
+.submit button {
+  margin: 0 auto;
+  width: 30%;
+  max-width: 600px;
+  padding: 10px 20px;
+  /* ボタンの内側のスペースを調整 */
+  border: none;
+  /* ボーダーを削除 */
+  background-color: #FF385C;
+  /* ボタンの背景色（調整可能） */
+  color: #FFFFFF;
+  /* ボタンの文字色（調整可能） */
+  cursor: pointer;
+  /* ポインターカーソルに変更 */
+}
+
+.submit button:hover {
+  background-color: #FF2A4D;
+}

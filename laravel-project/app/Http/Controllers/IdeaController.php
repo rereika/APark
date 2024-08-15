@@ -17,7 +17,7 @@ class IdeaController extends Controller
         $idea = new Idea();
 
          // 初期値として空文字と０を設定
-        $idea->theme = '';
+        $idea->theme = 0;
         $idea->user_id = 0;
         $idea->self_chart1 = 0;
         $idea->self_chart2 = 0;
