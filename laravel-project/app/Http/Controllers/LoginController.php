@@ -28,8 +28,8 @@ class LoginController extends Controller
         }
 
         // 認証失敗
-        return redirect()->route('login')
-                        ->withErrors(['email' => '認証に失敗しました。']);
+        return redirect()->route('login.show')
+                        ->withErrors(['email' => 'メールアドレスまたはパスワードが違います。']);
     }
 
     public function logout()

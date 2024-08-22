@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
 <body>
+<header>
+    <div class="logo">
+        <a href="{{ route('start.show') }}"><img src="{{ asset('image/logo3.png') }}" alt="ロゴ画像"></a>
+    </div>
+</header>
     <div class="inner">
     <h1><span class="highlight">APark</span>へようこそ！</h1>
         <form method="POST" action="{{ route('register') }}">

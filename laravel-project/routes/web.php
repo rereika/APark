@@ -15,25 +15,24 @@ require __DIR__.'/auth.php';
 
 // デフォルトのルートをログインページにリダイレクト
 Route::get('/', function () {
-    return redirect()->route('login');
-});
+    return view('APark.start');
+})->name('start');
+//     return redirect()->route('login');
+// });
 
-// 認証済みユーザー向けのダッシュボード
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
-// 認証済みユーザー向けのプロファイル管理
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// ログインフォームの表示
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login.show');
 
-// ログイン
-Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+// ログイン処理
 Route::post('login', [LoginController::class, 'login'])->name('login.submit');
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+// 認証されたユーザーだけがアクセスできる
+Route::get('home', [IdeaController::class, 'index'])->name('home')->middleware('auth');
+
+// 最初の画面へ戻る
+Route::get('start', [HomeController::class, 'showStartPage'])->name('start.show');
+
 
 
 //ユーザー登録

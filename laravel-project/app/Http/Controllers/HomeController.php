@@ -8,6 +8,10 @@ use App\Models\Create;
 
 class HomeController extends Controller
 {
+
+    public function showStartPage(){
+        return view('APark.start');
+    }
     public function index()
     {
         return view('APark.home');

@@ -4,11 +4,31 @@ body {
   margin: 0;
 }
 
+header {
+  height: 80px;
+  background-color: #FFFFFF;
+  margin: 0 calc(50% - 50vw);
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 190px;
+  display: flex;
+  align-items: center;
+  margin: 15px 15px;
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
+}
+
 .inner {
   width: 100%;
   max-width: 1100px;
   background-color: #FFFFFF;
-  margin: 70px auto;
+  margin: 30px auto;
   padding: 50px;
   box-sizing: border-box;
   border: 0.5px solid #CCCC99;
@@ -22,6 +42,20 @@ h1 {
 .highlight {
   color: #FF385C;
 }
+
+.error-messages {
+  color: red;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.error-messages p {
+  margin: 0;
+  font-weight: bold;
+  font-size: 13px;
+}
+
 
 
 .login,
@@ -76,4 +110,50 @@ a {
 
 .submit button:hover {
   background-color: #FF2A4D;
+}
+
+.whats_apark {
+  font-size: 30px;
+  text-align: center;
+  margin-top: 80px;
+}
+
+.arrow {
+  cursor: pointer;
+  font-size: 30px;
+  align-items: center;
+}
+
+#target {
+  margin-top: 1000px;
+  padding: 50px;
+  background-color: lightblue;
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 30px solid #FF2A4D;
+  /* 矢印の色 */
+  cursor: pointer;
+  animation: blinkMove 1.5s infinite;
+  display: inline-block;
+  margin: 20px auto;
+}
+
+@keyframes blinkMove {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateY(10px);
+    /* わずかに下に動かす */
+  }
 }
