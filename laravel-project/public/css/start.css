@@ -54,12 +54,30 @@ header {
 
 .catch_copy {
   display: flex;
-  justify-content: center;
   align-items: center;
   padding: 20px;
   background-color: #f8f7f6;
   height: 300px;
+  position: relative;
 }
+
+.catch_copy h2 {
+  flex-grow: 1;
+  /* テキストが残りのスペースを占める */
+  margin-left: 130px;
+}
+
+.app-image {
+  flex-shrink: 0;
+  /* 画像が縮まないようにする */
+  height: 100%;
+  /* 親の高さにフィット */
+  width: auto;
+  /* 自動で幅を調整 */
+  margin-right: 130px;
+}
+
+
 
 .main {
   width: 100%;
@@ -96,9 +114,32 @@ header {
 
 .how_to_use_section {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 20px;
   background-color: #f8f7f6;
-  height: 300px;
+  height: auto;
+  position: relative;
+}
+
+.how_to_use {
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+}
+
+.how_to_use_section ul {
+  margin-top: 50px;
+  /* 「使い方」の文字とリストの間に余白を追加 */
+}
+
+.how_to_use_section ul li {
+  list-style: none;
+}
+
+.how_to1 {
+  width: 40%;
+  height: auto;
 }
