@@ -16,20 +16,12 @@
     <div class="inner">
         <h1>ログイン</h1>
 
-        <!-- @if($errors->any())
-            <div class="error-messages">
-                @foreach($errors->all() as $error)
-                    <p>{{ $error }}</p>
-                @endforeach
-            </div>
-        @endif -->
-
         <form method="POST" action="{{ route('login.submit') }}">
             @csrf
 
             <div class="login">
-                <label for="email" class="title">メールアドレス</label>
-                <input id="email" type="email" name="email" class="input" required>
+                <label for="user_name" class="title">ユーザー名</label>
+                <input id="user_name" type="user_name" name="user_name" class="input" required>
 
                 <label for="password" class="title">パスワード</label>
                 <input id="password" type="password" name="password" class="input" required>

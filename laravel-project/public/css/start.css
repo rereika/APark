@@ -61,10 +61,30 @@ header {
   position: relative;
 }
 
-.catch_copy h2 {
-  flex-grow: 1;
-  /* テキストが残りのスペースを占める */
-  margin-left: 130px;
+.TextTyping {
+  text-align: center;
+}
+
+/*========= タイピング ===============*/
+
+.TextTyping span {
+  display: none;
+}
+
+/*文字列後ろの線の設定*/
+.TextTyping::after {
+  content: "|";
+  animation: typinganime .8s ease infinite;
+}
+
+@keyframes typinganime {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
 }
 
 .app-image {
@@ -124,7 +144,7 @@ header {
 }
 
 .how_to_use {
-  font-size: 30px;
+  font-size: 40px;
   font-weight: bold;
   position: absolute;
   top: 0;
@@ -139,7 +159,65 @@ header {
   list-style: none;
 }
 
+.how_to_use_title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.how_to_use_sub_section {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: flex-start;
+  margin-bottom: 20px;
+  /* セクション間のスペースを追加 */
+}
+
+.how_to_use_text_section {
+  display: flex;
+  /* フレックスボックスを使用して縦並びにする */
+  flex-direction: column;
+  /* 縦方向に並べる */
+  margin-right: 20px;
+  /* 画像とテキストの間にスペースを追加 */
+}
+
+.image_container {
+  align-self: flex-end;
+  /* 画像コンテナを右寄せにする */
+}
+
 .how_to1 {
-  width: 40%;
+  width: 30%;
   height: auto;
+  display: block;
+  margin-right: 0;
+}
+
+
+.list-2 {
+  list-style-type: none;
+  padding: 1em;
+  border: 2px solid #f2b3b3;
+  counter-reset: li;
+}
+
+.list-2 li {
+  display: flex;
+  align-items: center;
+  padding: .3em;
+}
+
+.list-2 li::before {
+  display: inline-block;
+  min-width: 1.7em;
+  margin-right: 5px;
+  border-radius: 50%;
+  background-color: #f2b3b3;
+  color: #fff;
+  font-weight: bold;
+  font-size: .75em;
+  line-height: 1.7em;
+  text-align: center;
+  content: counter(li);
+  counter-increment: li;
 }

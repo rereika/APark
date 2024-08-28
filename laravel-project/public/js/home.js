@@ -175,9 +175,26 @@ window.addEventListener('load', () => {
   });
 });
 
-// window.addEventListener('load', feedBackUpdateChart);
+document.addEventListener('DOMContentLoaded', function () {
+  const themeSelect = document.querySelector('select[name="theme_rank"]');
 
-// // すべてのフォームに対して変更イベントを設定する
-// document.getElementsByName('feedBackChartForm').forEach((form) => {
-//   form.addEventListener('change', feedBackUpdateChart);
-// });
+  themeSelect.addEventListener('change', function () {
+    const selectedValue = themeSelect.value;
+    if (selectedValue === "") {
+      return; // 何も選択されていない場合は処理しない
+    }
+
+    const form = document.createElement('form');
+    form.method = 'GET';
+    form.action = window.location.pathname; // 現在のパスを取得してフォームを送信
+
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'theme_rank';
+    input.value = selectedValue;
+
+    form.appendChild(input);
+    document.body.appendChild(form);
+    form.submit();
+  });
+});

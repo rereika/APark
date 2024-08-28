@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APark -それぞれがアイデアの補助輪に乗り、次なるアプレンティスシップの旅に出かけよう</title>
     <link rel="stylesheet" href="{{ asset('css/start.css') }}">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
@@ -18,8 +21,13 @@
         </div>
     </header>
     <div class="catch_copy">
-        <h2>APPRENTICE生が集まる公園、APark。<br>
-それぞれがアイデアの補助輪に乗り、<br>次なるアプレンティスシップの旅に出かけよう。</h2>
+    <p class="TextTyping">APPRENTICE生が集まる公園、APark。
+それぞれがアイデアの補助輪に乗り、
+次なるアプレンティスシップの旅に出かけよう。</p>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="http://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/move02/8-10/js/8-10.js"></script>
         <img src="{{ asset('image/app_image.png') }}" alt="アプリイメージ画像" class="app-image">
     </div>
 
@@ -38,36 +46,66 @@
         <div class="how_to_use_section">
             <p class="how_to_use">使い方</p>
 
-            <ul>
-                <li>
-                    <img src="{{ asset('image/how_to1.png') }}" alt="使い方画像1" class="how_to1">
-                    <p class="">テーマの選択</p>
-                    <p class="">今回のテーマを選びましょう。<br>選んだテーマに基づいて、AIがアドバイスを提供します。</p>
-                </li>
-                <li>
-                    <img src="{{ asset('image/how_to2.png') }}" alt="使い方画像2" class="how_to1">
-                    <p class="">目標の設定</p>
-                    <p class="">「こんなプロダクトを作りたい！」と思えるゴールを設定しましょう。<br>目標を明確にすることが成功の第一歩です。</p>
-                </li>
-                <li>
-                    <img src="{{ asset('image/how_to3.png') }}" alt="使い方画像3" class="how_to1">
-                    <p class="">アイデアの分析</p>
-                    <p class="">エレベーターピッチとプロダクトの機能をAIに入力します。<br>この情報をもとに、AIがアイデアを分析し、良い点や改善できる点についてフィードバックを提供します。<br>「エレベーターピッチって何？」という方は、この機会に調べてみましょう！</p>
-                </li>
-                <li>
-                    <img src="{{ asset('image/how_to4.png') }}" alt="使い方画像4" class="how_to1">
-                    <p class="">現状の把握</p>
-                    <p class="">AIからのフィードバックを確認します。<br>改善が必要な点が見つかった場合は、前のページに戻ってアイデアを再考しましょう。<br>時間を置いて考えたい場合は、下書き保存を活用しましょう。</p>
-                </li>
-                <li>
-                    <img src="{{ asset('image/how_to4.png') }}" alt="使い方画像4" class="how_to1">
-                    <p class="">アイデアをシェア</p>
-                    <p class="">アイデアが完成したら投稿しましょう。<br>他の人とアイデアを共有することでさらに磨きをかけることができます。</p>
-                </li>
+            <ul class="list-2">
+
+                    <div class="how_to_use_sub_section">
+                        <div class="how_to_use_text_section">
+                            <li>
+                                <p class="how_to_use_title">テーマの選択</p>
+                            </li>
+                            <p class="">今回のテーマを選びましょう。<br>選んだテーマに基づいて、AIがアドバイスを提供します。</p>
+                        </div>
+                        <img src="{{ asset('image/how_to1.png') }}" alt="使い方画像1" class="how_to1">
+                    </div>
+
+                    <div class="how_to_use_sub_section">
+                        <div class="how_to_use_text_section">
+                            <li>
+                                <p class="how_to_use_title">目標の設定</p>
+                            </li>
+                            <p class="">「こんなプロダクトを作りたい！」と思えるゴールを設定しましょう。<br>目標を明確にすることが成功の第一歩です。</p>
+                        </div>
+                        <img src="{{ asset('image/how_to2.png') }}" alt="使い方画像2" class="how_to1">
+                    </div>
+
+                    <div class="how_to_use_sub_section">
+                        <div class="how_to_use_text_section">
+                            <li>
+                                <p class="how_to_use_title">アイデアの分析</p>
+                            </li>
+                            <p class="">エレベーターピッチとプロダクトの機能をAIに入力します。<br>この情報をもとに、AIがアイデアを分析し、良い点や改善できる点についてフィードバックを提供します。<br>「エレベーターピッチって何？」という方は、この機会に調べてみましょう！</p>
+                        </div>
+                        <img src="{{ asset('image/how_to3.png') }}" alt="使い方画像3" class="how_to1">
+                    </div>
+
+                    <div class="how_to_use_sub_section">
+                        <div class="how_to_use_text_section">
+                            <li>
+                                <p class="how_to_use_title">現状の把握</p>
+                            </li>
+                            <p class="">AIからのフィードバックを確認します。<br>改善が必要な点が見つかった場合は、前のページに戻ってアイデアを再考しましょう。<br>時間を置いて考えたい場合は、下書き保存を活用しましょう。</p>
+                        </div>
+                        <img src="{{ asset('image/how_to4.png') }}" alt="使い方画像4" class="how_to1">
+                    </div>
+
+                    <div class="how_to_use_sub_section">
+                        <div class="how_to_use_text_section">
+                            <li>
+                                <p class="how_to_use_title">アイデアをシェア</p>
+                            </li>
+                            <p class="">アイデアが完成したら投稿しましょう。<br>他の人とアイデアを共有することでさらに磨きをかけることができます。</p>
+                        </div>
+                        <img src="{{ asset('image/how_to4.png') }}" alt="使い方画像5" class="how_to1">
+                    </div>
+
+                </div>
+                </div>
             </ul>
         </div>
+
     </div>
 
     <footer></footer>
+    <script src="{{ asset('js/start.js') }}"></script>
 </body>
 </html>

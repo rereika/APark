@@ -18,15 +18,15 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'email' => 'required|email|unique:users,email',
+            'user_name' => 'required|unique:users,user_name',
             'password' => 'required|confirmed|min:8',
-            'student_year' => 'required|integer|min:1|max:7',
+            'batch' => 'required|integer|min:1|max:7',
         ]);
 
         $user = new User();
-        $user->email = $request->email;
+        $user->user_name = $request->user_name;
         $user->password = Hash::make($request->password);
-        $user->student_year = $request->student_year;
+        $user->batch = $request->batch;
         $user->save();
 
         // $ideas を取得

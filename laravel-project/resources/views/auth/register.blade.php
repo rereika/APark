@@ -18,9 +18,9 @@
             @csrf
 
             <div class="form-group">
-                <label for="email" class="title">メールアドレス</label>
-                <input id="email" type="email" name="email" value="{{ old('email') }}" required class="input" placeholder="例：apark@example.com">
-                @error('email')
+                <label for="user_name" class="title">ユーザー名</label>
+                <input id="user_name" type="user_name" name="user_name" value="{{ old('user_name') }}" required class="input" placeholder="例：apark_admin">
+                @error('user_name')
                     <p class="error-message">{{ $message }}</p>
                 @enderror
             </div>
@@ -39,8 +39,8 @@
             </div>
 
             <div class="form-group">
-                <label for="student_year" class="title">期生</label>
-                <select id="student_year" name="student_year" required class="input">
+                <label for="batch" class="title">期生</label>
+                <select id="batch" name="batch" required class="input">
                     <option value="">選択してください</option>
                     @for ($i = 1; $i <= 7; $i++)
                         <option value="{{ $i }}">{{ $i }}期生</option>

@@ -264,6 +264,37 @@ a:hover {
   font-size: 15px;
 }
 
+.theme_select {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  font-size: 17px;
+}
+
+.theme_select::after {
+  position: absolute;
+  right: 15px;
+  width: 10px;
+  height: 7px;
+  background-color: #254625;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  content: '';
+  pointer-events: none;
+}
+
+.theme_select select {
+  appearance: none;
+  min-width: 230px;
+  height: 2.8em;
+  padding: .4em calc(.8em + 30px) .4em .8em;
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  background-color: #fff;
+  color: #052605;
+  font-size: 1em;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 640px) {
   header {
     height: 40px;
