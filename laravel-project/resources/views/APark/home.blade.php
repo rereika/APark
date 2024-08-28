@@ -52,10 +52,21 @@
 </div>
 
 <div class="main-contents">
-    @if(session('ideas'))
-        @php
-            $ideas = session('ideas');
-        @endphp
+
+    <p class="">最新のアイデア</p>
+    <form method="GET" action="{{ route('home') }}">
+    <label class="theme_select">
+        <select name="theme_rank" onchange="this.form.submit()">
+            <option value="">選択してください</option>
+            <option value="theme1" {{ request('theme_rank') == 'theme1' ? 'selected' : '' }}>チーム開発 DEV1</option>
+            <option value="theme2" {{ request('theme_rank') == 'theme2' ? 'selected' : '' }}>オリジナルプロダクト</option>
+            <option value="theme3" {{ request('theme_rank') == 'theme3' ? 'selected' : '' }}>チーム開発 DEV2</option>
+        </select>
+    </label>
+</form>
+
+
+    @if($ideas->isNotEmpty())
         <div class="new-ideas-box-animate">
             <ul class="slider">
                 @foreach($ideas as $idea)
@@ -102,13 +113,6 @@
         <p>アイデアはありません。</p>
     @endif
 
-    <div class="sort-by-theme">
-        <button type="button" class="theme-button">チーム開発 DEV1</button>
-        <button type="button" class="theme-button">オリジナルプロダクト</button>
-        <button type="button" class="theme-button">チーム開発 DEV2</button>
-    </div>
-
-    <div class="idea-preview"></div>
 
 </div>
 

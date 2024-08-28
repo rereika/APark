@@ -33,14 +33,12 @@ Route::get('home', [IdeaController::class, 'index'])->name('home')->middleware('
 // 最初の画面へ戻る
 Route::get('start', [HomeController::class, 'showStartPage'])->name('start.show');
 
-
-
 //ユーザー登録
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register.show');
 Route::post('register', [RegisterController::class, 'register'])->name('register');
-Route::get('home', function () {
-    return view('APark.home');
-})->name('home');
+// Route::get('home', function () {
+//     return view('APark.home');
+// })->name('home');
 
 
 // 画面遷移用のルート
@@ -72,3 +70,6 @@ Route::middleware('auth')->group(function () {
 
 // APIテスト
 Route::post('/generate/{id}', [OpenAIController::class, 'generateAndRedirect'])->name('generateAndRedirect');
+
+
+Route::get('/ideas', [IdeaController::class, 'getIdeas'])->name('ideas.get');

@@ -101,20 +101,53 @@ public function showSelfRadarChart($id)
 }
 
 
-public function index()
+public function index(Request $request)
 {
-    $ideas = Idea::where('is_posted', '2')
-                ->with('feedbacks')
-                ->orderBy('created_at', 'desc')
-                ->get();
+    $theme = $request->input('theme_rank');
 
-    // dd($ideas); // ここでデータの内容を確認
-    // foreach($ideas as $idea){
-    //     var_dump($idea->id);
-    // }
-    // die;
+    if ($theme == 'theme1') {
+        $ideas = Idea::where('theme', 1)
+                    ->where('is_posted', '2')
+                    ->with('feedbacks')
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+    } elseif ($theme == 'theme2') {
+        $ideas = Idea::where('theme', 2)
+                    ->where('is_posted', '2')
+                    ->with('feedbacks')
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+    } elseif ($theme == 'theme3') {
+        $ideas = Idea::where('theme', 3)
+                    ->where('is_posted', '2')
+                    ->with('feedbacks')
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+    } else {
+        $ideas = Idea::where('is_posted', '2')
+                    ->with('feedbacks')
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+    }
+
     return view('APark.home', ['ideas' => $ideas]);
 }
+
+
+// public function index()
+// {
+//     $ideas = Idea::where('is_posted', '2')
+//                 ->with('feedbacks')
+//                 ->orderBy('created_at', 'desc')
+//                 ->get();
+
+//     // dd($ideas); // ここでデータの内容を確認
+//     // foreach($ideas as $idea){
+//     //     var_dump($idea->id);
+//     // }
+//     // die;
+//     return view('APark.home', ['ideas' => $ideas]);
+// }
 
 
     public function destroy($id)
@@ -152,6 +185,20 @@ public function index()
     // APark.home ビューにデータを渡して表示
     return view('APark.home', ['ideas' => $ideas]);
 }
+
+public function getIdeas(Request $request)
+    {
+        // クエリパラメータからテーマIDを取得
+        $themeId = $request->query('theme_id');
+
+        // テーマIDに基づいてアイデアを取得
+        $ideas = Idea::where('theme', $themeId)->with('feedbacks')->get();
+
+        // データをJSON形式で返す
+        return response()->json([
+            'ideas' => $ideas
+        ]);
+    }
 
 
 }

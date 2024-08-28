@@ -4,6 +4,10 @@
   margin: 0 auto;
 }
 
+.inner {
+  background-color: #f8f7f6;
+}
+
 .status {
   display: flex;
   align-items: center;

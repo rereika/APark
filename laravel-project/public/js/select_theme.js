@@ -4,8 +4,9 @@ function confirmDelete() {
     document.getElementById('deleteIdeaForm').submit();
     return false; // フォーム送信後にリンクのデフォルトの動作を防ぐ
   }
-  return false;
+  return false; // ユーザーがキャンセルした場合のデフォルト動作を防ぐ
 }
+
 
 document.addEventListener('DOMContentLoaded', function () {
   let buttons = document.querySelectorAll('.choice'); // 全ての.choice要素を取得
