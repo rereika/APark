@@ -48,10 +48,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/create_radar_chart/{id}', [HomeController::class, 'createRadarChart'])->name('get.create.radar.chart');
     Route::get('/enter_pitch/{id}', [HomeController::class, 'enterPitch'])->name('get.enter.pitch');
     Route::get('/create_feedback/{id}', [HomeController::class, 'createFeedback'])->name('get.create.feed.back');
-    Route::get('/my_page', [HomeController::class, 'myPage'])->name('get.my.page');
+    // Route::get('/my_page', [HomeController::class, 'myPage'])->name('get.my.page');
     Route::get('/ideas/draft/{id}', [IdeaController::class, 'showDraft'])->name('get.draft');
     Route::get('draft/enter_pitch/{id}', [IdeaController::class, 'draftToPitch'])->name('get.draft.to.pitch');
     Route::get('/draft', [IdeaController::class, 'listDraft'])->name('get.list.draft');
+    Route::get('/my_page', [IdeaController::class, 'showMyPage'])->name('get.my.page');
     Route::delete('/ideas/{id}', [IdeaController::class, 'destroy'])->name('ideas.destroy');
 
     // データ作成用のルート
