@@ -16,9 +16,10 @@ class IdeaController extends Controller
         // 新しいIdeaモデルのインスタンスを作成
         $idea = new Idea();
 
+        $idea->user_id = Auth::id();
+
          // 初期値として空文字と０を設定
         $idea->theme = 0;
-        $idea->user_id = 0;
         $idea->self_chart1 = 0;
         $idea->self_chart2 = 0;
         $idea->self_chart3 = 0;
@@ -31,7 +32,6 @@ class IdeaController extends Controller
 
         // モデルのインスタンスをデータベースに保存
         $idea->save();
-
 
         return redirect()->route('get.select.theme', ['id' => $idea->id]);
     }
@@ -84,7 +84,8 @@ class IdeaController extends Controller
 
     public function showDraft($id)
 {
-    $ideas = Idea::where('is_posted', '1')->orderBy('created_at', 'desc')->get();
+    $userId = Auth::id();
+    $ideas = Idea::where('user_id', $userId)->orderBy('created_at', 'desc')->get();
     return view('APark.draft', ['ideas' => $ideas, 'idea_id' => $id]);
 }
 
@@ -92,6 +93,13 @@ public function listDraft()
 {
     $ideas = Idea::where('is_posted', '1')->orderBy('created_at', 'desc')->get();
     return view('APark.draft', ['ideas' => $ideas]);
+}
+
+public function showMyPage()
+{
+    $userId = Auth::id();
+    $ideas = Idea::where('user_id', $userId)->orderBy('created_at', 'desc')->get();
+    return view('APark.my_page', ['ideas' => $ideas]);
 }
 
 public function showSelfRadarChart($id)
