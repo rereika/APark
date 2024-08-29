@@ -29,6 +29,7 @@ Route::post('login', [LoginController::class, 'login'])->name('login.submit');
 
 // 認証されたユーザーだけがアクセスできる
 Route::get('home', [IdeaController::class, 'index'])->name('home')->middleware('auth');
+Route::get('themeRankList', [IdeaController::class, 'themeRankList'])->name('themeRankList')->middleware('auth');
 
 // 最初の画面へ戻る
 Route::get('start', [HomeController::class, 'showStartPage'])->name('start.show');

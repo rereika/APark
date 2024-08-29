@@ -175,26 +175,64 @@ window.addEventListener('load', () => {
   });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-  const themeSelect = document.querySelector('select[name="theme_rank"]');
+document.addEventListener('DOMContentLoaded', () => {
+  const modalOpenButtons = document.querySelectorAll('.js-modal-open');
+  const modalCloseButtons = document.querySelectorAll('.js-modal-close');
+  const modals = document.querySelectorAll('.js-modal');
 
-  themeSelect.addEventListener('change', function () {
-    const selectedValue = themeSelect.value;
-    if (selectedValue === "") {
-      return; // 何も選択されていない場合は処理しない
-    }
+  // モーダルを開く
+  modalOpenButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      const modal = button.closest('li').querySelector('.js-modal');
+      if (modal) {
+        modal.classList.add('is-active');
+      }
+    });
+  });
 
-    const form = document.createElement('form');
-    form.method = 'GET';
-    form.action = window.location.pathname; // 現在のパスを取得してフォームを送信
+  // モーダルを閉じる
+  modalCloseButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      const modal = button.closest('.js-modal');
+      if (modal) {
+        modal.classList.remove('is-active');
+      }
+    });
+  });
 
-    const input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = 'theme_rank';
-    input.value = selectedValue;
-
-    form.appendChild(input);
-    document.body.appendChild(form);
-    form.submit();
+  // モーダルの外側をクリックして閉じる
+  modals.forEach(modal => {
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.classList.remove('is-active');
+      }
+    });
   });
 });
+
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   const themeSelect = document.querySelector('select[name="theme_rank"]');
+
+//   themeSelect.addEventListener('change', function () {
+//     const selectedValue = themeSelect.value;
+//     if (selectedValue === "") {
+//       return; // 何も選択されていない場合は処理しない
+//     }
+
+//     const form = document.createElement('form');
+//     form.method = 'GET';
+//     form.action = window.location.pathname; // 現在のパスを取得してフォームを送信
+
+//     const input = document.createElement('input');
+//     input.type = 'hidden';
+//     input.name = 'theme_rank';
+//     input.value = selectedValue;
+
+//     form.appendChild(input);
+//     document.body.appendChild(form);
+//     form.submit();
+//   });
+// });
