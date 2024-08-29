@@ -101,7 +101,7 @@ public function showSelfRadarChart($id)
 }
 
 
-public function index(Request $request)
+public function themeRankList(Request $request)
 {
     $theme = $request->input('theme_rank');
 
@@ -134,20 +134,20 @@ public function index(Request $request)
 }
 
 
-// public function index()
-// {
-//     $ideas = Idea::where('is_posted', '2')
-//                 ->with('feedbacks')
-//                 ->orderBy('created_at', 'desc')
-//                 ->get();
+public function index()
+{
+    $ideas = Idea::where('is_posted', '2')
+                ->with('feedbacks')
+                ->orderBy('created_at', 'desc')
+                ->get();
 
-//     // dd($ideas); // ここでデータの内容を確認
-//     // foreach($ideas as $idea){
-//     //     var_dump($idea->id);
-//     // }
-//     // die;
-//     return view('APark.home', ['ideas' => $ideas]);
-// }
+    // dd($ideas); // ここでデータの内容を確認
+    // foreach($ideas as $idea){
+    //     var_dump($idea->id);
+    // }
+    // die;
+    return view('APark.home', ['ideas' => $ideas]);
+}
 
 
     public function destroy($id)

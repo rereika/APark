@@ -53,11 +53,11 @@
 
 <div class="main-contents">
 
-    <p class="">最新のアイデア</p>
-    <form method="GET" action="{{ route('home') }}">
+    <p class="theme_select_title">最新のアイデア</p>
+    <form action="{{ route('themeRankList') }}" method="GET">
     <label class="theme_select">
         <select name="theme_rank" onchange="this.form.submit()">
-            <option value="">選択してください</option>
+            <option value="">全て</option>
             <option value="theme1" {{ request('theme_rank') == 'theme1' ? 'selected' : '' }}>チーム開発 DEV1</option>
             <option value="theme2" {{ request('theme_rank') == 'theme2' ? 'selected' : '' }}>オリジナルプロダクト</option>
             <option value="theme3" {{ request('theme_rank') == 'theme3' ? 'selected' : '' }}>チーム開発 DEV2</option>
@@ -71,12 +71,15 @@
             <ul class="slider">
                 @foreach($ideas as $idea)
                     <li>
-                        <a href="{{ route('home', ['id' => $idea->id]) }}" class="preview-link">
+                        {{-- <a href="{{ route('home', ['id' => $idea->id]) }}" class="preview-link"> --}}
                             <h1>{{ $idea->elevator1 }}</h1>
-                        </a>
+                        {{-- </a> --}}
+
                         <div class="chart">
                             @if ($idea->feedbacks->isNotEmpty())
                                 @foreach($idea->feedbacks as $feedback)
+                                <div class="image-container">
+                                <button class="modal-open js-modal-open">
                                     <canvas class="feedBackRadarChart"
                                         data-self-chart1="{{ $idea->self_chart1 }}"
                                         data-self-chart2="{{ $idea->self_chart2 }}"
@@ -89,8 +92,10 @@
                                         data-fb-chart4="{{ $feedback->fb_chart4 }}"
                                         data-fb-chart5="{{ $feedback->fb_chart5 }}">
                                     </canvas>
+                                </div>
                                 @endforeach
                             @else
+                            <div class="image-container">
                                 <canvas class="feedBackRadarChart"
                                     data-self-chart1="{{ $idea->self_chart1 }}"
                                     data-self-chart2="{{ $idea->self_chart2 }}"
@@ -103,15 +108,34 @@
                                     data-fb-chart4="0"
                                     data-fb-chart5="0">
                                 </canvas>
+                            </div>
+                        </button>
                             @endif
                         </div>
+
+                        <!-- モーダル本体 -->
+                        <div class="modal js-modal">
+                            <div class="modal-container">
+                                <div class="modal-close js-modal-close">×</div>
+                                <div class="modal-content">
+                                    <p>{{ $idea->elevator1 }}</p>
+                                </div>
+                            </div>
+                        </div>
                     </li>
+
                 @endforeach
             </ul>
         </div>
     @else
         <p>アイデアはありません。</p>
     @endif
+
+
+
+
+
+
 
 
 </div>
