@@ -20,7 +20,8 @@
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.0",
         "phpunit/phpunit": "^11.0.1",
-        "pragmarx/google2fa-laravel": "^2.2"
+        "pragmarx/google2fa-laravel": "^2.2",
+        "squizlabs/php_codesniffer": "^3.10"
     },
     "autoload": {
         "psr-4": {
