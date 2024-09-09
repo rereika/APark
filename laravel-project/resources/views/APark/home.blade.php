@@ -47,97 +47,149 @@
     <div class="background-container">
         <img src="{{ asset('image/catch_copy.jpeg') }}" alt="キャッチコピー画像" class="background-image">
     </div>
-    <p class="TextTyping">アイデアの補助輪に乗り、
-アプレンティスシップの旅に出よう！！</p>
+    <p class="TextTyping">アイデアの補助輪に乗り、アプレンティスシップの旅に出よう！！</p>
 </div>
 
 <div class="main-contents">
-
     <p class="theme_select_title">最新のアイデア</p>
     <form action="{{ route('themeRankList') }}" method="GET">
-    <label class="theme_select">
-        <select name="theme_rank" onchange="this.form.submit()">
-            <option value="">全て</option>
-            <option value="theme1" {{ request('theme_rank') == 'theme1' ? 'selected' : '' }}>チーム開発 DEV1</option>
-            <option value="theme2" {{ request('theme_rank') == 'theme2' ? 'selected' : '' }}>オリジナルプロダクト</option>
-            <option value="theme3" {{ request('theme_rank') == 'theme3' ? 'selected' : '' }}>チーム開発 DEV2</option>
-        </select>
-    </label>
-</form>
-
+        <label class="theme_select">
+            <select name="theme_rank" onchange="this.form.submit()">
+                <option value="">全て</option>
+                <option value="theme1" {{ request('theme_rank') == 'theme1' ? 'selected' : '' }}>チーム開発 DEV1</option>
+                <option value="theme2" {{ request('theme_rank') == 'theme2' ? 'selected' : '' }}>オリジナルプロダクト</option>
+                <option value="theme3" {{ request('theme_rank') == 'theme3' ? 'selected' : '' }}>チーム開発 DEV2</option>
+            </select>
+        </label>
+    </form>
 
     @if($ideas->isNotEmpty())
         <div class="new-ideas-box-animate">
             <ul class="slider">
-                @foreach($ideas as $idea)
+            @foreach($ideas as $index => $idea)
+                {{-- @foreach($ideas as $idea) --}}
                     <li>
-                        {{-- <a href="{{ route('home', ['id' => $idea->id]) }}" class="preview-link"> --}}
-                            <h1>{{ $idea->elevator1 }}</h1>
-                        {{-- </a> --}}
-
+                        <h1>{{ $idea->elevator1 }}</h1>
                         <div class="chart">
                             @if ($idea->feedbacks->isNotEmpty())
                                 @foreach($idea->feedbacks as $feedback)
-                                <div class="image-container">
-                                <button class="modal-open js-modal-open">
+
+
+                                    <div class="image-container">
+                                        <button class="modal-open js-modal-open" data-modal-id="modal-{{ $index }}">
+                                            <canvas class="feedBackRadarChart"
+                                                data-self-chart1="{{ $idea->self_chart1 }}"
+                                                data-self-chart2="{{ $idea->self_chart2 }}"
+                                                data-self-chart3="{{ $idea->self_chart3 }}"
+                                                data-self-chart4="{{ $idea->self_chart4 }}"
+                                                data-self-chart5="{{ $idea->self_chart5 }}"
+                                                data-fb-chart1="{{ $feedback->fb_chart1 }}"
+                                                data-fb-chart2="{{ $feedback->fb_chart2 }}"
+                                                data-fb-chart3="{{ $feedback->fb_chart3 }}"
+                                                data-fb-chart4="{{ $feedback->fb_chart4 }}"
+                                                data-fb-chart5="{{ $feedback->fb_chart5 }}">
+                                            </canvas>
+                                        </button>
+                                    </div>
+
+                                    {{-- <div class="image-container">
+                                        <button class="modal-open js-modal-open">
+                                            <canvas class="feedBackRadarChart"
+                                                data-self-chart1="{{ $idea->self_chart1 }}"
+                                                data-self-chart2="{{ $idea->self_chart2 }}"
+                                                data-self-chart3="{{ $idea->self_chart3 }}"
+                                                data-self-chart4="{{ $idea->self_chart4 }}"
+                                                data-self-chart5="{{ $idea->self_chart5 }}"
+                                                data-fb-chart1="{{ $feedback->fb_chart1 }}"
+                                                data-fb-chart2="{{ $feedback->fb_chart2 }}"
+                                                data-fb-chart3="{{ $feedback->fb_chart3 }}"
+                                                data-fb-chart4="{{ $feedback->fb_chart4 }}"
+                                                data-fb-chart5="{{ $feedback->fb_chart5 }}">
+                                            </canvas>
+                                        </button>
+                                    </div> --}}
+                                @endforeach
+                            @else
+                                {{-- <div class="image-container">
                                     <canvas class="feedBackRadarChart"
                                         data-self-chart1="{{ $idea->self_chart1 }}"
                                         data-self-chart2="{{ $idea->self_chart2 }}"
                                         data-self-chart3="{{ $idea->self_chart3 }}"
                                         data-self-chart4="{{ $idea->self_chart4 }}"
                                         data-self-chart5="{{ $idea->self_chart5 }}"
-                                        data-fb-chart1="{{ $feedback->fb_chart1 }}"
-                                        data-fb-chart2="{{ $feedback->fb_chart2 }}"
-                                        data-fb-chart3="{{ $feedback->fb_chart3 }}"
-                                        data-fb-chart4="{{ $feedback->fb_chart4 }}"
-                                        data-fb-chart5="{{ $feedback->fb_chart5 }}">
+                                        data-fb-chart1="0"
+                                        data-fb-chart2="0"
+                                        data-fb-chart3="0"
+                                        data-fb-chart4="0"
+                                        data-fb-chart5="0">
                                     </canvas>
-                                </div>
-                                @endforeach
-                            @else
-                            <div class="image-container">
-                                <canvas class="feedBackRadarChart"
-                                    data-self-chart1="{{ $idea->self_chart1 }}"
-                                    data-self-chart2="{{ $idea->self_chart2 }}"
-                                    data-self-chart3="{{ $idea->self_chart3 }}"
-                                    data-self-chart4="{{ $idea->self_chart4 }}"
-                                    data-self-chart5="{{ $idea->self_chart5 }}"
-                                    data-fb-chart1="0"
-                                    data-fb-chart2="0"
-                                    data-fb-chart3="0"
-                                    data-fb-chart4="0"
-                                    data-fb-chart5="0">
-                                </canvas>
-                            </div>
-                        </button>
+                                </div> --}}
                             @endif
                         </div>
-
-                        <!-- モーダル本体 -->
-                        <div class="modal js-modal">
-                            <div class="modal-container">
-                                <div class="modal-close js-modal-close">×</div>
-                                <div class="modal-content">
-                                    <p>{{ $idea->elevator1 }}</p>
-                                </div>
-                            </div>
-                        </div>
                     </li>
-
                 @endforeach
             </ul>
         </div>
+
+                        {{-- モーダルウィンドウ --}}
+                        @foreach($ideas as $index => $idea)
+                        <div class="modal js-modal" id="modal-{{ $index }}">
+
+                        {{-- @foreach($ideas as $idea)
+                        <div class="modal js-modal"> --}}
+                            <div class="modal-container">
+                                @if($idea->user_id === auth()->id())
+                                    <form id="deleteForm" method="POST" action="{{ route('ideas.modal.delete') }}">
+                                        @csrf
+                                        <input type="hidden" name="delete[]" value="{{ $idea->id }}">
+                                        <button type="submit"><span class="dli-more"></span></button>
+                                    </form>
+                                @endif
+
+                                <div class="modal-close js-modal-close">×</div>
+                                <div class="modal-content">
+                                <p>{{ $idea->elevator1 }}</p>
+                                        エレベーター1: {{ $idea->elevator1 }}<br>
+                                        エレベーター2: {{ $idea->elevator2 }}<br>
+                                        どうやって: {{ $idea->how }}<br>
+                                        <canvas class="feedBackRadarChart"
+                                            data-self-chart1="{{ $idea->self_chart1 }}"
+                                            data-self-chart2="{{ $idea->self_chart2 }}"
+                                            data-self-chart3="{{ $idea->self_chart3 }}"
+                                            data-self-chart4="{{ $idea->self_chart4 }}"
+                                            data-self-chart5="{{ $idea->self_chart5 }}"
+                                            data-fb-chart1="{{ $feedback->fb_chart1 }}"
+                                            data-fb-chart2="{{ $feedback->fb_chart2 }}"
+                                            data-fb-chart3="{{ $feedback->fb_chart3 }}"
+                                            data-fb-chart4="{{ $feedback->fb_chart4 }}"
+                                            data-fb-chart5="{{ $feedback->fb_chart5 }}">
+                                        </canvas>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+
+                        {{-- @foreach($ideas as $index => $idea)
+<div class="image-container">
+    <button class="modal-open js-modal-open" data-modal-id="modal-{{ $index }}">
+        <canvas class="feedBackRadarChart"
+            data-self-chart1="{{ $idea->self_chart1 }}"
+            data-self-chart2="{{ $idea->self_chart2 }}"
+            data-self-chart3="{{ $idea->self_chart3 }}"
+            data-self-chart4="{{ $idea->self_chart4 }}"
+            data-self-chart5="{{ $idea->self_chart5 }}"
+            data-fb-chart1="{{ $feedback->fb_chart1 }}"
+            data-fb-chart2="{{ $feedback->fb_chart2 }}"
+            data-fb-chart3="{{ $feedback->fb_chart3 }}"
+            data-fb-chart4="{{ $feedback->fb_chart4 }}"
+            data-fb-chart5="{{ $feedback->fb_chart5 }}">
+        </canvas>
+    </button>
+</div>
+@endforeach --}}
     @else
         <p>アイデアはありません。</p>
     @endif
-
-
-
-
-
-
-
-
 </div>
 
 <script src="{{ asset('js/home.js') }}"></script>

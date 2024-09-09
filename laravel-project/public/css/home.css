@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
   background-color: #FFFFFF;
   margin-top: 0;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 header {
@@ -330,13 +330,17 @@ a:hover {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  /* ビューポート幅に合わせる */
+  height: 100vh;
+  /* ビューポート高さに合わせる */
   background: rgba(0, 0, 0, 0.5);
   /* 半透明の背景 */
   justify-content: center;
+  /* コンテンツを中央に配置 */
   align-items: center;
-  z-index: 1000;
+  /* コンテンツを中央に配置 */
+  z-index: 2000;
   /* 他のコンテンツより上に表示 */
 }
 
@@ -345,7 +349,20 @@ a:hover {
   padding: 20px;
   border-radius: 8px;
   position: relative;
+  width: 50%;
+  height: auto;
+  /* ビューポート幅に合わせる */
+  /* max-width: 90vw; */
+  /* 最大幅を指定 */
+  /* max-height: 90vh; */
+  /* 最大高さを指定 */
+  overflow: auto;
+  /* 内容が溢れたときにスクロール */
+  box-sizing: border-box;
+  /* 幅にパディングとボーダーを含める */
+  margin: 10px auto;
 }
+
 
 .modal-close {
   position: absolute;
@@ -360,9 +377,22 @@ a:hover {
   overflow-y: auto;
 }
 
-/* モーダルを表示するためのスタイル */
+
 .modal.is-active {
   display: flex;
+  /* モーダルが表示されるときは flex に変更*/
+}
+
+.dli-more {
+  display: inline-block;
+  vertical-align: middle;
+  color: #333;
+  line-height: 1;
+  width: 0.25em;
+  height: 0.25em;
+  background: currentColor;
+  border-radius: 50%;
+  box-shadow: -0.375em 0 0 0 currentColor, 0.375em 0 0 0 currentColor;
 }
 
 
