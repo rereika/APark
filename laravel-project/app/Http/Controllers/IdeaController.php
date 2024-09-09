@@ -82,6 +82,20 @@ class IdeaController extends Controller
     return redirect()->route('get.list.draft')->with('message', '選択された下書きが削除されました。');
 }
 
+public function modalIdeaDelete(Request $request)
+{
+
+    $ids = $request->input('delete');
+
+    // 選択されたアイデアを削除
+    Idea::whereIn('id', $ids)->delete();
+
+    // 削除完了後にリダイレクト
+    return redirect()->route('home')->with('message', '選択されたアイデアが削除されました。');
+}
+
+
+
     public function showDraft($id)
 {
     $userId = Auth::id();
