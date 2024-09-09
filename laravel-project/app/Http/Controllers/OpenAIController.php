@@ -74,13 +74,13 @@ class OpenAIController extends Controller
 
 // Mock START
             // APIモック。APIトークンを消費させないための簡易的なモックコード。
-            $feedback->{'fb_chart1'} = '1';
-            $feedback->{'fb_chart2'} = '2';
-            $feedback->{'fb_chart3'} = '3';
-            $feedback->{'fb_chart4'} = '4';
-            $feedback->{'fb_chart5'} = '5';
+            $feedback->{'fb_chart1'} = '5';
+            $feedback->{'fb_chart2'} = '5';
+            $feedback->{'fb_chart3'} = '5';
+            $feedback->{'fb_chart4'} = '3';
+            $feedback->{'fb_chart5'} = '4';
 
-            $feedback->{'comment1'} = json_decode($this->mockResponse('コメント１')->getContent(), true)['choices'][0]['message']['content'];
+            $feedback->{'comment1'} = json_decode($this->mockResponse('既存のアプリで○○という〜〜〜')->getContent(), true)['choices'][0]['message']['content'];
             $feedback->{'comment2'} = json_decode($this->mockResponse('コメント２')->getContent(), true)['choices'][0]['message']['content'];
             $feedback->{'comment3'} = json_decode($this->mockResponse('コメント３')->getContent(), true)['choices'][0]['message']['content'];
             $feedback->{'comment4'} = json_decode($this->mockResponse('コメント４')->getContent(), true)['choices'][0]['message']['content'];
