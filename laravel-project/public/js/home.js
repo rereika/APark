@@ -202,3 +202,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  // アイデア削除ボタンを取得
+  const deleteButtons = document.querySelectorAll('#delete_button_open');
+
+  // 各削除ボタンに対してイベントリスナーを設定
+  deleteButtons.forEach(function (button) {
+    button.addEventListener('click', function (event) {
+      event.preventDefault(); // デフォルトの動作を防止
+
+      // 確認ダイアログを表示
+      const confirmation = window.confirm('このアイデアを削除してもよろしいですか？');
+
+      if (confirmation) {
+        // OKが押されたら削除フォームを送信
+        const form = button.closest('form');  // ボタンの親フォームを取得
+        form.submit();
+      } else {
+        // キャンセルが押されたら何もしない
+        return false;
+      }
+    });
+  });
+});

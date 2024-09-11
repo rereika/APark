@@ -415,6 +415,17 @@ a:hover {
   box-shadow: -0.375em 0 0 0 currentColor, 0.375em 0 0 0 currentColor;
 }
 
+.accordion-content3 {
+  width: 130px;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 10px;
+  position: absolute;
+  right: 20%;
+}
+
 
 @media screen and (max-width: 640px) {
   header {
