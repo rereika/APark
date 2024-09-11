@@ -13,63 +13,20 @@ header {
   justify-content: space-between;
 }
 
-.home-menu .accordion-content {
-  width: 130px;
-  padding: 10px;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  margin-top: 15px;
-  position: absolute;
-  right: 0;
-  top: 100%;
-  z-index: 1000;
-  display: none;
-}
-
-/* アコーディオンメニュー内のリストスタイル */
-.accordion-content ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
 .home-menu {
   position: relative;
-}
-
-.create_menu {
-  width: 100%;
-}
-
-.create_menu ul {
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-}
-
-.logo {
-  width: 190px;
   display: flex;
   align-items: center;
-  margin: 15px 15px;
-}
-
-.logo img {
-  width: 100%;
-  height: auto;
-}
-
-.home-menu {
-  display: flex;
-  align-items: center;
-  margin-right: 20px;
+  justify-content: flex-end;
+  /* 右寄せ */
+  padding: 10px;
+  /* ヘッダー内のパディング */
 }
 
 .home-menu ul {
   list-style-type: none;
   display: flex;
-  gap: 20px;
+  gap: 0;
   margin: 0;
   padding: 0;
   border: black;
@@ -82,19 +39,82 @@ header {
 
 .home-menu li a {
   text-decoration: none;
+  display: inline-block;
 }
 
-.home_menu_1 {
-  background-color: #f8f7f6;
-  padding: 8px 18px;
+.home-menu ul li a img {
+  width: 13%;
+  right: 20%;
+}
+
+.home-menu .accordion-content1 {
+  width: 130px;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #ddd;
   border-radius: 8px;
+  margin-top: 10px;
+  position: absolute;
+  right: 20%;
 }
 
-.home_menu_2 {
+.accordion-content1 ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-menu .accordion-content2 {
+  width: 140px;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 10px;
+  position: absolute;
+  right: 10%;
+}
+
+.accordion-content2 ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion-content2 ul li {
+  padding: 5px;
+}
+
+.create_menu {
   background-color: #FF385C;
   color: #ffffff;
   padding: 8px 18px;
   border-radius: 8px;
+  margin: 30px 10px !important;
+  margin-left: 0 !important;
+}
+
+.create_new_idea {
+  background-color: #FF385C;
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 8px;
+}
+
+.logo {
+  width: 190px;
+  display: flex;
+  align-items: center;
+  margin: 15px 15px;
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
 }
 
 a {
