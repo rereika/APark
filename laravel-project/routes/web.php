@@ -27,6 +27,9 @@ Route::get('login', [LoginController::class, 'showLoginForm'])->name('login.show
 // ログイン処理
 Route::post('login', [LoginController::class, 'login'])->name('login.submit');
 
+//ログアウト
+Route::get('logout', [LoginController::class, 'Logout'])->name('logout');
+
 // 認証されたユーザーだけがアクセスできる
 Route::get('home', [IdeaController::class, 'index'])->name('home')->middleware('auth');
 Route::get('themeRankList', [IdeaController::class, 'themeRankList'])->name('themeRankList')->middleware('auth');

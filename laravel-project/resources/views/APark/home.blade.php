@@ -18,29 +18,41 @@
     <div class="logo">
         <img src="{{ asset('image/logo3.png') }}" alt="ロゴ画像">
     </div>
+
     <div class="home-menu">
         <ul>
-            <li><a href="{{ route('get.my.page')}}" class="my_page">マイページ</a></li>
             <li>
-                <a href="#" class="home_menu_2" onclick="toggleAccordion(event)">作成する</a>
-                <div id="accordionMenu" class="accordion-content" style="display: none;">
-                    <div class="create_menu">
+                <a href="#" class="my_page" onclick="toggleAccordion(event, 'accordionMenu1')">
+                    <img src="{{ asset('image/icon.png') }}" alt="アイコン画像">
+                </a>
+
+                <div id="accordionMenu1" class="accordion-content1" style="display: none;">
+                    <ul>
+                        <li><a href="{{ route('get.my.page')}}" class="my_page">マイページ</a></li>
+                        <li><a href="{{ route('logout')}}" class="my_page">ログアウト</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <a href="#" class="create_menu" onclick="toggleAccordion(event, 'accordionMenu2')">作成する</a>
+                <div id="accordionMenu2" class="accordion-content2" style="display: none;">
+                    {{-- <div class="create_menu"> --}}
                         <ul>
                             <li>
                                 <form id="createIdeaForm" method="POST" action="{{ route('ideas.create') }}">
                                     @csrf
-                                    <input type="submit" class="home_menu_2" value="新規作成">
+                                    <input type="submit" class="create_new_idea" value="新規作成">
                                 </form>
                             </li>
-                            <li>
-                                <a href="{{ route('get.list.draft') }}" class="draft">下書き一覧</a>
-                            </li>
+                            <li><a href="{{ route('get.list.draft') }}" class="draft">下書き一覧</a></li>
                         </ul>
-                    </div>
+                    {{-- </div> --}}
                 </div>
             </li>
         </ul>
     </div>
+
 </header>
 
 <div class="catch_copy">

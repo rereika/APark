@@ -77,9 +77,9 @@ $(document).ready(function () {
 });
 
 // アコーディオンメニューの作成
-function toggleAccordion(event) {
+function toggleAccordion(event, id) {
   event.preventDefault();
-  let accordion = document.getElementById('accordionMenu');
+  let accordion = document.getElementById(id);
   if (accordion.style.display === 'block') {
     accordion.style.display = 'none';
   } else {
