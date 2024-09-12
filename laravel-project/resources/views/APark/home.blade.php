@@ -16,7 +16,7 @@
 <body>
 <header>
     <div class="logo">
-        <img src="{{ asset('image/logo3.png') }}" alt="ロゴ画像">
+        <img src="{{ asset('image/logo4.png') }}" alt="ロゴ画像">
     </div>
 
     <div class="home-menu">
