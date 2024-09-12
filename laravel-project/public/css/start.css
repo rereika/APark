@@ -7,13 +7,10 @@ body {
 header {
   height: 80px;
   background-color: #FFFFFF;
-  margin: 0 calc(50% - 50vw);
+  margin: 15px calc(50% - 50vw);
+  margin-top: 15px;
   display: flex;
   justify-content: space-between;
-}
-
-.home-menu {
-  position: relative;
 }
 
 .logo {
@@ -40,7 +37,6 @@ header {
   gap: 20px;
   margin: 0;
   padding: 0;
-  border: black;
 }
 
 .home-menu li {
@@ -54,25 +50,37 @@ header {
 
 .catch_copy {
   display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
   background-color: #f8f7f6;
-  height: 300px;
-  position: relative;
+  height: 450px;
+  margin: 0 auto;
 }
 
+.catch_copy_text .TextTyping {
+  font-size: 30px;
+  font-weight: bold;
+  color: #E31515;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: -15px 15px;
+}
+
+/*
 .TextTyping {
   text-align: center;
-}
+} */
 
 /*========= タイピング ===============*/
 
-.TextTyping span {
+/* .TextTyping span {
   display: none;
-}
+} */
 
 /*文字列後ろの線の設定*/
-.TextTyping::after {
+/* .TextTyping::after {
   content: "|";
   animation: typinganime .8s ease infinite;
 }
@@ -85,19 +93,51 @@ header {
   to {
     opacity: 1
   }
-}
+} */
 
-.app-image {
+.catch_copy_text img {
   flex-shrink: 0;
   /* 画像が縮まないようにする */
-  height: 100%;
-  /* 親の高さにフィット */
-  width: auto;
-  /* 自動で幅を調整 */
-  margin-right: 130px;
+  height: auto;
+  width: 300px;
+  margin: 0 15px;
+}
+
+.catch_copy_btn {
+  margin-top: 45px;
+}
+
+.catch_copy_btn a {
+  text-decoration: none;
+  font-size: 25px;
+}
+
+.catch_copy_btn #about_apark {
+  border: 1px solid #f8f7f6;
+  border-radius: 40px;
+  background-color: #E31515;
+  color: #ffffff;
+  padding: 10px 25px;
+}
+
+.catch_copy_btn #how_to_use {
+  border: 1px solid #dcdcdc;
+  border-radius: 40px;
+  background-color: #ffffff;
+  color: #E31515;
+  padding: 10px 25px;
 }
 
 
+.catch_copy_img img {
+  flex-shrink: 0;
+  /* 画像が縮まないようにする */
+  height: auto;
+  /* 親の高さにフィット */
+  width: 630px;
+  /* 自動で幅を調整 */
+  margin: 0 15px;
+}
 
 .main {
   width: 100%;
@@ -107,6 +147,10 @@ header {
   box-sizing: border-box;
   align-items: center;
   background-color: #FFFFFF;
+}
+
+.whats_good_idea_section {
+  margin-bottom: 100px;
 }
 
 .whats_good_idea_title {
@@ -127,10 +171,117 @@ header {
   text-align: center;
 }
 
-.radar-chart-image {
-  width: 100%;
+.circle {
+  width: 380px;
+  height: 380px;
+  border: 1px solid #333;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.content {
+  width: 35%;
+  height: 35%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid #333; */
+}
+
+.content img {
+  width: 350%;
   height: auto;
 }
+
+/* 5つの要素を均等に配置するためのアニメーション */
+
+.top {
+  animation: rotate_top 15s linear infinite;
+}
+
+.right {
+  animation: rotate_right 15s linear infinite;
+}
+
+.bottom_right {
+  animation: rotate_bottom_right 15s linear infinite;
+}
+
+.bottom_left {
+  animation: rotate_bottom_left 15s linear infinite;
+}
+
+.left {
+  animation: rotate_left 15s linear infinite;
+}
+
+/* top */
+@keyframes rotate_top {
+  0% {
+    transform: rotate(0deg) translateY(-130%) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translateY(-130%) rotate(-360deg);
+  }
+}
+
+/* right */
+@keyframes rotate_right {
+  0% {
+    transform: rotate(0deg) translate(125%, -40%) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translate(125%, -40%) rotate(-360deg);
+  }
+}
+
+
+
+/* bottom_right */
+@keyframes rotate_bottom_right {
+  0% {
+    transform: rotate(0deg) translate(75%, 110%) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translate(75%, 110%) rotate(-360deg);
+  }
+}
+
+
+
+/* bottom_left */
+@keyframes rotate_bottom_left {
+  0% {
+    transform: rotate(0deg) translate(-75%, 110%) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translate(-75%, 110%) rotate(-360deg);
+  }
+}
+
+
+
+/* left */
+@keyframes rotate_left {
+  0% {
+    transform: rotate(0deg) translate(-125%, -40%) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translate(-125%, -40%) rotate(-360deg);
+  }
+}
+
+
 
 .how_to_use_section {
   display: flex;
@@ -141,6 +292,7 @@ header {
   background-color: #f8f7f6;
   height: auto;
   position: relative;
+  margin-top: 100px;
 }
 
 .how_to_use {
@@ -148,6 +300,8 @@ header {
   font-weight: bold;
   position: absolute;
   top: 0;
+  border: 5px solid #f8f7f6;
+  background-color: #f8f7f6;
 }
 
 .how_to_use_section ul {

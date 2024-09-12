@@ -12,7 +12,7 @@
 <body>
     <header>
         <div class="logo">
-        <a href="{{ route('start.show') }}"><img src="{{ asset('image/logo3.png') }}" alt="ロゴ画像"></a>
+        <a href="{{ route('start.show') }}"><img src="{{ asset('image/logo4.png') }}" alt="ロゴ画像"></a>
         </div>
         <div class="home-menu">
             <ul>
@@ -20,30 +20,47 @@
             </ul>
         </div>
     </header>
-    <div class="catch_copy">
-    <p class="TextTyping">APPRENTICE生が集まる公園、APark。
-それぞれがアイデアの補助輪に乗り、
-次なるアプレンティスシップの旅に出かけよう。</p>
 
-    {{-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-        <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/move02/8-10/js/8-10.js"></script> --}}
-        <img src="{{ asset('image/app_image.png') }}" alt="アプリイメージ画像" class="app-image">
+    <div class="catch_copy">
+        <div class="catch_copy_text">
+            <p class="TextTyping">アイデア補助輪アプリ</p>
+            <img src="{{ asset('image/logo4.png') }}" alt="ロゴ画像">
+
+            <div class="catch_copy_btn">
+                <a href="#" id="about_apark">AParkとは？</a>
+                <a href="#" id="how_to_use">使い方</a>
+            </div>
+
+        </div>
+
+
+        <div class="catch_copy_img">
+            <img src="{{ asset('image/app_image.png') }}" alt="アプリイメージ画像">
+        </div>
+
     </div>
 
     <div class="main">
 
-        <div class="whats_good_idea_section">
+        <div class="whats_good_idea_section" id="whats_good_idea_section">
             <p class="whats_good_idea_title">
             <span class="good_idea">"良いアイデア"</span>
             <span class="question">に出会えてますか？</span>
             </p>
 
             <p class="whats_good_idea">プロダクト制作において"良いアイデア"を出すには、他アプリとの差別化や、自分の技術で実現可能かなど、多くの要素を考慮する必要があります。<br>それもそのはず、今自分に必要なものだけで考えると、"ただのアイデア"になってしまうからです。<br><br>しかし、初学者にとって、「さあ、アイデアを出しましょう！」と言われても、すぐには思いつかず、困難を感じることが多いと言われています。<br>実際に私も「右も左もわからないのに最初（アイデア出し）につまずいたら終わり！？」という不安に悩まされました。<br><br>この経験から、アイデアを分析・可視化し、フィードバックを提供し、先輩や後輩のアイデアも参考にできる場エオ提供してくれるアプリを作りたいと思いました。<br>プロダクト作りで最も大切なのは、優れたアイデアを生み出すことです。<br>AParkは、子供が補助輪を使って自転車に乗るように、アイデア出しをしっかりサポートします！</p>
-            <img src="{{ asset('image/good_idea_chart.png') }}" alt="レーダーチャート画像" class="radar-chart-image">
+
         </div>
 
-        <div class="how_to_use_section">
+        <div class="circle">
+            <div class="content top"><img src="{{ asset('image/good_idea1.png') }}"></div>
+            <div class="content right"><img src="{{ asset('image/good_idea3.png') }}"></div>
+            <div class="content bottom_right"><img src="{{ asset('image/good_idea2.png') }}"></div>
+            <div class="content bottom_left"><img src="{{ asset('image/good_idea4.png') }}"></div>
+            <div class="content left"><img src="{{ asset('image/good_idea5.png') }}"></div>
+        </div>
+
+        <div class="how_to_use_section" id="how_to_use_section">
             <p class="how_to_use">使い方</p>
 
             <ul class="list-2">
@@ -97,12 +114,9 @@
                         </div>
                         <img src="{{ asset('image/how_to4.png') }}" alt="使い方画像5" class="how_to1">
                     </div>
-
-                </div>
-                </div>
-            </ul>
+                </ul>
+            </div>
         </div>
-
     </div>
 
     <footer></footer>
