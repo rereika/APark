@@ -12,33 +12,48 @@
 
 <body>
 <div class="back_page">
-        <a href="{{ route('home')}}" class="return_home">ホームへ戻る</a>
-    </div>
+    <a href="{{ route('home')}}" class="return_home">ホームへ戻る</a>
+</div>
 
-    <div class="inner">
+<div class="inner">
 
-        <h1>マイページ</h1>
+    <h1>マイページ</h1>
 
-        <div class="my_idea">
+    <div class="my_page_items">
+
+        <div class="my_ideas">
             <h2>私のアイデア</h2>
-            <div class="my-ideas">
+            <div class="my-ideas-items">
                 @if ($ideas->isEmpty())
                 <p>アイデアがありません。</p>
                 @else
                 <ul>
                     @foreach ($ideas as $idea)
                         <li>
-                            アイデアID: {{ $idea->id }} - テーマ: {{ $idea->theme }}<br>
-                            自己チャート1: {{ $idea->self_chart1 }}<br>
+                            {{-- 自己チャート1: {{ $idea->self_chart1 }}<br>
                             自己チャート2: {{ $idea->self_chart2 }}<br>
                             自己チャート3: {{ $idea->self_chart3 }}<br>
                             自己チャート4: {{ $idea->self_chart4 }}<br>
-                            自己チャート5: {{ $idea->self_chart5 }}<br>
-                            エレベーター1: {{ $idea->elevator1 }}<br>
-                            エレベーター2: {{ $idea->elevator2 }}<br>
-                            どうやって: {{ $idea->how }}<br>
-                            作成日時: {{ $idea->created_at }}<br>
-                            更新日時: {{ $idea->updated_at }}
+                            自己チャート5: {{ $idea->self_chart5 }}<br> --}}
+                            <span>テーマ:</span>
+                                @switch($idea->theme)
+                                    @case(1)
+                                        「自分たちの役に立つものを開発せよ」
+                                        @break
+                                    @case(2)
+                                        「ワクワクするものを開発せよ」
+                                        @break
+                                    @case(3)
+                                        オリジナルプロダクト
+                                        @break
+                                    @default
+                                        未定
+                                @endswitch
+                                <br>
+                            <span>エレベーターピッチ:</span><br>{{ $idea->elevator1 }}<br><p class="txt-limit">{{ $idea->elevator2 }}</p><br>
+                            <span>解決方法:</span><br><p class="txt-limit">{{ $idea->how }}</p><br>
+                            {{ $idea->created_at }}<br>
+                            {{-- 更新日時: {{ $idea->updated_at }} --}}
                         </li>
                     @endforeach
                 </ul>
@@ -51,6 +66,9 @@
         </div>
 
     </div>
+
+</div>
+
 
 </body>
 

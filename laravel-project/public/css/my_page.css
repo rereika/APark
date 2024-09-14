@@ -11,3 +11,34 @@
 .return_home:hover {
   background-color: #EEEEEE;
 }
+
+.my_page_items {
+  display: flex;
+}
+
+.my_ideas {
+  width: 50%;
+}
+
+.my_ideas .my-ideas-items ul {
+  list-style: none;
+}
+
+.my_ideas .my-ideas-items ul li {
+  border: 2px solid #EEEEEE;
+  padding: 15px;
+  margin-top: 10px;
+}
+
+.my_ideas .my-ideas-items ul li span {
+  font-size: 25px;
+  color: #808080;
+}
+
+.txt-limit {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  /* 任意の行数を指定 */
+}
