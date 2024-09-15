@@ -35,16 +35,16 @@
                             自己チャート3: {{ $idea->self_chart3 }}<br>
                             自己チャート4: {{ $idea->self_chart4 }}<br>
                             自己チャート5: {{ $idea->self_chart5 }}<br> --}}
-                            <span>テーマ:</span>
+                            {{-- <span>テーマ:</span> --}}
                                 @switch($idea->theme)
                                     @case(1)
-                                        「自分たちの役に立つものを開発せよ」
+                                        <span class="theme">「自分たちの役に立つものを開発せよ」</span>
                                         @break
                                     @case(2)
-                                        「ワクワクするものを開発せよ」
+                                    <span class="theme">「ワクワクするものを開発せよ」</span>
                                         @break
                                     @case(3)
-                                        オリジナルプロダクト
+                                    <span class="theme">オリジナルプロダクト</span>
                                         @break
                                     @default
                                         未定

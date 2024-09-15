@@ -86,7 +86,6 @@
                             @if ($idea->feedbacks->isNotEmpty())
                                 @foreach($idea->feedbacks as $feedback)
 
-
                                     <div class="image-container">
                                         <button class="modal-open js-modal-open" data-modal-id="modal-{{ $index }}">
                                             <canvas class="feedBackRadarChart"
@@ -103,39 +102,8 @@
                                             </canvas>
                                         </button>
                                     </div>
-
-                                    {{-- <div class="image-container">
-                                        <button class="modal-open js-modal-open">
-                                            <canvas class="feedBackRadarChart"
-                                                data-self-chart1="{{ $idea->self_chart1 }}"
-                                                data-self-chart2="{{ $idea->self_chart2 }}"
-                                                data-self-chart3="{{ $idea->self_chart3 }}"
-                                                data-self-chart4="{{ $idea->self_chart4 }}"
-                                                data-self-chart5="{{ $idea->self_chart5 }}"
-                                                data-fb-chart1="{{ $feedback->fb_chart1 }}"
-                                                data-fb-chart2="{{ $feedback->fb_chart2 }}"
-                                                data-fb-chart3="{{ $feedback->fb_chart3 }}"
-                                                data-fb-chart4="{{ $feedback->fb_chart4 }}"
-                                                data-fb-chart5="{{ $feedback->fb_chart5 }}">
-                                            </canvas>
-                                        </button>
-                                    </div> --}}
                                 @endforeach
                             @else
-                                {{-- <div class="image-container">
-                                    <canvas class="feedBackRadarChart"
-                                        data-self-chart1="{{ $idea->self_chart1 }}"
-                                        data-self-chart2="{{ $idea->self_chart2 }}"
-                                        data-self-chart3="{{ $idea->self_chart3 }}"
-                                        data-self-chart4="{{ $idea->self_chart4 }}"
-                                        data-self-chart5="{{ $idea->self_chart5 }}"
-                                        data-fb-chart1="0"
-                                        data-fb-chart2="0"
-                                        data-fb-chart3="0"
-                                        data-fb-chart4="0"
-                                        data-fb-chart5="0">
-                                    </canvas>
-                                </div> --}}
                             @endif
                         </div>
                     </li>
@@ -167,8 +135,6 @@
                                             <button type="submit" id="delete_button">削除する</button>
                                             <button type="button" id="cancel_delete_button">キャンセル</button>
                                         </div>
-
-                                        {{-- <button type="submit"><span class="dli-more"></span></button> --}}
                                     </form>
                                 @endif
 
@@ -194,31 +160,11 @@
                             </div>
                         </div>
                         @endforeach
-
-                        {{-- @foreach($ideas as $index => $idea)
-<div class="image-container">
-    <button class="modal-open js-modal-open" data-modal-id="modal-{{ $index }}">
-        <canvas class="feedBackRadarChart"
-            data-self-chart1="{{ $idea->self_chart1 }}"
-            data-self-chart2="{{ $idea->self_chart2 }}"
-            data-self-chart3="{{ $idea->self_chart3 }}"
-            data-self-chart4="{{ $idea->self_chart4 }}"
-            data-self-chart5="{{ $idea->self_chart5 }}"
-            data-fb-chart1="{{ $feedback->fb_chart1 }}"
-            data-fb-chart2="{{ $feedback->fb_chart2 }}"
-            data-fb-chart3="{{ $feedback->fb_chart3 }}"
-            data-fb-chart4="{{ $feedback->fb_chart4 }}"
-            data-fb-chart5="{{ $feedback->fb_chart5 }}">
-        </canvas>
-    </button>
-</div>
-@endforeach --}}
     @else
         <p>アイデアはありません。</p>
     @endif
 </div>
 
 <script src="{{ asset('js/home.js') }}"></script>
-{{-- <script src="{{ asset('js/create_feedback.js') }}"></script> --}}
 </body>
 </html>
