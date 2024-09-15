@@ -416,6 +416,15 @@ a:hover {
   right: 20%;
 }
 
+button {
+  border: none;
+  /* 黒い枠線を消す */
+  background-color: transparent;
+  /* グレーの背景色を消す */
+  outline: none;
+  /* フォーカス時のアウトラインを消す */
+}
+
 
 @media screen and (max-width: 640px) {
   header {

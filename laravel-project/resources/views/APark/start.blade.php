@@ -16,7 +16,7 @@
         </div>
         <div class="home-menu">
             <ul>
-                <li><a href="{{ route('login.show') }}">ログイン</a></li>
+                <li><a href="{{ route('login') }}">ログイン</a></li>
             </ul>
         </div>
     </header>

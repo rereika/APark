@@ -27,6 +27,10 @@ Route::get('login', [LoginController::class, 'showLoginForm'])->name('login.show
 // ログイン処理
 Route::post('login', [LoginController::class, 'login'])->name('login.submit');
 
+// ログインフォームの表示
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+
+
 //ログアウト
 Route::get('logout', [LoginController::class, 'Logout'])->name('logout');
 
