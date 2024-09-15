@@ -24,6 +24,11 @@
   list-style: none;
 }
 
+.my_ideas .my-ideas-items ul li .theme {
+  color: #E31515;
+  font-size: 18px;
+}
+
 .my_ideas .my-ideas-items ul li {
   border: 2px solid #EEEEEE;
   padding: 15px;
