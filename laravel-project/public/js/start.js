@@ -65,3 +65,9 @@ document.getElementById('how_to_use').addEventListener('click', function (event)
     block: 'start'
   });
 });
+
+
+document.querySelector('.how_to_use_create_idea')
+  .addEventListener('click', function () {
+    document.querySelector('.create_idea').classList.toggle('is-open');
+  });

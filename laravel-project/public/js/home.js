@@ -1,51 +1,33 @@
-function TextTypingAnime() {
-  $('.TextTyping').each(function () {
-    let elemPos = $(this).offset().top - 50;
-    let scroll = $(window).scrollTop();
-    let windowHeight = $(window).height();
-    let thisChild = "";
-    if (scroll >= elemPos - windowHeight) {
-      thisChild = $(this).children(); // spanタグを取得
-      // spanタグの要素の1つ1つ処理を追加
-      thisChild.each(function (i) {
-        let time = 100;
-        // 時差で表示するためにdelayを指定しその時間後にfadeInで表示させる
-        $(this).delay(time * i).fadeIn(time);
-      });
-    } else {
-      thisChild = $(this).children();
-      thisChild.each(function () {
-        $(this).stop(); // delay処理を止める
-        $(this).css("display", "none"); // spanタグ非表示
-      });
-    }
-  });
+
+//キャッチコピーのタイピングアニメーション
+const typing = (el, sentence) => {
+  // 対象の要素を取得
+  const target = document.querySelector(el);
+
+  // タイピングアニメーションの処理
+  const typeSentence = () => {
+    // 一度テキストをクリアする
+    target.textContent = '';
+
+    // 文字列を１文字ずつ取り出して処理を実行する
+    [...sentence].forEach((char, index) => {
+      //0.1秒ごとに文字を出力する
+      setTimeout(() => {
+        target.textContent += char;
+      }, 100 * index);
+    });
+
+    // 6秒後に再度この関数を実行して繰り返す
+    setTimeout(typeSentence, 6000);
+  }
+
+  // 最初にタイピングアニメーションを開始
+  typeSentence();
 }
 
-// 画面をスクロールをしたら動かしたい場合の記述
-$(window).scroll(function () {
-  TextTypingAnime(); // アニメーション用の関数を呼ぶ
-});
+//関数を呼び出す
+typing('.typing-animation', 'アイデアの補助輪に乗り、アプレンティスシップの旅に出よう！！');
 
-// 画面が読み込まれたらすぐに動かしたい場合の記述
-$(window).on('load', function () {
-  // spanタグを追加する
-  let element = $(".TextTyping");
-  element.each(function () {
-    let text = $(this).html();
-    let textbox = "";
-    text.split('').forEach(function (t) {
-      if (t !== " ") {
-        textbox += '<span>' + t + '</span>';
-      } else {
-        textbox += t;
-      }
-    });
-    $(this).html(textbox);
-  });
-
-  TextTypingAnime(); // アニメーション用の関数を呼ぶ
-});
 
 // Slick Carouselの初期化
 $(document).ready(function () {
@@ -76,16 +58,39 @@ $(document).ready(function () {
   });
 });
 
-// アコーディオンメニューの作成
+// アコーディオンメニューをトグルする関数
 function toggleAccordion(event, id) {
   event.preventDefault();
+
   let accordion = document.getElementById(id);
+
+  // 開いているアコーディオンメニューを取得
+  let openAccordion = document.querySelector('.accordion-content1[style="display: block;"], .accordion-content2[style="display: block;"]');
+
+  // クリックされたメニューが開いていない場合、他の開いているメニューを閉じてから開く
+  if (openAccordion && openAccordion.id !== id) {
+    openAccordion.style.display = 'none';
+  }
+
+  // クリックされたアコーディオンメニューをトグル
   if (accordion.style.display === 'block') {
     accordion.style.display = 'none';
   } else {
     accordion.style.display = 'block';
   }
+
+  // 外側のクリックイベントをリスンする
+  function closeAccordion(event) {
+    if (!accordion.contains(event.target) && !event.target.closest('.my_page, .create_menu')) {
+      accordion.style.display = 'none';
+      document.removeEventListener('click', closeAccordion); // イベントリスナーを削除
+    }
+  }
+
+  document.addEventListener('click', closeAccordion);
 }
+
+
 
 
 // 変更後 home.js
