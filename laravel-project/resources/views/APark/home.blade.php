@@ -25,6 +25,7 @@
                 <a href="#" class="my_page" onclick="toggleAccordion(event, 'accordionMenu1')">
                     <img src="{{ asset('image/icon.png') }}" alt="アイコン画像">
                 </a>
+            </li>
 
                 <div id="accordionMenu1" class="accordion-content1" style="display: none;">
                     <ul>
@@ -32,10 +33,11 @@
                         <li><a href="{{ route('logout')}}" class="my_page">ログアウト</a></li>
                     </ul>
                 </div>
-            </li>
+            {{-- </li> --}}
 
             <li>
                 <a href="#" class="create_menu" onclick="toggleAccordion(event, 'accordionMenu2')">作成する</a>
+            </li>
                 <div id="accordionMenu2" class="accordion-content2" style="display: none;">
                     {{-- <div class="create_menu"> --}}
                         <ul>
@@ -49,7 +51,7 @@
                         </ul>
                     {{-- </div> --}}
                 </div>
-            </li>
+            {{-- </li> --}}
         </ul>
     </div>
 
@@ -59,8 +61,11 @@
     <div class="background-container">
         <img src="{{ asset('image/catch_copy.jpeg') }}" alt="キャッチコピー画像" class="background-image">
     </div>
-    <p class="TextTyping">アイデアの補助輪に乗り、アプレンティスシップの旅に出よう！！</p>
+    <div class="typing-animation"></div>
+    {{-- <p class="TextTyping">アイデアの補助輪に乗り、アプレンティスシップの旅に出よう！！</p> --}}
 </div>
+
+
 
 <div class="main-contents">
     <p class="theme_select_title">最新のアイデア</p>
@@ -81,7 +86,7 @@
             @foreach($ideas as $index => $idea)
                 {{-- @foreach($ideas as $idea) --}}
                     <li>
-                        <h1>{{ $idea->elevator1 }}</h1>
+                        <h1 class="txt-limit">{{ $idea->elevator1 }}</h1>
                         <div class="chart">
                             @if ($idea->feedbacks->isNotEmpty())
                                 @foreach($idea->feedbacks as $feedback)

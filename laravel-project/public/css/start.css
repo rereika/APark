@@ -418,7 +418,7 @@ header {
   counter-reset: li;
 }
 
-.list-2 .how_to_use_main_title {
+.list-2 .how_to_use_create_idea {
   font-size: 30px;
   font-weight: bold;
 }
@@ -443,6 +443,7 @@ header {
   content: counter(li);
   counter-increment: li;
 }
+
 
 footer {
   text-align: center;
