@@ -42,10 +42,22 @@ header {
 .home-menu li {
   text-align: right;
   margin: 3px 10px;
+
 }
 
 .home-menu li a {
   text-decoration: none;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #FF385C;
+  padding: 10px 25px;
+}
+
+.home-menu li a:hover {
+  background-color: #FF385C;
+  color: #ffffff;
+  border: 1px solid #ffffff;
 }
 
 .catch_copy {
@@ -151,12 +163,44 @@ header {
 
 .whats_good_idea_section {
   margin-bottom: 100px;
+  /* display: flex; */
+}
+
+.whats_good_idea_section2 {
+  text-align: right;
+  display: inline-block;
+  margin-left: 85%;
+}
+
+.whats_good_idea_section2 .creator {
+  font-family: '游明朝', 'Hiragino Mincho Pro', 'Meiryo', serif;
+  text-align: center;
+}
+
+
+.whats_good_idea_section .apprentice {
+  font-size: 20px;
+  font-weight: bold;
+  color: #E31515;
+  display: inline;
+  /* インライン表示に変更 */
+  margin: 0 10px 0 0;
+  /* 左にスペースを開けるための余白 */
+  vertical-align: middle;
+  /* テキストと同じ高さに揃える */
+}
+
+.whats_good_idea_section img {
+  width: 100px;
+  height: auto;
+  margin-top: -20px;
 }
 
 .whats_good_idea_title {
   text-align: center;
   font-size: 40px;
   font-weight: bold;
+  margin: 0;
 }
 
 .whats_good_idea_title .good_idea {
@@ -168,19 +212,38 @@ header {
 }
 
 .whats_good_idea {
-  text-align: center;
+  font-family: '游明朝', 'Hiragino Mincho Pro', 'Meiryo', serif;
+  text-align: left;
 }
 
+.whats_good_idea_message {
+  display: flex;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.red {
+  color: #FF385C;
+}
+
+
+/* .good_idea_circle {
+  border: 1px solid #FF385C;
+  border-radius: 20%;
+} */
+
 .circle {
-  width: 380px;
-  height: 380px;
+  width: 450px;
+  height: 450px;
   border: 1px solid #333;
   border-radius: 50%;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
+  margin: -60px auto 0;
 }
 
 .content {
@@ -355,6 +418,11 @@ header {
   counter-reset: li;
 }
 
+.list-2 .how_to_use_main_title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
 .list-2 li {
   display: flex;
   align-items: center;
@@ -374,4 +442,29 @@ header {
   text-align: center;
   content: counter(li);
   counter-increment: li;
+}
+
+footer {
+  text-align: center;
+  margin-top: -30px;
+  margin-bottom: 30px;
+}
+
+footer ul li {
+  list-style: none;
+}
+
+footer ul li a {
+  text-decoration: none;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #FF385C;
+  padding: 10px 25px;
+}
+
+footer ul li a:hover {
+  background-color: #FF385C;
+  color: #ffffff;
+  border: 1px solid #ffffff;
 }

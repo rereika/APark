@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APark -それぞれがアイデアの補助輪に乗り、次なるアプレンティスシップの旅に出かけよう</title>
     <link rel="stylesheet" href="{{ asset('css/start.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&family=Patrick+Hand:wght@400&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -23,7 +24,7 @@
 
     <div class="catch_copy">
         <div class="catch_copy_text">
-            <p class="TextTyping">アイデア補助輪アプリ</p>
+            <p class="TextTyping">APPRENTICE生専用<br> アイデア補助輪アプリ</p>
             <img src="{{ asset('image/logo4.png') }}" alt="ロゴ画像">
 
             <div class="catch_copy_btn">
@@ -43,21 +44,35 @@
     <div class="main">
 
         <div class="whats_good_idea_section" id="whats_good_idea_section">
-            <p class="whats_good_idea_title">
-            <span class="good_idea">"良いアイデア"</span>
-            <span class="question">に出会えてますか？</span>
-            </p>
 
-            <p class="whats_good_idea">プロダクト制作において"良いアイデア"を出すには、他アプリとの差別化や、自分の技術で実現可能かなど、多くの要素を考慮する必要があります。<br>それもそのはず、今自分に必要なものだけで考えると、"ただのアイデア"になってしまうからです。<br><br>しかし、初学者にとって、「さあ、アイデアを出しましょう！」と言われても、すぐには思いつかず、困難を感じることが多いと言われています。<br>実際に私も「右も左もわからないのに最初（アイデア出し）につまずいたら終わり！？」という不安に悩まされました。<br><br>この経験から、アイデアを分析・可視化し、フィードバックを提供し、先輩や後輩のアイデアも参考にできる場エオ提供してくれるアプリを作りたいと思いました。<br>プロダクト作りで最も大切なのは、優れたアイデアを生み出すことです。<br>AParkは、子供が補助輪を使って自転車に乗るように、アイデア出しをしっかりサポートします！</p>
+            <div class="whats_good_idea_section1">
+                <p class="whats_good_idea_title">
+                    <span class="good_idea">"良いアイデア"</span>
+                    <span class="question">に出会えてますか？</span>
+                </p>
+
+                <div class="whats_good_idea_message">
+
+                    <p class="whats_good_idea">　初めまして！APPRENTICE5期生の大嶽です。<br>早速ですが、皆さんはAPPRENTICEのカリキュラムにある、チーム開発やオリジナルプロダクトにおいて、<span class="bold">良いアイデア</span>に出会えていますか？<br>このアプリは<span class="bold">良いアイデア</span>に悩まされた私の実体験から生まれました。<br><br>　開発未経験のAPPRENTICE生とって、いきなり「良いアイデアを出しましょう！」と言われても、すぐに思いつくのは難しく、苦労することが多いと言われています。<br>　それは、「良いアイデア」を出すには、<span class="red">単なるひらめきだけでなくさまざまな要素を考慮しなければならない</span>からです。既存のアプリとの差別化や実現可能性、さらにはモチベーションを維持するための工夫など、多面的な視点が求められます。実際に私も「右も左もわからないのに最初（アイデア出し）でつまずいたら終わり！？」という不安に悩まされました。<br><br>　この経験から、「アイデアを分析・可視化し、フィードバックをもらいながら、先輩後輩のアイデアも参考にできる」ような場を提供するアプリをろう思いました！<br><br>　アイデア出しでつまずくと先に進めず、楽しくない開発はストレスとなり、ユーザーがつかないアイデアはドラフト指名を得られません。<br>　AParkは、子供が補助輪を使って自転車に乗るように、アイデア出しをしっかりサポートします！
+                    </p>
+                </div>
+            </div>
+
+            <div class="whats_good_idea_section2">
+                <p class="creator">APPRENTICE 5期生 大嶽伶果</p>
+                <img src="{{ asset('image/ootake.JPG') }}" alt="おおたけアイコン">
+            </div>
 
         </div>
 
-        <div class="circle">
-            <div class="content top"><img src="{{ asset('image/good_idea1.png') }}"></div>
-            <div class="content right"><img src="{{ asset('image/good_idea3.png') }}"></div>
-            <div class="content bottom_right"><img src="{{ asset('image/good_idea2.png') }}"></div>
-            <div class="content bottom_left"><img src="{{ asset('image/good_idea4.png') }}"></div>
-            <div class="content left"><img src="{{ asset('image/good_idea5.png') }}"></div>
+        <div class="good_idea_circle">
+            <div class="circle">
+                <div class="content top"><img src="{{ asset('image/good_idea1.png') }}"></div>
+                <div class="content right"><img src="{{ asset('image/good_idea3.png') }}"></div>
+                <div class="content bottom_right"><img src="{{ asset('image/good_idea2.png') }}"></div>
+                <div class="content bottom_left"><img src="{{ asset('image/good_idea4.png') }}"></div>
+                <div class="content left"><img src="{{ asset('image/good_idea5.png') }}"></div>
+            </div>
         </div>
 
         <div class="how_to_use_section" id="how_to_use_section">
@@ -65,12 +80,14 @@
 
             <ul class="list-2">
 
+            <p class="how_to_use_main_title">アイデアを作成する</p>
+
                     <div class="how_to_use_sub_section">
                         <div class="how_to_use_text_section">
                             <li>
                                 <p class="how_to_use_title">テーマの選択</p>
                             </li>
-                            <p class="">今回のテーマを選びましょう。<br>選んだテーマに基づいて、AIがアドバイスを提供します。</p>
+                            <p class="">今回のカリキュラムテーマを選びましょう。<br>選んだテーマに基づいて、AIがアドバイスを提供します。</p>
                         </div>
                         <img src="{{ asset('image/how_to1.png') }}" alt="使い方画像1" class="how_to1">
                     </div>
@@ -117,9 +134,12 @@
                 </ul>
             </div>
         </div>
-    </div>
 
-    <footer></footer>
+    <footer>
+        <ul>
+            <li><a href="{{ route('login') }}">ログイン</a></li>
+        </ul>
+    </footer>
     <script src="{{ asset('js/start.js') }}"></script>
 </body>
 </html>
