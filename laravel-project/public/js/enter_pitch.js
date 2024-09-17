@@ -79,3 +79,26 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
+function setupCharCounter(textareaId, counterId) {
+  const textarea = document.getElementById(textareaId);
+  const maxLength = textarea.getAttribute("maxlength");
+  const charCounter = document.getElementById(counterId);
+
+  charCounter.textContent = `0 / ${maxLength}`;
+
+  textarea.addEventListener("input", () => {
+    const currentLength = textarea.value.length;
+    charCounter.textContent = `${currentLength} / ${maxLength}`;
+
+    if (currentLength > maxLength) {
+      charCounter.style.color = "red";
+    } else {
+      charCounter.style.removeProperty("color");
+    }
+  });
+}
+
+setupCharCounter("input_pitch1", "charCounter1");
+setupCharCounter("input_pitch2", "charCounter2");
+setupCharCounter("input_solution", "charCounter3");

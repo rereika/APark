@@ -25,11 +25,24 @@ ul li {
   list-style: none;
 }
 
+.TextareaWrapper {
+  position: relative;
+  width: 80%;
+  /* max-width: 400px; */
+}
+
 #input_pitch1,
 #input_pitch2,
 #input_solution {
-  width: 80%;
+  /* width: 80%; */
   margin: 8px 20px;
+  resize: none;
+}
+
+.CharCounter {
+  position: absolute;
+  bottom: 15px;
+  right: 0;
 }
 
 .proceed_feedback_page {
