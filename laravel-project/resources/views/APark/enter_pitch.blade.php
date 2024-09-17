@@ -31,24 +31,25 @@
                     <h2><span class="highlight">エレベーターピッチ</span>をお聞かせください。</h2>
                     <ul>
                         <li>
-                            <textarea id="input_pitch1" name="elevator1" rows="4" cols="50" placeholder="「アイデア思案の手助け」が欲しい「APPRENTICE生」向けの、
-「APark」という「CGMアプリ」です。">{{ $idea->elevator1 ?? '' }}</textarea>
+                            <div class="TextareaWrapper">
+                                <textarea id="input_pitch1" name="elevator1" rows="4" cols="50" maxlength="60" placeholder="「アイデア思案の手助け」が欲しい「APPRENTICE生」向けの、「APark」という「CGMアプリ」です。">{{ $idea->elevator1 ?? '' }}</textarea>
+                                <div class="CharCounter" id="charCounter1"></div>
+                            </div>
                         </li>
                         <li>
-                            <textarea id="input_pitch2" name="elevator2" rows="4" cols="50"
-                                placeholder="これは「APPRENTICEのカリキュラムに沿った形式でアイデアをレーダーチャートにまとめ、先輩や後輩とアイデアを共有する」ことができます">{{ $idea->elevator2 ?? '' }}</textarea>
+                            <div class="TextareaWrapper">
+                                <textarea id="input_pitch2" name="elevator2" rows="4" cols="50" maxlength="60" placeholder="これは「APPRENTICEのカリキュラムに沿った形式でアイデアをレーダーチャートにまとめ、先輩や後輩とアイデアを共有する」ことができます">{{ $idea->elevator2 ?? '' }}</textarea>
+                                <div class="CharCounter" id="charCounter2"></div>
+                            </div>
                         </li>
                     </ul>
                     <h2><span class="highlight">どのように</span>解決しますか？</h2>
-                    <textarea id="input_solution" name="how" rows="8" cols="50" placeholder="・レーダーチャートでアイデアを評価
-各アイデアに対して1つのレーダーチャートを作成し、アイデアの強みと弱点を客観的に評価する（ChatGPT API）
-
-・ユーザー間フォードバック機能
-先輩のアイデアを参照し、過去の経験を蓄積・共有することで、新しいアイデア出しの参考にする。
-
-・アイデアの検索
-カリキュラムごとのテーマ（「自分たちの役に立つものを開発せよ」「ワクワクするものを開発せよ」「オリジナルプロダクト」）でアイデアを検索できる。">{{ $idea->how ?? '' }}</textarea>
+                        <div class="TextareaWrapper">
+                            <textarea id="input_solution" name="how" rows="8" cols="50" maxlength="250" placeholder="・レーダーチャートでアイデアを評価 各アイデアに対して1つのレーダーチャートを作成し、アイデアの強みと弱点を客観的に評価する（ChatGPT API）...">{{ $idea->how ?? '' }}</textarea>
+                            <div class="CharCounter" id="charCounter3"></div>
+                        </div>
                 </div>
+
             </div>
             <input type="hidden" name="idea_id" value="{{ $idea->id }}">
 
