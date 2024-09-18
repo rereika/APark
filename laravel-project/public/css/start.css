@@ -473,34 +473,36 @@ footer ul li a:hover {
 @media screen and (min-width: 375px) and (max-width: 428px) {
 
   header {
-    height: 35px;
+    height: 50px;
   }
 
   .logo {
-    width: 90px;
+    width: 140px;
     margin: 10px 10px;
   }
 
   .home-menu li a {
     padding: 5px 15px;
-    font-size: 8px;
-    border-radius: 5px;
+    font-size: 15px;
+    border-radius: 10px;
   }
 
   .catch_copy {
+    flex-direction: column;
     padding: 0;
-    height: 200px;
+    height: 400px;
     max-width: 428px;
+    padding: 20px;
   }
 
   .catch_copy_text .TextTyping {
-    font-size: 8px;
-    margin: -3px 15px;
+    font-size: 15px;
+    margin: -18px 15px;
   }
 
   .catch_copy_text img {
     height: auto;
-    width: 80px;
+    width: 200px;
     margin: 0 20px;
   }
 
@@ -510,7 +512,7 @@ footer ul li a:hover {
 
   .catch_copy_btn a {
     text-decoration: none;
-    font-size: 8px;
+    font-size: 20px;
   }
 
   .catch_copy_btn #about_apark {
@@ -526,8 +528,16 @@ footer ul li a:hover {
   }
 
   .catch_copy_img img {
-    width: 130px;
-    margin: 0 15px;
+    width: 250px;
+    margin: 15px 15px -30px;
+  }
+
+  .main {
+    padding: 5px;
+  }
+
+  .whats_good_idea_section {
+    margin-top: 35px;
   }
 
   .whats_good_idea_title {
@@ -535,11 +545,17 @@ footer ul li a:hover {
   }
 
   .whats_good_idea {
-    font-size: 5px;
+    font-size: 8px;
+  }
+
+  .whats_good_idea_section2 {
+    text-align: right;
+    display: inline-block;
+    margin-left: 84%;
   }
 
   .whats_good_idea_section2 .creator {
-    font-size: 5px;
+    font-size: 8px;
   }
 
   .whats_good_idea_section2 img {
@@ -565,28 +581,39 @@ footer ul li a:hover {
   }
 
   .how_to_use_title {
-    font-size: 10px;
+    font-size: 18px;
   }
 
   .list-2 li::before {
     min-width: 1.7em;
     margin-right: 2px;
-    font-size: .30em;
+    font-size: .70em;
     line-height: 1.7em;
   }
 
+  .how_to_use_sub_section {
+    flex-direction: column;
+  }
+
+  .how_to_use_sub_section img {
+    display: block;
+    margin: 0 auto;
+    width: 190px;
+  }
+
   .how_to_use_text_section p {
-    font-size: 5px;
+    font-size: 13px;
+    margin: 3px;
   }
 
   footer {
-    margin-top: -50px;
-    margin-bottom: 15px;
+    margin-top: 20px;
+    margin-bottom: 25px;
   }
 
   footer ul li a {
     padding: 5px 15px;
-    font-size: 8px;
-    border-radius: 5px;
+    font-size: 15px;
+    border-radius: 10px;
   }
 }
