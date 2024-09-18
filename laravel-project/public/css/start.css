@@ -553,14 +553,18 @@ footer ul li a:hover {
   }
 
   .whats_good_idea {
-    font-size: 10px;
-    font-weight: bold;
+    font-size: 13px;
+    /* font-weight: bold; */
   }
 
   .whats_good_idea_section2 {
     text-align: right;
     display: inline-block;
     margin-left: 84%;
+  }
+
+  .whats_good_idea_section2 p {
+    font-size: 10px;
   }
 
   .whats_good_idea_section2 .creator {
