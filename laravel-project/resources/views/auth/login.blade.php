@@ -14,7 +14,6 @@
     </div>
 </header>
     <div class="inner">
-        <h1>ログイン</h1>
 
         <form method="POST" action="{{ route('login.submit') }}">
             @csrf
