@@ -124,16 +124,16 @@
                                 @if($idea->user_id === auth()->id())
                                     <form id="deleteForm" method="POST" action="{{ route('ideas.modal.delete') }}">
                                         @csrf
-                                        <input type="hidden" name="delete[]" value="{{ $idea->id }}">
+                                        {{-- <input type="hidden" name="delete[]" value="{{ $idea->id }}">
                                         <a href="#" onclick="toggleAccordion(event, 'accordionMenu3')"><span class="dli-more"></span></a>
 
                                         <div id="accordionMenu3" class="accordion-content3" style="display: none;">
                                             <ul>
-                                                <li>
+                                                <li> --}}
                                                 <button type="button" id="delete_button_open">アイデアを削除する</button>
-                                                </li>
+                                                {{-- </li>
                                             </ul>
-                                        </div>
+                                        </div> --}}
 
                                         <div id="delete_alert" style="display: none;">
                                             <p>このアイデアを削除してもよろしいですか？</p>
@@ -145,22 +145,36 @@
 
                                 <div class="modal-close js-modal-close">×</div>
                                 <div class="modal-content">
-                                <p>{{ $idea->elevator1 }}</p>
-                                        エレベーター1: {{ $idea->elevator1 }}<br>
-                                        エレベーター2: {{ $idea->elevator2 }}<br>
-                                        どうやって: {{ $idea->how }}<br>
-                                        <canvas class="feedBackRadarChart"
-                                            data-self-chart1="{{ $idea->self_chart1 }}"
-                                            data-self-chart2="{{ $idea->self_chart2 }}"
-                                            data-self-chart3="{{ $idea->self_chart3 }}"
-                                            data-self-chart4="{{ $idea->self_chart4 }}"
-                                            data-self-chart5="{{ $idea->self_chart5 }}"
-                                            data-fb-chart1="{{ $feedback->fb_chart1 }}"
-                                            data-fb-chart2="{{ $feedback->fb_chart2 }}"
-                                            data-fb-chart3="{{ $feedback->fb_chart3 }}"
-                                            data-fb-chart4="{{ $feedback->fb_chart4 }}"
-                                            data-fb-chart5="{{ $feedback->fb_chart5 }}">
-                                        </canvas>
+                                    <div class="modal-label-container">
+                                        <span class="modal_label">一言サービスコンセプト</span><br>
+                                    </div>
+                                    <div class="modal-label-container">
+                                    {{ $idea->elevator1 }}</div><br>
+
+                                    <div class="modal-label-container">
+                                        <span class="modal_label">エレベーターピッチ</span><br>
+                                    </div>
+                                    <div class="modal-label-container">
+                                    {{ $idea->elevator2 }}</div><br>
+
+                                    <div class="modal-label-container">
+                                        <span class="modal_label">解決方法</span><br>
+                                    </div>
+                                    <div class="modal-label-container">
+                                    {{ $idea->how }}</div><br>
+
+                                    <canvas class="feedBackRadarChart modal_chart"
+                                        data-self-chart1="{{ $idea->self_chart1 }}"
+                                        data-self-chart2="{{ $idea->self_chart2 }}"
+                                        data-self-chart3="{{ $idea->self_chart3 }}"
+                                        data-self-chart4="{{ $idea->self_chart4 }}"
+                                        data-self-chart5="{{ $idea->self_chart5 }}"
+                                        data-fb-chart1="{{ $feedback->fb_chart1 }}"
+                                        data-fb-chart2="{{ $feedback->fb_chart2 }}"
+                                        data-fb-chart3="{{ $feedback->fb_chart3 }}"
+                                        data-fb-chart4="{{ $feedback->fb_chart4 }}"
+                                        data-fb-chart5="{{ $feedback->fb_chart5 }}">
+                                    </canvas>
                                 </div>
                             </div>
                         </div>
