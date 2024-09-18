@@ -373,30 +373,43 @@ a:hover {
   /* 内容が溢れたときにスクロール */
   box-sizing: border-box;
   /* 幅にパディングとボーダーを含める */
-  margin: 10px auto;
+  margin: 40px auto;
 }
 
 
 .modal-close {
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 20px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* 子要素を横方向に中央に配置 */
   max-height: 80vh;
   overflow-y: auto;
 }
 
+.modal-label-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
 
 .modal.is-active {
   display: flex;
-  /* モーダルが表示されるときは flex に変更*/
 }
 
-.dli-more {
+.modal_label {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* .dli-more {
   display: inline-block;
   vertical-align: middle;
   color: #333;
@@ -406,9 +419,9 @@ a:hover {
   background: currentColor;
   border-radius: 50%;
   box-shadow: -0.375em 0 0 0 currentColor, 0.375em 0 0 0 currentColor;
-}
+} */
 
-.accordion-content3 {
+/* .accordion-content3 {
   width: 130px;
   padding: 10px;
   background-color: white;
@@ -417,13 +430,29 @@ a:hover {
   margin-top: 10px;
   position: absolute;
   right: 20%;
-}
+} */
 
 button {
   border: none;
   background-color: transparent;
   outline: none;
 }
+
+#delete_button_open {
+  cursor: pointer;
+  color: #bbb;
+  margin: 10px 0;
+}
+
+#delete_button_open:hover {
+  color: #FF385C;
+}
+
+.modal_chart {
+  width: 450px !important;
+  height: 450px !important;
+}
+
 
 
 @media screen and (max-width: 640px) {
