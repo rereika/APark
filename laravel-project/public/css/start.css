@@ -473,62 +473,70 @@ footer ul li a:hover {
 @media screen and (min-width: 375px) and (max-width: 428px) {
 
   header {
-    height: 50px;
+    height: 70px;
   }
 
   .logo {
-    width: 140px;
+    width: 150px;
     margin: 10px 10px;
   }
 
   .home-menu li a {
     padding: 5px 15px;
-    font-size: 15px;
+    font-size: 20px;
     border-radius: 10px;
   }
 
   .catch_copy {
     flex-direction: column;
     padding: 0;
-    height: 400px;
+    height: 550px;
     max-width: 428px;
     padding: 20px;
   }
 
   .catch_copy_text .TextTyping {
-    font-size: 15px;
+    font-size: 28px;
     margin: -18px 15px;
   }
 
   .catch_copy_text img {
     height: auto;
-    width: 200px;
+    width: 260px;
     margin: 0 20px;
   }
 
   .catch_copy_btn {
     margin-top: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .catch_copy_btn a {
+    display: block;
     text-decoration: none;
     font-size: 20px;
+    text-align: center;
+    margin-bottom: 10px;
   }
 
   .catch_copy_btn #about_apark {
     border: 1px solid #f8f7f6;
     border-radius: 40px;
-    padding: 5px 15px;
+    padding: 5px 25px;
+    width: 220px;
   }
 
   .catch_copy_btn #how_to_use {
     border: 1px solid #dcdcdc;
     border-radius: 40px;
-    padding: 5px 15px;
+    padding: 5px 30px;
+    width: 220px;
   }
 
   .catch_copy_img img {
-    width: 250px;
+    width: 300px;
     margin: 15px 15px -30px;
   }
 
@@ -541,11 +549,12 @@ footer ul li a:hover {
   }
 
   .whats_good_idea_title {
-    font-size: 15px;
+    font-size: 20px;
   }
 
   .whats_good_idea {
-    font-size: 8px;
+    font-size: 10px;
+    font-weight: bold;
   }
 
   .whats_good_idea_section2 {
@@ -563,8 +572,8 @@ footer ul li a:hover {
   }
 
   .circle {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
   }
 
   .how_to_use_section ul {
@@ -613,7 +622,7 @@ footer ul li a:hover {
 
   footer ul li a {
     padding: 5px 15px;
-    font-size: 15px;
+    font-size: 20px;
     border-radius: 10px;
   }
 }
