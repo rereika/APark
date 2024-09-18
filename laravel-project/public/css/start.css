@@ -42,7 +42,6 @@ header {
 .home-menu li {
   text-align: right;
   margin: 3px 10px;
-
 }
 
 .home-menu li a {
@@ -468,4 +467,126 @@ footer ul li a:hover {
   background-color: #FF385C;
   color: #ffffff;
   border: 1px solid #ffffff;
+}
+
+
+@media screen and (min-width: 375px) and (max-width: 428px) {
+
+  header {
+    height: 35px;
+  }
+
+  .logo {
+    width: 90px;
+    margin: 10px 10px;
+  }
+
+  .home-menu li a {
+    padding: 5px 15px;
+    font-size: 8px;
+    border-radius: 5px;
+  }
+
+  .catch_copy {
+    padding: 0;
+    height: 200px;
+    max-width: 428px;
+  }
+
+  .catch_copy_text .TextTyping {
+    font-size: 8px;
+    margin: -3px 15px;
+  }
+
+  .catch_copy_text img {
+    height: auto;
+    width: 80px;
+    margin: 0 20px;
+  }
+
+  .catch_copy_btn {
+    margin-top: 3px;
+  }
+
+  .catch_copy_btn a {
+    text-decoration: none;
+    font-size: 8px;
+  }
+
+  .catch_copy_btn #about_apark {
+    border: 1px solid #f8f7f6;
+    border-radius: 40px;
+    padding: 5px 15px;
+  }
+
+  .catch_copy_btn #how_to_use {
+    border: 1px solid #dcdcdc;
+    border-radius: 40px;
+    padding: 5px 15px;
+  }
+
+  .catch_copy_img img {
+    width: 130px;
+    margin: 0 15px;
+  }
+
+  .whats_good_idea_title {
+    font-size: 15px;
+  }
+
+  .whats_good_idea {
+    font-size: 5px;
+  }
+
+  .whats_good_idea_section2 .creator {
+    font-size: 5px;
+  }
+
+  .whats_good_idea_section2 img {
+    width: 20px;
+  }
+
+  .circle {
+    width: 150px;
+    height: 150px;
+  }
+
+  .how_to_use_section ul {
+    margin-top: 13px;
+    /* 「使い方」の文字とリストの間に余白を追加 */
+  }
+
+  .how_to_use_section {
+    margin-top: 50px;
+  }
+
+  .how_to_use {
+    font-size: 15px;
+  }
+
+  .how_to_use_title {
+    font-size: 10px;
+  }
+
+  .list-2 li::before {
+    min-width: 1.7em;
+    margin-right: 2px;
+    font-size: .30em;
+    line-height: 1.7em;
+  }
+
+  .how_to_use_text_section p {
+    font-size: 5px;
+  }
+
+  footer {
+    margin-top: -50px;
+    margin-bottom: 15px;
+  }
+
+  footer ul li a {
+    padding: 5px 15px;
+    font-size: 8px;
+    border-radius: 5px;
+  }
 }
