@@ -9,7 +9,7 @@
 <body>
 <header>
     <div class="logo">
-        <a href="{{ route('start.show') }}"><img src="{{ asset('image/logo3.png') }}" alt="ロゴ画像"></a>
+        <a href="{{ route('start.show') }}"><img src="{{ asset('image/logo4.png') }}" alt="ロゴ画像"></a>
     </div>
 </header>
     <div class="inner">

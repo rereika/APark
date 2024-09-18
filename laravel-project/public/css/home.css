@@ -18,9 +18,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  /* 右寄せ */
   padding: 10px;
-  /* ヘッダー内のパディング */
 }
 
 .home-menu ul {
@@ -129,7 +127,7 @@ a:hover {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 20px 80px;
+  padding: 20px 250px;
   background-color: #f8f7f6;
   height: 300px;
 }
@@ -143,11 +141,10 @@ a:hover {
   height: 100%;
   width: auto;
   display: block;
-
 }
 
 .typing-animation {
-  margin-left: 20px;
+  margin-left: 50px;
   z-index: 2;
   color: #B42E31;
   font-weight: bold;
@@ -455,43 +452,84 @@ button {
 
 
 
-@media screen and (max-width: 640px) {
+@media screen and (min-width: 375px) and (max-width: 428px) {
+
   header {
-    height: 40px;
+    height: 70px;
   }
 
   .logo img {
-    height: 40px;
-    width: auto;
+    width: 150px;
+    margin: 10px 0 10px -20px;
+  }
+
+  .home-menu ul {
+    padding: 0;
   }
 
   .home-menu li {
-    text-align: right;
-    margin: 3px 10px;
+    padding: 5px 15px;
     font-size: 10px;
-  }
-
-  .theme-button {
-    display: inline-block;
-    margin: 20px 7px;
-    padding: 10px;
-    background-color: #F6F8F8;
-    color: black;
-    font-size: 10px;
-    width: 400px;
     border-radius: 10px;
-    cursor: pointer;
   }
 
-  .catch_copy img {
-    width: 150px;
-    height: auto;
-    margin: 70px 5px;
+  .home-menu ul li a img {
+    width: 100%;
   }
 
-  .catch_copy p {
+  .catch_copy {
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    height: 400px;
+  }
+
+  .background-container img {
+    height: 60%;
+    margin-top: -50px;
+  }
+
+  .typing-animation {
+    font-size: 20px;
+    margin-top: -150px;
+  }
+
+  .typing-animation {
+    margin-left: 0;
     font-size: 15px;
-    font-weight: bold;
-    margin: 0;
+  }
+
+  .slider {
+    padding: 0;
+  }
+
+  .slick-next,
+  .slick-prev {
+    width: 10px;
+    height: 10px;
+  }
+
+  .chart {
+    width: 300px;
+  }
+
+  .new-ideas-box-animate .txt-limit {
+    font-size: 15px;
+    width: 200px;
+  }
+
+  .image-container canvas {
+    width: 200px;
+  }
+
+  .modal-container {
+    width: 70%;
+    height: 50%;
+    margin: 150px auto;
+  }
+
+  .modal_chart {
+    width: 200px !important;
+    height: 200px !important;
   }
 }

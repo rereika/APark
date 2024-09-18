@@ -39,7 +39,7 @@ class LoginController extends Controller
                 }
 
         // 認証失敗
-        return redirect()->route('login.show')
+        return redirect()->route('login')
                         ->withErrors(['user_name' => 'ユーザー名またはパスワードが違います。']);
     }
 

@@ -7,14 +7,25 @@ const typing = (el, sentence) => {
   // タイピングアニメーションの処理
   const typeSentence = () => {
     // 一度テキストをクリアする
-    target.textContent = '';
+    target.innerHTML = '';
 
-    // 文字列を１文字ずつ取り出して処理を実行する
-    [...sentence].forEach((char, index) => {
-      //0.1秒ごとに文字を出力する
-      setTimeout(() => {
-        target.textContent += char;
-      }, 100 * index);
+    // 文字列を <br> で分割し、パートごとに処理
+    const parts = sentence.split('<br>');
+
+    parts.forEach((part, partIndex) => {
+      [...part].forEach((char, charIndex) => {
+        // 0.1秒ごとに文字を出力する
+        setTimeout(() => {
+          target.innerHTML += char;
+        }, 100 * (charIndex + partIndex * part.length));
+      });
+
+      // 各パートの後に改行を追加
+      if (partIndex < parts.length - 1) {
+        setTimeout(() => {
+          target.innerHTML += '<br>';
+        }, 100 * part.length * (partIndex + 1));
+      }
     });
 
     // 6秒後に再度この関数を実行して繰り返す
@@ -26,7 +37,7 @@ const typing = (el, sentence) => {
 }
 
 //関数を呼び出す
-typing('.typing-animation', 'アイデアの補助輪に乗り、アプレンティスシップの旅に出よう！！');
+typing('.typing-animation', 'アイデアの補助輪に乗り、<br>アプレンティスシップの旅に出よう！！');
 
 
 // Slick Carouselの初期化
