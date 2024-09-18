@@ -48,7 +48,7 @@
             <div class="whats_good_idea_section1">
                 <p class="whats_good_idea_title">
                     <span class="good_idea">"良いアイデア"</span>
-                    <span class="question">に出会えてますか？</span>
+                    <span class="question">に<br>出会えてますか？</span>
                 </p>
 
                 <div class="whats_good_idea_message">
