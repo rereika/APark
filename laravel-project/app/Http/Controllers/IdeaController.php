@@ -94,6 +94,17 @@ public function modalIdeaDelete(Request $request)
     return redirect()->route('home')->with('message', '選択されたアイデアが削除されました。');
 }
 
+public function myPageIdeaDelete(Request $request)
+{
+    $ideaId = $request->input('idea_id');
+
+    if ($ideaId) {
+        // 指定されたアイデアを削除
+        Idea::where('id', $ideaId)->delete();
+
+    return redirect()->route('get.my.page')->with('message', 'アイデアが削除されました。');
+}
+}
 
 
     public function showDraft($id)
