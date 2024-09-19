@@ -84,3 +84,5 @@ Route::post('/generate/{id}', [OpenAIController::class, 'generateAndRedirect'])-
 Route::get('/ideas', [IdeaController::class, 'getIdeas'])->name('ideas.get');
 //モーダルウィンドウ内でアイデアの削除
 Route::post('/home/delete', [IdeaController::class, 'modalIdeaDelete'])->name('ideas.modal.delete');
+
+Route::post('/my_page/delete', [IdeaController::class, 'myPageIdeaDelete'])->name('ideas.myPage.delete');

@@ -12,13 +12,94 @@
   background-color: #EEEEEE;
 }
 
-.my_page_items {
+.slider {
   display: flex;
+  justify-content: center;
+  padding-left: 0;
+}
+
+
+
+.slider .slick-slide {
+  margin: 0 10px;
+}
+
+.slick-prev,
+.slick-next {
+  position: absolute;
+  top: 42%;
+  cursor: pointer;
+  outline: none;
+  border-top: 2px solid #666;
+  border-right: 2px solid #666;
+  height: 15px;
+  width: 15px;
+  margin: 0 -10px;
+}
+
+.slick-prev {
+  left: -1.5%;
+  transform: rotate(-135deg);
+}
+
+.slick-next {
+  right: -1.5%;
+  transform: rotate(45deg);
+}
+
+.slick-dots {
+  text-align: center;
+  margin: 0;
+}
+
+.slick-dots li {
+  display: inline-block;
+  margin: 0;
+}
+
+.slick-dots button {
+  color: transparent;
+  outline: none;
+  width: 8px;
+  height: 8px;
+  display: block;
+  border-radius: 50%;
+  background: #ccc;
+}
+
+.slick-dots .slick-active button {
+  background: #333;
+}
+
+#delete_button_open {
+  cursor: pointer;
+  color: #bbb;
+  background-color: #ffffff;
+  border: 0.5px solid black;
+  margin-bottom: 12px;
+}
+
+
+#delete_button_open:hover {
+  color: #FF385C;
+}
+
+.my_page_items {
+  /* display: flex; */
 }
 
 .my_ideas {
   width: 50%;
 }
+
+.my-ideas-items {
+  width: 95%;
+}
+
+.my_ideas {
+  width: 100%;
+}
+
 
 .my_ideas .my-ideas-items ul {
   list-style: none;
@@ -46,4 +127,12 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   /* 任意の行数を指定 */
+}
+
+@media screen and (min-width: 375px) and (max-width: 428px) {
+
+  .return_home {
+    margin: 20px 0;
+  }
+
 }
