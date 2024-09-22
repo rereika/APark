@@ -37,6 +37,8 @@ ul li {
   /* width: 80%; */
   margin: 8px 20px;
   resize: none;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 .CharCounter {
@@ -99,7 +101,7 @@ ul li {
 
 
 
-@media screen and (max-width: 640px) {
+@media screen and (min-width: 375px) and (max-width: 428px) {
   .return_pitch_page {
     font-size: 10px;
     padding: 8px;
@@ -107,7 +109,7 @@ ul li {
   }
 
   h2 {
-    font-size: 15px;
+    font-size: 12px;
     text-align: center;
   }
 
@@ -125,6 +127,29 @@ ul li {
     font-size: 10px;
     padding: 8px 20px;
     margin: 2px 1px;
+  }
+
+  #input_pitch1,
+  #input_pitch2,
+  #input_solution {
+    width: 100%;
+    margin: 8px auto;
+    resize: none;
+  }
+
+  .TextareaWrapper {
+    width: 100%;
+  }
+
+  .next_page {
+    display: flex;
+    /* justify-content: space-between; */
+  }
+
+  .next_page .draft,
+  .next_page .delete {
+    writing-mode: horizontal-tb;
+    margin: 0 -10px;
   }
 
 }

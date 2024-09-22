@@ -235,6 +235,9 @@ document.addEventListener('DOMContentLoaded', function () {
       if (confirmation) {
         // OKが押されたら削除フォームを送信
         const form = button.closest('form');  // ボタンの親フォームを取得
+
+        const input = form.querySelector('input[name="delete[]"]');
+
         form.submit();
       } else {
         // キャンセルが押されたら何もしない

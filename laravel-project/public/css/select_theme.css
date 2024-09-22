@@ -55,7 +55,7 @@
   color: #ffffff;
 } */
 
-@media screen and (max-width: 640px) {
+@media screen and (min-width: 375px) and (max-width: 428px) {
 
   .back_home_btn {
     font-size: 10px;

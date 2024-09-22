@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class IdeaController extends Controller
 {
-
     // 新しいアイデアを作成する
     public function create(Request $request){
 
@@ -96,6 +95,7 @@ public function modalIdeaDelete(Request $request)
 
 public function myPageIdeaDelete(Request $request)
 {
+
     $ideaId = $request->input('idea_id');
 
     if ($ideaId) {

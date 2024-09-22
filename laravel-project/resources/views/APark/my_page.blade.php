@@ -67,13 +67,11 @@
                                     @case(3)
                                     <span class="theme">オリジナルプロダクト</span>
                                         @break
-                                    @default
-                                        未定
                                 @endswitch
                                 <br>
-                            <span>エレベーターピッチ:</span><br>{{ $idea->elevator1 }}<br><p class="txt-limit">{{ $idea->elevator2 }}</p><br>
+                            <span>エレベーターピッチ:</span><br><p class="txt-limit">{{ $idea->elevator1 }}<br>{{ $idea->elevator2 }}</p><br>
                             <span>解決方法:</span><br><p class="txt-limit">{{ $idea->how }}</p><br>
-                            {{ $idea->created_at }}<br>
+                            <span>{{ $idea->created_at }}</span><br>
                             {{-- 更新日時: {{ $idea->updated_at }} --}}
                         </li>
                     @endforeach

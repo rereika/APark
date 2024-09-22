@@ -122,10 +122,10 @@
 }
 
 .txt-limit {
-  overflow: hidden;
+  /* overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 2; */
   /* 任意の行数を指定 */
 }
 
@@ -135,4 +135,26 @@
     margin: 20px 0;
   }
 
+  .new-ideas-box-animate li {
+    height: 400px;
+    overflow: scroll;
+  }
+
+  .my_ideas .my-ideas-items ul li span {
+    font-size: 15px;
+    display: inline-block;
+    margin-top: 15px;
+  }
+
+
+  .txt-limit {
+    font-size: 10px;
+    margin-bottom: -20px;
+    margin-top: 0;
+  }
+
+  .slick-dots li {
+    height: 15px;
+    border: none;
+  }
 }

@@ -43,6 +43,30 @@ let radarConfig = {
 
 let radarChart = new Chart(RadarCtx, radarConfig);
 
+// 画面幅に応じてラベルのフォントサイズを調整する関数
+function adjustLabelSize() {
+  let screenWidth = window.innerWidth;
+  let fontSize;
+
+  // メディアスクリーンのサイズに応じてフォントサイズを変更
+  if (screenWidth <= 428) {
+    fontSize = 9; // 小さい画面用のフォントサイズ
+  } else if (screenWidth <= 768) {
+    fontSize = 15; // タブレット用のフォントサイズ
+  } else {
+    fontSize = 18; // 大きな画面用のフォントサイズ
+  }
+
+  radarChart.options.scales.r.pointLabels.font.size = fontSize;
+  radarChart.update(); // チャートを再描画して変更を反映
+}
+
+// 初期表示時にフォントサイズを調整
+adjustLabelSize();
+
+// ウィンドウサイズが変更されたときにフォントサイズを再調整
+window.addEventListener('resize', adjustLabelSize);
+
 //チャートの更新
 function updateChart() {
   let form = document.getElementById('chartForm');
