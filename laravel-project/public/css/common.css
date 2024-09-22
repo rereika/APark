@@ -138,13 +138,30 @@ h1 {
 }
 
 
-@media screen and (max-width: 640px) {
+@media screen and (min-width: 375px) and (max-width: 428px) {
 
   h1 {
-    font-size: 20px;
+    font-size: 15px;
   }
 
   .draft {
     font-size: 10px;
+  }
+
+  .status ul li {
+    margin: 0 5px;
+    /* 各画像の間隔 */
+  }
+
+  .pagination a,
+  .pagination button {
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 10px;
+  }
+
+  .pagination i {
+    line-height: 25px;
   }
 }

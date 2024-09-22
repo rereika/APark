@@ -121,27 +121,13 @@
                         <div class="modal js-modal" id="modal-{{ $index }}">
 
                             <div class="modal-container">
-                                @if($idea->user_id === auth()->id())
-                                    <form id="deleteForm" method="POST" action="{{ route('ideas.modal.delete') }}">
-                                        @csrf
-                                        {{-- <input type="hidden" name="delete[]" value="{{ $idea->id }}">
-                                        <a href="#" onclick="toggleAccordion(event, 'accordionMenu3')"><span class="dli-more"></span></a>
-
-                                        <div id="accordionMenu3" class="accordion-content3" style="display: none;">
-                                            <ul>
-                                                <li> --}}
-                                                <button type="button" id="delete_button_open">アイデアを削除する</button>
-                                                {{-- </li>
-                                            </ul>
-                                        </div> --}}
-
-                                        <div id="delete_alert" style="display: none;">
-                                            <p>このアイデアを削除してもよろしいですか？</p>
-                                            <button type="submit" id="delete_button">削除する</button>
-                                            <button type="button" id="cancel_delete_button">キャンセル</button>
-                                        </div>
-                                    </form>
-                                @endif
+                            @if($idea->user_id === auth()->id())
+                                <form id="deleteForm" method="POST" action="{{ route('ideas.modal.delete') }}">
+                                    @csrf
+                                    <input type="hidden" name="delete[]" value="{{ $idea->id }}">
+                                    <button type="submit" id="delete_button_open">アイデアを削除する</button>
+                                </form>
+                            @endif
 
                                 <div class="modal-close js-modal-close">×</div>
                                 <div class="modal-content">

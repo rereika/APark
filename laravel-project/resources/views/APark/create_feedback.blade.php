@@ -11,9 +11,6 @@
 </head>
 
 <body>
-  {{-- <div class="back_page">
-    <a href="{{ route('get.draft.to.pitch', ['id' => $idea->id]) }}" class="draft">修正する</a>
-  </div> --}}
 
   <div class="inner">
 
@@ -50,10 +47,7 @@
     </div>
 
     <div class="status">
-
-      {{-- <div class="back_page"> --}}
-        <a href="{{ route('get.draft.to.pitch', ['id' => $idea->id]) }}" class="draft">修正する</a>
-      {{-- </div> --}}
+        {{-- <a href="{{ route('get.draft.to.pitch', ['id' => $idea->id]) }}" class="draft">修正する</a> --}}
 
       <ul class="pagination">
         <li><a href="#">1</a></li>
@@ -62,20 +56,22 @@
         <li class="active"><a href="#">4</a></li>
       </ul>
 
-      <div class="share_btn">
-        <a href="{{ route('ideas.post', ['id' => $idea->id]) }}" class="proceed_home_page">投稿する</a>
-      </div>
-
-    </div>
-
-      {{-- <h2>アイデアをシェアしてさらに磨こう！</h2> --}}
-
       {{-- <div class="share_btn">
         <a href="{{ route('ideas.post', ['id' => $idea->id]) }}" class="proceed_home_page">投稿する</a>
       </div> --}}
 
     </div>
+
+    <div class="next_page">
+    <a href="{{ route('get.draft.to.pitch', ['id' => $idea->id]) }}" class="draft">修正する</a>
+    <a href="{{ route('ideas.post', ['id' => $idea->id]) }}" class="proceed_home_page">投稿する</a>
   </div>
+
+    </div>
+  </div>
+
+
+
 
     <script src="{{ asset('js/create_feedback.js') }}"></script>
 </body>

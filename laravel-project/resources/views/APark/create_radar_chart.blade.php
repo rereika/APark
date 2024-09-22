@@ -40,6 +40,7 @@
                     <option value="1">1</option>
                 </select>
             </p>
+
             <p>目新しさ
                 <select name="self_chart3">
                     <option value="5">5</option>
