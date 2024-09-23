@@ -14,7 +14,8 @@
 
 リンク：[APark (エーパーク)](https://apark.click/)
 
-![Mockup](../APark/documents/image/Mockup2024.09.23.png)
+![Mockup](documents/image/Mockup2024.09.23.png)
+
 
 ## 解説記事
 
@@ -44,10 +45,10 @@
 * OpenAI API
 
 ## ER図
-<img src="../APark/documents/image/ER2024.06.21.png" alt="ER" width="600" height="500">
+<img src="documents/image/ER2024.06.21.png" alt="ER" width="600" height="500">
 
 ## システム構成図
-<img src="../APark/documents/image/Infrastructure2024.09.23.png" alt="インフラ構成図" width="600" height="950">
+<img src="documents/image/Infrastructure2024.09.23.png" alt="インフラ構成図" width="600" height="950">
 
 ## 機能一覧
 ## アップデート予定

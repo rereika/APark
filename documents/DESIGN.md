@@ -1,12 +1,12 @@
 # 設計
 ## 業務フロー
-<img src="image/フローチャート2024.06.21.png" alt="FR" width="600" height="550">
+<img src="image/フローチャート2024.06.21.png" alt="FR" width="800" height="750">
 
 ## 画面遷移図/ワイヤーフレーム
-<img src="image/WF2024.06.22-2.jpg" alt="WF" width="600" height="800">
+<img src="image/WF2024.06.22-2.jpg" alt="WF" width="800" height="1000">
 
 ## ER図
-<img src="image/ER2024.06.21.png" alt="WF" width="600" height="500">
+<img src="image/ER2024.06.21.png" alt="WF" width="800" height="700">
 
 ## テーブル定義書
 ### Usersテーブル
