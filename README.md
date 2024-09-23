@@ -45,10 +45,10 @@
 * OpenAI API
 
 ## ER図
-<img src="documents/image/ER2024.06.21.png" alt="ER" width="600" height="500">
+![ER](documents/image/ER2024.06.21.png)
 
 ## システム構成図
-<img src="documents/image/Infrastructure2024.09.23.png" alt="インフラ構成図" width="600" height="950">
+![Infrastructure](documents/image/Infrastructure2024.09.23.png)
 
 ## 機能一覧
 ## アップデート予定
