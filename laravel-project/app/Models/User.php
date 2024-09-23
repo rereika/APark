@@ -31,15 +31,15 @@ class User extends Authenticatable
         ];
     }
 
-    public function google2fa()
-    {
-        return new Google2FA(request());
-    }
+    // public function google2fa()
+    // {
+    //     return new Google2FA(request());
+    // }
 
     // 2FAが有効かどうかをチェック
-public function hasGoogle2FAEnabled()
-{
-    return !is_null($this->google2fa_secret) && $this->google2fa_enabled;
-}
+// public function hasGoogle2FAEnabled()
+// {
+//     return !is_null($this->google2fa_secret) && $this->google2fa_enabled;
+// }
 
 }
