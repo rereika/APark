@@ -1,12 +1,12 @@
 # 設計
 ## 業務フロー
-![WF](image/フローチャート2024.06.21.png)
+<img src="image/フローチャート2024.06.21.png" alt="FR" width="600" height="550">
 
 ## 画面遷移図/ワイヤーフレーム
-![WF](image/WF2024.06.22-2.jpg)
+<img src="image/WF2024.06.22-2.jpg" alt="WF" width="600" height="800">
 
 ## ER図
-![WF](image/ER2024.06.21.png)
+<img src="image/ER2024.06.21.png" alt="WF" width="600" height="500">
 
 ## テーブル定義書
 ### Usersテーブル
@@ -55,3 +55,7 @@
 | criterion     | 評価項目    | INT |      |      | ◯ |    |     |
 | score     | 評価点数  | INT |      |      | ◯ |    |     |
 | comment     | FBコメント   | TEXT |      |      | ◯ |    |     |
+
+
+### システム構成図
+<img src="image/Infrastructure2024.09.23.png" alt="インフラ構成図" width="600" height="950">
