@@ -62,7 +62,6 @@ class IdeaController extends Controller
 
         return view('APark.enter_pitch', ['idea' => $idea]);
     }
-
     public function draftDelete(Request $request)
 {
 
