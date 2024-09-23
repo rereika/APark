@@ -564,15 +564,12 @@ footer ul li a:hover {
   }
 
   .whats_good_idea_section2 p {
-    font-size: 10px;
-  }
-
-  .whats_good_idea_section2 .creator {
     font-size: 8px;
   }
 
   .whats_good_idea_section2 img {
     width: 20px;
+    margin-right: 13px;
   }
 
   .circle {
