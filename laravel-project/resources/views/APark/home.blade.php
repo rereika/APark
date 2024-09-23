@@ -35,7 +35,7 @@
                 </div>
             {{-- </li> --}}
 
-            <li>
+            <li class="create_idea">
                 <a href="#" class="create_menu" onclick="toggleAccordion(event, 'accordionMenu2')">作成する</a>
             </li>
                 <div id="accordionMenu2" class="accordion-content2" style="display: none;">
