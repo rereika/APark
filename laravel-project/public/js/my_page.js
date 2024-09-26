@@ -5,7 +5,7 @@ $(document).ready(function () {
     infinite: true, // スライドをループさせるかどうか。初期値はtrue。
     slidesToShow: 2, // スライドを画面に2枚見せる
     slidesToScroll: 1, // 1回のスクロールで1枚の写真を移動して見せる
-    prevArrow: '<div class="slick-prev"></div>', // 矢印部分PreviewのHTMLを変更
+    preletrow: '<div class="slick-prev"></div>', // 矢印部分PreviewのHTMLを変更
     nextArrow: '<div class="slick-next"></div>', // 矢印部分NextのHTMLを変更
     dots: true, // 下部ドットナビゲーションの表示
     responsive: [
@@ -52,30 +52,33 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  // モーダルを開く処理
-  document.querySelectorAll('.js-modal-open').forEach(button => {
-    button.addEventListener('click', function (event) {
-      event.preventDefault(); // デフォルトの動作を防ぐ
-      const modalId = this.getAttribute('data-modal-id'); // data-modal-id 属性を取得
-      const targetModal = document.getElementById(modalId); // モーダルを取得
-      if (targetModal) {
-        targetModal.style.display = 'block'; // モーダルを表示
-      }
-    });
+$(function () {
+  // リストアイテムをクリックしたときにモーダルを開く
+  $('.idea-item').click(function () {
+    // データ属性から情報を取得
+    let theme = $(this).find('.theme').text(); // テーマを取得
+    let elevator1 = $(this).data('elevator1');
+    let elevator2 = $(this).data('elevator2');
+    let how = $(this).data('how');
+    let createdAt = $(this).find('span').last().text(); // 最後のspanから作成日時を取得
+
+    // モーダルに内容を設定
+    $('#modalTheme').text(theme);
+    $('#modalElevator1').text(elevator1);
+    $('#modalElevator2').text(elevator2);
+    $('#modalHow').text(how);
+    $('#modalCreatedAt').text(createdAt);
+
+    // アイデアIDをモーダルに設定
+    let ideaId = $(this).data('idea-id');
+    $('#modalIdeaId').val(ideaId);
+
+    // モーダルを表示
+    $('#modalArea').fadeIn(200);
   });
 
-  // モーダルを閉じる処理
-  document.querySelectorAll('.js-modal-close').forEach(button => {
-    button.addEventListener('click', function () {
-      this.closest('.modal').style.display = 'none'; // 親のモーダルを非表示にする
-    });
-  });
-
-  // モーダルの外をクリックで閉じる処理
-  document.addEventListener('click', function (event) {
-    if (event.target.classList.contains('modal')) {
-      event.target.style.display = 'none'; // モーダルの外をクリックで非表示にする
-    }
+  // モーダルを閉じる
+  $('#closeModal, #modalBg, #cancel_delete_button').click(function () {
+    $('#modalArea').fadeOut(200);
   });
 });
