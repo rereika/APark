@@ -21,11 +21,12 @@
 
     <div class="home-menu">
         <ul>
-            <li>
+        <li class="user_name">ようこそ、<span>{{ $userName }}</span>さん</li>
+            <li class="icon_img">
                 <a href="#" class="my_page" onclick="toggleAccordion(event, 'accordionMenu1')">
                     <img src="{{ asset('image/icon.png') }}" alt="アイコン画像">
                 </a>
-            </li>
+            </lic>
 
                 <div id="accordionMenu1" class="accordion-content1" style="display: none;">
                     <ul>

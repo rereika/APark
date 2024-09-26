@@ -348,8 +348,8 @@ header {
 .how_to_use_section {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  /* align-items: center; */
   padding: 20px;
   background-color: #f8f7f6;
   height: auto;
@@ -357,17 +357,22 @@ header {
   margin-top: 100px;
 }
 
-.how_to_use {
+.how_to_use p {
+  color: #f2b3b3;
   font-size: 40px;
+  width: 125px;
   font-weight: bold;
-  position: absolute;
   top: 0;
   border: 5px solid #f8f7f6;
   background-color: #f8f7f6;
+  text-align: left;
+  margin: 0;
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 .how_to_use_section ul {
-  margin-top: 50px;
+  /* margin-top: 50px; */
   /* 「使い方」の文字とリストの間に余白を追加 */
 }
 
@@ -413,8 +418,14 @@ header {
 .list-2 {
   list-style-type: none;
   padding: 1em;
-  border: 2px solid #f2b3b3;
+  /* border: 2px solid #f2b3b3; */
   counter-reset: li;
+  margin: 0;
+  margin-top: -35px;
+}
+
+.mockup img {
+  width: 100%;
 }
 
 .list-2 .how_to_use_create_idea {

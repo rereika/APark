@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Idea;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
@@ -23,11 +24,6 @@ class LoginController extends Controller
 
         $credentials = $request->only('user_name', 'password');
 
-        // if (Auth::attempt($credentials)) {
-        //     // 認証成功
-        //     return redirect()->route('APark.home');
-        // }
-
             if (Auth::attempt($credentials)) {
                 //認証成功
                 $ideas = Idea::where('is_posted', '2')
@@ -35,7 +31,12 @@ class LoginController extends Controller
                 ->orderBy('created_at', 'desc')
                 ->get();
 
-                return view('APark.home', ['ideas' => $ideas]);
+                $userName = Auth::user()->user_name;
+
+                return view('APark.home', [
+                    'ideas' => $ideas,
+                    'userName' => $userName
+                ]);
                 }
 
         // 認証失敗

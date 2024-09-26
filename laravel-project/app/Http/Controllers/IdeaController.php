@@ -173,12 +173,12 @@ public function index()
                 ->orderBy('created_at', 'desc')
                 ->get();
 
-    // dd($ideas); // ここでデータの内容を確認
-    // foreach($ideas as $idea){
-    //     var_dump($idea->id);
-    // }
-    // die;
-    return view('APark.home', ['ideas' => $ideas]);
+    $userName = Auth::check() ? Auth::user()->user_name : null;
+
+    return view('APark.home', [
+        'ideas' => $ideas,
+        'userName' => $userName
+    ]);
 }
 
 
