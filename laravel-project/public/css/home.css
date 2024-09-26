@@ -195,6 +195,11 @@ a:hover {
 .slider {
   width: 100%;
   margin: 0 auto;
+  padding: 0;
+}
+
+.slick-track {
+  margin: 0;
 }
 
 .slider img {

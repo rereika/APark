@@ -45,7 +45,7 @@ $(document).ready(function () {
   $('.slider').slick({
     autoplay: true, // 自動的に動き出すか。初期値はfalse。
     infinite: true, // スライドをループさせるかどうか。初期値はtrue。
-    slidesToShow: 5, // スライドを画面に5枚見せる
+    slidesToShow: 3, // スライドを画面に3枚見せる
     slidesToScroll: 1, // 1回のスクロールで1枚の写真を移動して見せる
     prevArrow: '<div class="slick-prev"></div>', // 矢印部分PreviewのHTMLを変更
     nextArrow: '<div class="slick-next"></div>', // 矢印部分NextのHTMLを変更
@@ -59,7 +59,7 @@ $(document).ready(function () {
         }
       },
       {
-        breakpoint: 426, // モニターの横幅が426px以下の見せ方
+        breakpoint: 428, // モニターの横幅が426px以下の見せ方
         settings: {
           slidesToShow: 1, // スライドを画面に1枚見せる
           slidesToScroll: 1 // 1回のスクロールで1枚の写真を移動して見せる
@@ -101,10 +101,6 @@ function toggleAccordion(event, id) {
   document.addEventListener('click', closeAccordion);
 }
 
-
-
-
-// 変更後 home.js
 // レーダーチャートの作成
 function createRadarChart(ctx, selfValues, fbValues) {
   return new Chart(ctx, {
@@ -152,7 +148,7 @@ function createRadarChart(ctx, selfValues, fbValues) {
           ticks: {},
           pointLabels: {
             font: {
-              size: 10
+              size: 7
             }
           }
         }
