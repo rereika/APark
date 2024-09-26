@@ -1,7 +1,7 @@
 // Slick Carouselの初期化
 $(document).ready(function () {
   $('.slider').slick({
-    autoplay: true, // 自動的に動き出すか。初期値はfalse。
+    autoplay: false, // 自動的に動き出すか。初期値はfalse。
     infinite: true, // スライドをループさせるかどうか。初期値はtrue。
     slidesToShow: 2, // スライドを画面に2枚見せる
     slidesToScroll: 1, // 1回のスクロールで1枚の写真を移動して見せる
@@ -49,5 +49,33 @@ document.addEventListener('DOMContentLoaded', function () {
         return false;
       }
     });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  // モーダルを開く処理
+  document.querySelectorAll('.js-modal-open').forEach(button => {
+    button.addEventListener('click', function (event) {
+      event.preventDefault(); // デフォルトの動作を防ぐ
+      const modalId = this.getAttribute('data-modal-id'); // data-modal-id 属性を取得
+      const targetModal = document.getElementById(modalId); // モーダルを取得
+      if (targetModal) {
+        targetModal.style.display = 'block'; // モーダルを表示
+      }
+    });
+  });
+
+  // モーダルを閉じる処理
+  document.querySelectorAll('.js-modal-close').forEach(button => {
+    button.addEventListener('click', function () {
+      this.closest('.modal').style.display = 'none'; // 親のモーダルを非表示にする
+    });
+  });
+
+  // モーダルの外をクリックで閉じる処理
+  document.addEventListener('click', function (event) {
+    if (event.target.classList.contains('modal')) {
+      event.target.style.display = 'none'; // モーダルの外をクリックで非表示にする
+    }
   });
 });
