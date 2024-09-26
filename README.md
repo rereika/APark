@@ -30,6 +30,9 @@
 ### データベース
 * mysql  Ver 8.0.39
 ### ライブラリ
+* jQuery
+* Slick Carousel
+* Chart.js
 ### インフラ(AWS)
 * EC2
 * RDS

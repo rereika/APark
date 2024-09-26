@@ -193,9 +193,9 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', function (event) {
       event.preventDefault(); // デフォルトの動作を防ぐ
       const modalId = this.getAttribute('data-modal-id'); // data-modal-id 属性を取得
-      const targetModal = document.getElementById(modalId); // モーダルを取得
-      if (targetModal) {
-        targetModal.style.display = 'block'; // モーダルを表示
+      const targetModal = $('#' + modalId); // モーダルを jQuery で取得
+      if (targetModal.length) {
+        targetModal.fadeIn(200); // モーダルをフェードインで表示
       }
     });
   });
@@ -203,14 +203,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // モーダルを閉じる処理
   document.querySelectorAll('.js-modal-close').forEach(button => {
     button.addEventListener('click', function () {
-      this.closest('.modal').style.display = 'none'; // 親のモーダルを非表示にする
+      $(this.closest('.modal')).fadeOut(200); // 親のモーダルをフェードアウトで非表示にする
     });
   });
 
   // モーダルの外をクリックで閉じる処理
   document.addEventListener('click', function (event) {
     if (event.target.classList.contains('modal')) {
-      event.target.style.display = 'none'; // モーダルの外をクリックで非表示にする
+      $(event.target).fadeOut(200); // モーダルの外をクリックでフェードアウトで非表示にする
     }
   });
 });
