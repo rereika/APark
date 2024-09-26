@@ -30,7 +30,12 @@ header {
 
 
 .home-menu li {
-  text-align: right;
+  text-align: center;
+}
+
+.home-menu li span {
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .home-menu li a {
@@ -40,10 +45,14 @@ header {
 }
 
 .home-menu ul li a img {
-  width: 13%;
+  width: 100%;
   margin: 0 10px;
+  margin-left: -10px;
 }
 
+.home-menu .icon_img {
+  width: 70px;
+}
 
 .home-menu .accordion-content1,
 .home-menu .accordion-content2 {
@@ -470,27 +479,36 @@ button {
 
   .home-menu {
     padding: 0;
-    justify-content: center;
+    /* justify-content: center; */
   }
 
   .home-menu ul {
     padding: 0;
     margin: 0;
-    justify-content: center;
+    /* justify-content: center; */
   }
 
   .home-menu li {
     margin: 0 10px;
+    font-size: 10px;
+  }
+
+  .home-menu .user_name {
+    margin: 0;
+  }
+
+  .home-menu li span {
+    font-size: 10px;
   }
 
   .home-menu ul li a img {
-    width: 40%;
+    width: 150%;
     margin: 0;
   }
 
   .home-menu ul .create_idea {
     margin: 0;
-    width: 160%;
+    width: 65%;
   }
 
   .home-menu ul li a {

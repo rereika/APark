@@ -136,3 +136,10 @@ h1 {
   color: darkblue;
   /* ホバー時の色を設定。必要に応じて変更 */
 }
+
+@media screen and (min-width: 375px) and (max-width: 428px) {
+
+  .return_home {
+    margin: 20px 0;
+  }
+}

@@ -76,11 +76,17 @@
         </div>
 
         <div class="how_to_use_section" id="how_to_use_section">
-            <p class="how_to_use">使い方</p>
+            <div class="how_to_use">
+                <p>使い方</p>
+            </div>
 
             <ul class="list-2">
 
-            <p class="how_to_use_main_title">アイデアを作成する</p>
+            <!-- <p class="how_to_use_main_title">アイデアを作成する</p> -->
+
+            <div class="mockup">
+                <img src="{{ asset('image/mockup2.png') }}" alt="モックアップ">
+            </div>
 
                     <div class="how_to_use_sub_section">
                         <div class="how_to_use_text_section">
