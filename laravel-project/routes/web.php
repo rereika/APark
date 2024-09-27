@@ -44,9 +44,9 @@ Route::get('start', [HomeController::class, 'showStartPage'])->name('start.show'
 //ユーザー登録
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register.show');
 Route::post('register', [RegisterController::class, 'register'])->name('register');
-// Route::get('home', function () {
-//     return view('APark.home');
-// })->name('home');
+
+//WhyEngineerの登録
+Route::post('/why-engineer', [RegisterController::class, 'whyEngineer'])->name('why.engineer');
 
 
 // 画面遷移用のルート

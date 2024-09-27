@@ -14,6 +14,7 @@ class User extends Authenticatable
         'user_name',
         'password',
         'batch',
+        'why_engineer',
     ];
 
     protected $hidden = [
