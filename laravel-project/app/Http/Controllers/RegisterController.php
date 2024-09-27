@@ -43,4 +43,20 @@ class RegisterController extends Controller
     return redirect()->route('home')->with('ideas', $ideas);
 }
 
+public function whyEngineer(Request $request){
+
+    $request->validate([
+        'why_engineer' => 'required|min:1|max:90',
+        ]);
+
+    $user = Auth::user();
+    $user->why_engineer = $request->why_engineer;
+    $user->save();
+
+    $userId = Auth::id();
+    $ideas = Idea::where('user_id', $userId)->orderBy('created_at', 'desc')->get();
+
+    return view('APark.my_page', ['ideas' => $ideas]);
+}
+
 }

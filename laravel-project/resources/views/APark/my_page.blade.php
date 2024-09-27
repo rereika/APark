@@ -22,6 +22,24 @@
 
     <div class="my_page_items">
 
+    <div class="why_engineer">
+    <h2>Why engineer：なぜエンジニアになりたいのか？</h2>
+
+    <div class="why_engineer_edit">
+        <form id="whyEngineerForm" action="{{ route('why.engineer') }}" method="POST">
+            @csrf
+            <textarea id="whyEngineerTextarea" name="why_engineer" rows="4" cols="50" disabled>{{ Auth::user()->why_engineer }}</textarea>
+            <br>
+            <button type="button" id="saveButton" style="display:none;">保存する</button>
+        </form>
+    </div>
+
+    <button id="editButton">編集する</button>
+    <div id="alertMessage" style="display:none; color: green;">Why engineerが更新されました。</div>
+
+</div>
+
+
     <div class="my_ideas">
         <h2>私のアイデア</h2>
             <div class="my-ideas-items">

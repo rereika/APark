@@ -82,3 +82,24 @@ $(function () {
     $('#modalArea').fadeOut(200);
   });
 });
+
+
+document.getElementById('editButton').addEventListener('click', function () {
+  document.getElementById('whyEngineerTextarea').disabled = false; // テキストエリアを編集可能に
+  this.style.display = 'none'; // 編集ボタンを非表示に
+  document.getElementById('saveButton').style.display = 'inline'; // 保存ボタンを表示
+});
+
+document.getElementById('saveButton').addEventListener('click', function () {
+  // フォームを送信
+  document.getElementById('whyEngineerForm').submit();
+
+  // ここでアラートメッセージを表示
+  document.getElementById('alertMessage').style.display = 'block'; // アラートメッセージを表示
+  this.style.display = 'none'; // 保存ボタンを非表示に
+
+  // 5秒後にアラートメッセージを非表示にする
+  setTimeout(function () {
+    document.getElementById('alertMessage').style.display = 'none'; // アラートメッセージを非表示
+  }, 5000); // 5000ミリ秒（5秒）
+});
