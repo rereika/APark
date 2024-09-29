@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Feedback extends Model{
-
+class Feedback extends Model
+{
     protected $fillable = [
         'id',
         'idea_id',
@@ -22,4 +22,10 @@ class Feedback extends Model{
         'created_at',
         'updated_at'
     ];
+
+    // フィードバックに関連するアイデアを取得するリレーションシップ
+    public function idea()
+    {
+        return $this->belongsTo(Idea::class, 'idea_id', 'id');
+    }
 }

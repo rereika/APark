@@ -121,8 +121,12 @@ public function listDraft()
 
 public function showMyPage()
 {
-    $userId = Auth::id();
-    $ideas = Idea::where('user_id', $userId)->orderBy('created_at', 'desc')->get();
+    $ideas = Idea::where('is_posted', '2')
+                ->with('feedbacks')
+                ->orderBy('created_at', 'desc')
+                ->get();
+
+    // ビューにデータを渡す
     return view('APark.my_page', ['ideas' => $ideas]);
 }
 
@@ -162,7 +166,12 @@ public function themeRankList(Request $request)
                     ->get();
     }
 
-    return view('APark.home', ['ideas' => $ideas]);
+    $userName = Auth::check() ? Auth::user()->user_name : null;
+
+    return view('APark.home', [
+        'ideas' => $ideas,
+        'userName' => $userName
+    ]);
 }
 
 
@@ -214,8 +223,12 @@ public function index()
     // 投稿済みのアイデアのみを取得
     $ideas = Idea::where('is_posted', '2')->orderBy('created_at', 'desc')->get();
 
-    // APark.home ビューにデータを渡して表示
-    return view('APark.home', ['ideas' => $ideas]);
+    $userName = Auth::check() ? Auth::user()->user_name : null;
+
+    return view('APark.home', [
+        'ideas' => $ideas,
+        'userName' => $userName
+    ]);
 }
 
 public function getIdeas(Request $request)
