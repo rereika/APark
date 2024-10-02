@@ -73,6 +73,54 @@ $(function () {
     let ideaId = $(this).data('idea-id');
     $('#modalIdeaId').val(ideaId);
 
+    // レーダーチャート用のデータ取得
+    let selfValues = [
+      $(this).data('self-chart1'),
+      $(this).data('self-chart2'),
+      $(this).data('self-chart3'),
+      $(this).data('self-chart4'),
+      $(this).data('self-chart5')
+    ].map(Number);
+
+    let fbValues = [
+      $(this).data('fb-chart1'),
+      $(this).data('fb-chart2'),
+      $(this).data('fb-chart3'),
+      $(this).data('fb-chart4'),
+      $(this).data('fb-chart5')
+    ].map(Number);
+
+    // レーダーチャートを描画
+    let ctx = document.getElementById('feedBackRadarChart').getContext('2d');
+    if (window.radarChart) {
+      window.radarChart.destroy(); // 既存のチャートがある場合は破棄
+    }
+    window.radarChart = new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: ['類いない', '使用技術の正確性', '目新しさ', 'ストーリー性', 'わくわく'],
+        datasets: [
+          {
+            label: '自己評価',
+            data: selfValues,
+            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: 'rgba(255, 99, 132, 0.2)'
+          },
+          {
+            label: 'フィードバック',
+            data: fbValues,
+            borderColor: 'rgba(54, 162, 235, 1)',
+            backgroundColor: 'rgba(54, 162, 235, 0.2)'
+          }
+        ]
+      },
+      options: {
+        scale: {
+          ticks: { beginAtZero: true, max: 100 }
+        }
+      }
+    });
+
     // モーダルを表示
     $('#modalArea').fadeIn(200);
   });

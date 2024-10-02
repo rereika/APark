@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -22,13 +21,12 @@ class Idea extends Model
         'elevator1',
         'elevator2',
         'how',
+        'is_posted'
     ];
-
-    // 他のモデル設定や関数
 
     // アイデアに関連するフィードバックを取得するリレーションシップ
     public function feedbacks()
     {
-        return $this->hasMany(Feedback::class, 'idea_id');
+        return $this->hasMany(Feedback::class, 'idea_id', 'id'); // 'idea_id'と'ids'の指定を明確に
     }
 }

@@ -46,45 +46,48 @@ class OpenAIController extends Controller
             }
 
         } elseif ($request->input('action') === 'proceed') {
+
+            if (session()->has('feedback')) {
+                $feedback = session('feedback');
+            } else {
+
             $idea->is_posted = '1';
             $idea->save();
 
             $prompts = [
-                "このアイデアが他のアプリと比べてどれほどユニークか、1から5のスケールで評価してください: {$request->elevator1}, {$request->elevator2}, {$request->how}",
-                "このアイデアはHTML、CSS、JavaScript、Laravelで作成できるか、1から5のスケールで評価してください: {$request->elevator1}, {$request->elevator2}, {$request->how}",
-                "このアイデアは新しいか、1から5のスケールで評価してください: {$request->elevator1}, {$request->elevator2}, {$request->how}",
-                "このアイデアはユーザーの可能性を広げるか、1から5のスケールで評価してください: {$request->elevator1}, {$request->elevator2}, {$request->how}",
-                "このアイデアのどこが創造的か、1から5のスケールで評価してください: {$request->elevator1}, {$request->elevator2}, {$request->how}"
+                "世の中にある他のアプリと比べてどれほどユニークか、5段階で評価し25文字内で答えよ: {$request->elevator1}, {$request->elevator2}, {$request->how}",
+                "HTML、CSS、JavaScript、LaravelまたはRubyで作成可能か、5段階で評価し25文字内で答えよ: {$request->elevator1}, {$request->elevator2}, {$request->how}",
+                "目新しいか、5段階で評価し25文字内で答えよ: {$request->elevator1}, {$request->elevator2}, {$request->how}",
+                "ユーザーの可能性を広げるか、5段階で評価し25文字内で答えよ: {$request->elevator1}, {$request->elevator2}, {$request->how}",
+                "どこが創造的か、5段階で評価し25文字内で答えよ: {$request->elevator1}, {$request->elevator2}, {$request->how}"
             ];
+
 
             $feedback = new Feedback();
             $feedback->idea_id = $idea->id;
-/* デバッグ用にコメントアウト
             foreach ($prompts as $index => $prompt) {
-                $response = $this->openAIService->generateText($prompt);
+                $response = $this->openAIService->generateText($prompt);//$promptをGPTに投げ、$responseに代入する
                 Log::info(['prompt_response' => $response]); // レスポンスをログに出力
-
-                // レスポンスから数値を抽出（例: "5" のような評価を期待している場合）
-                preg_match('/(\d)/', $response, $matches);
-                $scoreValue = isset($matches[1]) ? intval($matches[1]) : 0;
+                preg_match('/(\d)/', $response, $matches); //$responseの中に数字が含まれているの数字を$matches配列に代入
+                $scoreValue = isset($matches[1]) ? intval($matches[1]) : 0; //数字があったら$scoreValueに代入、なかったら0を代入
                 $feedback->{'fb_chart' . ($index + 1)} = $scoreValue;
                 $feedback->{'comment' . ($index + 1)} = $response;
             }
-*/
+        }
 
 // Mock START
             // APIモック。APIトークンを消費させないための簡易的なモックコード。
-            $feedback->{'fb_chart1'} = '5';
-            $feedback->{'fb_chart2'} = '5';
-            $feedback->{'fb_chart3'} = '5';
-            $feedback->{'fb_chart4'} = '3';
-            $feedback->{'fb_chart5'} = '4';
+            // $feedback->{'fb_chart1'} = '5';
+            // $feedback->{'fb_chart2'} = '5';
+            // $feedback->{'fb_chart3'} = '5';
+            // $feedback->{'fb_chart4'} = '3';
+            // $feedback->{'fb_chart5'} = '4';
 
-            $feedback->{'comment1'} = json_decode($this->mockResponse('既存のアプリで○○という〜〜〜')->getContent(), true)['choices'][0]['message']['content'];
-            $feedback->{'comment2'} = json_decode($this->mockResponse('コメント２')->getContent(), true)['choices'][0]['message']['content'];
-            $feedback->{'comment3'} = json_decode($this->mockResponse('コメント３')->getContent(), true)['choices'][0]['message']['content'];
-            $feedback->{'comment4'} = json_decode($this->mockResponse('コメント４')->getContent(), true)['choices'][0]['message']['content'];
-            $feedback->{'comment5'} = json_decode($this->mockResponse('コメント５')->getContent(), true)['choices'][0]['message']['content'];
+            // $feedback->{'comment1'} = json_decode($this->mockResponse('既存のアプリで○○という〜〜〜')->getContent(), true)['choices'][0]['message']['content'];
+            // $feedback->{'comment2'} = json_decode($this->mockResponse('コメント２')->getContent(), true)['choices'][0]['message']['content'];
+            // $feedback->{'comment3'} = json_decode($this->mockResponse('コメント３')->getContent(), true)['choices'][0]['message']['content'];
+            // $feedback->{'comment4'} = json_decode($this->mockResponse('コメント４')->getContent(), true)['choices'][0]['message']['content'];
+            // $feedback->{'comment5'} = json_decode($this->mockResponse('コメント５')->getContent(), true)['choices'][0]['message']['content'];
 // Mock END
 
             // デバッグ用のフィードバックデータをログに出力

@@ -16,7 +16,7 @@
   cursor: pointer;
   color: #bbb;
   background-color: #ffffff;
-  border: 0.5px solid black;
+  border: 0.5px solid #ffffff;
   margin-bottom: 12px;
 }
 
@@ -130,7 +130,6 @@
   right: 1rem;
   cursor: pointer;
 }
-
 
 /* 以下ボタンスタイル */
 button {
