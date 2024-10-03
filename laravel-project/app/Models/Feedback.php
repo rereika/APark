@@ -28,4 +28,10 @@ class Feedback extends Model
     {
         return $this->belongsTo(Idea::class, 'idea_id', 'id');
     }
+
+    public function getPrompts()
+    {
+        // JSON文字列として保存されているプロンプトを配列にデコードする例
+        return json_decode($this->prompts, true);
+    }
 }

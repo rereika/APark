@@ -17,89 +17,83 @@ class OpenAIController extends Controller
         $this->openAIService = $openAIService;
     }
     public function generateAndRedirect(Request $request, $id)
-    {
-        $idea = Idea::findOrFail($id);
+{
+    $idea = Idea::findOrFail($id);
 
-        $idea->elevator1 = $request->elevator1;
-        $idea->elevator2 = $request->elevator2;
-        $idea->how = $request->how;
+    // プロンプトの取得
+    $idea->elevator1 = $request->elevator1;
+    $idea->elevator2 = $request->elevator2;
+    $idea->how = $request->how;
 
-        //戻るボタンが押された場合
-        if ($request->input('action') === 'return_page') {
-            return view('APark.create_radar_chart', ['idea_id' => $idea->id]);
+    // 戻るボタンが押された場合
+    if ($request->input('action') === 'return_page') {
+        return view('APark.create_radar_chart', ['idea_id' => $idea->id]);
 
+    // 下書き保存ボタンが押された場合
+    } elseif ($request->input('action') === 'draft') {
+        $idea->is_posted = '1';
+        $idea->save();
+        $ideas = Idea::where('is_posted', '1')->orderBy('created_at', 'desc')->get();
+        return view('APark.draft', ['ideas' => $ideas, 'idea_id' => $id]);
 
-        //下書き保存ボタンが押された場合
-        } elseif ($request->input('action') === 'draft') {
-            $idea->is_posted = '1';
-            $idea->save();
-            $ideas = Idea::where('is_posted', '1')->orderBy('created_at', 'desc')->get();
-            return view('APark.draft', ['ideas' => $ideas, 'idea_id' => $id]);
-
-
-        } elseif ($request->input('action') === 'delete') {
-            try {
-                $idea->delete();
-                return redirect()->route('home')->with('success', 'アイデアが削除されました');
-            } catch (\Exception $e) {
-                return redirect()->route('home')->with('error', $e->getMessage());
-            }
-
-        } elseif ($request->input('action') === 'proceed') {
-
-            if (session()->has('feedback')) {
-                $feedback = session('feedback');
-            } else {
-
-            $idea->is_posted = '1';
-            $idea->save();
-
-            $prompts = [
-                "世の中にある他のアプリと比べてどれほどユニークか、5段階で評価し25文字内で答えよ: {$request->elevator1}, {$request->elevator2}, {$request->how}",
-                "HTML、CSS、JavaScript、LaravelまたはRubyで作成可能か、5段階で評価し25文字内で答えよ: {$request->elevator1}, {$request->elevator2}, {$request->how}",
-                "目新しいか、5段階で評価し25文字内で答えよ: {$request->elevator1}, {$request->elevator2}, {$request->how}",
-                "ユーザーの可能性を広げるか、5段階で評価し25文字内で答えよ: {$request->elevator1}, {$request->elevator2}, {$request->how}",
-                "どこが創造的か、5段階で評価し25文字内で答えよ: {$request->elevator1}, {$request->elevator2}, {$request->how}"
-            ];
-
-
-            $feedback = new Feedback();
-            $feedback->idea_id = $idea->id;
-            foreach ($prompts as $index => $prompt) {
-                $response = $this->openAIService->generateText($prompt);//$promptをGPTに投げ、$responseに代入する
-                Log::info(['prompt_response' => $response]); // レスポンスをログに出力
-                preg_match('/(\d)/', $response, $matches); //$responseの中に数字が含まれているの数字を$matches配列に代入
-                $scoreValue = isset($matches[1]) ? intval($matches[1]) : 0; //数字があったら$scoreValueに代入、なかったら0を代入
-                $feedback->{'fb_chart' . ($index + 1)} = $scoreValue;
-                $feedback->{'comment' . ($index + 1)} = $response;
-            }
+    // 削除するボタンが押された場合
+    } elseif ($request->input('action') === 'delete') {
+        try {
+            $idea->delete();
+            return redirect()->route('home')->with('success', 'アイデアが削除されました');
+        } catch (\Exception $e) {
+            return redirect()->route('home')->with('error', $e->getMessage());
         }
 
-// Mock START
-            // APIモック。APIトークンを消費させないための簡易的なモックコード。
-            // $feedback->{'fb_chart1'} = '5';
-            // $feedback->{'fb_chart2'} = '5';
-            // $feedback->{'fb_chart3'} = '5';
-            // $feedback->{'fb_chart4'} = '3';
-            // $feedback->{'fb_chart5'} = '4';
+    // →ボタンが押された場合
+} elseif ($request->input('action') === 'proceed') {
 
-            // $feedback->{'comment1'} = json_decode($this->mockResponse('既存のアプリで○○という〜〜〜')->getContent(), true)['choices'][0]['message']['content'];
-            // $feedback->{'comment2'} = json_decode($this->mockResponse('コメント２')->getContent(), true)['choices'][0]['message']['content'];
-            // $feedback->{'comment3'} = json_decode($this->mockResponse('コメント３')->getContent(), true)['choices'][0]['message']['content'];
-            // $feedback->{'comment4'} = json_decode($this->mockResponse('コメント４')->getContent(), true)['choices'][0]['message']['content'];
-            // $feedback->{'comment5'} = json_decode($this->mockResponse('コメント５')->getContent(), true)['choices'][0]['message']['content'];
-// Mock END
+    // 既にセッションにAPI実行済みのデータがある場合
+    if (session()->has('api_called_' . $idea->id)) {
+        $feedback = session('api_called_' . $idea->id);
+    } else {
+        // APIが実行されていない場合のみ実行
+        $idea->is_posted = '1';
+        $idea->save();
 
-            // デバッグ用のフィードバックデータをログに出力
-            Log::info(['feedback' => $feedback]);
+        $prompts = [
+            "世の中にある他のアプリと比べてどれほどユニークか、5段階で評価し25文字内で答えよ: {$request->elevator1}, {$request->elevator2}, {$request->how}",
+            "HTML、CSS、JavaScript、LaravelまたはRubyで作成可能か、5段階で評価し25文字内で答えよ: {$request->elevator1}, {$request->elevator2}, {$request->how}",
+            "目新しいか、5段階で評価し25文字内で答えよ: {$request->elevator1}, {$request->elevator2}, {$request->how}",
+            "ユーザーの可能性を広げるか、5段階で評価し25文字内で答えよ: {$request->elevator1}, {$request->elevator2}, {$request->how}",
+            "どこが創造的か、5段階で評価し25文字内で答えよ: {$request->elevator1}, {$request->elevator2}, {$request->how}"
+        ];
 
-            $feedback->save();
+        // フィードバックオブジェクトを生成
+        $feedback = new Feedback();
+        $feedback->idea_id = $idea->id;
 
-            return view('APark.create_feedback', ['idea' => $idea, 'feedback' => $feedback]);
-        } else {
-            return redirect()->route('home')->with('error', '無効なアクションが指定されました');
+        foreach ($prompts as $index => $prompt) {
+            $response = $this->openAIService->generateText($prompt);
+            Log::info(['prompt_response' => $response]); // レスポンスをログに出力
+            preg_match('/(\d)/', $response, $matches);
+            $scoreValue = isset($matches[1]) ? intval($matches[1]) : 0;
+            $feedback->{'fb_chart' . ($index + 1)} = $scoreValue;
+            $feedback->{'comment' . ($index + 1)} = $response;
         }
+
+        // フィードバックをセッションに保存して、再実行を防ぐ
+        session(['api_called_' . $idea->id => $feedback]);
+
+        // デバッグ用ログ
+        Log::info(['feedback' => $feedback]);
+
+        // フィードバックを保存
+        $feedback->save();
     }
+
+    return view('APark.create_feedback', ['idea' => $idea, 'feedback' => $feedback]);
+}
+else {
+        return redirect()->route('home')->with('error', '無効なアクションが指定されました');
+    }
+}
+
 
     // APIテスト用モック
     private static function mockResponse($mockResponse){
@@ -122,3 +116,19 @@ class OpenAIController extends Controller
         ]);
     }
 }
+
+
+// Mock START
+            // APIモック。APIトークンを消費させないための簡易的なモックコード。
+            // $feedback->{'fb_chart1'} = '5';
+            // $feedback->{'fb_chart2'} = '5';
+            // $feedback->{'fb_chart3'} = '5';
+            // $feedback->{'fb_chart4'} = '3';
+            // $feedback->{'fb_chart5'} = '4';
+
+            // $feedback->{'comment1'} = json_decode($this->mockResponse('既存のアプリで○○という〜〜〜')->getContent(), true)['choices'][0]['message']['content'];
+            // $feedback->{'comment2'} = json_decode($this->mockResponse('コメント２')->getContent(), true)['choices'][0]['message']['content'];
+            // $feedback->{'comment3'} = json_decode($this->mockResponse('コメント３')->getContent(), true)['choices'][0]['message']['content'];
+            // $feedback->{'comment4'} = json_decode($this->mockResponse('コメント４')->getContent(), true)['choices'][0]['message']['content'];
+            // $feedback->{'comment5'} = json_decode($this->mockResponse('コメント５')->getContent(), true)['choices'][0]['message']['content'];
+// Mock END
