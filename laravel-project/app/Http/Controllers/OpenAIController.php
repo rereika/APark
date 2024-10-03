@@ -20,7 +20,12 @@ class OpenAIController extends Controller
 {
     $idea = Idea::findOrFail($id);
 
-    // プロンプトの取得
+    // 元のプロンプトの取得
+    $originalElevator1 = $idea->elevator1;
+    $originalElevator2 = $idea->elevator2;
+    $originalHow = $idea->how;
+
+    // 新しいリクエストのデータで更新
     $idea->elevator1 = $request->elevator1;
     $idea->elevator2 = $request->elevator2;
     $idea->how = $request->how;
@@ -46,13 +51,24 @@ class OpenAIController extends Controller
         }
 
     // →ボタンが押された場合
-} elseif ($request->input('action') === 'proceed') {
+    } elseif ($request->input('action') === 'proceed') {
 
-    // 既にセッションにAPI実行済みのデータがある場合
-    if (session()->has('api_called_' . $idea->id)) {
-        $feedback = session('api_called_' . $idea->id);
-    } else {
-        // APIが実行されていない場合のみ実行
+        // 既にセッションにAPI実行済みのデータがある場合
+        if (session()->has('api_called_' . $idea->id)) {
+            // 3つのフィールドが変更された場合は再度APIを実行
+            if ($originalElevator1 !== $request->elevator1 ||
+                $originalElevator2 !== $request->elevator2 ||
+                $originalHow !== $request->how) {
+
+                // セッションをクリア、APIを再実行
+                session()->forget('api_called_' . $idea->id);
+            } else {
+                $feedback = session('api_called_' . $idea->id);
+                return view('APark.create_feedback', ['idea' => $idea, 'feedback' => $feedback]);
+            }
+        }
+
+        // APIが実行されていない、もしくは変更があった場合にAPIを実行
         $idea->is_posted = '1';
         $idea->save();
 
@@ -64,15 +80,22 @@ class OpenAIController extends Controller
             "どこが創造的か、5段階で評価し25文字内で答えよ: {$request->elevator1}, {$request->elevator2}, {$request->how}"
         ];
 
-        // フィードバックオブジェクトを生成
+        // feedbackテーブルに同じidea_idはあるか？
+        $feedback = Feedback::where('idea_id', $idea->id)->first();
+
+        // 存在しない場合は新しいオブジェクトを生成
+        if (!$feedback) {
         $feedback = new Feedback();
         $feedback->idea_id = $idea->id;
+        }
 
         foreach ($prompts as $index => $prompt) {
             $response = $this->openAIService->generateText($prompt);
             Log::info(['prompt_response' => $response]); // レスポンスをログに出力
             preg_match('/(\d)/', $response, $matches);
             $scoreValue = isset($matches[1]) ? intval($matches[1]) : 0;
+
+            // フィードバックデータを上書き保存
             $feedback->{'fb_chart' . ($index + 1)} = $scoreValue;
             $feedback->{'comment' . ($index + 1)} = $response;
         }
@@ -85,11 +108,9 @@ class OpenAIController extends Controller
 
         // フィードバックを保存
         $feedback->save();
-    }
 
-    return view('APark.create_feedback', ['idea' => $idea, 'feedback' => $feedback]);
-}
-else {
+        return view('APark.create_feedback', ['idea' => $idea, 'feedback' => $feedback]);
+    } else {
         return redirect()->route('home')->with('error', '無効なアクションが指定されました');
     }
 }
