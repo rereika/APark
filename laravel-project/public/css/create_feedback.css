@@ -4,9 +4,14 @@
 }
 
 #feedBackRadarChart {
-  width: 500px;
+  width: 650px;
   text-align: center;
   margin: 0 auto;
+  margin-top: -160px;
+}
+
+h1 span {
+  color: rgba(54, 162, 235, 1);
 }
 
 .status {
@@ -48,6 +53,17 @@
   height: 28px;
 }
 
+#comment1,
+#comment2,
+#comment3,
+#comment4,
+#comment5 {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  /* 必要に応じて width も設定可能 */
+}
+
 
 .proceed_home_page {
   display: flex;
@@ -77,6 +93,7 @@
 
   #feedBackRadarChart {
     width: 100%;
+    margin-top: -115px;
   }
 
   .draft {

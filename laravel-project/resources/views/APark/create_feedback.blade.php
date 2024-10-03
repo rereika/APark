@@ -14,7 +14,7 @@
 
   <div class="inner">
 
-    <h1>カーソルを合わせるとFBが表示されます。</h1>
+    <h1><span>青グラフ</span>をタップするとコメントが見れます。</h1>
 
     <form id="feedBackChartForm">
 
@@ -24,6 +24,12 @@
       <input type="hidden" name="self_chart4" value="{{ $idea->self_chart4 }}">
       <input type="hidden" name="self_chart5" value="{{ $idea->self_chart5 }}">
 
+      <!-- <input type="hidden" name="fb_chart1" value="{{ $feedback['fb_chart1'] }}">
+      <input type="hidden" name="fb_chart1" value="{{ $feedback['fb_chart2'] }}">
+      <input type="hidden" name="fb_chart1" value="{{ $feedback['fb_chart3'] }}">
+      <input type="hidden" name="fb_chart1" value="{{ $feedback['fb_chart4'] }}">
+      <input type="hidden" name="fb_chart1" value="{{ $feedback['fb_chart5'] }}"> -->
+
       <input type="hidden" name="fb_chart1" value="{{ $feedback->fb_chart1 }}">
       <input type="hidden" name="fb_chart2" value="{{ $feedback->fb_chart2 }}">
       <input type="hidden" name="fb_chart3" value="{{ $feedback->fb_chart3 }}">
@@ -32,7 +38,15 @@
 
     </form>
 
-    @if(isset($feedback))
+  @if(isset($feedback))
+
+    <!-- <p id="comment1">{{ $feedback['comment1'] }}</p>
+    <p id="comment1">{{ $feedback['comment2'] }}</p>
+    <p id="comment1">{{ $feedback['comment3'] }}</p>
+    <p id="comment1">{{ $feedback['comment4'] }}</p>
+    <p id="comment1">{{ $feedback['comment5'] }}</p> -->
+
+
     <p id="comment1">{{ $feedback->comment1 }}</p>
     <p id="comment2">{{ $feedback->comment2 }}</p>
     <p id="comment3">{{ $feedback->comment3 }}</p>
