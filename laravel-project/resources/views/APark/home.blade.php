@@ -82,40 +82,39 @@
     </form>
 
     @if($ideas->isNotEmpty())
-        <div class="new-ideas-box-animate">
-            <ul class="slider">
-            @foreach($ideas as $index => $idea)
-                {{-- @foreach($ideas as $idea) --}}
-                    <li>
-                        <h1 class="txt-limit">{{ $idea->elevator1 }}</h1>
-                        <div class="chart">
-                            @if ($idea->feedbacks->isNotEmpty())
-                                @foreach($idea->feedbacks as $feedback)
-
-                                    <div class="image-container">
-                                        <button class="modal-open js-modal-open" data-modal-id="modal-{{ $index }}">
-                                            <canvas class="feedBackRadarChart"
-                                                data-self-chart1="{{ $idea->self_chart1 }}"
-                                                data-self-chart2="{{ $idea->self_chart2 }}"
-                                                data-self-chart3="{{ $idea->self_chart3 }}"
-                                                data-self-chart4="{{ $idea->self_chart4 }}"
-                                                data-self-chart5="{{ $idea->self_chart5 }}"
-                                                data-fb-chart1="{{ $feedback->fb_chart1 }}"
-                                                data-fb-chart2="{{ $feedback->fb_chart2 }}"
-                                                data-fb-chart3="{{ $feedback->fb_chart3 }}"
-                                                data-fb-chart4="{{ $feedback->fb_chart4 }}"
-                                                data-fb-chart5="{{ $feedback->fb_chart5 }}">
-                                            </canvas>
-                                        </button>
-                                    </div>
-                                @endforeach
-                            @else
-                            @endif
-                        </div>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
+    <div class="new-ideas-box-animate">
+        <ul class="slider">
+        @foreach($ideas as $index => $idea)
+            <li>
+                <h1 class="txt-limit">{{ $idea->elevator1 }}</h1>
+                <div class="chart">
+                    @if ($idea->feedbacks->isNotEmpty())
+                        @foreach ($idea->feedbacks as $feedback)
+                            <div class="image-container">
+                                <button class="modal-open js-modal-open" data-modal-id="modal-{{ $index }}">
+                                    <canvas class="feedBackRadarChart"
+                                        data-self-chart1="{{ $idea->self_chart1 }}"
+                                        data-self-chart2="{{ $idea->self_chart2 }}"
+                                        data-self-chart3="{{ $idea->self_chart3 }}"
+                                        data-self-chart4="{{ $idea->self_chart4 }}"
+                                        data-self-chart5="{{ $idea->self_chart5 }}"
+                                        data-fb-chart1="{{ $feedback->fb_chart1 }}"
+                                        data-fb-chart2="{{ $feedback->fb_chart2 }}"
+                                        data-fb-chart3="{{ $feedback->fb_chart3 }}"
+                                        data-fb-chart4="{{ $feedback->fb_chart4 }}"
+                                        data-fb-chart5="{{ $feedback->fb_chart5 }}">
+                                    </canvas>
+                                </button>
+                            </div>
+                        @endforeach
+                    @else
+                        <p>No feedback available.</p> {{-- フィードバックがない場合のメッセージ --}}
+                    @endif
+                </div>
+            </li>
+        @endforeach
+        </ul>
+    </div>
 
                         {{-- モーダルウィンドウ --}}
                         @foreach($ideas as $index => $idea)
@@ -150,6 +149,8 @@
                                     <div class="modal-label-container">
                                     {{ $idea->how }}</div><br>
 
+                                    @if ($idea->feedbacks->isNotEmpty())
+                                        @foreach ($idea->feedbacks as $feedback)
                                     <canvas class="feedBackRadarChart modal_chart"
                                         data-self-chart1="{{ $idea->self_chart1 }}"
                                         data-self-chart2="{{ $idea->self_chart2 }}"
@@ -162,6 +163,10 @@
                                         data-fb-chart4="{{ $feedback->fb_chart4 }}"
                                         data-fb-chart5="{{ $feedback->fb_chart5 }}">
                                     </canvas>
+                                    @endforeach
+                    @else
+                        <p>No feedback available.</p> {{-- フィードバックがない場合のメッセージ --}}
+                    @endif
                                 </div>
                             </div>
                         </div>

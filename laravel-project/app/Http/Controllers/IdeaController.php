@@ -178,7 +178,7 @@ public function themeRankList(Request $request)
 public function index()
 {
     $ideas = Idea::where('is_posted', '2')
-                ->with('feedbacks')
+                ->with('feedbacks') // ここで関連するフィードバックを取得
                 ->orderBy('created_at', 'desc')
                 ->get();
 
@@ -189,6 +189,7 @@ public function index()
         'userName' => $userName
     ]);
 }
+
 
 
     public function destroy($id)
@@ -223,11 +224,14 @@ public function index()
     // 投稿済みのアイデアのみを取得
     $ideas = Idea::where('is_posted', '2')->orderBy('created_at', 'desc')->get();
 
+    $feedbacks = Feedback::where('idea_id', $id)->get();
+
     $userName = Auth::check() ? Auth::user()->user_name : null;
 
     return view('APark.home', [
         'ideas' => $ideas,
-        'userName' => $userName
+        'userName' => $userName,
+        'feedback' => $feedbacks
     ]);
 }
 
