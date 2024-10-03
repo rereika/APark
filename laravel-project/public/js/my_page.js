@@ -90,6 +90,8 @@ $(function () {
       $(this).data('fb-chart5')
     ].map(Number);
 
+    console.log(fbValues);
+
     // レーダーチャートを描画
     let ctx = document.getElementById('feedBackRadarChart').getContext('2d');
     if (window.radarChart) {
@@ -117,7 +119,10 @@ $(function () {
       options: {
         scale: {
           ticks: { beginAtZero: true, max: 100 }
-        }
+        },
+        legend: {
+          display: false // レジェンド（ラベル）を非表示にする
+        },
       }
     });
 

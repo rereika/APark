@@ -88,46 +88,55 @@
                 <img src="{{ asset('image/mockup2.png') }}" alt="モックアップ">
             </div>
 
+                    <hr class="dotted-line">
+
                     <div class="how_to_use_sub_section">
                         <div class="how_to_use_text_section">
                             <li>
                                 <p class="how_to_use_title">テーマの選択</p>
                             </li>
-                            <p class="">まずは、テーマを選びましょう。<br>選んだテーマに基づいて、AIがアドバイスを提供します。</p>
+                            <p class="">まずは、作成したいアイデアのテーマを選びましょう。<br>選んだテーマに基づいて、AIがアドバイスを提供します。</p>
                         </div>
                         <img src="{{ asset('image/how_to1.png') }}" alt="使い方画像1" class="how_to1">
                     </div>
+
+                    <hr class="dotted-line">
 
                     <div class="how_to_use_sub_section">
                         <div class="how_to_use_text_section">
                             <li>
                                 <p class="how_to_use_title">目標の設定</p>
                             </li>
-                            <p class="">「こんなプロダクトを作りたい！」と思えるゴールを設定しましょう。<br>1〜
-                            5の数値で自由に設定します。<br>目標を明確にすることが成功の第一歩です。</p>
+                            <p class="">「こんなプロダクトを作りたい！」と思えるゴールを5段階で設定します。<br>目標を明確にすることが成功の第一歩です。<br>全て5が良いアイデアなわけではなく、思いを乗せて設定することがベストです！</p>
                         </div>
                         <img src="{{ asset('image/how_to2.png') }}" alt="使い方画像2" class="how_to1">
                     </div>
+
+                    <hr class="dotted-line">
 
                     <div class="how_to_use_sub_section">
                         <div class="how_to_use_text_section">
                             <li>
                                 <p class="how_to_use_title">アイデアの分析</p>
                             </li>
-                            <p class="">エレベーターピッチとプロダクトの機能をAIに入力します。<br>この情報をもとに、AIがアイデアを分析し、良い点や改善できる点についてフィードバックを提供します。<br>「エレベーターピッチって何？」という方は、この機会に調べてみましょう！</p>
+                            <p class="">アプリの説明をAIに渡します。<br>この情報をもとに、アイデアが分析されます。</p>
                         </div>
                         <img src="{{ asset('image/how_to3.png') }}" alt="使い方画像3" class="how_to1">
                     </div>
+
+                    <hr class="dotted-line">
 
                     <div class="how_to_use_sub_section">
                         <div class="how_to_use_text_section">
                             <li>
                                 <p class="how_to_use_title">現状の把握</p>
                             </li>
-                            <p class="">AIからのフィードバックを確認します。<br>改善が必要な点が見つかった場合は、前のページに戻ってアイデアを再考しましょう。<br>時間を置いて考えたい場合は、下書き保存を活用しましょう。</p>
+                            <p class="">AIからのフィードバックが返ってきます。<br>改善が必要な点が見つかった場合は、前のページに戻ってアイデアを再考しましょう。<br>時間を置いて考えたい場合は、下書き保存もできます。</p>
                         </div>
                         <img src="{{ asset('image/how_to4.png') }}" alt="使い方画像4" class="how_to1">
                     </div>
+
+                    <hr class="dotted-line">
 
                     <div class="how_to_use_sub_section">
                         <div class="how_to_use_text_section">
@@ -136,8 +145,11 @@
                             </li>
                             <p class="">アイデアが完成したら投稿しましょう。<br>他の人とアイデアを共有することでさらに磨きをかけることができます。</p>
                         </div>
-                        <img src="{{ asset('image/how_to4.png') }}" alt="使い方画像5" class="how_to1">
+                        <img src="{{ asset('image/how_to5.png') }}" alt="使い方画像5" class="how_to1">
                     </div>
+
+                    <hr class="dotted-line">
+
                 </ul>
             </div>
     </div>

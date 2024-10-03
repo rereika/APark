@@ -359,8 +359,8 @@ header {
 
 .how_to_use p {
   color: #f2b3b3;
-  font-size: 40px;
-  width: 125px;
+  font-size: 50px;
+  width: 100%;
   font-weight: bold;
   top: 0;
   border: 5px solid #f8f7f6;
@@ -369,6 +369,8 @@ header {
   margin: 0;
   margin-left: 10px;
   margin-bottom: 10px;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: #ffffff;
 }
 
 .how_to_use_section ul {
@@ -379,6 +381,13 @@ header {
 .how_to_use_section ul li {
   list-style: none;
 }
+
+.dotted-line {
+  border: none;
+  border-top: 2px dotted #f2b3b3;
+  margin: 20px 0;
+}
+
 
 .how_to_use_title {
   font-size: 20px;
@@ -408,7 +417,7 @@ header {
 }
 
 .how_to1 {
-  width: 30%;
+  width: 35%;
   height: auto;
   display: block;
   margin-right: 0;
@@ -619,7 +628,7 @@ footer ul li a:hover {
   .how_to_use_sub_section img {
     display: block;
     margin: 0 auto;
-    width: 190px;
+    /* width: 500px; */
   }
 
   .how_to_use_text_section p {

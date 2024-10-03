@@ -25,15 +25,28 @@
   color: #FF385C;
 }
 
+h2 {
+  color: #FF385C;
+}
+
 .why_engineer_edit textarea {
   width: 70%;
   height: auto;
   resize: none;
-  font-size: 15px;
+  font-size: 16px;
+  border-radius: 5px;
 }
 
 .why_engineer button {
   margin-top: 8px;
+  border-radius: 5px;
+  border: #ffffff;
+  color: black;
+}
+
+.why_engineer button:hover {
+  background-color: #FF385C;
+  color: #ffffff;
 }
 
 #alertMessage {
@@ -118,10 +131,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 70%;
+  height: 80%;
   max-width: 500px;
   padding: 10px 30px;
   background-color: #fff;
   border-radius: 5px;
+  overflow: scroll;
 }
 
 .closeModal {
