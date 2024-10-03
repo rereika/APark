@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Log; // Log クラスのインポートを追加
 use App\Services\OpenAIService;
 use App\Models\Idea;
 use App\Models\Feedback;
+use App\Models\User;
 
 class OpenAIController extends Controller
 {
@@ -19,6 +20,9 @@ class OpenAIController extends Controller
     public function generateAndRedirect(Request $request, $id)
 {
     $idea = Idea::findOrFail($id);
+    $user_id = $idea->user_id;
+    $user = User::findOrFail($user_id);
+    $whyEngineer = $user->why_engineer;
 
     // 元のプロンプトの取得
     $originalElevator1 = $idea->elevator1;
@@ -76,7 +80,7 @@ class OpenAIController extends Controller
             "世の中にある他のアプリと比べてどれほどユニークか、5段階で評価し25文字内で答えよ: {$request->elevator1}, {$request->elevator2}, {$request->how}",
             "HTML、CSS、JavaScript、LaravelまたはRubyで作成可能か、5段階で評価し25文字内で答えよ: {$request->elevator1}, {$request->elevator2}, {$request->how}",
             "目新しいか、5段階で評価し25文字内で答えよ: {$request->elevator1}, {$request->elevator2}, {$request->how}",
-            "ユーザーの可能性を広げるか、5段階で評価し25文字内で答えよ: {$request->elevator1}, {$request->elevator2}, {$request->how}",
+            "エンジニアになりたい理由とアプリのストーリー性はあるか、5段階で評価し25文字内で答えよ: {$whyEngineer},{$request->elevator1}, {$request->elevator2}, {$request->how}",
             "どこが創造的か、5段階で評価し25文字内で答えよ: {$request->elevator1}, {$request->elevator2}, {$request->how}"
         ];
 

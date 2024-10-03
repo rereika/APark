@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/create_radar_chart.css') }}">
     <link href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -59,6 +60,7 @@
                     <option value="1">1</option>
                 </select>
             </p>
+
             <p>わくわく
                 <select name="self_chart5">
                     <option value="5">5</option>
@@ -72,6 +74,22 @@
             <input type="hidden" name="idea_id" value="{{ $idea_id }}">
 
         </div>
+
+        <a href="#" id="openModal">ストーリー性とは？</a>
+
+        {{-- モーダルウィンドウ --}}
+        <section id="modalArea" class="modalArea">
+        <div id="modalBg" class="modalBg"></div>
+        <div class="modalWrapper">
+            <div class="modalContents">
+            <p>マイページの、「なぜエンジニアになりたいのか？」を入力すると、この値が正確になります！</p>
+            <a href="{{ route('get.my.page')}}" class="my_page">マイページ</a>
+            </div>
+            <div id="closeModal" class="closeModal">
+            ×
+            </div>
+        </div>
+        </section>
 
         <div class="create_chart">
             <canvas id="radarChart"></canvas>

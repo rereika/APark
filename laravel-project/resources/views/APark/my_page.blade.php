@@ -36,13 +36,13 @@
     </div>
 
     <button id="editButton">編集する</button>
-    <div id="alertMessage" style="display:none; color: green;">Why engineerが更新されました。</div>
+    {{-- <div id="alertMessage" style="display:none; color: green;">Why engineerが更新されました。</div> --}}
 
 </div>
 
 
 <div class="my_ideas">
-    <h2>私のアイデア</h2>
+    <h2>自分のアイデア</h2>
     <div class="my-ideas-items">
         @if ($ideas->isEmpty())
             <p>アイデアがありません。</p>

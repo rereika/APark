@@ -86,3 +86,13 @@ function updateChart() {
 
 window.addEventListener('load', updateChart);
 document.getElementById('chartForm').addEventListener('change', updateChart);
+
+
+$(function () {
+  $('#openModal').click(function () {
+    $('#modalArea').fadeIn();
+  });
+  $('#closeModal , #modalBg').click(function () {
+    $('#modalArea').fadeOut();
+  });
+});

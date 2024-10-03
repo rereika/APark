@@ -75,8 +75,8 @@
             <select name="theme_rank" onchange="this.form.submit()">
                 <option value="">全て</option>
                 <option value="theme1" {{ request('theme_rank') == 'theme1' ? 'selected' : '' }}>チーム開発 DEV1</option>
-                <option value="theme2" {{ request('theme_rank') == 'theme2' ? 'selected' : '' }}>オリジナルプロダクト</option>
-                <option value="theme3" {{ request('theme_rank') == 'theme3' ? 'selected' : '' }}>チーム開発 DEV2</option>
+                <option value="theme2" {{ request('theme_rank') == 'theme2' ? 'selected' : '' }}>チーム開発 DEV2</option>
+                <option value="theme3" {{ request('theme_rank') == 'theme3' ? 'selected' : '' }}>オリジナルプロダクト</option>
             </select>
         </label>
     </form>
