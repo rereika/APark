@@ -94,28 +94,28 @@ else {
     }
 }
 
-
-    // APIテスト用モック
-    private static function mockResponse($mockResponse){
-        return response()->json([
-            'id' => 'mock_chat_id',
-            'object' => 'chat.completion',
-            'created' => time(),
-            'model' => 'gpt-3.5-turbo',
-            'usage' => ['prompt_tokens' => 10, 'completion_tokens' => 10, 'total_tokens' => 20],
-            'choices' => [
-                [
-                    'message' => [
-                        'role' => 'assistant',
-                        'content' => $mockResponse,
-                    ],
-                    'finish_reason' => 'stop',
-                    'index' => 0,
-                ],
-            ],
-        ]);
-    }
 }
+    // APIテスト用モック
+//     private static function mockResponse($mockResponse){
+//         return response()->json([
+//             'id' => 'mock_chat_id',
+//             'object' => 'chat.completion',
+//             'created' => time(),
+//             'model' => 'gpt-3.5-turbo',
+//             'usage' => ['prompt_tokens' => 10, 'completion_tokens' => 10, 'total_tokens' => 20],
+//             'choices' => [
+//                 [
+//                     'message' => [
+//                         'role' => 'assistant',
+//                         'content' => $mockResponse,
+//                     ],
+//                     'finish_reason' => 'stop',
+//                     'index' => 0,
+//                 ],
+//             ],
+//         ]);
+//     }
+// }
 
 
 // Mock START
