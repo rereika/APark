@@ -57,14 +57,19 @@
 
 | トップページ | アカウント登録、ログインページ |
 | --- | --- |
-| <img width="150%" alt="top" src="documents/image/top.png"> | <img width="150%" alt="top" src="documents/image/login.png"> |
-| ・アプリの説明<br>・アイデアの作成方法 | ・登録したユーザーIDとパスワードのみでログインできます<br>・ユーザー登録はIDをパスワードの他に期生の設定を行います |
+| <img width="150%" alt="top" src="documents/image/top3.png"> | <img width="150%" alt="top" src="documents/image/login2.png"> |
+| ・アプリの説明兼、作成者の思い<br>・アプリの使い方 | ・登録したユーザーIDとパスワードでログインできます<br>・ユーザー登録はIDとパスワードの他に期生の設定を行います |
 
 
 | アイデア一覧ページ | マイページ |
 | --- | --- |
-|<img width="150%" alt="top" src="documents/image/home3.png">|<img width="150%" alt="top" src="documents/image/my_page.png">|
-|・投稿されたアイデアを閲覧できます<br>・セレクトボックスの値を変えると閲覧したいアイデアをテーマで絞ることができます<br>・マイページ、下書き、アイデアの新規作成の3つに遷移できます| ・エンジニアになりたい理由(Why engineer)を入力し、レーダーチャートの精度を上げます<br>・自分が投稿したアイデアを見ることができます<br>・アイデアをクリックすると詳細がモーダルウィンドウに表示されます<br>・ここでアイデアを削除することもできます |
+|<img width="150%" alt="top" src="documents/image/home3.png">|<img width="150%" alt="top" src="documents/image/my_page3.png">|
+|・投稿されたアイデアを閲覧できます<br>・最新のアイデアのセレクトボックスの値を変えると、テーマで絞ることができます<br>・マイページ、下書き、アイデア作成の3つに遷移できます| ・エンジニアになりたい理由(Why engineer)を入力し、レーダーチャートの精度(ストーリー性の部分)を上げます<br>・自分が投稿したアイデアを見ることができます<br>・アイデアをクリックすると詳細がモーダルウィンドウに表示されます<br>・アイデアを削除することもできます |
+
+| アイデア作成ページ①② | アイデア作成ページ③④ |
+| --- | --- |
+| <img width="150%" alt="top" src="documents/image/create1.png">|<img width="150%" alt="top" src="documents/image/create2.png"> |
+| ①アプレンティス独自のテーマを選択します<br>②作成するアイデアの理想のチャートを数値で設定します<br>②ストーリー性の下の「ストーリー性とは？」からマイページに飛んで「Why engineer」を入力することが出来ます  | ③アイデアの詳細をOpenAI APIを使用してAIに渡します<br>④OpenAI APIから評価コメントと評価のチャートが返ってきます<br>④そのまま投稿してもよし、評価を見て修正したかったらエレベーターピッチの修正へ遷移できます。また、一旦下書き保存することも可能です。 |
 
 
 ## アップデート予定

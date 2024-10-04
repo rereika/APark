@@ -82,8 +82,11 @@
         <div id="modalBg" class="modalBg"></div>
         <div class="modalWrapper">
             <div class="modalContents">
-            <p>マイページの、「なぜエンジニアになりたいのか？」を入力すると、この値が正確になります！</p>
-            <a href="{{ route('get.my.page')}}" class="my_page">マイページ</a>
+            <p>マイページの、<span>「Why engineer」</span>を入力すると、<br><span>ストーリー性</span>の値が正確になります！</p>
+            <img src="{{ asset('image/why_engineer.png') }}" alt="ロゴ画像">
+            <div class="my_page">
+                <a href="{{ route('get.my.page')}}">Why engineerを書く</a>
+            </div>
             </div>
             <div id="closeModal" class="closeModal">
             ×
