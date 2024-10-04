@@ -52,6 +52,34 @@
   background-color: rgba(30, 30, 30, 0.9);
 }
 
+.modalContents p {
+  font-size: 20px;
+}
+
+.modalContents span {
+  color: #FF385C;
+  font-weight: bold;
+}
+
+.modalContents a {
+  color: #FF385C;
+  text-decoration: none;
+  border: 1px solid #FF385C;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.modalContents a:hover {
+  background-color: #FF385C;
+  border: #FF385C;
+  color: #fff;
+}
+
+.modalContents .my_page {
+  padding: 15px 0;
+  text-align: right;
+}
+
 .modalWrapper {
   position: absolute;
   top: 50%;
@@ -61,6 +89,10 @@
   max-width: 500px;
   padding: 10px 30px;
   background-color: #fff;
+}
+
+.modalWrapper img {
+  width: 400px;
 }
 
 .closeModal {
@@ -82,8 +114,8 @@
 
 #openModal {
   position: absolute;
-  top: 31%;
-  left: 61.5%;
+  top: 28%;
+  left: 64%;
   transform: translate(-50%, -50%);
   cursor: pointer;
   text-decoration: none;
