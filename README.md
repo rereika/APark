@@ -48,7 +48,7 @@
 * OpenAI API
 
 ## ER図
-![ER](documents/image/ER2024.06.21.png)
+![ER](documents/image/ER2024.10.04.png)
 
 ## システム構成図
 ![Infrastructure](documents/image/Infrastructure2024.09.23.png)
