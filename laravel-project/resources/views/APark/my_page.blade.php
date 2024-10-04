@@ -64,7 +64,7 @@
                         data-fb-chart2="{{ $feedback->fb_chart2 }}"
                         data-fb-chart3="{{ $feedback->fb_chart3 }}"
                         data-fb-chart4="{{ $feedback->fb_chart4 }}"
-                        data-fb-chart5="{{ $feedback->fb_chart5 }}>
+                        data-fb-chart5="{{ $feedback->fb_chart5 }}">
                     @endforeach
                         <span class="theme">
                             @switch($idea->theme)
