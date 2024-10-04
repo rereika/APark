@@ -6,55 +6,56 @@
 <img src="image/WF2024.06.22-2.jpg" alt="WF" width="800" height="1000">
 
 ## ER図
-<img src="image/ER2024.10.04.png" alt="WF" width="800" height="700">
+<img src="image/ER2024.10.04.png" alt="WF" width="300" height="700">
 
 ## テーブル定義書
 ### Usersテーブル
 | カラム名        | 意味                  | データ型 | PK   | FK   | NOT NULL | AUTO_INCREMENT | 制約 |
 | :-------------- | :-------------------- | :------- | :--- | :--- | :------- | :---- | :------ |
-| id              | ユーザーID            | INT   | ◯   |      |    ◯    | ◯ |         |
-| name            | ユーザー名            | VARCHAR(25)   |      |      | ◯  |       |         |
-| email           | メールアドレス        | VARCHAR(100)   |      |      | ◯ |    |   UNIQUE      |
-| password | パスワード  | CHAR(60)   |      |      | ◯       |       |         |
+| id              | ユーザーID            | BIGINT   | ◯   |      |    ◯    | ◯ |         |
+| user_name            | ユーザー名            | VARCHAR(255)   |      |      | ◯  |       |    UNIQUE     |     |
+| password | パスワード  | VARCHAR(255)   |      |      | ◯       |       |         |
+| batch | 何期生か  | INT   |      |      | ◯       |       |         |
+| created_at | 作成日時  | TIMESTAMP   |      |      | ◯       |       |         |
+| updated_at | 更新日時  | TIMESTAMP   |      |      | ◯       |       |         |
+| why_engineer | エンジニア志望理由  | VARCHAR(90)   |      |      |        |       |         |
 
 ### Ideasテーブル
 | カラム名        | 意味                  | データ型 | PK   | FK   | NOT NULL | AUTO_INCREMENT | 制約 |
 | :-------------- | :-------------------- | :------- | :--- | :--- | :------- | :---- | :------ |
-| id              | アイデアID            | INT   | ◯   |      |    ◯    | ◯ |         |
-| user_id            | ユーザーID            | INT   |      |      | ◯  |       |         |
+| id              | アイデアID            | BIGINT   | ◯   |      |    ◯    | ◯ |         |
+| user_id            | ユーザーID            | BIGINT   |      |   ◯   | ◯  |       |         |
 | theme           | テーマ        | INT   |      |      | ◯ |    |     |
-| chart1 | 競合と被らないか  | INT   |      |      | ◯       |       |         |
-| chart2 | 使用技術の正しさ  | INT   |      |      | ◯       |       |         |
-| chart3 | 目新しさ  | INT   |      |      | ◯       |       |         |
-| chart4 | ストーリー性  | INT   |      |      | ◯       |       |         |
-| chart5 | わくわくするか  | INT   |      |      | ◯       |       |         |
-| elevator1 | エレベーターピッチ１  | TEXT   |      |      | ◯       |       |         |
-| elevator2 | エレベーターピッチ2  | TEXT   |      |      | ◯       |       |         |
-| how| どのように解決するか  | TEXT   |      |      | ◯       |       |         |
-| created_at | 作成日  | TIMESTAMP   |      |      | ◯       |       |         |
+| self_chart1 | セルフチャート1  | INT   |      |      | ◯       |       |         |
+| self_chart2 | セルフチャート2  | INT   |      |      | ◯       |       |         |
+| self_chart3 | セルフチャート3  | INT   |      |      | ◯       |       |         |
+| self_chart4 | セルフチャート4  | INT   |      |      | ◯       |       |         |
+| self_chart5 | セルフチャート5  | INT   |      |      | ◯       |       |         |
+| elevator1 | エレベーターピッチ１  | VARCHAR(255)   |      |      |        |       |         |
+| elevator2 | エレベーターピッチ2  | VARCHAR(255)   |      |      |        |       |         |
+| how| どのように解決するか  | TEXT   |      |      |        |       |         |
+| created_at | 作成日時  | TIMESTAMP   |      |      | ◯       |       |         |
+| updated_at | 更新日時  | TIMESTAMP   |      |      | ◯       |       |         |
+| is_posted | 投稿状態  | TINYINT   |      |      | ◯       |       |         |
 
-### Likesテーブル
-| カラム名        | 意味                  | データ型 | PK   | FK   | NOT NULL | AUTO_INCREMENT | 制約 |
-| :-------------- | :-------------------- | :------- | :--- | :--- | :------- | :---- | :------ |
-| id           | ライクID            | INT   | ◯   |      |    ◯    | ◯ |         |
-| user_id      | ユーザーID            | INT  |      |      | ◯  |       |         |
-| idea_id      | アイデアID       | INT |      |   | ◯ |    |     |
-
-### Favoritesテーブル
-| カラム名        | 意味                  | データ型 | PK   | FK   | NOT NULL | AUTO_INCREMENT | 制約 |
-| :-------------- | :-------------------- | :------- | :--- | :--- | :------- | :---- | :------ |
-| id           | ライクID            | INT   | ◯   |      |    ◯    | ◯ |         |
-| user_id      | ユーザーID            | INT  |      |      | ◯  |       |         |
-| idea_id      | アイデアID       | INT |      |      | ◯ |    |     |
 
 ### Feedbackテーブル
 | カラム名        | 意味                  | データ型 | PK   | FK   | NOT NULL | AUTO_INCREMENT | 制約 |
 | :-------------- | :-------------------- | :------- | :--- | :--- | :------- | :---- | :------ |
-| id           | フィードバックID            | INT   | ◯   |      |    ◯    | ◯ |         |
-| idea_id      | アイデアID            | INT  |      |      | ◯  |       |         |
-| criterion     | 評価項目    | INT |      |      | ◯ |    |     |
-| score     | 評価点数  | INT |      |      | ◯ |    |     |
-| comment     | FBコメント   | TEXT |      |      | ◯ |    |     |
+| id           | フィードバックID            | BIGINT   | ◯   |      |    ◯    | ◯ |         |
+| idea_id      | アイデアID            | BIGINT  |      |  ◯    | ◯  |       |         |
+| fb_chart1 | フィードバックチャート1  | INT   |      |      | ◯       |       |         |
+| fb_chart2 | フィードバックチャート2  | INT   |      |      | ◯       |       |         |
+| fb_chart3 | フィードバックチャート3  | INT   |      |      | ◯       |       |         |
+| fb_chart4 | フィードバックチャート4  | INT   |      |      | ◯       |       |         |
+| fb_chart5 | フィードバックチャート5  | INT   |      |      | ◯       |       |         |
+| comment1 | フィードバックコメント1  | TEXT   |      |      | ◯       |       |         |
+| comment2 | フィードバックコメント2  | TEXT   |      |      | ◯       |       |         |
+| comment3 | フィードバックコメント3  | TEXT   |      |      | ◯       |       |         |
+| comment4 | フィードバックコメント4  | TEXT   |      |      | ◯       |       |         |
+| comment5 | フィードバックコメント5  | TEXT   |      |      | ◯       |       |         |
+| created_at | 作成日時  | TIMESTAMP   |      |      | ◯       |       |         |
+| updated_at | 更新日時  | TIMESTAMP   |      |      | ◯       |       |         |
 
 
 ### システム構成図
