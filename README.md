@@ -63,7 +63,7 @@
 
 | アイデア一覧ページ | マイページ |
 | --- | --- |
-|<img width="150%" alt="top" src="documents/image/home.png">|<img width="150%" alt="top" src="documents/image/my_page.png">|
+|<img width="150%" alt="top" src="documents/image/home3.png">|<img width="150%" alt="top" src="documents/image/my_page.png">|
 |・投稿されたアイデアを閲覧できます<br>・セレクトボックスの値を変えると閲覧したいアイデアをテーマで絞ることができます<br>・マイページ、下書き、アイデアの新規作成の3つに遷移できます| ・エンジニアになりたい理由(Why engineer)を入力し、レーダーチャートの精度を上げます<br>・自分が投稿したアイデアを見ることができます<br>・アイデアをクリックすると詳細がモーダルウィンドウに表示されます<br>・ここでアイデアを削除することもできます |
 
 
