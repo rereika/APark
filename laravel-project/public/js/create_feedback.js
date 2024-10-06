@@ -7,13 +7,13 @@ let radarConfig = {
     labels: ['類いない', '使用技術の正確性', '目新しさ', 'ストーリー性', 'わくわく'],
     datasets: [{
       label: 'Self',
-      data: [0, 0, 0, 0, 0],
+      data: [3, 4, 2, 5, 3],  // 例: 実際のデータを設定
       backgroundColor: 'rgba(255, 136, 136, 0.3)',  // 赤色の透明な背景色
       borderColor: 'rgb(255, 136, 136)',  // 赤色の境界線
       borderWidth: 5
     }, {
       label: 'FB',
-      data: [0, 0, 0, 0, 0],
+      data: [4, 2, 3, 5, 4],  // 例: 実際のデータを設定
       backgroundColor: 'rgba(54, 162, 235, 0.2)',  // 青色の透明な背景色
       borderColor: 'rgba(54, 162, 235, 1)',  // 青色の境界線
       borderWidth: 5
@@ -25,42 +25,60 @@ let radarConfig = {
         display: false // レジェンド（ラベル）を非表示にする
       },
       tooltip: {
+        usePointStyle: true,
         callbacks: {
-          label: function (tooltipItem) {
-            let datasetLabel = tooltipItem.dataset.label;
-            if (datasetLabel === 'FB') {
-              let commentId = 'comment' + (tooltipItem.dataIndex + 1);
-              let comment = document.getElementById(commentId).innerText;
-              return comment;
-            } else {
-              return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
-            }
-          }
+          // label: function (tooltipItem) {
+          //   let datasetLabel = tooltipItem.dataset.label;
+          //   if (datasetLabel === 'FB') {
+          //     let commentId = 'comment' + (tooltipItem.dataIndex + 1);
+          //     let comment = document.getElementById(commentId).innerText;
+          //     return comment || 'No comment';
+          //   } else {
+          //     return datasetLabel + ': ' + tooltipItem.raw;
+          //   }
+          // }
+        },
+        bodyFont: {
+          size: 15, // フォントサイズ
+          weight: 'normal'
+        },
+        padding: 20, // ツールチップの内側のパディングを設定
+        boxPadding: 20, // ボックス内のパディング
+        position: 'nearest',
+        // 最大幅を設定するカスタム関数
+        custom: function (tooltip) {
+          if (!tooltip) return;
+          // 最大幅を指定
+          tooltip.width = 50; // ここで適宜調整
         }
       }
-    },
-    scales: {
-      r: {
-        suggestedMin: 0,
-        suggestedMax: 5,
-        ticks: {},
-        pointLabels: {
-          font: {
-            size: 15
-          }
+
+
+    }
+  },
+  scales: {
+    r: {
+      suggestedMin: 0,
+      suggestedMax: 5,
+      ticks: {},
+      pointLabels: {
+        font: {
+          size: 15
         }
       }
-    },
-    layout: {
-      padding: {
-        top: 1,
-        bottom: 1,
-      }
+    }
+  },
+  layout: {
+    padding: {
+      top: 1,
+      bottom: 1,
     }
   }
 };
 
 let radarChart = new Chart(RadarCtx, radarConfig);
+
+
 
 // 画面幅に応じてラベルのフォントサイズを調整する関数
 function adjustLabelSize() {

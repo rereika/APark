@@ -7,7 +7,7 @@
   width: 650px;
   text-align: center;
   margin: 0 auto;
-  margin-top: -160px;
+  margin: -100px auto;
 }
 
 h1 span {
@@ -17,6 +17,7 @@ h1 span {
 .status {
   display: flex;
   align-items: center;
+  margin-top: 70px;
   /* justify-content: space-between; */
 }
 
@@ -58,10 +59,37 @@ h1 span {
 #comment3,
 #comment4,
 #comment5 {
-  opacity: 0;
+  /* opacity: 0;
   height: 0;
-  overflow: hidden;
+  overflow: hidden; */
   /* 必要に応じて width も設定可能 */
+}
+
+.comment span {
+  color: #FF385C;
+  font-size: 28px;
+}
+
+.yazirusi {
+  display: flex;
+}
+
+.yazirusi::after {
+  content: '';
+  width: 250px;
+  height: 15px;
+  border-bottom: solid 1px;
+  border-right: solid 1px;
+  transform: skew(45deg);
+  margin-top: -30px;
+}
+
+.comment1,
+.comment2,
+.comment3,
+.comment4,
+.comment5 {
+  margin-top: -37px;
 }
 
 
@@ -85,6 +113,8 @@ h1 span {
   height: 28px;
 }
 
+
+
 @media screen and (min-width: 375px) and (max-width: 428px) {
 
   h1 {
@@ -93,7 +123,12 @@ h1 span {
 
   #feedBackRadarChart {
     width: 100%;
-    margin-top: -115px;
+    /* margin-top: -115px; */
+    margin: -30px auto;
+  }
+
+  .comment span {
+    font-size: 23px;
   }
 
   .draft {
@@ -109,6 +144,10 @@ h1 span {
   .next_page .proceed_home_page {
     writing-mode: horizontal-tb;
     margin: 0 -10px;
+  }
+
+  .status {
+    margin-top: 0;
   }
 
 }

@@ -13,6 +13,15 @@
   margin: 0 10px;
 }
 
+.story a {
+  display: block;
+  /* 別の行に表示 */
+  text-align: center;
+  /* 中央揃え */
+  margin-top: 10px;
+  /* 上部にスペースを追加 */
+}
+
 #radarChart {
   width: 550px;
   text-align: center;
@@ -113,10 +122,10 @@
 } */
 
 #openModal {
-  position: absolute;
-  top: 28%;
-  left: 64%;
-  transform: translate(-50%, -50%);
+  /* position: absolute;
+  top: 30%;
+  left: 62%;
+  transform: translate(-50%, -50%); */
   cursor: pointer;
   text-decoration: none;
   color: #FF385C;
@@ -151,5 +160,11 @@
     width: 250px;
     text-align: center;
     margin: 0 auto;
+  }
+
+  #openModal {
+    /* top: 24%;
+    left: 33%; */
+    font-size: 10px;
   }
 }

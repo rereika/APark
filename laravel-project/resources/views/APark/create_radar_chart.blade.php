@@ -51,15 +51,22 @@
                     <option value="1">1</option>
                 </select>
             </p>
-            <p>ストーリー性
-                <select name="self_chart4">
-                    <option value="5">5</option>
-                    <option value="4">4</option>
-                    <option value="3">3</option>
-                    <option value="2">2</option>
-                    <option value="1">1</option>
-                </select>
-            </p>
+
+            <div class="story">
+                <p>ストーリー性
+                    <select name="self_chart4">
+                        <option value="5">5</option>
+                        <option value="4">4</option>
+                        <option value="3">3</option>
+                        <option value="2">2</option>
+                        <option value="1">1</option>
+                    </select>
+                </p>
+                <a href="#" id="openModal">ストーリー性とは？</a>
+            </div>
+            <!-- <p> -->
+                <!-- <a href="#" id="openModal">ストーリー性とは？</a>
+            </p> -->
 
             <p>わくわく
                 <select name="self_chart5">
@@ -75,7 +82,7 @@
 
         </div>
 
-        <a href="#" id="openModal">ストーリー性とは？</a>
+        {{-- <a href="#" id="openModal">ストーリー性とは？</a> --}}
 
         {{-- モーダルウィンドウ --}}
         <section id="modalArea" class="modalArea">

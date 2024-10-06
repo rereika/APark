@@ -14,7 +14,8 @@
 
   <div class="inner">
 
-    <h1><span>青グラフ</span>をタップするとコメントが見れます。</h1>
+    {{-- <h1><span>青グラフ</span>をタップするとコメントが見れます。</h1> --}}
+    <h1>現在のアイデアはこちら！</h1>
 
     <form id="feedBackChartForm">
 
@@ -38,6 +39,11 @@
 
     </form>
 
+    <div class="chart">
+      <canvas id="feedBackRadarChart"></canvas>
+    </div>
+
+  <div class="comment">
   @if(isset($feedback))
 
     <!-- <p id="comment1">{{ $feedback['comment1'] }}</p>
@@ -47,18 +53,27 @@
     <p id="comment1">{{ $feedback['comment5'] }}</p> -->
 
 
-    <p id="comment1">{{ $feedback->comment1 }}</p>
-    <p id="comment2">{{ $feedback->comment2 }}</p>
-    <p id="comment3">{{ $feedback->comment3 }}</p>
-    <p id="comment4">{{ $feedback->comment4 }}</p>
-    <p id="comment5">{{ $feedback->comment5 }}</p>
+    <span class="fb_item">類ない</span><p class="yazirusi"></p><br>
+    <p class="comment1">{{ $feedback->comment1 }}</p>
+
+    <span class="fb_item">使用技術の正確性</span><p class="yazirusi"></p><br>
+    <p class="comment2">{{ $feedback->comment2 }}</p>
+
+    <span class="fb_item">目新しさ</span><p class="yazirusi"></p><br>
+    <p class="comment3">{{ $feedback->comment3 }}</p>
+
+    <span class="fb_item">ストーリー性</span><p class="yazirusi"></p><br>
+    <p class="comment4">{{ $feedback->comment4 }}</p>
+
+    <span class="fb_item">わくわく</span><p class="yazirusi"></p><br>
+    <p class="comment5">{{ $feedback->comment5 }}</p>
     @endif
 
-
-
-    <div class="chart">
-      <canvas id="feedBackRadarChart"></canvas>
     </div>
+
+
+
+
 
     <div class="status">
         {{-- <a href="{{ route('get.draft.to.pitch', ['id' => $idea->id]) }}" class="draft">修正する</a> --}}
