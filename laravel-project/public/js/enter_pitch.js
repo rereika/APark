@@ -127,3 +127,56 @@ function setupCharCounter(textareaId, counterId) {
 setupCharCounter("input_pitch1", "charCounter1");
 setupCharCounter("input_pitch2", "charCounter2");
 setupCharCounter("input_solution", "charCounter3");
+
+// ロード画面を表示
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById('chartForm');
+  const proceedButton = form.querySelector('.proceed');
+
+  proceedButton.addEventListener('click', function (event) {
+    // デフォルトのフォーム送信をキャンセル
+    event.preventDefault();
+
+    //フォームを送信
+    form.submit();
+    // ロード画面を表示
+    document.getElementById('page_loading').style.display = 'block';
+
+
+    // フォームを送信するまでの遅延を設定
+    form.querySelector('input[name="proceed"]').value = "true";
+    // form.submit(); // フォームを送信
+  });
+});
+
+
+//テキストのカウントアップ+バーの設定
+let bar = new ProgressBar.Line(page_loading_text, {//id名を指定
+  easing: 'easeInOut',//アニメーション効果linear、easeIn、easeOut、easeInOutが指定可能
+  duration: 2500,//時間指定(1000＝1秒)
+  strokeWidth: 0.2,//進捗ゲージの太さ
+  color: '#555',//進捗ゲージのカラー
+  trailWidth: 0.2,//ゲージベースの線の太さ
+  trailColor: '#bbb',//ゲージベースの線のカラー
+  text: {//テキストの形状を直接指定
+    style: {//天地中央に配置
+      position: 'absolute',
+      left: '50%',
+      top: '50%',
+      padding: '0',
+      margin: '-30px 0 0 0',//バーより上に配置
+      transform: 'translate(-50%,-50%)',
+      'font-size': '1rem',
+      color: '#fff',
+    },
+    autoStyleContainer: false //自動付与のスタイルを切る
+  },
+  step: function (state, bar) {
+    bar.setText(Math.round(bar.value() * 100) + ' %'); //テキストの数値
+  }
+});
+
+//アニメーションスタート
+bar.animate(1.0, function () {//バーを描画する割合を指定します 1.0 なら100%まで描画します
+  $("#page_loading").delay(500).fadeOut(800);//アニメーションが終わったら#page_loadingエリアをフェードアウト
+});
