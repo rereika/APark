@@ -9,6 +9,16 @@
     <link rel="stylesheet" href="{{ asset('css/enter_pitch.css') }}">
     <link href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!--==============ロード画面のJQuery読み込み===============-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://rawgit.com/kimmobrunfeldt/progressbar.js/master/dist/progressbar.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.1/progressbar.min.js"></script>
+<!--IE11用※対応しなければ削除してください-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+<!--自作のJS-->
+<script src="js/load.js"></script>
+<!--==============END ロード画面のJQuery読み込み===============-->
 </head>
 
 <body>
@@ -72,8 +82,10 @@
                         <a href="#">4</a>
                     </li>
                     <li class="disabled">
-                        <button type="submit" class="proceed" name="action" value="proceed">
-                        <i class="fas fa-angle-right"></i></button>
+                        <input type="hidden" name="proceed" value="true">
+                        <button type="button" class="proceed" name="action" value="proceed">
+                            <i class="fas fa-angle-right"></i>
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -87,6 +99,21 @@
         </div>
 
     </form>
+
+    {{-- ロード画面 --}}
+    <div id="page_loading">
+        <div id="load_area">
+            <div class="loader">Loading...</div>
+            <div id="page_loading_text"></div>
+            <p class="load_p">
+                <span class="load_h">
+                    フィードバックを作成中…
+                </span>
+                ページの表示までに数秒お時間<br class="load_spbr">いただく場合がございます。
+            </p>
+        </div>
+    </div>
+
     <script src="{{ asset('js/enter_pitch.js') }}"></script>
 </body>
 

@@ -55,7 +55,8 @@ class OpenAIController extends Controller
         }
 
     // →ボタンが押された場合
-    } elseif ($request->input('action') === 'proceed') {
+    // } elseif ($request->input('action') === 'proceed') {
+    } elseif ($request->input('proceed') === 'true') {
 
         // 既にセッションにAPI実行済みのデータがある場合
         if (session()->has('api_called_' . $idea->id)) {
@@ -66,6 +67,7 @@ class OpenAIController extends Controller
 
                 // セッションをクリア、APIを再実行
                 session()->forget('api_called_' . $idea->id);
+                //feedbackを削除？更新？
             } else {
                 $feedback = session('api_called_' . $idea->id);
                 return view('APark.create_feedback', ['idea' => $idea, 'feedback' => $feedback]);
