@@ -24,17 +24,17 @@ h1 span {
 .pagination {
   display: flex;
   list-style-type: none;
-  padding: 0;
-  margin: 0;
-  margin-left: -150px;
-  margin-right: -150px;
+  /* padding: 0;
+  margin: 0; */
+  /* margin-left: -150px;
+  margin-right: -150px; */
 }
 
 .pagination li {
   margin-right: 10px;
 }
 
-.draft {
+/* .draft {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -44,7 +44,6 @@ h1 span {
   background-color: #ffffff;
   border-radius: 3px;
   padding: 10px 20px;
-  /* margin-left: 150px; */
   margin-top: -70px;
   margin-right: 600px;
 }
@@ -52,7 +51,7 @@ h1 span {
 .draft:hover {
   background-color: #EEEEEE;
   height: 28px;
-}
+} */
 
 #comment1,
 #comment2,
@@ -93,7 +92,7 @@ h1 span {
 }
 
 
-.proceed_home_page {
+/* .proceed_home_page {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -111,6 +110,27 @@ h1 span {
   background-color: #FF385C;
   color: #ffffff;
   height: 28px;
+} */
+
+.disabled a {
+  width: 120px;
+  font-size: 20px;
+}
+
+.disabled i {
+  font-size: 20px;
+}
+
+.pagination .disabled button {
+  color: #ccc;
+  font-size: 20px;
+  width: 120px;
+  padding: 0 !important;
+}
+
+.pagination .disabled button {
+  color: #ccc;
+  background-color: #ffffff;
 }
 
 
@@ -131,19 +151,37 @@ h1 span {
     font-size: 23px;
   }
 
-  .draft {
+  /* .draft {
     margin-left: 0;
     margin-right: 0;
-  }
+  } */
 
   .proceed_home_page {
     margin-right: 0;
   }
 
-  .next_page .draft,
+  /* .next_page .draft,
   .next_page .proceed_home_page {
     writing-mode: horizontal-tb;
     margin: 0 -10px;
+  } */
+
+  .disabled a {
+    width: 80px;
+    font-size: 15px;
+  }
+
+  .disabled i {
+    font-size: 15px;
+  }
+
+  .pagination .disabled button {
+    font-size: 15px;
+    width: 80px;
+  }
+
+  .pagination {
+    gap: 0;
   }
 
   .status {

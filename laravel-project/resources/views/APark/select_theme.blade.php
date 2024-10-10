@@ -33,17 +33,25 @@
 
         <form id="themeForm" method="POST" action="{{ route('ideas.update.theme', ['id' => $idea_id]) }}">
             @csrf
-            <button type="button" class="choice" data-theme="1">「自分たちの役に立つものを開発せよ」</button>
+
+            <a href="#" class="choice" data-theme="1">「自分たちの役に立つものを開発せよ」</a>
+            <a href="#" class="choice" data-theme="2">「ワクワクするものを開発せよ」</a>
+            <a href="#" class="choice" data-theme="3">オリジナルプロダクト</a>
+
+
+            {{-- <button type="button" class="choice" data-theme="1">「自分たちの役に立つものを開発せよ」</button>
             <button type="button" class="choice" data-theme="2">「ワクワクするものを開発せよ」</button>
-            <button type="button" class="choice" data-theme="3">オリジナルプロダクト</button>
+            <button type="button" class="choice" data-theme="3">オリジナルプロダクト</button> --}}
+
+
             <input type="hidden" name="theme" id="themeInput" value="">
         </form>
 
         <div class="status">
             <ul class="pagination">
-                <li class="disabled">
+                {{-- <li class="disabled">
                     <a href="#"><i class="fas fa-angle-left"></i></a>
-                </li>
+                </li> --}}
                 <li class="active">
                     <a href="#">1</a>
                 </li>
@@ -54,16 +62,19 @@
                     <a href="#">3</a>
                 <li>
                     <a href="#">4</a></li>
-                <li class="disabled">
-                    <a href="{{ route('get.create.radar.chart', ['id' => $idea_id])}}" class="proceed_create_chart_page" id="proceedCreateChartPage"><i class="fas fa-angle-right"></i></a>
+                <!-- <li class="disabled">
+                    <a href="{{ route('get.create.radar.chart', ['id' => $idea_id])}}" class="proceed_create_chart_page" id="proceedCreateChartPage">次へ
+                    </a> -->
                 </li>
             </ul>
         </div>
 
+        {{-- <div class="next_page">
+            <a href="{{ route('get.create.radar.chart', ['id' => $idea_id])}}" class="proceed_create_chart_page" id="proceedCreateChartPage">次へ</a>
+        </div> --}}
+
     </div>
-    {{-- <div class="next_page">
-    <a href="{{ route('get.create.radar.chart', ['id' => $idea_id])}}" class="proceed_create_chart_page" id="proceedCreateChartPage">次へ</a>
-    </div> --}}
+
 <script src="{{ asset('js/select_theme.js') }}"></script>
 </body>
 

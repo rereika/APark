@@ -34,9 +34,11 @@ class OpenAIController extends Controller
     $idea->elevator2 = $request->elevator2;
     $idea->how = $request->how;
 
+    $theme = $idea->theme;
+
     // 戻るボタンが押された場合
     if ($request->input('action') === 'return_page') {
-        return view('APark.create_radar_chart', ['idea_id' => $idea->id]);
+        return view('APark.create_radar_chart', ['idea_id' => $idea->id, 'theme' => $theme]);
 
     // 下書き保存ボタンが押された場合
     } elseif ($request->input('action') === 'draft') {

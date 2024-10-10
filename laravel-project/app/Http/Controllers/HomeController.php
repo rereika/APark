@@ -23,21 +23,21 @@ class HomeController extends Controller
     }
 
 
-    public function createRadarChart(Request $request, $id)
-    {
-        $theme = $request->input('theme');
+    // public function createRadarChart(Request $request, $id)
+    // {
+    //     $theme = $request->input('theme');
 
-        if (empty($theme)) {
-            return redirect()->back()->with('alert', '選択してください');
-        }
+    //     if (empty($theme)) {
+    //         return redirect()->back()->with('alert', '選択してください');
+    //     }
 
-        // アイデアのテーマをデータベースで更新
-        $idea = Idea::find($id);
-        $idea->theme = (int)$theme; // テーマを整数として保存
-        $idea->save();
+    //     // アイデアのテーマをデータベースで更新
+    //     $idea = Idea::find($id);
+    //     $idea->theme = (int)$theme; // テーマを整数として保存
+    //     $idea->save();
 
-        return redirect()->route('get.create.radar.chart', ['id' => $id]);
-    }
+    //     return redirect()->route('get.create.radar.chart', ['id' => $id]);
+    // }
 
 
 
