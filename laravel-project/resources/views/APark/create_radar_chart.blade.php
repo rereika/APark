@@ -15,11 +15,30 @@
 
 <body>
 
+    {{-- <div class="back_page">
+        <a href="{{ route('get.select.theme', ['id' => $idea_id])}}" class="back_home_btn" id="proceedCreateChartPage">戻る</a>
+    </div> --}}
+
     <form id="chartForm" method="POST" action="{{ route('ideas.update.chart', ['id' => $idea_id]) }}">
     @csrf
     <div class="inner">
 
         <h1><span class="highlight">どんなアプリ</span>を作りたいですか？</h1>
+
+        <p class="theme">今回のテーマ：
+            <span>@switch($theme)
+                @case(1)
+                    「自分たちの役に立つものを開発せよ」
+                    @break
+                @case(2)
+                    「ワクワクするものを開発せよ」
+                    @break
+                @case(3)
+                    オリジナルプロダクト
+                    @break
+            @endswitch
+            </span>
+        </p>
 
         <div class="chart_form">
 
@@ -108,8 +127,7 @@
         <div class="status">
             <ul class="pagination">
                 <li class="disabled">
-                    <a href="{{ route('get.select.theme', ['id' => $idea_id])}}" class="proceed_create_chart_page" id="proceedCreateChartPage">
-                        <i class="fas fa-angle-left"></i>
+                    <a href="{{ route('get.select.theme', ['id' => $idea_id])}}" class="proceed_create_chart_page" id="proceedCreateChartPage"><i class="fas fa-angle-left"></i>&nbsp;&nbsp;&nbsp;戻る
                     </a>
                 </li>
                 <li>
@@ -125,7 +143,7 @@
                     <a href="#">4</a>
                 </li>
                 <li class="disabled">
-                    <button type="submit" class="proceed_pitch_page" style="background: none; padding: 0; cursor: pointer;"><i class="fas fa-angle-right"></i>
+                    <button type="submit" class="proceed_pitch_page" style="background: none; padding: 0; cursor: pointer;">次へ&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i>
                 </li>
             </ul>
         </div>

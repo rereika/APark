@@ -21,13 +21,27 @@ body {
   margin: 50px 20px 1px 20px;
 }
 
+.back_home_btn {
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  background-color: #ffffff;
+  border-radius: 3px;
+  padding: 10px 20px;
+  margin: 20px 50px;
+}
+
+.back_home_btn:hover {
+  background-color: #EEEEEE;
+}
+
 .draft {
   display: flex;
   font-size: 20px;
   justify-content: right;
   text-decoration: none;
   color: #FF385C;
-  margin-right: 25px;
+  /* margin-right: 25px; */
 }
 
 h1 {
@@ -49,10 +63,11 @@ h1 {
   padding: 20px 20px;
 }
 
-.next_page {
+.next_page a {
   display: flex;
   justify-content: right;
-  margin: 20px 40px 1px 50px;
+  /* margin: 20px 40px 1px 50px; */
+  text-decoration: none;
 }
 
 .status {
@@ -67,7 +82,7 @@ h1 {
 }
 
 .status ul li {
-  margin: 0 20px;
+  margin: 0;
   /* 各画像の間隔 */
 }
 
@@ -98,7 +113,7 @@ h1 {
 .pagination button {
   display: inline-block;
   color: black;
-  border-radius: 50%;
+  border-radius: 5%;
   border: 1px solid #dedede;
   text-decoration: none;
   width: 40px;
@@ -136,6 +151,8 @@ h1 {
   background-color: initial;
   color: #FF385C;
 }
+
+
 
 
 @media screen and (min-width: 375px) and (max-width: 428px) {

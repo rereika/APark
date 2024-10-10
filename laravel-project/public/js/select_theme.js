@@ -25,36 +25,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  let buttons = document.querySelectorAll('.choice'); // 全ての.choice要素を取得
+  let buttons = document.querySelectorAll('.choice');
   const themeForm = document.getElementById('themeForm');
   const themeInput = document.getElementById('themeInput');
-  const proceedButton = document.getElementById('proceedCreateChartPage');
-
-  console.log('ああああ' + themeInput.value);
 
   buttons.forEach(function (button) {
-    button.addEventListener('click', function () {
+    button.addEventListener('click', function (event) {
+      event.preventDefault(); // デフォルトの動作を防止
+
+      // クリックされたボタンのデータ属性からテーマを取得
+      themeInput.value = parseInt(this.getAttribute('data-theme'), 10);
+
+      // 全てのボタンの色をリセット
       buttons.forEach(function (btn) {
-        btn.style.color = ''; // 全てのボタンの文字色をリセット
-        btn.style.background = ''; // 全てのボタンの背景色をリセット
+        btn.style.color = '';
+        btn.style.background = '';
       });
 
-      button.style.background = '#FF385C'; // クリックされたボタンの背景色を変更
-      button.style.color = 'white'; // クリックされたボタンの文字色を変更
+      // クリックされたボタンのスタイルを変更
+      button.style.background = '#FF385C';
+      button.style.color = 'white';
 
-      themeInput.value = parseInt(this.getAttribute('data-theme'), 10); // テーマを整数として設定
-      console.log('いいい' + themeInput.value);
+      // フォームを送信
+      themeForm.submit();
     });
-  });
-
-  proceedButton.addEventListener('click', function (event) {
-    event.preventDefault(); // デフォルトの動作を防止
-
-    if (!themeInput.value) {
-      alert("テーマを選択してください");
-      return;
-    }
-
-    themeForm.submit(); // フォームを送信
   });
 });

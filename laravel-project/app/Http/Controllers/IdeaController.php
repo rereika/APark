@@ -44,9 +44,10 @@ class IdeaController extends Controller
 
         $idea = Idea::findOrFail($id);
         $idea->theme = $request->theme;
+        $theme = $idea->theme;
         $idea->save();
 
-        return view('APark.create_radar_chart', ['idea_id' => $idea->id]);
+        return view('APark.create_radar_chart', ['idea_id' => $idea->id, 'theme' => $theme]);
 
         // return redirect()->route('get.create.radar.chart', ['id' => $id]);
     }

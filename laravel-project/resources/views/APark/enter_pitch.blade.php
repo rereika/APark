@@ -67,7 +67,7 @@
                 <ul class="pagination">
                     <li class="disabled">
                         <button type="submit" class="return_page" name="action" value="return_page">
-                        <i class="fas fa-angle-left"></i></button>
+                        <i class="fas fa-angle-left"></i>&nbsp;&nbsp;&nbsp;戻る</button>
                     </li>
                     <li>
                         <a href="#">1</a>
@@ -84,7 +84,7 @@
                     <li class="disabled">
                         <input type="hidden" name="proceed" value="true">
                         <button type="button" class="proceed" name="action" value="proceed">
-                            <i class="fas fa-angle-right"></i>
+                        次へ&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right"></i>
                         </button>
                     </li>
                 </ul>

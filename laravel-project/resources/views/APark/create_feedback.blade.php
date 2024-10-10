@@ -79,10 +79,16 @@
         {{-- <a href="{{ route('get.draft.to.pitch', ['id' => $idea->id]) }}" class="draft">修正する</a> --}}
 
       <ul class="pagination">
+        <li class="disabled">
+          <a href="{{ route('get.draft.to.pitch', ['id' => $idea->id]) }}" class="draft">修正する</a>
+        </li>
         <li><a href="#">1</a></li>
         <li><a href="#">2</a></li>
         <li><a href="#">3</a></li>
         <li class="active"><a href="#">4</a></li>
+        <li class="disabled">
+        <a href="{{ route('ideas.post', ['id' => $idea->id]) }}" class="proceed_home_page">投稿する</a>
+        </li>
       </ul>
 
       {{-- <div class="share_btn">
@@ -91,10 +97,10 @@
 
     </div>
 
-    <div class="next_page">
+    <!-- <div class="next_page">
     <a href="{{ route('get.draft.to.pitch', ['id' => $idea->id]) }}" class="draft">修正する</a>
     <a href="{{ route('ideas.post', ['id' => $idea->id]) }}" class="proceed_home_page">投稿する</a>
-  </div>
+  </div> -->
 
     </div>
   </div>
