@@ -8,18 +8,15 @@ use Illuminate\Support\Facades\Auth;
 
 class FeedbackController extends Controller
 {
-
     public function updateFbChart(Request $request, $id)
-{
+    {
 
-    $feedback = Feedback::findOrFail($id);
+        $feedback = Feedback::findOrFail($id);
 
-    $feedback->fb_chart1 = $request->fb_chart1;
+        $feedback->fb_chart1 = $request->fb_chart1;
 
-    $feedback->update($request->all());
+        $feedback->update($request->all());
 
-    return view('APark.home',);
-}
-
-
+        return view('APark.home',);
+    }
 }
