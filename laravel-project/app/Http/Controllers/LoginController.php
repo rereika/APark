@@ -24,20 +24,20 @@ class LoginController extends Controller
 
         $credentials = $request->only('user_name', 'password');
 
-            if (Auth::attempt($credentials)) {
-                //認証成功
-                $ideas = Idea::where('is_posted', '2')
-                ->with('feedbacks')
-                ->orderBy('created_at', 'desc')
-                ->get();
+        if (Auth::attempt($credentials)) {
+            //認証成功
+            $ideas = Idea::where('is_posted', '2')
+            ->with('feedbacks')
+            ->orderBy('created_at', 'desc')
+            ->get();
 
-                $userName = Auth::user()->user_name;
+            $userName = Auth::user()->user_name;
 
-                return view('APark.home', [
-                    'ideas' => $ideas,
-                    'userName' => $userName
-                ]);
-                }
+            return view('APark.home', [
+                'ideas' => $ideas,
+                'userName' => $userName
+            ]);
+        }
 
         // 認証失敗
         return redirect()->route('login')
@@ -49,5 +49,4 @@ class LoginController extends Controller
         Auth::logout();
         return redirect()->route('start');
     }
-
 }

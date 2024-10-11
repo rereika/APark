@@ -9,9 +9,8 @@ use App\Http\Controllers\OpenAIController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 
-
 // 認証ルート
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 // デフォルトのルートをログインページにリダイレクト
 Route::get('/', function () {
