@@ -17,13 +17,19 @@ class User extends Authenticatable
         'why_engineer',
     ];
 
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    // protected $hidden = [
+    //     'password',
+    //     'remember_token',
+    // ];
 
     protected $casts = [
         'created_at' => 'datetime',  // 追加する場合
         'updated_at' => 'datetime',   // 追加する場合
     ];
+
+    public function isWhyEngineer(): bool
+{
+    return !empty($this->why_engineer);
+}
+
 }
