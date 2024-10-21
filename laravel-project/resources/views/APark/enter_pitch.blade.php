@@ -38,22 +38,23 @@
                 </div>
 
                 <div class="pitch">
-                    <h2><span class="highlight">エレベーターピッチ</span>をお聞かせください。</h2>
-                    <ul>
-                        <li>
+                    <h2>このアプリの<span class="highlight">キャッチコピー</span>は？</h2>
+                    <!-- <ul>
+                        <li> -->
                             <div class="TextareaWrapper">
-                                <textarea id="input_pitch1" name="elevator1" rows="4" cols="50" maxlength="60" placeholder="「アイデア思案の手助け」が欲しい「APPRENTICE生」向けの、「APark」という「CGMアプリ」です。">{{ $idea->elevator1 ?? '' }}</textarea>
+                                <textarea id="input_pitch1" name="elevator1" rows="4" cols="50" maxlength="60" placeholder="アプレンティス生が集まる公園、APark。それぞれがアイデアの補助輪に乗り、次なるアプレンティスシップの旅に出かけよう！">{{ $idea->elevator1 ?? '' }}</textarea>
                                 <div class="CharCounter" id="charCounter1"></div>
                             </div>
-                        </li>
-                        <li>
+                        <!-- </li>
+                        <li> -->
+                    <h2><span class="highlight">誰のどんな課題</span>を解決しますか？</h2>
                             <div class="TextareaWrapper">
-                                <textarea id="input_pitch2" name="elevator2" rows="4" cols="50" maxlength="60" placeholder="これは「APPRENTICEのカリキュラムに沿った形式でアイデアをレーダーチャートにまとめ、先輩や後輩とアイデアを共有する」ことができます">{{ $idea->elevator2 ?? '' }}</textarea>
+                                <textarea id="input_pitch2" name="elevator2" rows="4" cols="50" maxlength="60" placeholder="プログラミング初学者が、良いアイデアを形にする際の困難を解決する。">{{ $idea->elevator2 ?? '' }}</textarea>
                                 <div class="CharCounter" id="charCounter2"></div>
                             </div>
-                        </li>
-                    </ul>
-                    <h2><span class="highlight">どのように</span>解決しますか？</h2>
+                        <!-- </li>
+                    </ul> -->
+                    <h2>主な<span class="highlight">機能</span>はなんですか？</h2>
                         <div class="TextareaWrapper">
                             <textarea id="input_solution" name="how" rows="8" cols="50" maxlength="250" placeholder="・レーダーチャートでアイデアを評価 各アイデアに対して1つのレーダーチャートを作成し、アイデアの強みと弱点を客観的に評価する（ChatGPT API）...">{{ $idea->how ?? '' }}</textarea>
                             <div class="CharCounter" id="charCounter3"></div>
