@@ -53,7 +53,7 @@
     <p id="comment1">{{ $feedback['comment5'] }}</p> -->
 
 
-    <span class="fb_item">類ない</span><p class="yazirusi"></p><br>
+    <span class="fb_item">類いない</span><p class="yazirusi"></p><br>
     <p class="comment1">{{ $feedback->comment1 }}</p>
 
     <span class="fb_item">使用技術の正確性</span><p class="yazirusi"></p><br>

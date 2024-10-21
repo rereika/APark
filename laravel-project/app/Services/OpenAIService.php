@@ -28,7 +28,7 @@ class OpenAIService
                     ['role' => 'system', 'content' => 'You are a helpful assistant.'],
                     ['role' => 'user', 'content' => $prompt],
                 ],
-                'max_tokens' => 120, // 必要に応じて調整してください
+                'max_tokens' => 250, // 必要に応じて調整してください
             ],
         ]);
 

@@ -81,11 +81,11 @@ class OpenAIController extends Controller
             $idea->save();
 
             $prompts = [
-            "世の中にある他のアプリと比べてどれほどユニークか、5段階で評価し100文字内で答えよ(数値：コメント): {$request->elevator1}, {$request->elevator2}, {$request->how}",
-            "HTML、CSS、JavaScript、LaravelまたはRubyで作成可能か、5段階で評価し100文字内で答えよ(数値：コメント): {$request->elevator1}, {$request->elevator2}, {$request->how}",
-            "目新しいか、5段階で評価し100文字内で答えよ(数値：コメント): {$request->elevator1}, {$request->elevator2}, {$request->how}",
-            "エンジニアになりたい理由とアプリのストーリー性はあるか、5段階で評価し100文字内で答えよ(数値：コメント): {$whyEngineer},{$request->elevator1}, {$request->elevator2}, {$request->how}",
-            "どこが創造的か、5段階で評価し100文字内で答えよ(数値：コメント): {$request->elevator1}, {$request->elevator2}, {$request->how}"
+            "世の中にある他のアプリと比べてどれほどユニークか、5段階で評価し短く100文字内で答えよ(数値：コメント): {$request->elevator1}, {$request->elevator2}, {$request->how}",
+            "LaravelまたはRubyを使用してプロジェクトを作成できるか、5段階で評価し短く100文字内で答えよ(5：LaravelまたはRubyで作成可能): {$request->elevator1}, {$request->elevator2}, {$request->how}",
+            "目新しいか、5段階で評価し短く100文字内で答えよ(数値：コメント): {$request->elevator1}, {$request->elevator2}, {$request->how}",
+            "エンジニアになりたい理由とアプリのストーリー性はあるか、5段階で評価し短く100文字内で答えよ(数値：コメント): {$whyEngineer},{$request->elevator1}, {$request->elevator2}, {$request->how}",
+            "どこが創造的か、5段階で評価し短く100文字内で答えよ(数値：コメント): {$request->elevator1}, {$request->elevator2}, {$request->how}"
             ];
 
             // feedbackテーブルに同じidea_idはあるか？
