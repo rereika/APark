@@ -108,29 +108,36 @@ class IdeaController extends Controller
     }
 
 
-    public function showDraft($id)
-    {
-        $userId = Auth::id();
-        $ideas = Idea::where('user_id', $userId)->orderBy('created_at', 'desc')->get();
-        return view('APark.draft', ['ideas' => $ideas, 'idea_id' => $id]);
-    }
+    // public function showDraft($id)
+    // {
+    //     $userId = Auth::id();
+    //     $ideas = Idea::where('user_id', $userId)->orderBy('created_at', 'desc')->get();
+    //     return view('APark.draft', ['ideas' => $ideas, 'idea_id' => $id]);
+    // }
 
     public function listDraft()
     {
-        $ideas = Idea::where('is_posted', '1')->orderBy('created_at', 'desc')->get();
+        $userId = Auth::id();
+        $ideas = Idea::where('user_id', $userId)
+                    ->where('is_posted', '1')
+                    ->orderBy('created_at', 'desc')
+                    ->get();
         return view('APark.draft', ['ideas' => $ideas]);
     }
 
     public function showMyPage()
     {
-        $ideas = Idea::where('is_posted', '2')
-                ->with('feedbacks')
-                ->orderBy('created_at', 'desc')
-                ->get();
+        $userId = Auth::id();
+        $ideas = Idea::where('user_id', $userId)
+                    ->where('is_posted', '2')
+                    ->with('feedbacks')
+                    ->orderBy('created_at', 'desc')
+                    ->get();
 
-        // ビューにデータを渡す
+            // ビューにデータを渡す
         return view('APark.my_page', ['ideas' => $ideas]);
     }
+
 
     public function showSelfRadarChart($id)
     {
