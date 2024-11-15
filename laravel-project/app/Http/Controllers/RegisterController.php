@@ -55,9 +55,11 @@ class RegisterController extends Controller
         $user->why_engineer = $request->why_engineer;
         $user->save();
 
-        $userId = Auth::id();
-        $ideas = Idea::where('user_id', $userId)->orderBy('created_at', 'desc')->get();
+        return redirect()->route('get.my.page');
 
-        return view('APark.my_page', ['ideas' => $ideas]);
+        // $userId = Auth::id();
+        // $ideas = Idea::where('user_id', $userId)->orderBy('created_at', 'desc')->get();
+
+        // return view('APark.my_page', ['ideas' => $ideas]);
     }
 }
