@@ -261,6 +261,7 @@ header {
 }
 
 /* 5つの要素を均等に配置するためのアニメーション */
+/* 1周15秒、linear: 均一な速度で動く、infinite: 無限ループで回転 */
 
 .top {
   animation: rotate_top 15s linear infinite;
