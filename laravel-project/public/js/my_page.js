@@ -1,4 +1,4 @@
-// Slick Carouselの初期化
+//Slick Carouselの初期化
 $(document).ready(function () {
   $('.slider').slick({
     autoplay: false, // 自動的に動き出すか。初期値はfalse。
